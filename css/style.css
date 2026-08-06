@@ -703,6 +703,15 @@ html[data-theme='light'] .nav__theme-moon {
 
 /* --- Mobile: hamburger drawer (≤ 900px) --- */
 @media (max-width: 900px) {
+  /* backdrop-filter on .nav makes it the containing block for the
+     fixed drawer, pinning it to the 68px bar instead of the viewport.
+     Drop it on mobile so .nav__menu is positioned against the viewport. */
+  .nav,
+  .nav.scrolled {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
   .nav__toggle {
     display: flex;
   }

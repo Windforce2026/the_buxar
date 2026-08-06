@@ -23,7 +23,7 @@
   overflow: hidden;
   background: linear-gradient(160deg, var(--loader-navy-1) 0%, var(--loader-navy-2) 100%);
   color: var(--loader-gold);
-  transition: opacity 0.9s ease, visibility 0.9s ease;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
 }
 
 .loader.is-leaving {
@@ -41,7 +41,7 @@
   height: 100%;
 }
 
-/* Cinematic motion backdrop (video + navy scrim for map legibility) */
+/* Cinematic motion backdrop (lazy video + navy scrim for map legibility) */
 .loader__bg {
   position: absolute;
   inset: 0;
@@ -58,6 +58,24 @@
   opacity: 0.5;
   filter: saturate(1.1) contrast(1.05);
   transform: scale(1.03);
+}
+
+/* Poster fallback behind the lazy video — the loader is never a flat
+     blue screen while the mp4 buffers; it shows a photo immediately. */
+.loader__bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(160deg, rgba(8, 28, 51, 0.5) 0%, rgba(11, 60, 93, 0.34) 50%, rgba(8, 28, 51, 0.72) 100%),
+    url('../assets/hero-buxar-sunset.jpg') center / cover no-repeat;
+  transition: opacity 0.7s ease;
+}
+
+/* Once the video is actually playing, let it take over the poster. */
+.loader.is-video .loader__bg::before {
+  opacity: 0;
 }
 
 .loader__bg-scrim {
@@ -410,6 +428,12 @@ body.buxar-ready .loader__tag {
 /* Light theme */
 html[data-theme='light'] .loader {
   background: linear-gradient(160deg, #f6f0e1 0%, #ece0c4 100%);
+}
+
+html[data-theme='light'] .loader__bg::before {
+  background:
+    linear-gradient(160deg, rgba(246, 240, 225, 0.42) 0%, rgba(236, 224, 196, 0.3) 55%, rgba(230, 219, 189, 0.6) 100%),
+    url('../assets/hero-buxar-morning.jpg') center / cover no-repeat;
 }
 
 html[data-theme='light'] .loader__bg-video {

@@ -2,9 +2,10 @@
 /* TheBuxar.com — Bihar map loader (pure vanilla, no dependencies)    */
 /* The map is inlined in index.html, so it works over http:// or      */
 /* file:// with no fetch and no GSAP/CDN requirements.                */
-/* Sequence (~2.8s): Bihar outline draws, districts fade in, Buxar    */
-/* highlights + pulses, typography reveals, then loader fades out     */
-/* while the homepage fades in.                                       */
+/* Sequence (~2.5s): Bihar outline draws, districts fade in, Buxar    */
+/* highlights + pulses, typography reveals, then the loader fades out */
+/* while the homepage fades in. The video backdrop loads lazily and   */
+/* never blocks the reveal.                                           */
 /* ------------------------------------------------------------------ */
 (function () {
   'use strict'
@@ -75,7 +76,25 @@
     outline.style.setProperty('--olen', `${len}px`)
   }
 
-  /* Place the pulses + "● BUXAR" label on Buxar's centroid. */
+  /* Lazy-start the cinematic backdrop video so the loader never blocks
+     on it: we defer fetching/playing until the map is already painting,
+     and the reveal timer is fully independent of video readiness. */
+  function bgVideo() {
+    const video = document.getElementById('loader-bg-video')
+    if (!video || reduceMotion) return
+    video.addEventListener(
+      'playing',
+      () => loader.classList.add('is-video'),
+      { once: true }
+    )
+    setTimeout(() => {
+      video.load()
+      const p = video.play()
+      if (p && typeof p.catch === 'function') p.catch(() => {})
+    }, 350)
+  }
+
+  /* Place the pulses + "BUXAR" label on Buxar's centroid. */
   function placeBuxar() {
     const origin = document.getElementById('br-pulse-origin')
     const rect = mapEl.getBoundingClientRect()
@@ -106,19 +125,23 @@
     setTimeout(() => label.classList.add('is-live'), reduceMotion ? 50 : 1950)
   }
 
-  /* Fade the loader out and the hero in together. */
+  /* Fade the loader out and the hero in together, right after the
+     map animation finishes (~2.3s) instead of a fixed long wait. */
   function reveal() {
     setTimeout(() => {
       loader.classList.add('is-leaving')
       hero.classList.add('is-revealed')
-      setTimeout(() => { loader.style.display = 'none' }, 900)
-    }, reduceMotion ? 150 : 5600)
+      const video = document.getElementById('loader-bg-video')
+      if (video) video.pause()
+      setTimeout(() => { loader.style.display = 'none' }, 700)
+    }, reduceMotion ? 120 : 2450)
   }
 
   function boot() {
     setOutline()
     placeBuxar()
     particles()
+    bgVideo()
     document.body.classList.add('buxar-ready')
     reveal()
   }
