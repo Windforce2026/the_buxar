@@ -1,0 +1,784 @@
+/* ------------------------------------------------------------------ */
+/* TheBuxar.com — design system + homepage hero                       */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --ink-navy: #081c33;
+  --ink-navy-2: #0b3c5d;
+  --gold: #d4af37;
+  --gold-warm: #ffd76a;
+  --cream: #f4e9c8;
+  --paper: #f7f3ea;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Jost', 'Segoe UI', sans-serif;
+
+  /* Theme tokens (dark is the default) */
+  --bg: var(--ink-navy);
+  --bg-2: var(--ink-navy-2);
+  --text: var(--cream);
+  --text-muted: rgba(244, 233, 200, 0.72);
+  --text-soft: rgba(244, 233, 200, 0.45);
+  --nav-glass: rgba(7, 22, 40, 0.74);
+  --nav-hairline: rgba(212, 175, 55, 0.14);
+  --nav-shadow: rgba(2, 8, 18, 0.5);
+  --hero-bg:
+    radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.08), transparent 60%),
+    linear-gradient(160deg, var(--ink-navy) 0%, var(--ink-navy-2) 100%);
+  --button-text: var(--ink-navy);
+  --seal-glow: rgba(212, 175, 55, 0.35);
+  --brand-shadow: rgba(212, 175, 55, 0.35);
+}
+
+html[data-theme='light'] {
+  --bg: #f6f0e1;
+  --bg-2: #efe5cd;
+  --text: #12263d;
+  --text-muted: rgba(18, 38, 61, 0.7);
+  --text-soft: rgba(18, 38, 61, 0.45);
+  --nav-glass: rgba(246, 240, 225, 0.78);
+  --nav-hairline: rgba(184, 145, 44, 0.22);
+  --nav-shadow: rgba(120, 90, 20, 0.16);
+  --hero-bg:
+    radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.14), transparent 62%),
+    linear-gradient(160deg, #f6f0e1 0%, #ece0c4 100%);
+  --button-text: #fff;
+  --seal-glow: rgba(184, 145, 44, 0.35);
+  --brand-shadow: rgba(184, 145, 44, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.serif {
+  font-family: var(--serif);
+}
+
+.sans {
+  font-family: var(--sans);
+}
+
+/* ------------------------------------------------------------------ */
+/* Luxury navigation                                                   */
+/* ------------------------------------------------------------------ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nav-glass);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 8px 28px rgba(2, 8, 18, 0.22);
+}
+
+.nav.scrolled {
+  background: var(--nav-glass);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  border-bottom: 1px solid var(--nav-hairline);
+  box-shadow: 0 14px 44px var(--nav-shadow);
+}
+
+.nav__inner {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 5vw;
+}
+
+/* --- Brand: animated "The Buxar" wordmark (no logo) --- */
+.nav__brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  text-decoration: none;
+  line-height: 1;
+  padding: 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav__wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  animation: brand-enter 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nav__wordmark-the {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.46em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.4s ease;
+}
+
+.nav__wordmark-bux {
+  position: relative;
+  font-family: 'Cinzel', 'Cormorant Garamond', 'Times New Roman', serif;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  background: linear-gradient(
+    105deg,
+    var(--gold) 0%,
+    #ffe9a8 24%,
+    var(--gold-warm) 50%,
+    #b8912c 76%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: brand-shimmer 4.5s linear infinite, brand-enter 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  filter: drop-shadow(0 0 10px var(--brand-shadow));
+  transition: filter 0.4s ease;
+}
+
+.nav__brand:hover .nav__wordmark-the {
+  color: var(--gold-warm);
+}
+
+.nav__brand:hover .nav__wordmark-bux {
+  filter: drop-shadow(0 0 16px var(--brand-shadow));
+}
+
+.nav__brand-glow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 60%;
+  transform: translateY(-50%);
+  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.22), transparent 70%);
+  opacity: 0;
+  animation: brand-breathe 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.nav__brand-rule {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-warm), transparent);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.55);
+  animation: brand-rule 2.4s ease-in-out infinite;
+}
+
+@keyframes brand-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    letter-spacing: 0.4em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brand-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes brand-breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(-50%) scaleX(0.92);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translateY(-50%) scaleX(1.05);
+  }
+}
+
+@keyframes brand-rule {
+  0%,
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__wordmark,
+  .nav__wordmark-bux,
+  .nav__brand-glow,
+  .nav__brand-rule {
+    animation: none;
+  }
+}
+
+/* --- Center menu --- */
+.nav__menu {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 1.6vw, 26px);
+  min-width: 0;
+}
+
+.nav__link {
+  position: relative;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 6px 1px;
+  white-space: nowrap;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--gold), var(--gold-warm));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--gold-warm);
+  text-shadow: 0 0 16px rgba(212, 175, 55, 0.55);
+}
+
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* --- Right actions --- */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  flex: 0 0 auto;
+}
+
+.nav__icon {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav__icon:hover {
+  color: var(--gold-warm);
+}
+
+.nav__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.nav__theme {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav__theme:hover {
+  color: var(--gold-warm);
+}
+
+.nav__theme svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+/* Only the visible icon receives clicks (dark shows sun, light shows moon). */
+.nav__theme-sun {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav__theme-moon {
+  opacity: 0;
+  pointer-events: none;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+html[data-theme='light'] .nav__theme-sun {
+  opacity: 0;
+  pointer-events: none;
+  transform: rotate(90deg) scale(0.6);
+}
+
+html[data-theme='light'] .nav__theme-moon {
+  opacity: 1;
+  pointer-events: auto;
+  transform: rotate(0deg) scale(1);
+}
+
+.nav__lang {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.nav__lang:hover .nav__lang-hi {
+  color: var(--gold-warm);
+}
+
+.nav__lang .nav__lang-en:first-child {
+  letter-spacing: 0.12em;
+}
+
+.nav__lang-sep {
+  margin: 0 6px;
+  color: rgba(212, 175, 55, 0.6);
+}
+
+.nav__lang-hi {
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.nav__lang[aria-pressed='true'] .nav__lang-hi {
+  color: var(--gold-warm);
+}
+
+.nav__login {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  padding: 8px 20px;
+  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav__login:hover {
+  background: rgba(212, 175, 55, 0.12);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2) inset;
+}
+
+/* --- Search panel (slides open below the nav) --- */
+.nav__search {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  background: var(--nav-glass);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--nav-hairline);
+  box-shadow: 0 18px 40px var(--nav-shadow);
+  transition: max-height 0.35s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav__search.is-open {
+  max-height: 120px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__search-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 5vw;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav__search-icon {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+}
+
+.nav__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--nav-hairline);
+  padding: 8px 2px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.nav__search-input::placeholder {
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+}
+
+.nav__search-input:focus {
+  border-bottom-color: var(--gold);
+}
+
+.nav__search-close {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav__search-close:hover {
+  color: var(--gold-warm);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 760px) {
+  .nav__search-inner {
+    padding: 12px 4vw;
+  }
+  .nav__search.is-open {
+    max-height: 140px;
+  }
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 68px 6vw 22px;
+  background: var(--hero-bg);
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transition: background 0.4s ease;
+}
+
+/* Hero center block */
+.hero__center {
+  margin: auto 0;
+  padding: 40px 0;
+}
+
+.hero__eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+
+.hero__title {
+  font-weight: 500;
+  font-size: clamp(56px, 12vw, 140px);
+  line-height: 0.98;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.hero__title-gold {
+  color: var(--gold-warm);
+  text-shadow: 0 0 40px var(--brand-shadow);
+}
+
+.hero__rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 26px 0 22px;
+}
+
+.hero__rule::before,
+.hero__rule::after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.55);
+}
+
+.hero__rule span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.hero__subtitle {
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 34px;
+}
+
+.hero__button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--button-text);
+  background: linear-gradient(120deg, var(--gold-warm), var(--gold));
+  padding: 15px 40px;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(212, 175, 55, 0.45);
+}
+
+.hero__foot {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  animation: hero-foot-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-foot-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .nav {
+    height: 60px;
+  }
+
+  .nav__wordmark-bux {
+    font-size: 20px;
+  }
+
+  .nav__menu {
+    gap: 13px;
+  }
+
+  .nav__link {
+    letter-spacing: 0.1em;
+  }
+
+  .nav__actions {
+    gap: 14px;
+  }
+}
+
+/* --- Hamburger toggle (mobile only) --- */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Login inside the horizontal menu only appears in the mobile drawer. */
+.nav__login--menu {
+  display: none;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--text);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, background 0.3s ease;
+}
+
+.nav.nav-open .nav__toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav.nav-open .nav__toggle span:nth-child(2) {
+  opacity: 0;
+}
+.nav.nav-open .nav__toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.nav__toggle:hover span {
+  background: var(--gold-warm);
+}
+
+/* --- Mobile: hamburger drawer (≤ 900px) --- */
+@media (max-width: 900px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* Hide the desktop Login in the bar; show it inside the drawer instead. */
+  .nav__actions .nav__login {
+    display: none;
+  }
+
+  .nav__menu {
+    position: fixed;
+    z-index: 950;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(320px, 86vw);
+    flex: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    padding: 90px 9vw 48px;
+    background: var(--nav-glass);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid var(--nav-hairline);
+    box-shadow: -20px 0 50px var(--nav-shadow);
+    transform: translateX(105%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav.nav-open .nav__menu {
+    transform: translateX(0);
+  }
+
+  .nav__link {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    padding: 13px 2px;
+    text-align: left;
+  }
+
+  .nav__login--menu {
+    display: inline-block;
+    margin-top: 26px;
+    font-size: 13px;
+  }
+
+  .nav__brand {
+    flex-basis: auto;
+  }
+
+  /* Theme color transitions under a transparent nav bar */
+  .nav-open .nav__toggle {
+    position: relative;
+    z-index: 960;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav__inner {
+    gap: 14px;
+    padding: 0 4vw;
+  }
+
+  .nav__menu {
+    gap: 2px;
+    padding: 84px 8vw 40px;
+  }
+
+  .hero {
+    padding: 24px 5vw 20px;
+  }
+}

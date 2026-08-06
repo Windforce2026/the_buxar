@@ -1,0 +1,438 @@
+/* ------------------------------------------------------------------ */
+/* TheBuxar.com — Loader overlay (Bihar map reveal)                   */
+/* Navy gradient + golden Bihar outline + Buxar pulse + particles     */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --loader-navy-1: #081c33;
+  --loader-navy-2: #0b3c5d;
+  --loader-gold: #d4af37;
+  --loader-gold-warm: #ffd76a;
+  --loader-gold-faint: rgba(212, 175, 55, 0.45);
+  --loader-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --loader-sans: 'Jost', 'Segoe UI', sans-serif;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--loader-navy-1) 0%, var(--loader-navy-2) 100%);
+  color: var(--loader-gold);
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.loader.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Ambient golden particles */
+.loader__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Cinematic motion backdrop (video + navy scrim for map legibility) */
+.loader__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.loader__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: saturate(1.1) contrast(1.05);
+  transform: scale(1.03);
+}
+
+.loader__bg-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(8, 28, 51, 0.82) 0%,
+    rgba(11, 60, 93, 0.68) 55%,
+    rgba(8, 28, 51, 0.9) 100%
+  );
+}
+
+/* Subtle vignette over everything */
+.loader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 42%, transparent 55%, rgba(2, 10, 22, 0.55) 100%);
+}
+
+.loader__card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+/* Map frame — aspect matches the SVG viewBox (~1.47) so it fills fully */
+.loader__map {
+  position: relative;
+  width: min(52vh, 360px);
+  aspect-ratio: 1.47 / 1;
+  margin-bottom: 30px;
+}
+
+.loader__map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Outline draw — JS sets the dash length; CSS animates the offset */
+#br-outline {
+  stroke: var(--loader-gold);
+  stroke-width: 2.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--olen, 1);
+  stroke-dashoffset: var(--olen, 1);
+}
+
+body.buxar-ready #br-outline {
+  animation: br-draw 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes br-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* District boundaries fade in after the outline completes (gold, faint) */
+#br-districts {
+  stroke: var(--loader-gold-faint);
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+body.buxar-ready #br-districts {
+  animation: br-fade 0.6s ease 1.3s forwards;
+}
+
+@keyframes br-fade {
+  to {
+    opacity: 0.85;
+  }
+}
+
+/* Buxar district: warm gold fill with glow after the outline completes */
+#br-buxar {
+  fill: var(--loader-gold-warm);
+  fill-opacity: 0;
+  stroke: var(--loader-gold-warm);
+  stroke-width: 1.6;
+}
+
+body.buxar-ready #br-buxar {
+  animation: br-buxar 0.6s ease 1.6s forwards, br-glow 0.7s ease 1.6s forwards;
+}
+
+@keyframes br-buxar {
+  to {
+    fill-opacity: 0.3;
+  }
+}
+
+@keyframes br-glow {
+  to {
+    filter: drop-shadow(0 0 14px rgba(255, 215, 106, 0.85));
+  }
+}
+
+/* Reference dot used only by JS to place pulses/label — never rendered */
+#br-pulse-origin {
+  visibility: hidden;
+}
+
+/* Expanding pulse rings emanating from Buxar's centroid */
+.loader__pulse {
+  position: absolute;
+  border: 1px solid var(--loader-gold-warm);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader__pulse.is-anim {
+  animation: buxar-pulse 2.4s ease-out infinite;
+}
+
+@keyframes buxar-pulse {
+  0% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.1);
+  }
+}
+
+/* Buxar label: dot + thin gold connector line + caption (● — BUXAR) */
+.loader__label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  white-space: nowrap;
+  transform: translateX(8px);
+  pointer-events: none;
+}
+
+.loader__label.is-live {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.loader__label .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--loader-gold-warm);
+  box-shadow: 0 0 8px var(--loader-gold-warm);
+  flex: 0 0 auto;
+}
+
+.loader__label .connector {
+  width: 26px;
+  height: 1px;
+  margin: 0 8px;
+  background: linear-gradient(to right, var(--loader-gold-warm), var(--loader-gold-faint));
+  flex: 0 0 auto;
+}
+
+.loader__label .text {
+  font-family: var(--loader-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--loader-gold-warm);
+}
+
+/* Corner ornaments on the map frame — library-plate luxury detail */
+.loader__map::before,
+.loader__map::after {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  pointer-events: none;
+  z-index: 3;
+}
+.loader__map::before {
+  top: -9px;
+  left: -9px;
+  border-top: 1.5px solid var(--loader-gold);
+  border-left: 1.5px solid var(--loader-gold);
+}
+.loader__map::after {
+  bottom: -9px;
+  right: -9px;
+  border-bottom: 1.5px solid var(--loader-gold);
+  border-right: 1.5px solid var(--loader-gold);
+}
+
+/* Typography — reveal after the map renders, styled like the navbar wordmark */
+.loader__title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+  opacity: 0;
+  line-height: 1;
+}
+
+body.buxar-ready .loader__title {
+  animation: br-type 0.45s ease 1.4s forwards;
+}
+
+.loader__title-the {
+  font-family: var(--loader-sans);
+  font-size: clamp(14px, 2.2vw, 18px);
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(244, 233, 200, 0.72);
+}
+
+.loader__title-bux {
+  font-family: 'Cinzel', var(--loader-serif);
+  font-size: clamp(26px, 4.6vw, 40px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  background: linear-gradient(
+    105deg,
+    var(--loader-gold) 0%,
+    #ffe9a8 24%,
+    var(--loader-gold-warm) 50%,
+    #b8912c 76%,
+    var(--loader-gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: brand-shimmer 4.5s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+}
+
+.loader__rule {
+  width: 128px;
+  height: 1px;
+  position: relative;
+  margin: 0 auto 16px;
+  opacity: 0;
+  background: linear-gradient(to right, transparent, var(--loader-gold), transparent);
+}
+.loader__rule::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 7px;
+  color: var(--loader-gold-warm);
+  text-shadow: 0 0 10px var(--loader-gold-warm);
+}
+
+body.buxar-ready .loader__rule {
+  animation: br-rule 0.45s ease 1.55s forwards;
+}
+
+.loader__tag {
+  font-family: var(--loader-sans);
+  font-weight: 300;
+  font-size: clamp(12px, 1.9vw, 15px);
+  letter-spacing: 0.04em;
+  color: rgba(244, 233, 200, 0.78);
+  margin: 0;
+  opacity: 0;
+}
+
+body.buxar-ready .loader__tag {
+  animation: br-type 0.45s ease 1.7s forwards;
+}
+
+@keyframes br-type {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes br-rule {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Hero - revealed in sync when the loader fades out (set in style.css too) */
+.hero.is-revealed {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.9s ease;
+}
+
+/* Reduced motion: skip heavy animation */
+@media (prefers-reduced-motion: reduce) {
+  .loader__bg-video {
+    display: none;
+  }
+  .loader__pulse.is-anim {
+    animation: none;
+    opacity: 0.4;
+  }
+  body.buxar-ready #br-outline,
+  body.buxar-ready #br-districts,
+  body.buxar-ready #br-buxar,
+  body.buxar-ready .loader__title,
+  body.buxar-ready .loader__rule,
+  body.buxar-ready .loader__tag {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
+  }
+  body.buxar-ready #br-outline {
+    stroke-dashoffset: 0;
+  }
+  body.buxar-ready .loader__title,
+  body.buxar-ready .loader__tag,
+  body.buxar-ready .loader__rule {
+    opacity: 1;
+  }
+}
+
+/* Light theme */
+html[data-theme='light'] .loader {
+  background: linear-gradient(160deg, #f6f0e1 0%, #ece0c4 100%);
+}
+
+html[data-theme='light'] .loader__bg-video {
+  opacity: 0.35;
+}
+
+html[data-theme='light'] .loader__bg-scrim {
+  background: linear-gradient(
+    160deg,
+    rgba(246, 240, 225, 0.82) 0%,
+    rgba(236, 224, 196, 0.72) 55%,
+    rgba(230, 219, 189, 0.88) 100%
+  );
+}
+
+html[data-theme='light'] .loader::after {
+  background: radial-gradient(ellipse at 50% 42%, transparent 55%, rgba(184, 145, 44, 0.16) 100%);
+}
+
+html[data-theme='light'] .loader__title-the {
+  color: rgba(18, 38, 61, 0.7);
+}
+
+html[data-theme='light'] .loader__tag {
+  color: rgba(18, 38, 61, 0.74);
+}
