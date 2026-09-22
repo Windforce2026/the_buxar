@@ -790,4 +790,77 @@ html[data-theme='light'] .nav__theme-moon {
   .hero {
     padding: 24px 5vw 20px;
   }
+
+  /* --- Mobile touch: generous hit areas, visually unchanged --- */
+  .nav__icon,
+  .nav__theme,
+  .nav__lang,
+  .nav__toggle {
+    position: relative;
+  }
+
+  .nav__icon::after,
+  .nav__theme::after {
+    content: "";
+    position: absolute;
+    inset: -11px;
+  }
+
+  .nav__lang::after {
+    content: "";
+    position: absolute;
+    inset: -14px -8px;
+  }
+
+  .nav__toggle::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+  }
+
+  .nav__brand {
+    min-height: 44px;
+  }
+
+  .nav__login--menu {
+    padding: 14px 20px;
+  }
+
+  /* ≥16px input text prevents iOS auto-zoom on focus */
+  .nav__search-input {
+    font-size: 16px;
+  }
+}
+
+/* --- Very small phones: keep the bar within ≥320px --- */
+@media (max-width: 420px) {
+  .nav__inner {
+    gap: 6px;
+    padding: 0 3.4vw;
+  }
+
+  .nav__actions {
+    gap: 7px;
+  }
+
+  .nav__wordmark {
+    gap: 5px;
+  }
+
+  .nav__wordmark-the {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+  }
+
+  .nav__wordmark-bux {
+    font-size: 17px;
+  }
+
+  .nav__lang {
+    font-size: 11px;
+  }
+
+  .nav__lang-sep {
+    margin: 0 4px;
+  }
 }

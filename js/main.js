@@ -70,7 +70,14 @@
     if (!nav) return
     const links = Array.from(nav.querySelectorAll('.nav__link'))
     const sections = links
-      .map((link) => document.querySelector(link.getAttribute('href')))
+      .map((link) => {
+        const href = link.getAttribute('href') || ''
+        try {
+          return document.querySelector(href)
+        } catch (e) {
+          return null
+        }
+      })
       .filter(Boolean)
 
     const onScroll = () => {

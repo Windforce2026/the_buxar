@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="./css/loader.css" />
     <link rel="stylesheet" href="./css/hero.css" />
     <link rel="stylesheet" href="./css/sections.css" />
+    <link rel="stylesheet" href="./css/tourism.css" />
+    <link rel="stylesheet" href="./css/explore.css" />
     <noscript>
       <style>
         #loader {
@@ -133,9 +135,9 @@
 
         <nav class="nav__menu" aria-label="Primary">
           <a href="#home" class="nav__link is-active" data-en="Home" data-hi="होम">Home</a>
-          <a href="#history" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
-          <a href="#tourism" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
-          <a href="#explore" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
+          <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
+          <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
+          <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
           <a href="#business" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
           <a href="#marketplace" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
           <a href="#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
@@ -290,53 +292,183 @@
           </ol>
 
           <div class="section__head reveal">
-            <a class="btn btn--gold" href="#" data-en="Explore History →" data-hi="इतिहास जानें →">Explore History →</a>
+            <a class="btn btn--gold" href="history.html" data-en="Explore History →" data-hi="इतिहास जानें →">Explore History →</a>
           </div>
         </div>
       </section>
 
       <!-- 03 · TOURISM -->
-      <section id="tourism" class="section tourism">
+      <section id="tourism" class="section tour-home">
         <div class="shell">
           <header class="section__head reveal">
-            <p class="section__label" data-en="Tourism" data-hi="पर्यटन">Tourism</p>
-            <h2 class="section__title serif" data-en="Experience the Beauty of Buxar" data-hi="बक्सर की सुंदरता का आनंद लें">Experience the Beauty of Buxar</h2>
-            <p class="section__sub" data-en="Four unforgettable destinations that unfold Buxar's river, forts and spiritual heart." data-hi="चार अविस्मरणीय स्थल जो बक्सर का नदी, किला और आध्यात्मिक हृदय दिखाते हैं।">Four unforgettable destinations that reveal Buxar's river, forts and spiritual soul.</p>
+            <p class="section__label" data-en="Explore Buxar" data-hi="खोजें बक्सर">Explore Buxar</p>
+            <h2 class="section__title serif" data-en="Discover the Places That Define Buxar" data-hi="उन स्थलों को जानें जो बक्सर को परिभाषित करते हैं">Discover the Places That Define Buxar</h2>
+            <p class="section__sub" data-en="Two categories, eight verified destinations — the sacred ghats and shrines of the river, and the monuments and parks where its history lives." data-hi="दो श्रेणियाँ, आठ सत्यापित स्थल — नदी के पवित्र घाट और मंदिर, और वे स्मारक व उद्यान जहाँ इसका इतिहास जीवित है।">Two categories, eight verified destinations — the sacred ghats and shrines of the river, and the monuments and parks where its history lives.</p>
           </header>
 
-          <div class="cards cards--tourism">
-            <article class="tile reveal">
-              <figure class="tile__media"><img src="./assets/hero-buxar-morning.jpg" alt="Boats on the Ganga at sunrise" loading="lazy" /></figure>
-              <div class="tile__body">
-                <h3 class="tile__title" data-en="Ram Rekha Ghat" data-hi="रामरेखा घाट">Ram Rekha Ghat</h3>
-                <p class="tile__text" data-en="A sacred bathing ghat where legend says Lord Rama bathed." data-hi="पवित्र स्नान घाट जहाँ प्रभु राम ने स्नान किया था।">A sacred bathing ghat blessed by legend and the holy river.</p>
+          <div class="tour-home__panels reveal">
+            <a class="tour-panel tour-panel--spiritual" href="tourism.html#explore-tourism">
+              <span class="tour-panel__bg" aria-hidden="true"></span>
+              <span class="tour-panel__num" aria-hidden="true">01</span>
+              <h3 class="tour-panel__title" data-en="Spiritual Sites" data-hi="आध्यात्मिक स्थल">Spiritual Sites</h3>
+              <p class="tour-panel__text" data-en="The sacred ghats and shrines of the river city — from Ram Rekha Ghat's bathing steps to Ahirauli on the Panch Kosi circuit." data-hi="नदी-नगर के पवित्र घाट और मंदिर — रामरेखा घाट के स्नान-सोपानों से लेकर पंच कोसी परिक्रमा की अहिरौली तक।">The sacred ghats and shrines of the river city — from Ram Rekha Ghat's bathing steps to Ahirauli on the Panch Kosi circuit.</p>
+              <span class="tour-panel__meta">
+                <span class="tour-panel__count" data-en="04 Sacred Destinations" data-hi="04 पवित्र स्थल">04 Sacred Destinations</span>
+                <span class="tour-panel__btn" data-en="View Destinations" data-hi="स्थल देखें">View Destinations</span>
+              </span>
+            </a>
+            <a class="tour-panel tour-panel--historical" href="tourism.html#explore-tourism">
+              <span class="tour-panel__bg" aria-hidden="true"></span>
+              <span class="tour-panel__num" aria-hidden="true">02</span>
+              <h3 class="tour-panel__title" data-en="Historical Monuments &amp; Parks" data-hi="ऐतिहासिक स्मारक व उद्यान">Historical Monuments &amp; Parks</h3>
+              <p class="tour-panel__text" data-en="Field and fort, museum and old-town park — the memorials of 1764 and 1539 together with Sitaram Upadhyaya's museum and Kamal Dah Park." data-hi="मैदान और किला, संग्रहालय और नगर का पुराना उद्यान — 1764 और 1539 के स्मारक, सीताराम उपाध्याय संग्रहालय और कमल दाह पार्क।">Field and fort, museum and old-town park — the memorials of 1764 and 1539 together with Sitaram Upadhyaya's museum and Kamal Dah Park.</p>
+              <span class="tour-panel__meta">
+                <span class="tour-panel__count" data-en="04 Historical Landmarks" data-hi="04 ऐतिहासिक स्थल">04 Historical Landmarks</span>
+                <span class="tour-panel__btn" data-en="View Landmarks" data-hi="स्थल देखें">View Landmarks</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="tour-home__grid">
+            <a class="tour-card tour-card--portrait reveal" href="tourism.html#ram-rekha-ghat">
+              <figure class="tour-card__media">
+                <img src="./assets/tourism/spiritual/ram-rekha-ghat.webp" alt="Boats resting by the riverside at Ram Rekha Ghat, Buxar" loading="lazy" />
+                <span class="tour-card__chips"><span class="tour-chip">Ghat</span></span>
+              </figure>
+              <div class="tour-card__body">
+                <span class="tour-card__loc" data-en="Ganga Riverfront · Buxar" data-hi="गंगा तट · बक्सर">Ganga Riverfront · Buxar</span>
+                <h3 class="tour-card__title" data-en="Ram Rekha Ghat" data-hi="रामरेखा घाट">Ram Rekha Ghat</h3>
+                <p class="tour-card__text" data-en="Buxar's sacred bathing ghat on the Ganga — the river's great bend and the boats that share it." data-hi="गंगा पर बक्सर का पवित्र स्नान घाट — नदी का विशाल मोड़ और उस पर तैरती नावें।">Buxar's sacred bathing ghat on the Ganga — the river's great bend and the boats that share it.</p>
+                <span class="tour-card__cta" data-en="View Destination" data-hi="स्थल देखें">View Destination</span>
               </div>
-            </article>
-            <article class="tile tile--lead">
-              <div class="tile__media"><img src="./assets/dest-fort.jpg" alt="Buxar Fort silhouette at sunrise" loading="lazy" /></div>
-              <div class="tile__body">
-                <h3 class="tile__title" data-en="Buxar Fort" data-hi="बक्सर किला">Buxar Fort</h3>
-                <p class="tile__text" data-en="Eleventh-century ruins standing watch on the Ganga." data-hi="गंगा के किनारे ग्यारहवीं सदी के खंडहर।">Eleventh-century ruins standing watch on the Ganga.</p>
+            </a>
+
+            <a class="tour-card tour-card--portrait reveal" href="tourism.html#ahirauli">
+              <figure class="tour-card__media">
+                <img src="./assets/tourism/spiritual/ahirauli.webp" alt="Ahirauli — photograph pending" loading="lazy" />
+                <span class="tour-card__chips"><span class="tour-chip">Sacred Site</span></span>
+                <span class="tour-card__credit">Photography pending · TheBuxar.com</span>
+              </figure>
+              <div class="tour-card__body">
+                <span class="tour-card__loc" data-en="Ahirauli · ~5 km NE of Buxar" data-hi="अहिरौली · बक्सर से ~5 किमी पूर्वोत्तर">Ahirauli · ~5 km NE of Buxar</span>
+                <h3 class="tour-card__title" data-en="Ahirauli" data-hi="अहिरौली">Ahirauli</h3>
+                <p class="tour-card__text" data-en="The Devi Ahilya village on the Panch Kosi circuit, remembered for its temple and its place in the Rama country's pilgrimage path." data-hi="पंच कोसी परिक्रमा का देवी अहिल्या गाँव, अपने मंदिर और राम-भूमि की तीर्थ-परंपरा में अपने स्थान के लिए स्मृत।">The Devi Ahilya village on the Panch Kosi circuit, remembered for its temple and its place in the Rama country's pilgrimage path.</p>
+                <span class="tour-card__cta" data-en="View Destination" data-hi="स्थल देखें">View Destination</span>
               </div>
-            </article>
-            <article class="tile">
-              <div class="tile__media"><img src="./assets/dest-temple.jpg" alt="Ancient stone temple" loading="lazy" /></div>
-              <div class="tile__body">
-                <h3 class="tile__title" data-en="Ashok Dham Temple" data-hi="अशोक धाम">Ashok Dham Temple</h3>
-                <p class="tile__text" data-en="A serene spiritual retreat wrapped in greenery." data-hi="हरियाली से घिरा एक शांत ध्यान केंद्र।">A serene spiritual retreat wrapped in greenery.</p>
+            </a>
+
+            <a class="tour-card tour-card--cinema reveal" href="tourism.html#battle-of-buxar">
+              <figure class="tour-card__media">
+                <img src="./assets/tourism/historical/battle-of-buxar.webp" alt="The Battle of Buxar, 1764 — period engraving of the engagement on the Ganga" loading="lazy" />
+                <span class="tour-card__chips"><span class="tour-chip tour-chip--navy">Battlefield</span></span>
+              </figure>
+              <div class="tour-card__body">
+                <div>
+                  <span class="tour-card__loc" data-en="Buxar · October 1764" data-hi="बक्सर · अक्टूबर 1764">Buxar · October 1764</span>
+                  <h3 class="tour-card__title" data-en="The Battle of Buxar, 1764" data-hi="बक्सर का युद्ध, 1764">The Battle of Buxar, 1764</h3>
+                  <p class="tour-card__text" data-en="Shah Alam II, Shuja-ud-Daulah and Mir Qasim met the East India Company's sepoys on the Ganga's bank — a dawn that redrew the map of India." data-hi="शाह आलम द्वितीय, शुजा-उद-दौला और मीर क़ासिम गंगा तट पर ईस्ट इंडिया कंपनी के सिपाहियों से भिड़े — वह भोर जिसने भारत का नक्शा दोबारा बनाया।">Shah Alam II, Shuja-ud-Daulah and Mir Qasim met the East India Company's sepoys on the Ganga's bank — a dawn that redrew the map of India.</p>
+                  <span class="tour-card__cta" data-en="View Destination" data-hi="स्थल देखें">View Destination</span>
+                </div>
+                <span class="tour-year" aria-hidden="true">1764</span>
               </div>
-            </article>
-            <article class="tile">
-              <div class="tile__media"><img src="./assets/dest-ghats.jpg" alt="Colourful boats on the Ganga" loading="lazy" /></div>
-              <div class="tile__body">
-                <h3 class="tile__title" data-en="Ganga River" data-hi="गंगा नदी">Ganga River</h3>
-                <p class="tile__text" data-en="Sunrise boat rides and sunrise calm on the holy waters." data-hi="पवित्र जल पर सूर्योदय और शांति।">Sunrise calm and gentle boat rides on the holy waters.</p>
+            </a>
+
+            <a class="tour-card tour-card--cinema reveal" href="tourism.html#chausa">
+              <figure class="tour-card__media">
+                <img src="./assets/tourism/historical/chausa.webp" alt="Battle of Chausa, 26 June 1539 — battle formation diagram" loading="lazy" />
+                <span class="tour-card__chips"><span class="tour-chip tour-chip--navy">Historical Site</span></span>
+              </figure>
+              <div class="tour-card__body">
+                <div>
+                  <span class="tour-card__loc" data-en="Chausa · ~10 mi SW of Buxar" data-hi="चौसा · बक्सर से ~10 मील दक्षिण-पश्चिम">Chausa · ~10 mi SW of Buxar</span>
+                  <h3 class="tour-card__title" data-en="Chausa Historical Site, 1539" data-hi="चौसा ऐतिहासिक स्थल, 1539">Chausa Historical Site, 1539</h3>
+                  <p class="tour-card__text" data-en="Where Sher Shah Suri broke the Mughal host on a rain-flooded plain — a site remembered in war and in mango peace." data-hi="जहाँ शेरशाह सूरी ने वर्षा-जलमग्न मैदान पर मुग़ल सेना को हराया — युद्ध में और आमों की शांति में स्मृत स्थल।">Where Sher Shah Suri broke the Mughal host on a rain-flooded plain — a site remembered in war and in mango peace.</p>
+                  <span class="tour-card__cta" data-en="View Destination" data-hi="स्थल देखें">View Destination</span>
+                </div>
+                <span class="tour-year" aria-hidden="true">1539</span>
               </div>
-            </article>
+            </a>
           </div>
 
           <div class="section__cta reveal">
-            <a class="btn btn--ink" href="#" data-en="Explore Tourism →" data-hi="पर्यटन देखें →">Explore Tourism →</a>
+            <a class="btn btn--ink" href="tourism.html" data-en="View All Tourism →" data-hi="सभी पर्यटन देखें →">View All Tourism →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03b · EXPLORE BUXAR — DISTRICT EXPLORER -->
+      <section id="explore-district" class="section expl-home">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="section__label" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</p>
+            <h2 class="section__title serif" data-en="Discover the Many Faces of Buxar" data-hi="बक्सर के कई रूपों को जानिए">Discover the Many Faces of Buxar</h2>
+            <p class="section__sub" data-en="Buxar is not one destination. It is a district town on the Ganga, a princely town, a battlefield remembered — and the quiet plains beyond them. Each of the six has its own guide." data-hi="बक्सर एक ही स्थान नहीं है। यह गंगा तट का जिला नगर है, एक रियासत-नगर है, एक स्मृत युद्ध-स्थल है — और उनके आगे के शांत मैदान। छहों स्थानों में से हर एक की अपनी गाइड है।">Buxar is not one destination. It is a district town on the Ganga, a princely town, a battlefield remembered — and the quiet plains beyond them. Each of the six has its own guide.</p>
+          </header>
+
+          <a class="expl-home__feature reveal" href="explore/buxar-town/">
+            <img src="./assets/explore/buxar-town/hero.webp" alt="Buxar Town — the district headquarters on the Ganga" loading="lazy" />
+            <span class="expl-home__feature-body">
+              <span class="expl-home__tag" data-en="The Heart of the District" data-hi="जिले का हृदय">The Heart of the District</span>
+              <span class="expl-home__title" data-en="Buxar Town" data-hi="बक्सर नगर">Buxar Town</span>
+              <span class="expl-home__text" data-en="The district headquarters on the Ganga — ghats, the maidan, seen from the river and the rail line." data-hi="गंगा तट पर जिला मुख्यालय — घाट, मैदान, नदी से और रेल-पटरी से दिखने वाला नगर।">The district headquarters on the Ganga — ghats, the maidan, seen from the river and the rail line.</span>
+              <span class="expl-home__cta" data-en="Explore Buxar Town →" data-hi="बक्सर नगर खोजें →">Explore Buxar Town →</span>
+            </span>
+          </a>
+
+          <div class="expl-home__row">
+            <a class="expl-home__card reveal" href="explore/dumraon/">
+              <img src="./assets/explore/dumraon/hero.webp" alt="Dumraon — the second town of the district" loading="lazy" />
+              <span class="expl-home__card-body">
+                <span class="expl-home__card-role" data-en="Town · Sub-division" data-hi="नगर · अनुमंडल">Town · Sub-division</span>
+                <span class="expl-home__card-title" data-en="Dumraon" data-hi="डुमराँव">Dumraon</span>
+                <span class="expl-home__card-sub" data-en="The second municipality and capital of the old Dumraon Raj." data-hi="जिले का दूसरा नगरपालिका नगर और प्राचीन डुमराँव राज की राजधानी।">The second municipality and capital of the old Dumraon Raj.</span>
+                <span class="expl-home__card-cta" data-en="Explore Dumraon →" data-hi="डुमराँव खोजें →">Explore Dumraon →</span>
+              </span>
+            </a>
+
+            <a class="expl-home__card reveal" href="explore/brahampur/">
+              <img src="./assets/explore/brahampur/hero.webp" alt="Brahampur — the land of Baba Brahmeshwar Nath" loading="lazy" />
+              <span class="expl-home__card-body">
+                <span class="expl-home__card-role" data-en="Area · Block" data-hi="क्षेत्र · प्रखंड">Area · Block</span>
+                <span class="expl-home__card-title" data-en="Brahampur" data-hi="ब्रहमपुर">Brahampur</span>
+                <span class="expl-home__card-sub" data-en="The land of Baba Brahmeshwar Nath and a Shravan walking pilgrimage." data-hi="बाबा ब्रह्मेश्वर नाथ और श्रावण की पद-यात्रा की भूमि।">The land of Baba Brahmeshwar Nath and a Shravan walking pilgrimage.</span>
+                <span class="expl-home__card-cta" data-en="Explore Brahampur →" data-hi="ब्रहमपुर खोजें →">Explore Brahampur →</span>
+              </span>
+            </a>
+
+            <a class="expl-home__card reveal" href="explore/chausa/">
+              <img src="./assets/explore/chausa/hero.webp" alt="Chausa — the field of the Battle of Chausa (1539)" loading="lazy" />
+              <span class="expl-home__card-body">
+                <span class="expl-home__card-role" data-en="Town · Block" data-hi="नगर · प्रखंड">Town · Block</span>
+                <span class="expl-home__card-title" data-en="Chausa" data-hi="चौसा">Chausa</span>
+                <span class="expl-home__card-sub" data-en="Where history meets the Ganga — the field of Sher Shah Suri's victory, and the mango that carries its name." data-hi="जहाँ इतिहास गंगा से मिलता है — शेरशाह सूरी की विजय का मैदान, और उसका नाम रखने वाला आम।">Where history meets the Ganga — the field of Sher Shah Suri's victory, and the mango that carries its name.</span>
+                <span class="expl-home__card-cta" data-en="Explore Chausa →" data-hi="चौसा खोजें →">Explore Chausa →</span>
+              </span>
+            </a>
+
+            <a class="expl-home__card reveal" href="explore/itarhi/">
+              <img src="./assets/explore/itarhi/hero.webp" alt="Itarhi — the rural block of the Buxar plains" loading="lazy" />
+              <span class="expl-home__card-body">
+                <span class="expl-home__card-role" data-en="Area · Block" data-hi="क्षेत्र · प्रखंड">Area · Block</span>
+                <span class="expl-home__card-title" data-en="Itarhi" data-hi="इटाढ़ी">Itarhi</span>
+                <span class="expl-home__card-sub" data-en="A largely rural block of the Buxar plains." data-hi="बक्सर के मैदान का अधिकतर ग्रामीण प्रखंड।">A largely rural block of the Buxar plains.</span>
+                <span class="expl-home__card-cta" data-en="Explore Itarhi →" data-hi="इटाढ़ी खोजें →">Explore Itarhi →</span>
+              </span>
+            </a>
+
+            <a class="expl-home__card reveal" href="explore/rajpur/">
+              <img src="./assets/explore/rajpur/hero.jpg" alt="Rajpur — the populous rural plain of Buxar" loading="lazy" />
+              <span class="expl-home__card-body">
+                <span class="expl-home__card-role" data-en="Area · Block" data-hi="क्षेत्र · प्रखंड">Area · Block</span>
+                <span class="expl-home__card-title" data-en="Rajpur" data-hi="राजपुर">Rajpur</span>
+                <span class="expl-home__card-sub" data-en="The wide rural flank of the district's south-east." data-hi="जिले के दक्षिण-पूर्व की विस्तृत ग्रामीण भूमि।">The wide rural flank of the district's south-east.</span>
+                <span class="expl-home__card-cta" data-en="Explore Rajpur →" data-hi="राजपुर खोजें →">Explore Rajpur →</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="section__cta reveal">
+            <a class="btn btn--ink" href="explore.html" data-en="Open the District Explorer →" data-hi="जिला खोजक खोलें →">Open the District Explorer →</a>
           </div>
         </div>
       </section>
@@ -549,8 +681,8 @@
         <nav class="footer__col reveal" aria-label="Footer">
           <h4 class="footer__title" data-en="Explore" data-hi="खोजें">Explore</h4>
           <ul class="footer__list">
-            <li><a href="#history" data-en="History" data-hi="इतिहास">History</a></li>
-            <li><a href="#tourism" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
+            <li><a href="history.html" data-en="History" data-hi="इतिहास">History</a></li>
+            <li><a href="tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
             <li><a href="#business" data-en="Business" data-hi="व्यापार">Business</a></li>
             <li><a href="#marketplace" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
             <li><a href="#trade" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>

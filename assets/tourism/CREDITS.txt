@@ -1,0 +1,78 @@
+TheBuxar.com — Tourism section image credits
+==============================================
+All files are WebP-suffixed for future replacement. Unless noted in a
+caption, the client retains/owns the photography.
+
+REAL PHOTOGRAPHY (reused from site assets)
+------------------------------------------
+spiritual/ram-rekha-ghat.webp
+    Ganga riverfront at Buxar at dawn. TheBuxar.com site asset
+    (hero-buxar-morning.jpg) — client photography.
+spiritual/ganga-sunrise.webp
+    Ganga at sunset near Buxar. TheBuxar.com site asset
+    (hero-buxar-sunset.jpg) — client photography.
+spiritual/aarti-diyas.webp
+    Evening diyas by the river. TheBuxar.com site asset
+    (news-aarti.jpg) — client photography.
+
+historical/battle-of-buxar.webp
+    "The Battle of Buxar" — engraving after G. F. Stubbs, "History of
+    the Indian Mutiny" (1877). Public domain. Source Wikimedia Commons.
+historical/chausa.webp
+    Diagram of the Battle of Chausa (1539) battle formation,
+    redrawn by Shakti (Wikimedia Commons), CC BY-SA 4.0 (or PD).
+    Source Wikimedia Commons.
+historical/buxar-fort.webp
+    "Buxar Fort" — G. F. White, "Views in India, chiefly among the
+    Himalaya Mountains" (1830). Public domain. Wikimedia Commons.
+historical/sepoys-at-buxar.webp
+    "The Sepoys at Buxar" — Cassell's Illustrated History of India
+    (1879), steel-plate woodcut by Unknown. Public domain.
+historical/buxar-town-1828.webp
+    "Buxar on the Buxar, Bihar" drawn by Robert Smith, painted
+    1828-1833, published 1844 (V&A collection). Public domain.
+historical/naulakha-mandir.webp
+    Naulakha Mandir, Buxar — Ambuj Kulashreshtha, Public domain or
+    CC BY-SA (via Wikimedia Commons). Please confirm caption on page.
+historical/terracotta-buxar.webp
+    Pre-Mauryan terracotta figurines from Buxar, Patna Museum
+    (Bihar Museum) — Priyankar, CC BY-SA 4.0. Wikimedia Commons.
+historical/rishabhadeva-chausa.webp
+    Bronze Rishabhadeva from Chausa (7th c. CE), Patna Museum —
+    Ismoon. Public domain / CC BY-SA.
+historical/sher-shah-tomb.webp
+    Tomb of Sher Shah Suri, Sasaram (1870s photograph by an unknown
+    author). Public domain.
+historical/paddy-fields.webp
+    Paddy fields near Buxar — Wikimedia Commons, CC BY-SA
+    (see assets/history/CREDITS.txt for the shared source files).
+historical/buxar-railway-station.webp
+    Buxar Railway Station — Jitendra Kumar, CC BY-SA 3.0.
+    Wikimedia Commons.
+
+PLACEHOLDER FILES (awaiting client photography)
+------------------------------------------------
+spiritual/ahirauli.webp
+spiritual/brahmeshwar-nath.webp
+historical/sitaram-upadhyaya-museum.webp
+historical/kamal-dah-park.webp
+panchkoshi/panchkoshi.webp
+
+Technical note
+--------------
+Placeholder files are JPEG-encoded image data saved under a .webp
+extension. Browsers render them correctly (format sniffing); they are
+named .webp so the client's professional photography can drop in later
+with the same filename. Replace, do not compress further.
+
+Every image used on the tourism page either has an on-page caption with
+its credit or is clearly marked "photography pending". No image is
+passed off as a photograph of a specific monument unless it is one.
+
+Fair-licensing policy
+---------------------
+No image was pulled directly from a tourism listing or news site
+without a free license. The "Baba Brahmeshwar Nath Temple" reference
+image that circulated online was NOT redistributed: its usage rights
+could not be confirmed, so a clearly-marked placeholder stands in its
+place until the client provides their own photography.

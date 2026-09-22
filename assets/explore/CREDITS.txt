@@ -1,0 +1,40 @@
+TheBuxar.com — Explore Buxar section image credits
+====================================================
+Each folder under assets/explore/<slug>/ holds the hero image for one of
+the six featured places. No image is passed off as a photograph of a
+specific monument unless it is one; otherwise the credit line says
+"representative".
+
+buxar-town/hero.webp
+    Ganga riverfront at Buxar at sunset. TheBuxar.com site asset
+    (hero-buxar-sunset.jpg, via assets/tourism/spiritual/ganga-sunrise.webp)
+    — client photography.
+
+dumraon/hero.webp
+    "Buxar on the Buxar, Bihar" — drawn by Robert Smith, painted
+    1828-1833, published 1844 (V&A collection). Public domain.
+    Used here as a representative heritage view of the riverside town;
+    it is an 1828 town view, not a photograph of Dumraon itself.
+
+brahampur/hero.webp
+    Placeholder file (awaiting client photography), reused from
+    assets/tourism/spiritual/brahmeshwar-nath.webp. Representative image
+    for the Shiva-temple country of Brahampur.
+
+chausa/hero.webp
+    Diagram of the Battle of Chausa (1539) battle formation, redrawn by
+    Shakti (Wikimedia Commons), CC BY-SA 4.0 (or PD). Reused from
+    assets/tourism/historical/chausa.webp.
+
+itarhi/hero.webp
+    Paddy fields near Buxar — Wikimedia Commons, CC BY-SA (shared source
+    with assets/history/paddy-fields-buxar.jpg and
+    assets/tourism/historical/paddy-fields.webp).
+
+rajpur/hero.jpg
+    "Landscape of Paddy Fields near Buxar Town, Bihar" — Ajay Pratap,
+    CC BY-SA. Reused from assets/hero-buxar-paddy.jpg.
+
+Attribution statement: Wikimedia Commons / individual authors as listed.
+All images are used in accordance with their licenses (Public Domain or
+Creative Commons CC BY-SA) with attribution on the page and in this file.

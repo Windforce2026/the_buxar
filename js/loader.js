@@ -137,6 +137,26 @@
     }, reduceMotion ? 120 : 2450)
   }
 
+  /* Show the full cinematic loader once per session only; on every
+     later navigation skip straight to the revealed state so the
+     loader never replays on page-to-page changes. */
+  let seenLoader = false
+  try { seenLoader = sessionStorage.getItem('tbx:loader-seen') === '1' } catch (e) { /* storage unavailable */ }
+
+  function skipLoader() {
+    if (loader) loader.style.display = 'none'
+    if (hero) hero.classList.add('is-revealed')
+    document.body.classList.add('buxar-ready')
+  }
+
+  if (seenLoader) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', skipLoader)
+    else skipLoader()
+    return
+  }
+
+  try { sessionStorage.setItem('tbx:loader-seen', '1') } catch (e) { /* storage unavailable */ }
+
   function boot() {
     setOutline()
     placeBuxar()
