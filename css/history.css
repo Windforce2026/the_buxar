@@ -1530,6 +1530,33 @@ body.history-page .hist-hero.is-revealed {
   gap: 0;
 }
 
+/* Fact list under the Modern Buxar split copy. The <ul> carries a small
+   inline reset (list-style/margin), so only the rhythm and the gold
+   marker are declared here. */
+.hist-ledger__item {
+  position: relative;
+  padding-left: 24px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.hist-ledger__item + .hist-ledger__item {
+  margin-top: 12px;
+}
+
+.hist-ledger__item::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 0.66em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
 .hist-modern__fig {
   position: relative;
   border-radius: 26px;

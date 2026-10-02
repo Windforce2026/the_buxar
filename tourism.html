@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="./css/loader.css" />
     <link rel="stylesheet" href="./css/sections.css" />
     <link rel="stylesheet" href="./css/tourism.css" />
+    <link rel="stylesheet" href="./css/business.css" />
+<link rel="stylesheet" href="./css/market.css" />
     <noscript>
       <style>
         #loader {
@@ -136,8 +138,8 @@
           <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
           <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
           <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
-          <a href="./index.html#business" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
-          <a href="./index.html#marketplace" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="./business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="./marketplace.html" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
           <a href="./index.html#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
           <a href="./index.html#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
           <a href="./index.html#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
@@ -851,13 +853,13 @@
             <span class="tour-more__text" data-en="The archive, the battles and the plates." data-hi="अभिलेख, युद्ध और दृश्य-प्लेटें।">The archive, the battles and the plates.</span>
             <span class="tour-more__go" data-en="Visit" data-hi="जाएँ">Visit</span>
           </a>
-          <a href="./index.html#business" class="tour-more__card reveal">
+          <a href="./business.html" class="tour-more__card reveal">
             <span class="tour-more__num">03</span>
             <span class="tour-more__name"><span data-en="Business Directory" data-hi="व्यापार निर्देशिका">Business Directory</span></span>
             <span class="tour-more__text" data-en="Trade, industry and local enterprise." data-hi="व्यापार, उद्योग और स्थानीय उद्यम।">Trade, industry and local enterprise.</span>
             <span class="tour-more__go" data-en="Visit" data-hi="जाएँ">Visit</span>
           </a>
-          <a href="./index.html#marketplace" class="tour-more__card reveal">
+          <a href="./marketplace.html" class="tour-more__card reveal">
             <span class="tour-more__num">04</span>
             <span class="tour-more__name"><span data-en="Marketplace" data-hi="बाज़ार">Marketplace</span></span>
             <span class="tour-more__text" data-en="Local produce, crafts and commerce." data-hi="स्थानीय उपज, शिल्प और वाणिज्य।">Local produce, crafts and commerce.</span>
@@ -866,6 +868,15 @@
         </div>
       </div>
     </section>
+
+    <!-- Business Directory — nearby businesses. Deliberately empty
+         until a destination and a business share verified location
+         data; nothing is matched on guesswork. -->
+    <div data-biz="tourism"></div>
+
+    <!-- Marketplace — LOCAL PRODUCTS TO TAKE HOME. Only products a seller
+         has actually listed are shown; nothing is invented for a tourist. -->
+    <div data-mk="takeHome" data-limit="4"></div>
 
     <!-- Premium footer                                                -->
     <!-- ============================================================ -->
@@ -888,8 +899,8 @@
           <ul class="footer__list">
             <li><a href="history.html" data-en="History" data-hi="इतिहास">History</a></li>
             <li><a href="tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
-            <li><a href="./index.html#business" data-en="Business" data-hi="व्यापार">Business</a></li>
-            <li><a href="./index.html#marketplace" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+            <li><a href="./business.html" data-en="Business" data-hi="व्यापार">Business</a></li>
+            <li><a href="./marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
             <li><a href="./index.html#trade" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
             <li><a href="./index.html#news" data-en="News" data-hi="समाचार">News</a></li>
           </ul>
@@ -940,9 +951,16 @@
       <span class="back-top__ring"></span>
     </button>
 
+    <script>
+      window.TheBuxarConfig = { path: './' }
+    </script>
     <script src="./js/loader.js" defer></script>
     <script src="./js/main.js" defer></script>
     <script src="./js/sections.js" defer></script>
     <script src="./js/tourism.js" defer></script>
+    <script src="./js/business-data.js" defer></script>
+    <script src="./js/business.js" defer></script>
+<script src="./js/market-data.js" defer></script>
+<script src="./js/market.js" defer></script>
   </body>
 </html>

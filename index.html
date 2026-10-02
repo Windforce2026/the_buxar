@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="./css/sections.css" />
     <link rel="stylesheet" href="./css/tourism.css" />
     <link rel="stylesheet" href="./css/explore.css" />
+    <link rel="stylesheet" href="./css/business.css" />
+<link rel="stylesheet" href="./css/market.css" />
     <noscript>
       <style>
         #loader {
@@ -138,8 +140,8 @@
           <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
           <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
           <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
-          <a href="#business" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
-          <a href="#marketplace" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="marketplace.html" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
           <a href="#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
           <a href="#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
           <a href="#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
@@ -473,78 +475,46 @@
         </div>
       </section>
 
-      <!-- 04 · BUSINESS DIRECTORY -->
-      <section id="business" class="section business">
+      <!-- 04 · BUSINESS DIRECTORY — preview of business.html.
+           Content is rendered from js/business-data.js so the cards and
+           category counts can never drift from the directory itself. -->
+      <section id="business" class="section business bz-page bz-page--light">
         <div class="shell">
           <header class="section__head reveal">
             <p class="section__label" data-en="Business Directory" data-hi="व्यापार निर्देशिका">Business Directory</p>
-            <h2 class="section__title serif" data-en="Discover Local Businesses" data-hi="स्थानीय व्यवसाय खोजें">Discover Local Businesses</h2>
-            <p class="section__sub" data-en="Every service Buxar needs, curated in one elegant directory." data-hi="बक्सर की हर आवश्यकता का व्यवसाय, एक भव्य निर्देशिका में।">Every service Buxar needs, curated in one elegant directory.</p>
+            <h2 class="section__title serif" data-en="Discover Local Businesses in Buxar" data-hi="बक्सर के स्थानीय व्यवसाय खोजें">Discover Local Businesses in Buxar</h2>
+            <p
+              class="section__sub"
+              data-en="Search shops, hotels, hospitals, schools, services and trades across all six areas of the district."
+              data-hi="जिले के सभी छह क्षेत्रों में दुकानें, होटल, अस्पताल, विद्यालय, सेवाएँ और व्यापार खोजें।"
+            >
+              Search shops, hotels, hospitals, schools, services and trades across all six areas of the district.
+            </p>
           </header>
 
-          <div class="cats">
-            <a class="cat" href="#">
-              <svg class="cat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="6.5" cy="11" r="0.6"/><circle cx="9.5" cy="7.5" r="0.6"/><circle cx="14.5" cy="7.5" r="0.6"/><path d="M17.6 11a5.6 5.6 0 0 1-5.6 5.6A5.6 5.6 0 0 1 6.6 11"/></svg>
-              <span class="cat__name" data-en="Hotels" data-hi="होटल">Hotels</span>
-            </a>
-            <a class="cat" href="#">
-              <svg class="cat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3.5" width="14" height="14" rx="3"/><path d="M9 3.5v3M15 3.5v3M9 10.5h6M12 8v5"/></svg>
-              <span class="cat__name" data-en="Hospitals" data-hi="अस्पताल">Hospitals</span>
-            </a>
-            <a class="cat" href="#">
-              <svg class="cat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16M6 8h12M6 16h12"/></svg>
-              <span class="cat__name" data-en="Restaurants" data-hi="रेस्तरां">Restaurants</span>
-            </a>
-            <a class="cat" href="#">
-              <svg class="cat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18M4 20V9l8-5 8 5v11M10 20v-5h4v5"/></svg>
-              <span class="cat__name" data-en="Schools" data-hi="विद्यालय">Schools</span>
-            </a>
-            <a class="cat" href="#">
-              <svg class="cat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l1.8 4.6 4.9.7-3.5 3.4.9 4.9L12 13.8 7.9 16.6l.9-4.9L5.3 8.3l4.9-.7z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>
-              <span class="cat__name" data-en="Services" data-hi="सेवाएं">Services</span>
-            </a>
-            <a class="cat" href="#">
-              <svg class="cat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-              <span class="cat__name" data-en="Shopping" data-hi="खरीदारी">Shopping</span>
-            </a>
-          </div>
+          <div class="bz-home-cats" data-biz="categories" data-limit="4"></div>
+
+          <div class="bz-grid" data-biz="featured" data-limit="3"></div>
 
           <div class="section__cta reveal">
-            <a class="btn btn--ink" href="#" data-en="Browse Directory →" data-hi="निर्देशिका देखें →">Browse Directory →</a>
+            <a class="btn btn--ink" href="./business.html" data-en="Explore Business Directory →" data-hi="व्यापार निर्देशिका देखें →">Explore Business Directory →</a>
           </div>
         </div>
       </section>
 
       <!-- 05 · MARKETPLACE -->
-      <section id="marketplace" class="section marketplace">
+      <section id="marketplace" class="section marketplace mk-page">
         <div class="shell">
           <header class="section__head reveal">
             <p class="section__label" data-en="Marketplace" data-hi="बाज़ार">Marketplace</p>
-            <h2 class="section__title serif" data-en="Shop Local Products" data-hi="स्थानीय उत्पाद खरीदें">Shop Local Products</h2>
-            <p class="section__sub" data-en="Handmade treasures from Buxar's artisans — craft passed down through generations." data-hi="बक्सर के कारीगरों के हस्तनिर्मित खज़ाने — पीढ़ी-दर-पीढ़ी चली आ रही कला।">Handmade treasures from Buxar's artisans — craft passed down through generations.</p>
+            <h2 class="section__title serif" data-en="Shop Local. Discover Buxar." data-hi="स्थानीय खरीदें। बक्सर खोजें।">Shop Local. Discover Buxar.</h2>
+            <p class="section__sub" data-en="Local food, handloom, brassware and festive craft from sellers across Buxar district." data-hi="बक्सर जिले के विक्रेताओं से स्थानीय भोज्य, हथकरघा, पीतल सामान और त्योहारी शिल्प।">Local food, handloom, brassware and festive craft from sellers across Buxar district.</p>
           </header>
 
-          <div class="grid grid--products">
-            <figure class="product reveal">
-              <img src="./assets/prod-fabrics.jpg" alt="Handloom silk fabrics" loading="lazy" />
-              <figcaption class="product__name" data-en="Handloom Silk" data-hi="हथकरघा रेशम">Handloom Silk</figcaption>
-            </figure>
-            <figure class="product reveal">
-              <img src="./assets/prod-clay.jpg" alt="Clay pottery and idols" loading="lazy" />
-              <figcaption class="product__name" data-en="Clay Artistry" data-hi="मिट्टी की कलाकारी">Clay Artistry</figcaption>
-            </figure>
-            <figure class="product reveal">
-              <img src="./assets/prod-brass.jpg" alt="Brass homeware" loading="lazy" />
-              <figcaption class="product__name" data-en="Brass &amp; Homeware" data-hi="पीतल एवं गृह सज्जा">Brass &amp; Homeware</figcaption>
-            </figure>
-            <figure class="product reveal">
-              <img src="./assets/prod-puppets.jpg" alt="Festive handicrafts" loading="lazy" />
-              <figcaption class="product__name" data-en="Festive Handicrafts" data-hi="त्योहारी हस्तशिल्प">Festive Handicrafts</figcaption>
-            </figure>
-          </div>
+          <div data-mk="featured" data-limit="4"></div>
 
           <div class="section__cta reveal">
-            <a class="btn btn--ink" href="#" data-en="Visit Marketplace →" data-hi="बाज़ार देखें →">Visit Marketplace →</a>
+            <a class="btn btn--ink" href="./marketplace.html" data-en="Explore Marketplace →" data-hi="बाज़ार देखें →">Explore Marketplace →</a>
           </div>
         </div>
       </section>
@@ -735,9 +705,18 @@
       <span class="back-top__ring"></span>
     </button>
 
+    <script>
+      // Business directory pages live one level down, so the module is
+      // told where it is running from.
+      window.TheBuxarConfig = { path: './' };
+    </script>
     <script src="./js/loader.js" defer></script>
     <script src="./js/main.js" defer></script>
     <script src="./js/hero.js" defer></script>
     <script src="./js/sections.js" defer></script>
+    <script src="./js/business-data.js" defer></script>
+    <script src="./js/business.js" defer></script>
+    <script src="./js/market-data.js" defer></script>
+    <script src="./js/market.js" defer></script>
   </body>
 </html>

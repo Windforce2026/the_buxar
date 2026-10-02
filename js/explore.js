@@ -565,7 +565,7 @@
   /* ---------------------------------------------------------------- */
   /* GALLERY lightbox                                                 */
   /* ---------------------------------------------------------------- */
-  var lb, lbIdx, lbItems = []
+  var lb, lbIdx, lbItems = [], lbLastFocused = null
 
   function ensureLightbox () {
     if (lb) return lb
@@ -602,6 +602,10 @@
     lbIdx = (index + lbItems.length) % lbItems.length
     var it = lbItems[lbIdx]
     var box = ensureLightbox()
+    if (!box.classList.contains('is-open')) {
+      lbLastFocused = doc.activeElement
+      doc.body.style.overflow = 'hidden'
+    }
     box.classList.add('is-open')
     box.querySelector('.expl-lightbox__img').src = it.full
     box.querySelector('.expl-lightbox__img').alt = it.cap
@@ -611,7 +615,11 @@
   }
 
   function closeLb () {
-    if (lb) lb.classList.remove('is-open')
+    if (!lb) return
+    lb.classList.remove('is-open')
+    doc.body.style.overflow = ''
+    if (lbLastFocused && lbLastFocused.focus) lbLastFocused.focus({ preventScroll: true })
+    lbLastFocused = null
   }
 
   function stepLb (d) {

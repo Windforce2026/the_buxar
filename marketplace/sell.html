@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#081C33" />
+    <meta
+      name="description"
+      content="Bring your products to customers across Buxar and beyond. Seller onboarding form for the Buxar marketplace — frontend structure, nothing is stored yet."
+    />
+    <title>Sell on TheBuxar.com | Buxar Marketplace</title>
+    <link rel="canonical" href="https://www.thebuxar.com/marketplace/sell.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TheBuxar.com" />
+    <meta property="og:title" content="Sell on TheBuxar.com | Buxar Marketplace" />
+    <meta property="og:description" content="Bring your products to customers across Buxar and beyond. Seller onboarding form for the Buxar marketplace — frontend structure, nothing is stored yet." />
+    <meta property="og:url" content="https://www.thebuxar.com/marketplace/sell.html" />
+    <meta property="og:image" content="https://www.thebuxar.com/assets/hero-buxar-night.jpg" />
+    <script type="application/ld+json">
+      {
+  "@type": "WebPage",
+  "name": "Sell on TheBuxar.com",
+  "description": "Bring your products to customers across Buxar and beyond. Seller onboarding form for the Buxar marketplace — frontend structure, nothing is stored yet.",
+  "url": "https://www.thebuxar.com/marketplace/sell.html",
+  "image": "https://www.thebuxar.com/assets/hero-buxar-night.jpg",
+  "@context": "https://schema.org"
+}
+    </script>
+    <script type="application/ld+json">
+      {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebuxar.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Buxar Marketplace",
+      "item": "https://www.thebuxar.com/marketplace.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sell on TheBuxar.com",
+      "item": "https://www.thebuxar.com/marketplace/sell.html"
+    }
+  ]
+}
+    </script>
+
+    <script>
+      // Apply saved theme + language before paint to avoid a flash.
+      try {
+        const theme = localStorage.getItem('buxar-theme')
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light')
+        const lang = localStorage.getItem('buxar-lang')
+        if (lang === 'hi') document.documentElement.setAttribute('data-lang', 'hi')
+      } catch (e) {}
+    </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500;600&family=Poppins:wght@200;300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    ../
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/loader.css" />
+    <link rel="stylesheet" href="../css/sections.css" />
+    <link rel="stylesheet" href="../css/market.css" />
+    <noscript>
+      <style>
+        #loader { display: none !important; }
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body class="marketplace-page">
+
+<!-- Bihar map loader overlay -->
+    <div id="loader" class="loader" aria-hidden="true">
+      <div class="loader__bg" aria-hidden="true">
+        <video class="loader__bg-video" id="loader-bg-video" muted loop playsinline preload="none" tabindex="-1">
+          <source src="../assets/hero-buxar-motion.mp4" type="video/mp4" />
+        </video>
+        <div class="loader__bg-scrim"></div>
+      </div>
+      <canvas id="loader-particles" class="loader__particles" aria-hidden="true"></canvas>
+      <div class="loader__card">
+        <div class="loader__map" id="loader-map"></div>
+        <h2 class="loader__title">
+          <span class="loader__title-the" data-en="The " data-hi="द ">The </span>
+          <span class="loader__title-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+        </h2>
+        <div class="loader__rule"><span></span></div>
+        <p class="loader__tag sans" data-en="Explore the District" data-hi="जिले को खोजें">Explore the District</p>
+      </div>
+    </div>
+
+    <div class="progress"
+<div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
+<!-- Luxury navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="../index.html" class="nav__brand" aria-label="TheBuxar — home">
+          <span class="nav__wordmark">
+            <span class="nav__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="nav__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </span>
+          <span class="nav__brand-glow" aria-hidden="true"></span>
+          <span class="nav__brand-rule" aria-hidden="true"></span>
+        </a>
+
+        <nav class="nav__menu" aria-label="Primary">
+          <a href="../index.html" class="nav__link" data-en="Home" data-hi="होम">Home</a>
+          <a href="../history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
+          <a href="../tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
+          <a href="../explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
+          <a href="../business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="../marketplace.html" class="nav__link is-active" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="../index.html#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
+          <a href="../index.html#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
+          <a href="../index.html#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
+          <a href="../index.html#login" class="nav__login nav__login--menu" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button type="button" class="nav__icon" id="nav-search-btn" aria-label="Search" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__theme" aria-label="Toggle theme">
+            <svg class="nav__theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6" stroke-linecap="round" />
+            </svg>
+            <svg class="nav__theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
+            <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
+          </button>
+          <a href="../index.html#login" class="nav__login" data-en="Login" data-hi="लॉगिन">Login</a>
+          <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__search" id="nav-search" role="search">
+        <div class="nav__search-inner">
+          <svg class="nav__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+          </svg>
+          <input
+            class="nav__search-input"
+            id="nav-search-input"
+            type="search"
+            placeholder="Search The Buxar…"
+            aria-label="Search"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="button" class="nav__search-close" id="nav-search-close" aria-label="Close search">✕</button>
+        </div>
+      </div>
+    </header>
+
+
+    <main id="main" class="mk-page">
+      <section class="mk-section">
+        <div class="mk-shell">
+          <nav class="mk-crumbs" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="../index.html" data-en="Home" data-hi="होम">Home</a></li>
+              <li><a href="../marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+              <li aria-current="page" data-en="Sell on TheBuxar.com" data-hi="TheBuxar.com पर बेचें">Sell on TheBuxar.com</li>
+            </ol>
+          </nav>
+
+          <header class="mk-head mk-head--left reveal">
+            <p class="mk-label" data-en="For sellers" data-hi="विक्रेताओं के लिए">For sellers</p>
+            <h1 class="mk-title serif" data-en="Sell on TheBuxar.com" data-hi="TheBuxar.com पर बेचें">Sell on TheBuxar.com</h1>
+            <p class="mk-sub" data-en="Bring your products to customers across Buxar and beyond." data-hi="अपने उत्पाद बक्सर और उसके बाहर के ग्राहकों तक पहुँचाएँ।">Bring your products to customers across Buxar and beyond.</p>
+          </header>
+
+          <div class="mk-notice reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 8v4.5M12 15.6v.4" /></svg>
+            <p data-en="This form describes the marketplace seller onboarding flow. It is a frontend structure: there is no backend behind it, so a submission is validated and then discarded. No seller account is created." data-hi="यह फॉर्म बाज़ार में विक्रेता जुड़ने की प्रक्रिया बताता है। यह केवल फ्रंटएंड संरचना है: इसके पीछे कोई बैकएंड नहीं है, इसलिए भेरी गई जानकारी जाँची जाती है और फिर छोड़ दी जाती है। कोई विक्रेता खाता नहीं बनाया जाता।">This form describes the marketplace seller onboarding flow. It is a frontend structure: there is no backend behind it, so a submission is validated and then discarded. No seller account is created.</p>
+          </div>
+
+          <form class="mk-form" id="mk-sell-form" data-mk-form data-mk-status="mk-sell-status" novalidate style="margin-top:clamp(24px,4vw,32px)">
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Seller type" data-hi="विक्रेता प्रकार">Seller type</legend>
+<label class="mk-check"><input type="checkbox" name="seller_type_individual" /><span class="mk-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span><span class="mk-check__label" data-en="Individual artisan" data-hi="व्यक्तिगत कारीगर">Individual artisan</span></label><label class="mk-check"><input type="checkbox" name="seller_type_home" /><span class="mk-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span><span class="mk-check__label" data-en="Home-based business" data-hi="गृह आधारित व्यवसाय">Home-based business</span></label><label class="mk-check"><input type="checkbox" name="seller_type_registered" /><span class="mk-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span><span class="mk-check__label" data-en="Registered business" data-hi="पंजीकृत व्यवसाय">Registered business</span></label>
+            </fieldset>
+
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Business details" data-hi="व्यवसाय विवरण">Business details</legend>
+<div class="mk-field"><label class="mk-field__label" for="mk-business_name" data-en="Business name *" data-hi="व्यवसाय का नाम *">Business name *</label><input class="mk-input" type="text" id="mk-business_name" name="business_name" required placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="The name customers will see. Use your registered name if you have one." data-hi="ग्राहक जो नाम देखेंगे। यदि आपका पंजीकृत नाम है तो वही लिखें।">The name customers will see. Use your registered name if you have one.</p></div>
+<div class="mk-field"><label class="mk-field__label" for="mk-seller_name" data-en="Seller name *" data-hi="विक्रेता का नाम *">Seller name *</label><input class="mk-input" type="text" id="mk-seller_name" name="seller_name" required placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="The person or team behind the products." data-hi="उत्पादों के पीछे व्यक्ति या टीम।">The person or team behind the products.</p></div>
+<div class="mk-field"><label class="mk-field__label" for="mk-phone" data-en="Phone *" data-hi="फ़ोन *">Phone *</label><input class="mk-input" type="tel" id="mk-phone" name="phone" required placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="A number customers can reach you on. Nothing is stored yet." data-hi="वह नंबर जिस पर ग्राहक आप तक पहुँच सकें। अभी कुछ भी संग्रहित नहीं होता।">A number customers can reach you on. Nothing is stored yet.</p></div>
+<div class="mk-field"><label class="mk-field__label" for="mk-email" data-en="Email *" data-hi="ईमेल *">Email *</label><input class="mk-input" type="email" id="mk-email" name="email" required placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="Orders and account notices would go here. Nothing is stored yet." data-hi="यहाँ ऑर्डर और खाते से जुड़ी सूचनाएँ आतीं। अभी कुछ भी संग्रहित नहीं होता।">Orders and account notices would go here. Nothing is stored yet.</p></div>
+            </fieldset>
+
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Location" data-hi="स्थान">Location</legend>
+<div class="mk-field"><label class="mk-field__label" for="mk-address" data-en="Address" data-hi="पता">Address</label><textarea class="mk-textarea" id="mk-address" name="address"></textarea></div>
+<div class="mk-field"><label class="mk-field__label" for="mk-area" data-en="Area *" data-hi="क्षेत्र *">Area *</label><select class="mk-select" id="mk-area" name="area" required></select></div>
+            </fieldset>
+
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Products" data-hi="उत्पाद">Products</legend>
+<div class="mk-field"><label class="mk-field__label" data-en="Product categories" data-hi="उत्पाद श्रेणियाँ">Product categories</label><div class="mk-filters" data-mk-catpicker></div></div>
+<div class="mk-field"><label class="mk-field__label" for="mk-about" data-en="About the seller" data-hi="विक्रेता के बारे में">About the seller</label><textarea class="mk-textarea" id="mk-about" name="about"></textarea><p class="mk-field__hint" data-en="Only factual statements. How you work, what you make, how long you have been doing it." data-hi="केवल तथात्मक बातें। आप कैसे काम करते हैं, क्या बनाते हैं, कितने समय से कर रहे हैं।">Only factual statements. How you work, what you make, how long you have been doing it.</p></div>
+<div class="mk-field"><label class="mk-field__label" for="mk-logo" data-en="Logo" data-hi="लोगो">Logo</label><input class="mk-input" type="file" id="mk-logo" name="logo" accept="image/*" /><p class="mk-field__hint" data-en="Square logo, 512×512 or larger. Nothing is uploaded yet." data-hi="वर्गाकार लोगो, 512×512 या उससे बड़ा। अभी कुछ अपलोड नहीं किया गया है।">Square logo, 512×512 or larger. Nothing is uploaded yet.</p></div>
+            </fieldset>
+
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Documents / verification" data-hi="दस्तावेज़ / सत्यापन">Documents / verification</legend>
+<div class="mk-field"><label class="mk-field__label" for="mk-documents" data-en="Documents / verification" data-hi="दस्तावेज़ / सत्यापन">Documents / verification</label><input class="mk-input" type="file" id="mk-documents" name="documents" accept="image/*" /><p class="mk-field__hint" data-en="Trade licence, GST certificate, FSSAI licence for food, or an identity proof. Reviewed by a person, not an algorithm — once a real backend exists." data-hi="व्यापार लाइसेंस, जीएसटी प्रमाणपत्र, खाद्य के लिए एफएसएसएआई लाइसेंस, या पहचान का प्रमाण। इसे किसी व्यक्ति द्वारा जाँचा जाएगा, किसी एल्गोरिदम द्वारा नहीं — जब वास्तविक बैकएंड उपलब्ध हो।">Trade licence, GST certificate, FSSAI licence for food, or an identity proof. Reviewed by a person, not an algorithm — once a real backend exists.</p></div>
+            </fieldset>
+
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Bank / payment information" data-hi="बैंक / भुगतान जानकारी">Bank / payment information</legend>
+              <div class="mk-notice" style="margin-bottom:clamp(14px,2vw,18px)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6v6c0 4.4 3 7.4 7 8.5 4-1.1 7-4.1 7-8.5V6l-7-2.5Z" /><path d="m9 12 2 2 4-4" /></svg>
+                <p data-en="Bank and payment fields are deliberately disabled placeholders. There is no secure payment-onboarding service connected to this form, so it must never collect sensitive financial information. Payment onboarding belongs in a real, secure backend flow." data-hi="बैंक और भुगतान से जुड़े फ़ील्ड जानबूझकर बंद रखे गए प्लेसहोल्डर हैं। इस फॉर्म से कोई सुरक्षित भुगतान ऑनबोर्डिंग सेवा नहीं जुड़ी है, इसलिए यह कभी संवेदनशील वित्तीय जानकारी नहीं लेना चाहिए। भुगतान ऑनबोर्डिंग के लिए एक वास्तविक और सुरक्षित बैकएंड प्रक्रिया चाहिए।">Bank and payment fields are deliberately disabled placeholders. There is no secure payment-onboarding service connected to this form, so it must never collect sensitive financial information. Payment onboarding belongs in a real, secure backend flow.</p>
+              </div>
+<div class="mk-field" data-disabled="1"><label class="mk-field__label" for="mk-bank_holder" data-en="Account holder name" data-hi="खाता धारक का नाम">Account holder name</label><input class="mk-input" type="text" id="mk-bank_holder" name="bank_holder" disabled placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="Disabled. Payment onboarding needs a secure backend service that does not exist yet." data-hi="बंद है। भुगतान से जुड़ी जानकारी के लिए एक सुरक्षित बैकएंड सेवा चाहिए, जो अभी उपलब्ध नहीं है।">Disabled. Payment onboarding needs a secure backend service that does not exist yet.</p></div><div class="mk-field" data-disabled="1"><label class="mk-field__label" for="mk-bank_name" data-en="Bank name and branch" data-hi="बैंक का नाम और शाखा">Bank name and branch</label><input class="mk-input" type="text" id="mk-bank_name" name="bank_name" disabled placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="Disabled — do not enter real bank details here." data-hi="बंद है — यहाँ वास्तविक बैंक विवरण दर्ज न करें।">Disabled — do not enter real bank details here.</p></div><div class="mk-field" data-disabled="1"><label class="mk-field__label" for="mk-bank_account" data-en="Account number / UPI ID" data-hi="खाता संख्या / UPI ID">Account number / UPI ID</label><input class="mk-input" type="text" id="mk-bank_account" name="bank_account" disabled placeholder="" autocomplete="off" /><p class="mk-field__hint" data-en="Disabled. This form must never collect sensitive financial information." data-hi="बंद है। यह फ़ॉर्म कभी भी संवेदनशील वित्तीय जानकारी नहीं लेनी चाहिए।">Disabled. This form must never collect sensitive financial information.</p></div>
+            </fieldset>
+
+            <fieldset class="mk-fieldset">
+              <legend class="mk-fieldset__legend" data-en="Terms" data-hi="शर्तें">Terms</legend>
+<label class="mk-check"><input type="checkbox" name="terms" /><span class="mk-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span><span class="mk-check__label" data-en="I confirm this information is accurate and I am authorised to submit it." data-hi="मैं पुष्टि करता/करती हूँ कि यह जानकारी सही है और मुझे इसे जमा करने का अधिकार है।">I confirm this information is accurate and I am authorised to submit it.</span></label><label class="mk-check"><input type="checkbox" name="review_ack" /><span class="mk-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span><span class="mk-check__label" data-en="I understand a submitted seller account is reviewed before any product goes live." data-hi="मैं समझता/समझती हूँ कि कोई भी उत्पाद पहले समीक्षा के बाद ही सार्वजनिक हो सकता है।">I understand a submitted seller account is reviewed before any product goes live.</span></label>
+            </fieldset>
+
+            <div class="mk-cta" style="justify-content:flex-start">
+              <button class="btn btn--gold" type="submit" data-en="Submit Application" data-hi="आवेदन जमा करें">Submit Application</button>
+            </div>
+
+            <p class="mk-hint" data-en="Required fields are marked with an asterisk." data-hi="आवश्यक फ़ील्ड नक्षर (*) चिह्न से चिह्नित हैं।">Required fields are marked with an asterisk.</p>
+            <p class="mk-form__status" id="mk-sell-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="shell footer__grid">
+        <div class="footer__brand reveal">
+          <a href="../index.html" class="footer__wordmark">
+            <span class="footer__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="footer__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </a>
+          <p class="footer__tag" data-en="A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar." data-hi="बिहार के बक्सर की विरासत, संस्कृति, पर्यटन, व्यापार और वाणिज्य का प्रीमियम डिजिटल गंतव्य।">A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar.</p>
+          <address class="footer__contact">
+            <span data-en="Buxar, Bihar · India" data-hi="बक्सर, बिहार · भारत">Buxar, Bihar · India</span>
+            <a href="mailto:hello@thebuxar.com">hello@thebuxar.com</a>
+          </address>
+        </div>
+
+        <nav class="footer__col reveal" aria-label="Footer">
+          <h4 class="footer__title" data-en="Explore" data-hi="खोजें">Explore</h4>
+          <ul class="footer__list">
+            <li><a href="../explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a></li>
+            <li><a href="../history.html" data-en="History" data-hi="इतिहास">History</a></li>
+            <li><a href="../tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
+            <li><a href="../marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+            <li><a href="../index.html#trade" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
+            <li><a href="../index.html#news" data-en="News" data-hi="समाचार">News</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col reveal" aria-label="Footer links">
+          <h4 class="footer__title" data-en="Visit" data-hi="देखें">Visit</h4>
+          <ul class="footer__list">
+            <li><a href="../index.html#explore" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
+            <li><a href="../tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
+            <li><a href="../index.html#contact" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+            <li><a href="../index.html#login" data-en="Sign In" data-hi="लॉग इन">Sign In</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__news reveal">
+          <h4 class="footer__title" data-en="Stay in Touch" data-hi="जुड़े रहें">Stay in Touch</h4>
+          <p class="footer__news-text" data-en="Get Buxar stories, heritage and events in your inbox." data-hi="बक्सर की कहानियाँ, विरासत और आयोजन अपने इनबॉक्स में पाएँ।">Get Buxar stories, heritage and events in your inbox.</p>
+          <form class="footer__form" id="footer-form" novalidate>
+            <input id="footer-email" type="email" required autocomplete="email" placeholder="Your email" data-ph="Your email|आपका ईमेल" aria-label="Email address" />
+            <button type="submit" class="footer__btn" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
+          </form>
+          <p class="footer__form-status" id="footer-status" role="status" aria-live="polite"></p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4l6.6 8.7L4.3 20h2.4l5.2-6 4.8 6H21l-7-9.2L20.8 4h-2.4l-4.9 5.7L8.9 4H4Z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.2 9.6l4.4 2.4-4.4 2.4Z" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="shell footer__bottom-inner">
+          <span class="footer__copy">© 2026 TheBuxar.com</span>
+          <span class="footer__credit" data-en="Crafted with pride in Buxar, Bihar." data-hi="बक्सर, बिहार में गर्व के साथ निर्मित।">Crafted with pride in Buxar, Bihar.</span>
+          <nav class="footer__legal" aria-label="Legal">
+            <a href="#" data-en="Privacy" data-hi="गोपनीयता">Privacy</a>
+            <a href="#" data-en="Terms" data-hi="शर्तें">Terms</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button type="button" class="back-top" id="back-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="back-top__ring"></span>
+    </button>
+
+    <script>
+      window.TheBuxarConfig = { path: '../' }
+    </script>
+    <script src="../js/loader.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/sections.js" defer></script>
+    <script src="../js/market-data.js" defer></script>
+    <script src="../js/market.js" defer></script>
+  </body>
+</html>

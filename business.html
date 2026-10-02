@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#081C33" />
+    <meta
+      name="description"
+      content="Find businesses across Buxar district by category or area - restaurants, hotels, healthcare, education, shopping, automobile, local services and more. Search, filter and browse verified local listings on TheBuxar.com."
+    />
+    <title>Business Directory in Buxar | TheBuxar.com</title>
+    <link rel="canonical" href="https://www.thebuxar.com/business.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TheBuxar.com" />
+    <meta property="og:title" content="Business Directory in Buxar | TheBuxar.com" />
+    <meta property="og:description" content="Find businesses across Buxar district by category or area - restaurants, hotels, healthcare, education, shopping, automobile, local services and more. Search, filter and browse verified local listings on TheBuxar.com." />
+    <meta property="og:url" content="https://www.thebuxar.com/business.html" />
+    <meta property="og:image" content="https://www.thebuxar.com/assets/hero-buxar-night.jpg" />
+    <script type="application/ld+json">
+      {
+  "@type": "WebPage",
+  "name": "Business Directory in Buxar",
+  "description": "Find businesses across Buxar district by category or area - restaurants, hotels, healthcare, education, shopping, automobile, local services and more. Search, filter and browse verified local listings on TheBuxar.com.",
+  "url": "https://www.thebuxar.com/business.html",
+  "image": "https://www.thebuxar.com/assets/hero-buxar-night.jpg",
+  "@context": "https://schema.org"
+}
+    </script>
+    <script type="application/ld+json">
+      {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebuxar.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Business Directory",
+      "item": "https://www.thebuxar.com/business.html"
+    }
+  ]
+}
+    </script>
+    <script>
+      // Apply saved theme + language before paint to avoid a flash.
+      try {
+        const theme = localStorage.getItem('buxar-theme')
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light')
+        const lang = localStorage.getItem('buxar-lang')
+        if (lang === 'hi') document.documentElement.setAttribute('data-lang', 'hi')
+      } catch (e) {}
+    </script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500;600&family=Poppins:wght@200;300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    ./
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
+    <link rel="stylesheet" href="./css/sections.css" />
+    <link rel="stylesheet" href="./css/business.css" />
+    <link rel="stylesheet" href="./css/market.css" />
+    <noscript>
+      <style>
+        #loader { display: none !important; }
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body class="bz-page business-page">
+
+<!-- Bihar map loader overlay -->
+    <div id="loader" class="loader" aria-hidden="true">
+      <div class="loader__bg" aria-hidden="true">
+        <video class="loader__bg-video" id="loader-bg-video" muted loop playsinline preload="none" tabindex="-1">
+          <source src="assets/hero-buxar-motion.mp4" type="video/mp4" />
+        </video>
+        <div class="loader__bg-scrim"></div>
+      </div>
+      <canvas id="loader-particles" class="loader__particles" aria-hidden="true"></canvas>
+      <div class="loader__card">
+        <div class="loader__map" id="loader-map"></div>
+        <h2 class="loader__title">
+          <span class="loader__title-the" data-en="The " data-hi="द ">The </span>
+          <span class="loader__title-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+        </h2>
+        <div class="loader__rule"><span></span></div>
+        <p class="loader__tag sans" data-en="Explore the District" data-hi="जिले को खोजें">Explore the District</p>
+      </div>
+    </div>
+
+    <div class="progress"
+<div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
+<!-- Luxury navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="TheBuxar — home">
+          <span class="nav__wordmark">
+            <span class="nav__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="nav__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </span>
+          <span class="nav__brand-glow" aria-hidden="true"></span>
+          <span class="nav__brand-rule" aria-hidden="true"></span>
+        </a>
+
+        <nav class="nav__menu" aria-label="Primary">
+          <a href="index.html" class="nav__link" data-en="Home" data-hi="होम">Home</a>
+          <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
+          <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
+          <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
+          <a href="business.html" class="nav__link is-active" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="marketplace.html" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="index.html#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
+          <a href="index.html#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
+          <a href="index.html#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
+          <a href="index.html#login" class="nav__login nav__login--menu" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button type="button" class="nav__icon" id="nav-search-btn" aria-label="Search" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__theme" aria-label="Toggle theme">
+            <svg class="nav__theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6" stroke-linecap="round" />
+            </svg>
+            <svg class="nav__theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
+            <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
+          </button>
+          <a href="index.html#login" class="nav__login" data-en="Login" data-hi="लॉगिन">Login</a>
+          <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__search" id="nav-search" role="search">
+        <div class="nav__search-inner">
+          <svg class="nav__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+          </svg>
+          <input
+            class="nav__search-input"
+            id="nav-search-input"
+            type="search"
+            placeholder="Search The Buxar…"
+            aria-label="Search"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="button" class="nav__search-close" id="nav-search-close" aria-label="Close search">✕</button>
+        </div>
+      </div>
+    </header>
+
+
+    <main id="main">
+      <!-- 01 · Business hero -->
+      <section class="bz-hero-scope" aria-label="Business directory search">
+        <div class="bz-hero-scope__bg" aria-hidden="true"></div>
+        <div class="bz-hero-scope__vignette" aria-hidden="true"></div>
+        <div class="shell">
+          <div class="bz-hero-scope__inner">
+            <p class="bz-hero-scope__label" data-en="Business Directory" data-hi="व्यापार निर्देशिका">Business Directory</p>
+            <h1 class="bz-hero-scope__title" data-en="Discover Buxar's Local Businesses" data-hi="बक्सर के स्थानीय व्यवसाय खोजें">Discover Buxar's Local Businesses</h1>
+            <p class="bz-hero-scope__sub" data-en="Find trusted businesses, services, shops, restaurants, professionals and local enterprises across Buxar." data-hi="बक्सर भर के विश्वसनीय व्यवसाय, सेवाएँ, दुकानें, रेस्तराँ, पेशेवर और स्थानीय उद्यम खोजें।">Find trusted businesses, services, shops, restaurants, professionals and local enterprises across Buxar.</p>
+
+            <div class="bz-search">
+              <form class="bz-search__form" id="bz-hero-form" role="search" method="get" action="./business/list.html">
+                <div class="bz-search__field">
+                  <span class="bz-search__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.8-3.8" /></svg></span>
+                  <input
+                    class="bz-search__input"
+                    id="bz-hero-q"
+                    type="search"
+                    name="q"
+                    aria-label="Search businesses, services or products"
+                    data-ph="Search businesses, services or products...|व्यवसाय, सेवाएँ या उत्पाद खोजें..."
+                    placeholder="Search businesses, services or products..."
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+                <span class="bz-search__loc" aria-label="Area: Buxar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6-5.4 6-9.5A6 6 0 0 0 6 11.5C6 15.6 12 21 12 21Z" /><circle cx="12" cy="11" r="2.2" /></svg>
+                  <span data-en="Buxar" data-hi="बक्सर">Buxar</span>
+                </span>
+                <button class="bz-search__go" type="submit" data-en="Search" data-hi="खोजें">Search</button>
+              </form>
+            </div>
+
+            <div class="bz-quickrail" data-biz="quick"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · Featured businesses -->
+      <section class="section bz-page">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="section__label" data-en="Featured in Buxar" data-hi="बक्सर में विशेष">Featured in Buxar</p>
+            <h2 class="section__title serif" data-en="Discover Local Businesses" data-hi="स्थानीय व्यवसाय खोजें">Discover Local Businesses</h2>
+          </header>
+
+          <div class="bz-notice reveal" data-en="" id="bz-demo-notice">
+            <p data-en="No business listings have been submitted yet. The records below are clearly marked demo placeholders that exist only to show how a real listing will look. No phone numbers, addresses, ratings, opening hours or verification badges have been invented." data-hi="अभ तक कोई व्यवसाय सूचीबद्ध नहीं की गई है। नीचे दिए गए रिकॉर्ड स्पष्ट रूप से चिह्नित डेमो प्लेसहोल्डर हैं, जो केवल यह दिखाने के लिए हैं कि वास्तविक सूची कैसी दिखेगी। कोई फ़ोन नंबर, पता, रेटिंग, खुलने का समय या सत्यापन बैज नहीं बनाया गया है।">No business listings have been submitted yet. The records below are clearly marked demo placeholders that exist only to show how a real listing will look. No phone numbers, addresses, ratings, opening hours or verification badges have been invented.</p>
+          </div>
+
+          <div class="bz-grid" data-biz="featured" data-limit="6"></div>
+
+          <div class="section__cta reveal">
+            <a class="btn btn--gold" href="./business/list.html" data-en="Explore Business Directory →" data-hi="व्यापार निर्देशिका देखें →">Explore Business Directory →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 · Explore by category -->
+      <section class="section bz-page" id="bz-categories">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="section__label" data-en="Browse by category" data-hi="श्रेणी से ब्राउज़ करें">Browse by category</p>
+            <h2 class="section__title serif" data-en="Explore by Category" data-hi="श्रेणी से खोजें">Explore by Category</h2>
+            <p class="section__sub" data-en="Every category below is backed by a real listing. New categories appear on their own as businesses are added." data-hi="नीचे दी गई हर श्रेणी के पीछे एक वास्तविक सूची है। व्यवसाय जुड़ने पर नई श्रेणियाँ स्वतः आ जाएँगी।">Every category below is backed by a real listing. New categories appear on their own as businesses are added.</p>
+          </header>
+          <div data-biz="categories"></div>
+        </div>
+      </section>
+
+      <!-- 04 · Explore by location -->
+      <section class="section bz-page" id="bz-locations">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="section__label" data-en="Explore by location" data-hi="स्थान से खोजें">Explore by location</p>
+            <h2 class="section__title serif" data-en="Explore by Location" data-hi="स्थान से खोजें">Explore by Location</h2>
+            <p class="section__sub" data-en="Every business is filed under one of the district's six areas." data-hi="हर व्यवसाय जिले के छह क्षेत्रों में से किसी एक के अंतर्गत दर्ज है।">Every business is filed under one of the district's six areas.</p>
+          </header>
+          <div data-biz="areas"></div>
+        </div>
+      </section>
+
+      <!-- 05 · What are you looking for? -->
+      <section class="section bz-page" id="bz-discovery">
+        <div class="shell">
+          <header class="section__head reveal">
+            <p class="section__label" data-en="Quick discovery" data-hi="तुरंत खोजें">Quick discovery</p>
+            <h2 class="section__title serif" data-en="What are you looking for?" data-hi="आप क्या खोज रहे हैं?">What are you looking for?</h2>
+            <p class="section__sub" data-en="Jump straight to the kind of business you need." data-hi="सीधे अपनी ज़रूरत के व्यवसाय पर पहुँचें।">Jump straight to the kind of business you need.</p>
+          </header>
+          <div data-biz="discovery"></div>
+        </div>
+      </section>
+
+      <!-- 06 · Business owner CTA -->
+      <section class="section bz-owner bz-page">
+        <div class="shell">
+          <div class="bz-owner__card reveal">
+            <p class="section__label" data-en="For business owners" data-hi="व्यवसाय मालिकों के लिए">For business owners</p>
+            <h2 class="bz-owner__title serif" data-en="Own a business in Buxar?" data-hi="बक्सर में व्यवसाय हैं?">Own a business in Buxar?</h2>
+            <div class="bz-owner__acts">
+              <a class="btn btn--gold" href="./business/add.html" data-en="List your business" data-hi="अपना व्यवसाय जोड़ें">List your business</a>
+              <a class="btn btn--ghost-light" href="./business/claim.html" data-en="Claim your business" data-hi="अपना व्यवसाय क्लेम करें">Claim your business</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="shell footer__grid">
+        <div class="footer__brand reveal">
+          <a href="index.html" class="footer__wordmark">
+            <span class="footer__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="footer__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </a>
+          <p class="footer__tag" data-en="A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar." data-hi="बिहार के बक्सर की विरासत, संस्कृति, पर्यटन, व्यापार और वाणिज्य का प्रीमियम डिजिटल गंतव्य।">A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar.</p>
+          <address class="footer__contact">
+            <span data-en="Buxar, Bihar · India" data-hi="बक्सर, बिहार · भारत">Buxar, Bihar · India</span>
+            <a href="mailto:hello@thebuxar.com">hello@thebuxar.com</a>
+          </address>
+        </div>
+
+        <nav class="footer__col reveal" aria-label="Footer">
+          <h4 class="footer__title" data-en="Explore" data-hi="खोजें">Explore</h4>
+          <ul class="footer__list">
+            <li><a href="explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a></li>
+            <li><a href="history.html" data-en="History" data-hi="इतिहास">History</a></li>
+            <li><a href="tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
+            <li><a href="marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+            <li><a href="index.html#trade" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
+            <li><a href="index.html#news" data-en="News" data-hi="समाचार">News</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col reveal" aria-label="Footer links">
+          <h4 class="footer__title" data-en="Visit" data-hi="देखें">Visit</h4>
+          <ul class="footer__list">
+            <li><a href="index.html#explore" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
+            <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
+            <li><a href="index.html#contact" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+            <li><a href="index.html#login" data-en="Sign In" data-hi="लॉग इन">Sign In</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__news reveal">
+          <h4 class="footer__title" data-en="Stay in Touch" data-hi="जुड़े रहें">Stay in Touch</h4>
+          <p class="footer__news-text" data-en="Get Buxar stories, heritage and events in your inbox." data-hi="बक्सर की कहानियाँ, विरासत और आयोजन अपने इनबॉक्स में पाएँ।">Get Buxar stories, heritage and events in your inbox.</p>
+          <form class="footer__form" id="footer-form" novalidate>
+            <input id="footer-email" type="email" required autocomplete="email" placeholder="Your email" data-ph="Your email|आपका ईमेल" aria-label="Email address" />
+            <button type="submit" class="footer__btn" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
+          </form>
+          <p class="footer__form-status" id="footer-status" role="status" aria-live="polite"></p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4l6.6 8.7L4.3 20h2.4l5.2-6 4.8 6H21l-7-9.2L20.8 4h-2.4l-4.9 5.7L8.9 4H4Z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.2 9.6l4.4 2.4-4.4 2.4Z" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="shell footer__bottom-inner">
+          <span class="footer__copy">© 2026 TheBuxar.com</span>
+          <span class="footer__credit" data-en="Crafted with pride in Buxar, Bihar." data-hi="बक्सर, बिहार में गर्व के साथ निर्मित।">Crafted with pride in Buxar, Bihar.</span>
+          <nav class="footer__legal" aria-label="Legal">
+            <a href="#" data-en="Privacy" data-hi="गोपनीयता">Privacy</a>
+            <a href="#" data-en="Terms" data-hi="शर्तें">Terms</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button type="button" class="back-top" id="back-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="back-top__ring"></span>
+    </button>
+
+    <script>
+      window.TheBuxarConfig = { path: './' }
+    </script>
+    <script src="./js/loader.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/sections.js" defer></script>
+    <script src="./js/business-data.js" defer></script>
+    /* Marketplace first: business.js only emits its "Products from this
+       business" section when the market data is already on window. */
+    <script src="./js/market-data.js" defer></script>
+    <script src="./js/market.js" defer></script>
+    <script src="./js/business.js" defer></script>
+  </body>
+</html>

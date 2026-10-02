@@ -1388,6 +1388,18 @@ html[data-theme='light'] .expl-hero__bg {
   text-shadow: 0 1px 8px rgba(8, 28, 51, 0.9);
 }
 
+/* "Tap any image to enlarge." hint — mirrors .tour-gallery__note */
+.expl-gal__tap {
+  margin-top: clamp(22px, 3vw, 32px);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  text-align: center;
+}
+
 .expl-lightbox {
   position: fixed;
   inset: 0;
@@ -1895,5 +1907,56 @@ html[data-theme='light'] .expl-hero__bg {
   }
   .expl-home__card {
     aspect-ratio: 16 / 10;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                      */
+/* Mirrors the blocks in style.css / sections.css / tourism.css /       */
+/* history.css / hero.css. Every Explore-specific keyframe and          */
+/* transition is neutralised here; hidden states stay driven by         */
+/* .is-open / :not(.is-open) opacity+visibility, so nothing is left     */
+/* stranded mid-animation. `.reveal` itself is handled by sections.css. */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  /* Infinite loops: scroll cue + map marker pulse */
+  .expl-hero__scroll svg,
+  .expl-map__pulse {
+    animation: none;
+  }
+
+  .expl-hero__scroll svg {
+    transform: none;
+  }
+
+  /* Entrance/hover transitions */
+  .area-nav__link,
+  .expl-card__cta::after,
+  .expl-feature img,
+  .expl-card img,
+  .expl-feature::before,
+  .expl-card::before,
+  .expl-gal__fig img,
+  .expl-home__card,
+  .expl-home__card > img,
+  .expl-home__feature > img,
+  .expl-lightbox,
+  .expl-lightbox__close,
+  .expl-lightbox__prev,
+  .expl-lightbox__next,
+  .expl-map__pin,
+  .expl-map__pop,
+  .expl-nearby__item,
+  .expl-place,
+  .expl-place__link,
+  .expl-tile,
+  .explorer__card,
+  .explorer__name::after {
+    transition: none;
+  }
+
+  /* The popover keeps its 8px pre-open offset as a static offset. */
+  .expl-map__pop {
+    transform: none;
   }
 }
