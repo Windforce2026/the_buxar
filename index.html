@@ -502,16 +502,44 @@
         </div>
       </section>
 
-      <!-- 05 · MARKETPLACE -->
-      <section id="marketplace" class="section marketplace mk-page">
+      <!-- 05 · MARKETPLACE — editorial preview of the full marketplace.
+           Deliberately not a product grid: a large licensed photograph, the
+           promise of the marketplace, then a photographic category strip.
+           No mock product is shown here, so nothing on the homepage can be
+           mistaken for a real listing. -->
+      <section id="marketplace" class="section marketplace mk-home">
         <div class="shell">
-          <header class="section__head reveal">
-            <p class="section__label" data-en="Marketplace" data-hi="बाज़ार">Marketplace</p>
-            <h2 class="section__title serif" data-en="Shop Local. Discover Buxar." data-hi="स्थानीय खरीदें। बक्सर खोजें।">Shop Local. Discover Buxar.</h2>
-            <p class="section__sub" data-en="Local food, handloom, brassware and festive craft from sellers across Buxar district." data-hi="बक्सर जिले के विक्रेताओं से स्थानीय भोज्य, हथकरघा, पीतल सामान और त्योहारी शिल्प।">Local food, handloom, brassware and festive craft from sellers across Buxar district.</p>
-          </header>
+          <div class="mk-home__split">
+            <figure class="mk-home__media reveal">
+              <img
+                src="./assets/images/marketplace/hero/marketplace-hero-local-commerce.jpg"
+                alt="Spices and traditional goods on display at a local Indian market"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="mk-home__caption" data-en="A local market stall — atmosphere, not a product listing." data-hi="एक स्थानीय बाज़ार की दुकान — वातावरण, कोई उत्पाद सूची नहीं।">A local market stall — atmosphere, not a product listing.</figcaption>
+            </figure>
 
-          <div data-mk="featured" data-limit="4"></div>
+            <div class="mk-home__body reveal">
+              <p class="section__label" data-en="Marketplace" data-hi="बाज़ार">Marketplace</p>
+              <h2 class="section__title serif" data-en="Discover the Best of Buxar" data-hi="बक्सर का सर्वश्रेष्ठ खोजें">Discover the Best of Buxar</h2>
+              <p class="section__text" data-en="Shop local products, discover traditional creations and connect with the people behind Buxar's growing marketplace." data-hi="स्थानीय उत्पाद खरीदें, पारंपरिक कृतियाँ खोजें और बक्सर के बढ़ते बाज़ार से जुड़े लोगों से मिलें।">Shop local products, discover traditional creations and connect with the people behind Buxar's growing marketplace.</p>
+              <div class="mk-home__acts">
+                <a class="btn btn--ink" href="./marketplace.html" data-en="Explore Marketplace" data-hi="बाज़ार देखें">Explore Marketplace</a>
+                <a class="btn btn--gold" href="./marketplace/list.html" data-en="Shop Local" data-hi="स्थानीय खरीदें">Shop Local</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mk-home__cats">
+            <header class="mk-head mk-head--left reveal">
+              <p class="mk-label" data-en="Shop by category" data-hi="श्रेणी से खरीदें">Shop by category</p>
+              <h3 class="mk-title serif" data-en="Explore Local Categories" data-hi="स्थानीय श्रेणियाँ देखें">Explore Local Categories</h3>
+            </header>
+            <div data-mk="categories" data-limit="6"></div>
+          </div>
+
+          <p class="mk-home__growing reveal" data-en="Local products. Local stories. One marketplace." data-hi="स्थानीय उत्पाद। स्थानीय कहानियाँ। एक बाज़ार।">Local products. Local stories. One marketplace.</p>
 
           <div class="section__cta reveal">
             <a class="btn btn--ink" href="./marketplace.html" data-en="Explore Marketplace →" data-hi="बाज़ार देखें →">Explore Marketplace →</a>
@@ -716,6 +744,7 @@
     <script src="./js/sections.js" defer></script>
     <script src="./js/business-data.js" defer></script>
     <script src="./js/business.js" defer></script>
+    <script src="./js/market-image-credits.js" defer></script>
     <script src="./js/market-data.js" defer></script>
     <script src="./js/market.js" defer></script>
   </body>

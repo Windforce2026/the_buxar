@@ -219,8 +219,8 @@
     interestLabel: { en: 'Curated discovery', hi: 'चयनित खोज' },
     interestTitle: { en: 'Shop by Interest', hi: 'रुचि के अनुसार खरीदें' },
     areaLabel: { en: 'Shop local', hi: 'स्थानीय खरीदें' },
-    areaTitle: { en: 'Shop Local', hi: 'स्थानीय खरीदें' },
-    areaSub: { en: 'Every seller is filed under one of the six areas of Buxar district.', hi: 'हर विक्रेता बक्सर जिले के छह क्षेत्रों में से किसी एक के अंतर्गत दर्ज है।' },
+    areaTitle: { en: 'Shop Local Across Buxar', hi: 'बक्सर भर में स्थानीय खरीदें' },
+    areaSub: { en: 'Discover sellers and products connected with different parts of Buxar — every seller is filed under one of the district\'s six areas.', hi: 'बक्सर के विभिन्न भागों से जुड़े विक्रेताओं और उत्पादों को खोजें — हर विक्रेता जिले के छह क्षेत्रों में से किसी एक के अंतर्गत दर्ज है।' },
     collectionTitle: { en: 'The Buxar Collection', hi: 'द बक्सर कलेक्शन' },
     collectionSub: {
       en: 'A future curated collection of products from across the district. Nothing has been curated yet, so no collection claim is made.',
@@ -238,6 +238,13 @@
     sellLabel: { en: 'For sellers', hi: 'विक्रेताओं के लिए' },
     sellTitle: { en: 'Sell on TheBuxar.com', hi: 'TheBuxar.com पर बेचें' },
     sellSub: { en: 'Bring your products to customers across Buxar and beyond.', hi: 'अपने उत्पाद बक्सर और उसके बाहर ग्राहकों तक पहुँचाएँ।' },
+    sellerCtaTitle: { en: 'Have Something to Sell?', hi: 'बेचने के लिए कुछ है?' },
+    sellerCtaSub: {
+      en: 'Bring your products to Buxar\'s growing digital marketplace and connect with people looking to discover local.',
+      hi: 'अपने उत्पाद बक्सर के बढ़ते डिजिटल बाज़ार तक पहुँचाएँ और स्थानीय खोजने वाले लोगों से जुड़ें।'
+    },
+    sellerCtaPrimary: { en: 'Sell on TheBuxar.com', hi: 'TheBuxar.com पर बेचें' },
+    sellerCtaSecondary: { en: 'Learn How It Works', hi: 'यह कैसे काम करता है' },
     startSelling: { en: 'Start Selling', hi: 'बेचना शुरू करें' },
     learnMore: { en: 'Learn More', hi: 'और जानें' },
 
@@ -264,6 +271,24 @@
     /* detail sections */
     description: { en: 'Description', hi: 'विवरण' },
     details: { en: 'Product Details', hi: 'उत्पाद विवरण' },
+    /* Origin is deliberately split from the seller's own address. A seller
+       in Buxar does not make the product Buxar-made, so the two are never
+       merged into one line and "Made in Buxar" is only ever shown when the
+       origin itself is verified. */
+    sellerLocation: { en: 'Seller location', hi: 'विक्रेता का स्थान' },
+    productOrigin: { en: 'Product origin', hi: 'उत्पाद की उत्पत्ति' },
+    madeIn: { en: 'Made in', hi: 'निर्मित' },
+    originPending: {
+      en: 'The origin of this product has not been verified. Seller location and product origin are kept separate, so "Made in Buxar" is only ever displayed when the product itself is confirmed to be made here — never inferred from a Buxar seller.',
+      hi: 'इस उत्पाद की उत्पत्ति सत्यापित नहीं हुई है। विक्रेता का स्थान और उत्पाद की उत्पत्ति अलग रखी जाती हैं, इसलिए "बक्सर में निर्मित" केवल तब दिखाया जाता है जब उत्पाद स्वयं यहाँ बना हो — बक्सर के विक्रेता से अनुमान नहीं लगाया जाता।'
+    },
+    categoryLabel: { en: 'Category', hi: 'श्रेणी' },
+    relatedCategories: { en: 'Related categories', hi: 'संबंधित श्रेणियाँ' },
+    imageCredits: { en: 'Image credits', hi: 'चित्र श्रेय' },
+    imageCreditsNote: {
+      en: 'Category, editorial and atmosphere photographs are used with permission from open-licence sources. None is presented as a product sold by a verified Buxar seller.',
+      hi: 'श्रेणी, संपादकीय और वातावरण की तस्वीरें खुली-लाइसेंस स्रोतों से अनुमति के साथ प्रयुक्त हैं। इनमें से कोई भी सत्यापित बक्सर विक्रेता के उत्पाद के रूप में प्रस्तुत नहीं है।'
+    },
     special: { en: 'What Makes It Special', hi: 'यह क्या विशेष बनाता है' },
     sellerInfo: { en: 'Seller Information', hi: 'विक्रेता जानकारी' },
     deliveryInfo: { en: 'Delivery Information', hi: 'वितरण जानकारी' },
@@ -477,7 +502,19 @@
       en: 'Products listed by sellers in Buxar district. Nothing here is invented — only submitted products appear.',
       hi: 'बक्सर जिले के विक्रेताओं द्वारा सूचीबद्ध उत्पाद। यहाँ कुछ भी बनाया नहीं गया — केवल जमा किए गए उत्पाद दिखते हैं।'
     },
-    fromBizTitle: { en: 'Products from this business', hi: 'इस व्यवसाय के उत्पाद' }
+    fromBizTitle: { en: 'Products from this business', hi: 'इस व्यवसाय के उत्पाद' },
+    storyLabel: { en: 'More than a product', hi: 'एक उत्पाद से बढ़कर' },
+    storyHeading: { en: 'The Story Behind the Product', hi: 'उत्पाद के पीछे की कहानी' },
+    storyBody: {
+      en: 'Local commerce is more than buying and selling. It is about discovering the people, traditions and craftsmanship that make a place unique.',
+      hi: 'स्थानीय वाणिज्य केवल खरीद-बिक्री नहीं है। यह उन लोगों, परंपराओं और शिल्पकारी को खोजने के बारे में है जो किसी स्थान को विशिष्ट बनाते हैं।'
+    },
+    storyCta: { en: 'Explore Local Stories', hi: 'स्थानीय कहानियाँ देखें' },
+    traditionLabel: { en: 'Tradition lives on', hi: 'परंपरा जीवित है' },
+    traditionBody: {
+      en: 'Discover products and crafts connected to the traditions and everyday culture of the region.',
+      hi: 'क्षेत्र की परंपराओं और रोज़मर्रा की संस्कृति से जुड़े उत्पाद और शिल्प खोजें।'
+    }
   }
 
   /* ---------------------------------------------------------------- */
@@ -504,7 +541,7 @@
 
   M.categories = [
     {
-      slug: 'local-food', icon: 'box',
+      slug: 'local-food', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-local-food.jpg',
       name: { en: 'Local Food', hi: 'स्थानीय भोजन' },
       blurb: { en: 'Traditional flavours of Buxar.', hi: 'बक्सर के पारंपरिक स्वाद।' },
       sub: [
@@ -515,7 +552,7 @@
       ]
     },
     {
-      slug: 'handicrafts', icon: 'box',
+      slug: 'handicrafts', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-handicrafts.jpg',
       name: { en: 'Handicrafts', hi: 'हस्तशिल्प' },
       blurb: { en: 'Made by hand in the district.', hi: 'जिले में हाथ से बनाए गए।' },
       sub: [
@@ -525,7 +562,7 @@
       ]
     },
     {
-      slug: 'handlooms-textiles', icon: 'box',
+      slug: 'handlooms-textiles', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-handlooms-textiles.jpg',
       name: { en: 'Handlooms & Textiles', hi: 'हथकरघा एवं वस्त्र' },
       blurb: { en: 'Woven on the handloom.', hi: 'हथकरघा पर बुने गए।' },
       sub: [
@@ -535,7 +572,7 @@
       ]
     },
     {
-      slug: 'agri-products', icon: 'leaf',
+      slug: 'agri-products', icon: 'leaf', image: 'assets/images/marketplace/categories/marketplace-agricultural-products.jpg',
       name: { en: 'Agricultural Products', hi: 'कृषि उत्पाद' },
       blurb: { en: 'From the fields of Buxar.', hi: 'बक्सर के खेतों से।' },
       sub: [
@@ -545,7 +582,7 @@
       ]
     },
     {
-      slug: 'traditional-products', icon: 'box',
+      slug: 'traditional-products', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-traditional-products.jpg',
       name: { en: 'Traditional Products', hi: 'पारंपरिक उत्पाद' },
       blurb: { en: 'Long-standing crafts of the region.', hi: 'क्षेत्र की प्राचीन शिल्प।' },
       sub: [
@@ -555,7 +592,7 @@
       ]
     },
     {
-      slug: 'religious-items', icon: 'box',
+      slug: 'religious-items', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-religious-items.jpg',
       name: { en: 'Religious Items', hi: 'धार्मिक वस्तुएँ' },
       blurb: { en: 'For puja, ritual and devotion.', hi: 'पूजा, अनुष्ठान और भक्ति के लिए।' },
       sub: [
@@ -565,7 +602,7 @@
       ]
     },
     {
-      slug: 'gifts-souvenirs', icon: 'box',
+      slug: 'gifts-souvenirs', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-gifts-souvenirs.jpg',
       name: { en: 'Gifts & Souvenirs', hi: 'उपहार एवं स्मृति चिन्ह' },
       blurb: { en: 'Take a piece of Buxar home.', hi: 'बक्सर की याद साथ ले जाएँ।' },
       sub: [
@@ -574,7 +611,7 @@
       ]
     },
     {
-      slug: 'home-lifestyle', icon: 'box',
+      slug: 'home-lifestyle', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-home-lifestyle.jpg',
       name: { en: 'Home & Lifestyle', hi: 'घर एवं जीवनशैली' },
       blurb: { en: 'Practical and beautiful for the home.', hi: 'घर के लिए उपयोगी और सुंदर।' },
       sub: [
@@ -584,7 +621,7 @@
       ]
     },
     {
-      slug: 'fashion', icon: 'box',
+      slug: 'fashion', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-fashion.jpg',
       name: { en: 'Fashion', hi: 'फ़ैशन' },
       blurb: { en: 'Local style, timeless appeal.', hi: 'स्थानीय शैली, शाश्वत आकर्षण।' },
       sub: [
@@ -593,7 +630,7 @@
       ]
     },
     {
-      slug: 'beauty-wellness', icon: 'box',
+      slug: 'beauty-wellness', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-beauty-wellness.jpg',
       name: { en: 'Beauty & Wellness', hi: 'सौंदर्य एवं कल्याण' },
       blurb: { en: 'Local oils, herbs and care.', hi: 'स्थानीय तेल, जड़ी-बूटियाँ और देखभाल।' },
       sub: [
@@ -602,7 +639,7 @@
       ]
     },
     {
-      slug: 'fresh-local', icon: 'leaf',
+      slug: 'fresh-local', icon: 'leaf', image: 'assets/images/marketplace/categories/marketplace-fresh-local.jpg',
       name: { en: 'Fresh & Local', hi: 'ताज़ा एवं स्थानीय' },
       blurb: { en: 'Straight from the source.', hi: 'सीधे स्रोत से।' },
       sub: [
@@ -612,7 +649,7 @@
       ]
     },
     {
-      slug: 'other', icon: 'box',
+      slug: 'other', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-other.jpg',
       name: { en: 'Other', hi: 'अन्य' },
       blurb: { en: 'Everything else that is local.', hi: 'बाकी सभी स्थानीय चीज़ें।' },
       sub: [
@@ -782,6 +819,15 @@
       sellerName: s ? s.name : { en: '', hi: '' },
       sellerSlug: seller,
       location: area,
+      /* Seller location and product origin are separate fields on purpose.
+         `location` is where the seller is filed (the district area). The
+         origin fields stay null until a seller or TheBuxar.com verifies
+         them, so "Made in Buxar" can never be inferred from a Buxar
+         seller — see js/market.js originRows(). */
+      sellerLocation: null,
+      productOrigin: null,
+      productionLocation: null,
+      madeIn: null,
       images: [],
       price: null,
       compareAtPrice: null,
@@ -1064,6 +1110,15 @@
     for (var i = 0; i < M.products.length; i++) if (M.products[i].story) return true
     return false
   }
+  /* Any verified origin field at all. Until one exists the origin block
+     shows its honest "not verified" note rather than a guess. */
+  M.hasOrigin = function () {
+    for (var i = 0; i < M.products.length; i++) {
+      var p = M.products[i]
+      if (p.productOrigin || p.productionLocation || p.madeIn) return true
+    }
+    return false
+  }
   M.hasSellerContact = function () {
     for (var i = 0; i < M.sellers.length; i++) {
       var s = M.sellers[i]
@@ -1211,6 +1266,56 @@
     if (!p) return base
     if (p.charAt(0) === '/') p = p.slice(1)
     return base + p
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Marketplace image library                                           */
+  /*                                                                    */
+  /* Every path below points at a real, licensed photograph recorded in  */
+  /* js/market-image-credits.js. They are category, editorial and         */
+  /* atmosphere imagery - NOT photographs of products sold by a verified  */
+  /* Buxar seller. Never present one as a product photo.                  */
+  /* ------------------------------------------------------------------ */
+
+  M.images = {
+    hero: 'assets/images/marketplace/hero/marketplace-hero-local-commerce.jpg',
+    story: 'assets/images/marketplace/stories/marketplace-stories-craft.jpg',
+    maker: 'assets/images/marketplace/sellers/marketplace-maker-madhubani.jpg',
+    town: 'assets/images/marketplace/locations/marketplace-location-buxar-town.jpg',
+    countryside: 'assets/images/marketplace/locations/marketplace-location-bihar-countryside.jpg'
+  }
+
+  /* Resolve a site-relative image path against the current page depth, so
+     the same value works from /, from /marketplace/ and from
+     /explore/<area>/. */
+  M.imageUrl = function (p) { return p ? url(p) : '' }
+
+  /* Hero per surface: the wide hero at the top, the countryside frame for
+     shop-by-location cards that have no photograph of their own. */
+  M.heroImage = function () { return M.imageUrl(M.images.hero) }
+  M.areaImage = function (a) {
+    if (!a) return M.imageUrl(M.images.countryside)
+    if (a.slug === 'buxar-town') return M.imageUrl(M.images.town)
+    return M.imageUrl(M.images.countryside)
+  }
+
+  /* Provenance. Read lazily rather than captured at module-eval time, so
+     the credits script may be loaded before OR after this file. */
+  M.imageCredits = function () {
+    return window.TheBuxarMarketCredits || []
+  }
+  M.creditFor = function (path) {
+    if (!path) return null
+    var all = M.imageCredits()
+    for (var i = 0; i < all.length; i++) {
+      if (all[i].src === path || all[i].key === path) return all[i]
+    }
+    return null
+  }
+  /* Every image actually in use on the marketplace, in the order the
+     credits file lists them, for the discreet "Image credits" panel. */
+  M.creditList = function () {
+    return M.imageCredits().filter(function (c) { return c && c.src })
   }
 
   M.marketUrl = function () { return url('marketplace.html') }

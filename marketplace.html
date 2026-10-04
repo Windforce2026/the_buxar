@@ -64,8 +64,6 @@
       rel="stylesheet"
     />
 
-    ./
-
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/loader.css" />
     <link rel="stylesheet" href="./css/sections.css" />
@@ -99,7 +97,6 @@
       </div>
     </div>
 
-    <div class="progress"
 <div class="progress" id="progress" aria-hidden="true"><span></span></div>
 
 <!-- Luxury navigation -->
@@ -177,6 +174,7 @@
     <main id="main" class="mk-page">
       <!-- 01 · Marketplace hero -->
       <section class="mk-hero" aria-label="Buxar Marketplace">
+        <span class="mk-hero__photo" data-mk="heroPhoto" aria-hidden="true"></span>
         <div class="mk-hero__bg" aria-hidden="true"></div>
         <div class="mk-hero__vignette" aria-hidden="true"></div>
         <div class="mk-shell mk-hero__inner">
@@ -287,14 +285,21 @@
         <div class="mk-shell">
           <header class="mk-head reveal">
             <p class="mk-label" data-en="Shop local" data-hi="स्थानीय खरीदें">Shop local</p>
-            <h2 class="mk-title serif" data-en="Shop Local" data-hi="स्थानीय खरीदें">Shop Local</h2>
-            <p class="mk-sub" data-en="Every seller is filed under one of the six areas of Buxar district." data-hi="हर विक्रेता बक्सर जिले के छह क्षेत्रों में से किसी एक के अन्तर्गत दर्ज है।">Every seller is filed under one of the six areas of Buxar district.</p>
+            <h2 class="mk-title serif" data-en="Shop Local Across Buxar" data-hi="बक्सर भर में स्थानीय खरीदें">Shop Local Across Buxar</h2>
+            <p class="mk-sub" data-en="Discover sellers and products connected with different parts of Buxar — every seller is filed under one of the district's six areas." data-hi="बक्सर के विभिन्न भागों से जुड़े विक्रेताओं और उत्पादों को खोजें — हर विक्रेता जिले के छह क्षेत्रों में से किसी एक के अंतर्गत दर्ज है।">Discover sellers and products connected with different parts of Buxar — every seller is filed under one of the district's six areas.</p>
           </header>
           <div data-mk="areas"></div>
         </div>
       </section>
 
-      <!-- 09 · Curated collection -->
+      <!-- 09 · Product storytelling -->
+      <section class="mk-section">
+        <div class="mk-shell">
+          <div data-mk="story"></div>
+        </div>
+      </section>
+
+      <!-- 10 · Curated collection -->
       <section class="mk-section mk-section--tight">
         <div class="mk-shell">
           <div data-mk="collection"></div>
@@ -307,6 +312,9 @@
           <div data-mk="sellCta"></div>
         </div>
       </section>
+
+      <!-- 11 · Image credits (discreet, collapsed by default) -->
+      <div data-mk="imageCredits"></div>
     </main>
 
     <footer class="footer" id="footer">
@@ -386,6 +394,9 @@
     <script src="./js/loader.js" defer></script>
     <script src="./js/main.js" defer></script>
     <script src="./js/sections.js" defer></script>
+    <!-- Image provenance. Read lazily by M.creditFor / M.creditList, so the
+         order relative to market-data.js does not matter. -->
+    <script src="./js/market-image-credits.js" defer></script>
     <script src="./js/market-data.js" defer></script>
     <script src="./js/market.js" defer></script>
   </body>

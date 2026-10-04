@@ -75,6 +75,22 @@
     return p.sellerName ? M.get(p.sellerName) : ''
   }
 
+  /* Seller location and product origin, kept strictly apart. The seller
+     location falls back to the area the seller is filed under (a fact),
+     while every origin field stays blank until it is verified. This is what
+     stops "Made in Buxar" leaking out of "seller is in Buxar". */
+  function originRows (p, seller) {
+    var rows = []
+    var sellerLoc = p.sellerLocation
+      ? M.get(p.sellerLocation)
+      : (seller && seller.areaSlug ? areaName(seller.areaSlug) : (p.location ? areaName(p.location) : ''))
+    if (sellerLoc) rows.push({ label: t('sellerLocation'), value: sellerLoc, verified: true })
+    if (p.productOrigin) rows.push({ label: t('productOrigin'), value: M.get(p.productOrigin), verified: true })
+    if (p.productionLocation) rows.push({ label: t('location'), value: M.get(p.productionLocation), verified: true })
+    if (p.madeIn) rows.push({ label: t('madeIn'), value: M.get(p.madeIn), verified: true })
+    return rows
+  }
+
   /* Price block. Both the current price and the struck-through original
      are drawn only when the record carries the number, and the discount
      badge only when the original is genuinely higher. A record with no
@@ -310,11 +326,27 @@
     var lim = parseInt(host.getAttribute('data-limit'), 10)
     var cats = lim > 0 ? all.slice(0, lim) : all
     host.innerHTML = '<div class="mk-catgrid">' + cats.map(function (c) {
-      return '<a class="mk-catgrid__item reveal" href="' + esc(M.categoryUrl(c.slug)) + '">' +
-        '<span class="mk-catgrid__icon">' + icon(c.icon) + '</span>' +
-        '<span class="mk-catgrid__name">' + esc(M.get(c.name)) + '</span>' +
-        '<span class="mk-catgrid__blurb">' + esc(M.get(c.blurb)) + '</span>' +
-        '<span class="mk-card__cat">' + M.countIn(c.slug) + ' · ' + esc(t('products')) + '</span>' +
+      /* A real, licensed category photograph when the category carries one,
+         otherwise the line icon. The photo is atmosphere imagery — never a
+         claim that it depicts a specific product for sale. */
+      var art = c.image
+        ? '<span class="mk-catgrid__art" aria-hidden="true"><img src="' + M.imageUrl(c.image) +
+            '" alt="" loading="lazy" decoding="async" /></span>'
+        : '<span class="mk-catgrid__icon">' + icon(c.icon) + '</span>'
+      /* The caption is only shown on the full category grid. On the
+         homepage strip (data-limit set) it would clutter the rail, and the
+         full provenance is one click away in the Image credits panel. */
+      var credit = (c.image && !(lim > 0)) ? M.creditFor(c.image) : null
+      return '<a class="mk-catgrid__item reveal' + (c.image ? ' mk-catgrid__item--photo' : '') +
+        '" href="' + esc(M.categoryUrl(c.slug)) + '">' +
+        art +
+        '<span class="mk-catgrid__body">' +
+          '<span class="mk-catgrid__name">' + esc(M.get(c.name)) + '</span>' +
+          '<span class="mk-catgrid__blurb">' + esc(M.get(c.blurb)) + '</span>' +
+          '<span class="mk-card__cat">' + M.countIn(c.slug) + ' · ' + esc(t('products')) + '</span>' +
+        '</span>' +
+        (credit ? '<span class="mk-catgrid__credit">' + esc(credit.creditAs) + '</span>' : '') +
+        '<span class="mk-catgrid__arrow" aria-hidden="true">' + icon('arrow') + '</span>' +
       '</a>'
     }).join('') + '</div>' +
     (all.length < M.categories.length ? '<p class="mk-hint">' + esc(t('moreCatsNote')) + '</p>' : '')
@@ -387,15 +419,73 @@
       '</div></div>'
   }
 
-  /* Seller onboarding call to action. */
+  /* Editorial storytelling band: a large licensed craft photograph beside
+     copy that connects the marketplace to the region's history, tourism and
+     culture. It makes no product or historical claim. */
+  MOUNT.story = function (host) {
+    var img = M.imageUrl(M.images.story)
+    host.innerHTML = '<section class="mk-story reveal">' +
+      (img
+        ? '<figure class="mk-story__media"><img src="' + esc(img) + '" alt="" loading="lazy" decoding="async" /></figure>'
+        : '') +
+      '<div class="mk-story__body">' +
+        '<p class="mk-label">' + esc(t('storyLabel')) + '</p>' +
+        '<h2 class="mk-title serif">' + esc(t('storyHeading')) + '</h2>' +
+        '<p class="mk-sub">' + esc(t('storyBody')) + '</p>' +
+        '<p class="mk-story__tradition"><strong>' + esc(t('traditionLabel')) + '</strong> — ' + esc(t('traditionBody')) + '</p>' +
+        '<div class="mk-story__acts">' +
+          '<a class="btn btn--ink" href="' + esc(M.listUrl()) + '">' + esc(t('storyCta')) + '</a>' +
+        '</div>' +
+      '</div></section>'
+  }
+
+  /* Cinematic hero photograph. A real, licensed image is layered under the
+     navy scrim in CSS; it is decorative atmosphere and carries no product
+     claim, so it is aria-hidden and never captioned as a specific product. */
+  MOUNT.heroPhoto = function (host) {
+    var src = M.heroImage()
+    if (!src) { host.innerHTML = ''; return }
+    host.innerHTML = '<img src="' + esc(src) + '" alt="" fetchpriority="high" decoding="async" />'
+  }
+
+  /* Discreet image provenance panel. Every external photograph is listed
+     with its source and licence, and the panel states in plain words that
+     none of them depicts a product for sale. */
+  MOUNT.imageCredits = function (host) {
+    var list = M.creditList()
+    if (!list.length) { host.innerHTML = ''; return }
+    host.innerHTML = '<section class="mk-section mk-section--tight">' +
+      '<details class="mk-credits reveal">' +
+        '<summary class="mk-credits__summary">' + icon('info') + '<span>' + esc(t('imageCredits')) + '</span></summary>' +
+        '<p class="mk-credits__note">' + esc(t('imageCreditsNote')) + '</p>' +
+        '<ul class="mk-credits__list">' + list.map(function (c) {
+          var meta = [c.source, c.photographer, c.licence].filter(Boolean).join(' · ')
+          return '<li class="mk-credits__item">' +
+            '<span class="mk-credits__caption">' + esc(c.creditAs || c.depicts || c.key) + '</span>' +
+            '<span class="mk-credits__meta">' + esc(meta) + '</span>' +
+            (c.sourceUrl ? ' <a href="' + esc(c.sourceUrl) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(c.source || 'source') + '</a>' : '') +
+          '</li>'
+        }).join('') + '</ul>' +
+      '</details></section>'
+  }
+
+  /* Seller onboarding call to action. Deep navy panel with gold typography
+     and a licensed editorial photograph, matching the spec's seller band. */
   MOUNT.sellCta = function (host) {
-    host.innerHTML = '<div class="mk-cta-strip reveal">' +
-      '<p class="mk-label">' + esc(t('sellLabel')) + '</p>' +
-      '<h2 class="mk-title serif">' + esc(t('sellTitle')) + '</h2>' +
-      '<p class="mk-sub">' + esc(t('sellSub')) + '</p>' +
-      '<div class="mk-cta-strip__acts">' +
-        '<a class="btn btn--ink" href="' + esc(M.sellUrl()) + '">' + esc(t('startSelling')) + '</a>' +
-        '<a class="btn btn--gold" href="' + esc(M.sellProductUrl()) + '">' + esc(t('submitProduct')) + '</a>' +
+    /* A craft/atmosphere photograph rather than a portrait: an identifiable
+       person beside a "Sell on TheBuxar.com" call to action would imply an
+       endorsement that has not been given. */
+    var img = M.imageUrl(M.images.story)
+    host.innerHTML = '<div class="mk-sellband reveal">' +
+      (img ? '<span class="mk-sellband__bg" aria-hidden="true"><img src="' + esc(img) + '" alt="" loading="lazy" decoding="async" /></span><span class="mk-sellband__scrim" aria-hidden="true"></span>' : '') +
+      '<div class="mk-sellband__inner">' +
+        '<p class="mk-label" style="color:var(--mk-gold-warm)">' + esc(t('sellLabel')) + '</p>' +
+        '<h2 class="mk-title serif" style="color:#fff">' + esc(t('sellerCtaTitle')) + '</h2>' +
+        '<p class="mk-sub" style="color:rgba(255,255,255,.82)">' + esc(t('sellerCtaSub')) + '</p>' +
+        '<div class="mk-cta-strip__acts">' +
+          '<a class="btn btn--gold" href="' + esc(M.sellUrl()) + '">' + esc(t('sellerCtaPrimary')) + '</a>' +
+          '<a class="btn btn--ghost-light" href="' + esc(M.sellUrl()) + '">' + esc(t('sellerCtaSecondary')) + '</a>' +
+        '</div>' +
       '</div></div>'
   }
 
@@ -685,6 +775,67 @@
     return t('resultsTitle')
   }
 
+  /* Category hero on the listing page. Rendered only when exactly one
+     category is selected and it carries a licensed photograph, so the
+     picture is used as atmosphere, never as a claim about a product. */
+  /* The listing header doubles as the category hero. When a single category
+     is selected it is rewritten into a photographic banner that carries the
+     page's one H1; otherwise the plain "Products" heading is restored. This
+     guarantees exactly one H1 on every state of the page. */
+  var defaultListHead = null
+  function renderCategoryHead () {
+    var head = doc.getElementById('mk-results-head')
+    if (!head) return
+    if (defaultListHead === null) defaultListHead = head.innerHTML
+
+    var c = state.cat.length === 1 ? M.catBySlug(state.cat[0]) : null
+    if (!c) {
+      if (head.classList.contains('mk-cat-hero')) {
+        head.className = 'mk-head mk-head--left reveal'
+        head.innerHTML = defaultListHead
+        // The restored H1 must show the current query/area/seller title.
+        var t0 = doc.getElementById('mk-results-title')
+        if (t0) t0.textContent = resultTitle()
+      }
+      return
+    }
+
+    var img = c.image ? M.imageUrl(c.image) : ''
+    var credit = c.image ? M.creditFor(c.image) : null
+    head.className = 'mk-cat-hero reveal' + (img ? ' mk-cat-hero--photo' : '')
+    head.innerHTML =
+      (img
+        ? '<span class="mk-cat-hero__bg" aria-hidden="true"><img src="' + esc(img) + '" alt="" fetchpriority="high" /></span>' +
+          '<span class="mk-cat-hero__scrim" aria-hidden="true"></span>'
+        : '') +
+      '<div class="mk-cat-hero__inner">' +
+        '<p class="mk-label" style="color:' + (img ? 'var(--mk-gold-warm)' : 'var(--mk-gold)') + '">' + esc(t('categoryLabel')) + '</p>' +
+        '<h1 class="mk-cat-hero__title serif">' + esc(M.get(c.name)) + '</h1>' +
+        '<p class="mk-cat-hero__sub">' + esc(M.get(c.blurb)) + '</p>' +
+        (credit ? '<p class="mk-cat-hero__credit">' + esc(credit.creditAs) + '</p>' : '') +
+      '</div>'
+    revealNow(head)
+  }
+
+  /* Sibling categories that already have products, shown under a category
+     listing so the page is never a dead end. */
+  function renderRelatedCats () {
+    var host = doc.getElementById('mk-related-cats')
+    if (!host) return
+    if (state.cat.length !== 1) { host.innerHTML = ''; return }
+    var siblings = M.activeCategories().filter(function (c) { return c.slug !== state.cat[0] })
+    if (!siblings.length) { host.innerHTML = ''; return }
+    host.innerHTML = '<section class="mk-section mk-section--tight">' +
+      '<header class="mk-head mk-head--left reveal"><h2 class="mk-title serif">' + esc(t('relatedCategories')) + '</h2></header>' +
+      '<div class="mk-catgrid mk-catgrid--compact">' + siblings.slice(0, 6).map(function (c) {
+        return '<a class="mk-catgrid__item reveal mk-catgrid__item--flat" href="' + esc(M.categoryUrl(c.slug)) + '">' +
+          '<span class="mk-catgrid__body"><span class="mk-catgrid__name">' + esc(M.get(c.name)) + '</span>' +
+          '<span class="mk-card__cat">' + M.countIn(c.slug) + ' · ' + esc(t('products')) + '</span></span>' +
+          '<span class="mk-catgrid__arrow" aria-hidden="true">' + icon('arrow') + '</span></a>'
+      }).join('') + '</div></section>'
+    revealNow(host)
+  }
+
   function renderResults () {
     var gridEl = doc.getElementById('mk-grid')
     var countEl = doc.getElementById('mk-count')
@@ -739,7 +890,7 @@
     var so = doc.getElementById('mk-sort')
     if (so) renderSort(so)
     syncUrl()
-    renderResults()
+    renderListChrome()
   }
 
   /* Re-reads state from the URL and repaints. Safe to call repeatedly:
@@ -760,6 +911,12 @@
     if (so) renderSort(so)
 
     syncUrl()
+    renderListChrome()
+  }
+
+  function renderListChrome () {
+    renderCategoryHead()
+    renderRelatedCats()
     renderResults()
   }
 
@@ -793,7 +950,7 @@
         state.q = input ? input.value.trim() : ''
         state.shown = PAGE_SIZE
         syncUrl()
-        renderResults()
+        renderListChrome()
       })
     }
 
@@ -823,7 +980,7 @@
       }
       state.shown = PAGE_SIZE
       syncUrl()
-      renderResults()
+      renderListChrome()
       /* The desktop rail and the mobile sheet hold the same controls, so
          both are repainted to keep them in step. */
       var d = facetData()
@@ -899,6 +1056,41 @@
     return '<p class="mk-empty__sub" style="text-align:left">' + esc(text) + '</p>'
   }
 
+  /* Product structured data. It is emitted only for a real, priced record;
+     a placeholder that carries no price and no image would produce schema
+     that describes a product which does not exist, which is exactly the
+     fabrication the marketplace refuses. The node is rewritten per slug and
+     removed when the record is not substantiable. */
+  var SCHEMA_ID = 'mk-product-schema'
+  function setProductSchema (prod, name, cat) {
+    var old = doc.getElementById(SCHEMA_ID)
+    if (old && old.parentNode) old.parentNode.removeChild(old)
+    var real = prod && M.formatPrice(prod.price) !== null && prod.images && prod.images.length
+    if (!real) return
+    var data = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: name,
+      description: prod.description ? M.get(prod.description) : undefined,
+      image: [M.path + (prod.images[0].src || prod.images[0])],
+      category: cat || undefined,
+      offers: {
+        '@type': 'Offer',
+        price: Number(prod.price),
+        priceCurrency: 'INR',
+        availability: (prod.stock !== null && prod.stock !== undefined)
+          ? (prod.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock')
+          : undefined,
+        url: doc.defaultView.location.href
+      }
+    }
+    var s = doc.createElement('script')
+    s.type = 'application/ld+json'
+    s.id = SCHEMA_ID
+    s.textContent = JSON.stringify(data)
+    doc.head.appendChild(s)
+  }
+
   function renderProduct () {
     var host = doc.getElementById('mk-product')
     if (!host) return
@@ -931,6 +1123,7 @@
     if (md) {
       md.setAttribute('content', (name + ' — ' + cat + ' in Buxar. ' + (prod.description ? M.get(prod.description) : '')).slice(0, 300))
     }
+    setProductSchema(prod, name, cat)
 
     /* --- Gallery --- */
     var gallery = imgs.length
@@ -998,7 +1191,6 @@
     detailRows.push([t('category'), cat])
     if (prod.subcategory) detailRows.push([t('subcategory'), M.get(prod.subcategory.name)])
     if (seller) detailRows.push([t('seller'), M.get(seller.name)])
-    if (prod.location) detailRows.push([t('location'), areaName(prod.location)])
     if (prod.sku) detailRows.push(['SKU', prod.sku])
     var created = M.formatDate(prod.createdAt)
     if (created) detailRows.push([t('listedOn'), created])
@@ -1006,6 +1198,20 @@
       '<div class="mk-specs">' + detailRows.map(function (r) {
         return '<div class="mk-specs__row"><span>' + esc(r[0]) + '</span><span>' + esc(r[1]) + '</span></div>'
       }).join('') + '</div>')
+
+    /* Origin panel. Seller location and product origin are shown as
+       separate rows (never merged), and while no origin is verified the
+       panel explains why "Made in Buxar" is absent. */
+    var oRows = originRows(prod, seller)
+    panels += infoPanel('productOrigin',
+      (oRows.length
+        ? '<div class="mk-specs">' + oRows.map(function (r) {
+            return '<div class="mk-specs__row"><span>' + esc(r.label) + '</span><span>' + esc(r.value) + '</span></div>'
+          }).join('') + '</div>'
+        : '') +
+      (!prod.productOrigin && !prod.productionLocation && !prod.madeIn
+        ? pendingBody('pin', t('originPending'))
+        : ''))
 
     /* Specifications come only from the record. Every product currently
        carries an empty list, so the panel explains that instead of

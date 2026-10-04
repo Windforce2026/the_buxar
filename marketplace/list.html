@@ -70,7 +70,6 @@
       rel="stylesheet"
     />
 
-    ../
 
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/loader.css" />
@@ -105,8 +104,7 @@
       </div>
     </div>
 
-    <div class="progress"
-<div class="progress" id="progress" aria-hidden="true"><span></span></div>
+    <div class="progress" id="progress" aria-hidden="true"><span></span></div>
 
 <!-- Luxury navigation -->
     <header class="nav" id="nav">
@@ -191,7 +189,11 @@
             </ol>
           </nav>
 
-          <header class="mk-head mk-head--left reveal">
+          <!-- The listing heading and the category hero are the same
+               element: js/market.js transforms this header into a
+               photographic category hero when exactly one category is
+               selected, so the page always carries a single H1. -->
+          <header class="mk-head mk-head--left reveal" id="mk-results-head">
             <p class="mk-label" data-en="Marketplace" data-hi="बाज़ार">Marketplace</p>
             <h1 class="mk-title serif" id="mk-results-title" data-en="Products" data-hi="उत्पाद">Products</h1>
           </header>
@@ -228,6 +230,10 @@
               </div>
             </div>
           </div>
+
+          <!-- Related categories: sibling categories that already have
+               products. Filled by js/market.js. -->
+          <div id="mk-related-cats"></div>
         </div>
       </section>
 
@@ -320,6 +326,7 @@
     <script src="../js/loader.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/sections.js" defer></script>
+    <script src="../js/market-image-credits.js" defer></script>
     <script src="../js/market-data.js" defer></script>
     <script src="../js/market.js" defer></script>
   </body>

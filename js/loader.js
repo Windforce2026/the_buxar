@@ -130,7 +130,12 @@
   function reveal() {
     setTimeout(() => {
       loader.classList.add('is-leaving')
-      hero.classList.add('is-revealed')
+      // Pages without a #hero (business.html, marketplace.html and the
+      // marketplace/* pages) must not throw here: the throw would abort
+      // this callback before the video is paused and before the loader
+      // is hidden, leaving the particle rAF loop and the mp4 running
+      // forever behind a visibility:hidden overlay.
+      if (hero) hero.classList.add('is-revealed')
       const video = document.getElementById('loader-bg-video')
       if (video) video.pause()
       setTimeout(() => { loader.style.display = 'none' }, 700)

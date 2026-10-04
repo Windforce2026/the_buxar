@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Product | Buxar Marketplace | TheBuxar.com</title>
+    <link rel="canonical" href="https://www.thebuxar.com/marketplace/product.html" />
+    <noscript><meta http-equiv="refresh" content="0; url=../list.html" /></noscript>
+    <script>
+      // Pretty-URL preparation for /marketplace/product/.
+      (function () {
+        // Everything up to and including /marketplace/ resolves the
+        // flat template regardless of how deep the pretty URL is.
+        var mroot = location.pathname.match(/^.*\/marketplace\//);
+        var root = mroot ? mroot[0] : '../';
+        var m = location.pathname.match(/\/marketplace\/([^/]+)\/([^/]+)\/?$/);
+        var slug = (m && m[1] === 'product') ? m[2] : '';
+        var q = slug ? '?slug=' + encodeURIComponent(slug) : '';
+        location.replace(root + (slug ? 'product.html' : 'list.html') + q);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="../product.html">product.html</a>...</p>
+  </body>
+</html>
