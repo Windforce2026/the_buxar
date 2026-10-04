@@ -29,11 +29,13 @@
     phone: '<svg ' + ICON + '><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>'
   }
 
-  /* Verified contact details. Only email and location are real. */
+  /* Verified contact details. */
   C.contact = {
     email: 'hello@thebuxar.com',
     location: { en: 'Buxar, Bihar · India', hi: 'बक्सर, बिहार · भारत' },
-    phone: null
+    phone: '+91 98180 48920',
+    phoneHref: 'tel:+919818048920',
+    whatsapp: 'https://wa.me/919818048920'
   }
 
   /* Hero photograph — a real Buxar ghat image. */

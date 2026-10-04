@@ -60,8 +60,8 @@
       }
 
       status.textContent = hi
-        ? 'धन्यवाद! आपका संदेश तैयार है। हम जल्द ही ' + C.contact.email + ' पर जवाब देंगे।'
-        : 'Thank you! Your message is ready. We will respond shortly at ' + C.contact.email + '.'
+        ? 'धन्यवाद! आपका संदेश तैयार है। हम जल्द ही ' + C.contact.email + ' या व्हाट्सऐप (' + C.contact.phone + ') पर जवाब देंगे।'
+        : 'Thank you! Your message is ready. We will respond shortly at ' + C.contact.email + ' or WhatsApp (' + C.contact.phone + ').'
       status.className = 'ct-form__status is-ok'
       form.reset()
     })
