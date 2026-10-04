@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit="cover" />
+    <meta name="theme-color" content="#081C33" />
+    <meta
+      name="description"
+      content="Contact TheBuxar.com — reach us with questions, feedback, editorial contributions or partnership enquiries about Buxar, Bihar."
+    />
+    <title>Contact Us | TheBuxar.com — Buxar, Bihar</title>
+    <link rel="canonical" href="https://www.thebuxar.com/contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TheBuxar.com" />
+    <meta property="og:title" content="Contact Us | TheBuxar.com — Buxar, Bihar" />
+    <meta property="og:description" content="Contact TheBuxar.com — reach us with questions, feedback, editorial contributions or partnership enquiries about Buxar, Bihar." />
+    <meta property="og:url" content="https://www.thebuxar.com/contact.html" />
+    <meta property="og:image" content="https://www.thebuxar.com/assets/hero-buxar-sunset.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Us | TheBuxar.com",
+        "description": "Contact TheBuxar.com — reach us with questions, feedback, editorial contributions or partnership enquiries about Buxar, Bihar.",
+        "url": "https://www.thebuxar.com/contact.html",
+        "image": "https://www.thebuxar.com/assets/hero-buxar-sunset.jpg"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thebuxar.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.thebuxar.com/contact.html" }
+        ]
+      }
+    </script>
+    <script>
+      // Apply saved theme + language before paint to avoid a flash.
+      try {
+        const theme = localStorage.getItem('buxar-theme')
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light')
+        const lang = localStorage.getItem('buxar-lang')
+        if (lang === 'hi') document.documentElement.setAttribute('data-lang', 'hi')
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500;600&family=Poppins:wght@200;300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
+    <link rel="stylesheet" href="./css/sections.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <noscript>
+      <style>
+        #loader { display: none !important; }
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body class="ct-page">
+
+    <!-- Bihar map loader overlay -->
+    <div id="loader" class="loader" aria-hidden="true">
+      <div class="loader__bg" aria-hidden="true">
+        <video class="loader__bg-video" id="loader-bg-video" muted loop playsinline preload="none" tabindex="-1">
+          <source src="assets/hero-buxar-motion.mp4" type="video/mp4" />
+        </video>
+        <div class="loader__bg-scrim"></div>
+      </div>
+      <canvas id="loader-particles" class="loader__particles" aria-hidden="true"></canvas>
+      <div class="loader__card">
+        <div class="loader__map" id="loader-map"></div>
+        <h2 class="loader__title">
+          <span class="loader__title-the" data-en="The " data-hi="द ">The </span>
+          <span class="loader__title-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+        </h2>
+        <div class="loader__rule"><span></span></div>
+        <p class="loader__tag sans" data-en="Explore the District" data-hi="जिले को खोजें">Explore the District</p>
+      </div>
+    </div>
+
+    <div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
+    <!-- Luxury navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="TheBuxar — home">
+          <span class="nav__wordmark">
+            <span class="nav__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="nav__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </span>
+          <span class="nav__brand-glow" aria-hidden="true"></span>
+          <span class="nav__brand-rule" aria-hidden="true"></span>
+        </a>
+
+        <nav class="nav__menu" aria-label="Primary">
+          <a href="index.html" class="nav__link" data-en="Home" data-hi="होम">Home</a>
+          <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
+          <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
+          <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
+          <a href="business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="marketplace.html" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="trade.html" class="nav__link" data-en="Trade" data-hi="व्यापार">Trade</a>
+          <a href="news.html" class="nav__link" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a>
+          <a href="contact.html" class="nav__link is-active" data-en="Contact" data-hi="संपर्क">Contact</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button type="button" class="nav__icon" id="nav-search-btn" aria-label="Search" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__theme" aria-label="Toggle theme">
+            <svg class="nav__theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6" stroke-linecap="round" />
+            </svg>
+            <svg class="nav__theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
+            <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
+          </button>
+          <a href="index.html#login" class="nav__login" data-en="Login" data-hi="लॉगिन">Login</a>
+          <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__search" id="nav-search" role="search">
+        <div class="nav__search-inner">
+          <svg class="nav__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+          </svg>
+          <input
+            class="nav__search-input"
+            id="nav-search-input"
+            type="search"
+            placeholder="Search The Buxar…"
+            aria-label="Search"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="button" class="nav__search-close" id="nav-search-close" aria-label="Close search">✕</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="ct-page">
+      <!-- 01 · Contact hero -->
+      <section class="ct-hero" aria-label="Contact TheBuxar.com">
+        <span class="ct-hero__photo" data-ct="heroPhoto" aria-hidden="true"></span>
+        <div class="ct-hero__bg" aria-hidden="true"></div>
+        <div class="ct-hero__vignette" aria-hidden="true"></div>
+        <div class="ct-shell ct-hero__inner">
+          <p class="ct-hero__label" data-en="Contact" data-hi="संपर्क">Contact</p>
+          <h1 class="ct-hero__title" data-en="Get in Touch" data-hi="संपर्क करें">Get in Touch</h1>
+          <p class="ct-hero__sub" data-en="Questions, feedback, editorial contributions or partnership enquiries — we would love to hear from you." data-hi="प्रश्न, प्रतिक्रिया, संपादकीय योगदान या साझेदारी के प्रस्ताव — हमें आपसे सुनना अच्छा लगेगा।">Questions, feedback, editorial contributions or partnership enquiries — we would love to hear from you.</p>
+          <div class="ct-hero__cta">
+            <a class="btn btn--gold" href="#ct-contact" data-en="Send a Message" data-hi="संदेश भेजें">Send a Message</a>
+            <a class="btn btn--ghost-light" href="#ct-info" data-en="Contact Details" data-hi="संपर्क विवरण">Contact Details</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · Contact grid -->
+      <section class="ct-section" id="ct-contact">
+        <div class="ct-shell">
+          <div class="ct-grid">
+            <!-- Form -->
+            <div class="ct-form-card reveal">
+              <div>
+                <p class="ct-label" data-en="Write to Us" data-hi="हमें लिखें">Write to Us</p>
+                <h2 class="ct-title" data-en="Send a Message" data-hi="संदेश भेजें">Send a Message</h2>
+                <p class="ct-sub" data-en="Choose a topic and we will route your message to the right team." data-hi="एक विषय चुनें और हम आपका संदेश सही टीम तक पहुँचाएँगे।">Choose a topic and we will route your message to the right team.</p>
+              </div>
+              <form class="ct-form" id="ct-form" novalidate>
+                <div class="ct-form__row">
+                  <div class="ct-field">
+                    <label class="ct-field__label" for="ct-name" data-en="Your name" data-hi="आपका नाम">Your name *</label>
+                    <input class="ct-field__input" id="ct-name" type="text" name="name" required autocomplete="name" placeholder="Your full name" data-ph="Your full name|आपका पूरा नाम" aria-label="Your name" />
+                  </div>
+                  <div class="ct-field">
+                    <label class="ct-field__label" for="ct-email" data-en="Email address" data-hi="ईमेल पता">Email address *</label>
+                    <input class="ct-field__input" id="ct-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" data-ph="you@example.com|you@example.com" aria-label="Email address" />
+                  </div>
+                </div>
+                <div class="ct-field">
+                  <label class="ct-field__label" for="ct-topic" data-en="Topic" data-hi="विषय">Topic *</label>
+                  <select class="ct-field__select" id="ct-topic" name="topic" required aria-label="Topic">
+                    <option value="" data-en="Select a topic" data-hi="विषय चुनें">Select a topic</option>
+                    <option value="general" data-en="General enquiry" data-hi="सामान्य पूछताछ">General enquiry</option>
+                    <option value="feedback" data-en="Feedback" data-hi="प्रतिक्रिया">Feedback</option>
+                    <option value="editorial" data-en="Editorial contribution" data-hi="संपादकीय योगदान">Editorial contribution</option>
+                    <option value="business" data-en="Business or seller" data-hi="व्यवसाय या विक्रेता">Business or seller</option>
+                    <option value="advertising" data-en="Advertising" data-hi="विज्ञापन">Advertising</option>
+                    <option value="partnership" data-en="Partnership" data-hi="साझेदारी">Partnership</option>
+                    <option value="press" data-en="Press / Media" data-hi="प्रेस / मीडिया">Press / Media</option>
+                    <option value="correction" data-en="Correction request" data-hi="शुद्धि अनुरोध">Correction request</option>
+                  </select>
+                </div>
+                <div class="ct-field">
+                  <label class="ct-field__label" for="ct-subject" data-en="Subject" data-hi="विषय">Subject *</label>
+                  <input class="ct-field__input" id="ct-subject" type="text" name="subject" required placeholder="What is this about?" data-ph="What is this about?|इसका विषय क्या है?" aria-label="Subject" />
+                </div>
+                <div class="ct-field">
+                  <label class="ct-field__label" for="ct-message" data-en="Message" data-hi="संदेश">Message *</label>
+                  <textarea class="ct-field__textarea" id="ct-message" name="message" required rows="6" placeholder="Tell us more…" data-ph="Tell us more…|हमें और बताएँ…" aria-label="Message"></textarea>
+                </div>
+                <p class="ct-form__note" data-en="This form is visual only. Messages are not sent or stored — connect through the channels shown alongside." data-hi="यह फ़ॉर्म केवल दृश्य है। संदेश नहीं भेजे या संग्रहीत होते हैं — साथ दिखाए गए माध्यमों के माध्यम से जुड़ें।">This form is visual only. Messages are not sent or stored — connect through the channels shown alongside.</p>
+                <div>
+                  <button type="submit" class="btn btn--gold" data-en="Send Message" data-hi="संदेश भेजें">Send Message</button>
+                </div>
+                <p class="ct-form__status" id="ct-form-status" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+
+            <!-- Info -->
+            <div class="ct-info">
+              <div class="ct-info-card reveal">
+                <div class="ct-info-card__head">
+                  <span class="ct-info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                  <h3 class="ct-info-card__title" data-en="Email" data-hi="ईमेल">Email</h3>
+                </div>
+                <div class="ct-info-card__body">
+                  <p data-en="The fastest way to reach us. We aim to respond within a few working days." data-hi="हम तक पहुँचने का सबसे तेज़ तरीका। हम कुछ कार्य दिवसों में जवाब देना चाहते हैं।">The fastest way to reach us. We aim to respond within a few working days.</p>
+                  <ul class="ct-info-card__list">
+                    <li><a href="mailto:hello@thebuxar.com">hello@thebuxar.com</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="ct-info-card reveal">
+                <div class="ct-info-card__head">
+                  <span class="ct-info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.4 6-9.5A6 6 0 0 0 6 11.5C6 15.6 12 21 12 21Z"/><circle cx="12" cy="11" r="2.2"/></svg></span>
+                  <h3 class="ct-info-card__title" data-en="Location" data-hi="स्थान">Location</h3>
+                </div>
+                <div class="ct-info-card__body">
+                  <p data-en="Based in Buxar district, Bihar, India." data-hi="बिहार, भारत के बक्सर जिले में स्थित।">Based in Buxar district, Bihar, India.</p>
+                  <ul class="ct-info-card__list">
+                    <li data-en="Buxar, Bihar · India" data-hi="बक्सर, बिहार · भारत">Buxar, Bihar · India</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="ct-info-card reveal">
+                <div class="ct-info-card__head">
+                  <span class="ct-info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+                  <h3 class="ct-info-card__title" data-en="Response Time" data-hi="प्रतिक्रिया समय">Response Time</h3>
+                </div>
+                <div class="ct-info-card__body">
+                  <p data-en="Editorial and partnership enquiries are reviewed carefully. Please allow a few working days for a considered reply." data-hi="संपादकीय और साझेदारी प्रस्तावों को ध्यान से देखा जाता है। कृपया विचारपूर्ण उत्तर के लिए कुछ कार्य दिवसों की अनुमति दें।">Editorial and partnership enquiries are reviewed carefully. Please allow a few working days for a considered reply.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 · Topics -->
+      <section class="ct-section ct-section--tight">
+        <div class="ct-shell">
+          <header class="ct-head reveal">
+            <p class="ct-label" data-en="How Can We Help?" data-hi="हम कैसे मदद कर सकते हैं?">How Can We Help?</p>
+            <h2 class="ct-title" data-en="Choose a Topic" data-hi="विषय चुनें">Choose a Topic</h2>
+            <p class="ct-sub" data-en="Each topic helps us understand your message and route it correctly." data-hi="हर विषय हमें आपका संदेश समझने और उसे सही ढंग से भेजने में मदद करता है।">Each topic helps us understand your message and route it correctly.</p>
+          </header>
+          <div class="ct-topics">
+            <a class="ct-topic reveal" href="#ct-contact">
+              <span class="ct-topic__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 15.6v.4"/></svg></span>
+              <span class="ct-topic__name" data-en="General Enquiry" data-hi="सामान्य पूछताछ">General Enquiry</span>
+              <span class="ct-topic__blurb" data-en="Anything about Buxar or TheBuxar.com." data-hi="बक्सर या TheBuxar.com के बारे में कुछ भी।">Anything about Buxar or TheBuxar.com.</span>
+            </a>
+            <a class="ct-topic reveal" href="#ct-contact">
+              <span class="ct-topic__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.6C19 15.6 12 20 12 20Z"/><path d="M9.5 12h5M12 9.5v5"/></svg></span>
+              <span class="ct-topic__name" data-en="Feedback" data-hi="प्रतिक्रिया">Feedback</span>
+              <span class="ct-topic__blurb" data-en="Tell us what we can do better." data-hi="बताएँ हम बेहतर क्या कर सकते हैं।">Tell us what we can do better.</span>
+            </a>
+            <a class="ct-topic reveal" href="#ct-contact">
+              <span class="ct-topic__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span>
+              <span class="ct-topic__name" data-en="Editorial Contribution" data-hi="संपादकीय योगदान">Editorial Contribution</span>
+              <span class="ct-topic__blurb" data-en="Share verified stories, photographs or knowledge." data-hi="सत्यापित कहानियाँ, तस्वीरें या ज्ञान साझा करें।">Share verified stories, photographs or knowledge.</span>
+            </a>
+            <a class="ct-topic reveal" href="#ct-contact">
+              <span class="ct-topic__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h16V20H4z"/><path d="M3 9.5 5 4h14l2 5.5a3 3 0 0 1-5.6 1.6 3 3 0 0 1-5.4 0A3 3 0 0 1 3 9.5Z"/><path d="M9.5 20v-6h5v6"/></svg></span>
+              <span class="ct-topic__name" data-en="Business or Seller" data-hi="व्यवसाय या विक्रेता">Business or Seller</span>
+              <span class="ct-topic__blurb" data-en="List your business or sell your products." data-hi="अपना व्यवसाय जोड़ें या अपने उत्पाद बेचें।">List your business or sell your products.</span>
+            </a>
+            <a class="ct-topic reveal" href="#ct-contact">
+              <span class="ct-topic__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M14 8a5 5 0 0 1 0 6M16.5 5.5a8.5 8.5 0 0 1 0 11"/></svg></span>
+              <span class="ct-topic__name" data-en="Advertising" data-hi="विज्ञापन">Advertising</span>
+              <span class="ct-topic__blurb" data-en="Reach audiences across Buxar." data-hi="बक्सर भर के दर्शकों तक पहुँचें।">Reach audiences across Buxar.</span>
+            </a>
+            <a class="ct-topic reveal" href="#ct-contact">
+              <span class="ct-topic__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="9"/></svg></span>
+              <span class="ct-topic__name" data-en="Partnership" data-hi="साझेदारी">Partnership</span>
+              <span class="ct-topic__blurb" data-en="Work with us on projects that serve Buxar." data-hi="बक्र की सेवा करने वाले प्रोजेक्ट्स पर हमारे साथ काम करें।">Work with us on projects that serve Buxar.</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 · Location -->
+      <section class="ct-section ct-section--tight">
+        <div class="ct-shell">
+          <div class="ct-grid">
+            <div class="reveal">
+              <p class="ct-label" data-en="Where We Are" data-hi="हम कहाँ हैं">Where We Are</p>
+              <h2 class="ct-title" data-en="Buxar, Bihar" data-hi="बक्सर, बिहार">Buxar, Bihar</h2>
+              <p class="ct-sub" data-en="TheBuxar.com represents the district of Buxar in Bihar, India — its heritage, culture, tourism, business, trade and current life." data-hi="TheBuxar.com बिहार, भारत के बक्सर जिले का प्रतिनिधित्व करता है — इसकी विरासत, संस्कृति, पर्यटन, व्यापार, वाणिज्य और वर्तमान जीवन।">TheBuxar.com represents the district of Buxar in Bihar, India — its heritage, culture, tourism, business, trade and current life.</p>
+            </div>
+            <div class="ct-map reveal">
+              <div class="ct-map__inner">
+                <div>
+                  <span class="ct-map__pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.4 6-9.5A6 6 0 0 0 6 11.5C6 15.6 12 21 12 21Z"/><circle cx="12" cy="11" r="2.2"/></svg></span>
+                  <h3 class="ct-map__title" data-en="Buxar District, Bihar" data-hi="बक्सर जिला, बिहार">Buxar District, Bihar</h3>
+                  <p class="ct-map__sub" data-en="Serving all six areas — Buxar Town, Dumraon, Brahampur, Chausa, Itarhi and Rajpur." data-hi="सभी छह क्षेत्रों की सेवा — बक्सर नगर, दुमराँव, ब्रहमपुर, चौसा, इटाढ़ी और राजपुर।">Serving all six areas — Buxar Town, Dumraon, Brahampur, Chausa, Itarhi and Rajpur.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 · CTA -->
+      <section class="ct-section">
+        <div class="ct-shell">
+          <div class="ct-cta-band reveal">
+            <div class="ct-cta-band__inner">
+              <p class="ct-label" data-en="Let's Connect" data-hi="चलिए जुड़ते हैं">Let's Connect</p>
+              <h2 class="ct-title" data-en="Start the Conversation" data-hi="बातचीत शुरू करें">Start the Conversation</h2>
+              <p class="ct-sub" data-en="Whether you have a question, a story to share or an idea to explore — we are listening." data-hi="चाहे आपका कोई सवाल हो, कोई कहानी साझा करनी हो या कोई विचार पता लगाना हो — हम सुन रहे हैं।">Whether you have a question, a story to share or an idea to explore — we are listening.</p>
+              <div class="ct-cta-band__acts">
+                <a class="btn btn--gold" href="mailto:hello@thebuxar.com" data-en="Email Us" data-hi="हमें ईमेल करें">Email Us</a>
+                <a class="btn btn--cream" href="index.html#explore" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="shell footer__grid">
+        <div class="footer__brand reveal">
+          <a href="index.html" class="footer__wordmark">
+            <span class="footer__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="footer__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </a>
+          <p class="footer__tag" data-en="A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar." data-hi="बिहार के बक्सर की विरासत, संस्कृति, पर्यटन, व्यापार और वाणिज्य का प्रीमियम डिजिटल गंतव्य।">A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar.</p>
+          <address class="footer__contact">
+            <span data-en="Buxar, Bihar · India" data-hi="बक्सर, बिहार · भारत">Buxar, Bihar · India</span>
+            <a href="mailto:hello@thebuxar.com">hello@thebuxar.com</a>
+          </address>
+        </div>
+
+        <nav class="footer__col reveal" aria-label="Footer">
+          <h4 class="footer__title" data-en="Explore" data-hi="खोजें">Explore</h4>
+          <ul class="footer__list">
+            <li><a href="explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a></li>
+            <li><a href="history.html" data-en="History" data-hi="इतिहास">History</a></li>
+            <li><a href="tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
+            <li><a href="marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+            <li><a href="trade.html" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
+            <li><a href="news.html" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col reveal" aria-label="Footer links">
+          <h4 class="footer__title" data-en="Visit" data-hi="देखें">Visit</h4>
+          <ul class="footer__list">
+            <li><a href="index.html#gallery" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
+            <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
+            <li><a href="contact.html" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+            <li><a href="index.html#login" data-en="Sign In" data-hi="लॉग इन">Sign In</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__news reveal">
+          <h4 class="footer__title" data-en="Stay in Touch" data-hi="जुड़े रहें">Stay in Touch</h4>
+          <p class="footer__news-text" data-en="Get Buxar stories, heritage and events in your inbox." data-hi="बक्सर की कहानियाँ, विरासत और आयोजन अपने इनबॉक्स में पाएँ।">Get Buxar stories, heritage and events in your inbox.</p>
+          <form class="footer__form" id="footer-form" novalidate>
+            <input id="footer-email" type="email" required autocomplete="email" placeholder="Your email" data-ph="Your email|आपका ईमेल" aria-label="Email address" />
+            <button type="submit" class="footer__btn" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
+          </form>
+          <p class="footer__form-status" id="footer-status" role="status" aria-live="polite"></p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4l6.6 8.7L4.3 20h2.4l5.2-6 4.8 6H21l-7-9.2L20.8 4h-2.4l-4.9 5.7L8.9 4H4Z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.2 9.6l4.4 2.4-4.4 2.4Z" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="shell footer__bottom-inner">
+          <span class="footer__copy">© 2026 TheBuxar.com</span>
+          <span class="footer__credit" data-en="Crafted with pride in Buxar, Bihar." data-hi="बक्सर, बिहार में गर्व के साथ निर्मित।">Crafted with pride in Buxar, Bihar.</span>
+          <nav class="footer__legal" aria-label="Legal">
+            <a href="#" data-en="Privacy" data-hi="गोपनीयता">Privacy</a>
+            <a href="#" data-en="Terms" data-hi="शर्तें">Terms</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button type="button" class="back-top" id="back-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="back-top__ring"></span>
+    </button>
+
+    <script>
+      window.TheBuxarConfig = { path: './' }
+    </script>
+    <script src="./js/loader.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/sections.js" defer></script>
+    <script src="./js/contact-data.js" defer></script>
+    <script src="./js/contact.js" defer></script>
+  </body>
+</html>
