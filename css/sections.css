@@ -551,6 +551,13 @@ html {
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.55);
 }
 
+.trade__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 1.6vw, 16px);
+  margin-top: clamp(22px, 3vw, 28px);
+}
+
 .trade__art {
   position: relative;
   display: grid;

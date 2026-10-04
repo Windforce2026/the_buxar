@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#081C33" />
+    <meta
+      name="description"
+      content="Discover the people, events, celebrations, stories and developments shaping Buxar right now. News, festivals, Durga Puja, culture and community on TheBuxar.com."
+    />
+    <title>Current Buxar | News, Events &amp; Stories | TheBuxar.com</title>
+    <link rel="canonical" href="https://www.thebuxar.com/news.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TheBuxar.com" />
+    <meta property="og:title" content="Current Buxar | News, Events & Stories | TheBuxar.com" />
+    <meta property="og:description" content="Discover the people, events, celebrations, stories and developments shaping Buxar right now." />
+    <meta property="og:url" content="https://www.thebuxar.com/news.html" />
+    <meta property="og:image" content="https://www.thebuxar.com/assets/hero-buxar-sunset.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Current Buxar",
+        "description": "Discover the people, events, celebrations, stories and developments shaping Buxar right now.",
+        "url": "https://www.thebuxar.com/news.html",
+        "image": "https://www.thebuxar.com/assets/hero-buxar-sunset.jpg"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thebuxar.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Current Buxar", "item": "https://www.thebuxar.com/news.html" }
+        ]
+      }
+    </script>
+    <script>
+      // Apply saved theme + language before paint to avoid a flash.
+      try {
+        const theme = localStorage.getItem('buxar-theme')
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light')
+        const lang = localStorage.getItem('buxar-lang')
+        if (lang === 'hi') document.documentElement.setAttribute('data-lang', 'hi')
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500;600&family=Poppins:wght@200;300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
+    <link rel="stylesheet" href="./css/sections.css" />
+    <link rel="stylesheet" href="./css/news.css" />
+    <noscript>
+      <style>
+        #loader { display: none !important; }
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body class="nw-page">
+
+    <!-- Bihar map loader overlay -->
+    <div id="loader" class="loader" aria-hidden="true">
+      <div class="loader__bg" aria-hidden="true">
+        <video class="loader__bg-video" id="loader-bg-video" muted loop playsinline preload="none" tabindex="-1">
+          <source src="assets/hero-buxar-motion.mp4" type="video/mp4" />
+        </video>
+        <div class="loader__bg-scrim"></div>
+      </div>
+      <canvas id="loader-particles" class="loader__particles" aria-hidden="true"></canvas>
+      <div class="loader__card">
+        <div class="loader__map" id="loader-map"></div>
+        <h2 class="loader__title">
+          <span class="loader__title-the" data-en="The " data-hi="द ">The </span>
+          <span class="loader__title-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+        </h2>
+        <div class="loader__rule"><span></span></div>
+        <p class="loader__tag sans" data-en="Explore the District" data-hi="जिले को खोजें">Explore the District</p>
+      </div>
+    </div>
+
+    <div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
+    <!-- Luxury navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="TheBuxar — home">
+          <span class="nav__wordmark">
+            <span class="nav__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="nav__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </span>
+          <span class="nav__brand-glow" aria-hidden="true"></span>
+          <span class="nav__brand-rule" aria-hidden="true"></span>
+        </a>
+
+        <nav class="nav__menu" aria-label="Primary">
+          <a href="index.html" class="nav__link" data-en="Home" data-hi="होम">Home</a>
+          <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
+          <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
+          <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
+          <a href="business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="marketplace.html" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="trade.html" class="nav__link" data-en="Trade" data-hi="व्यापार">Trade</a>
+          <a href="news.html" class="nav__link is-active" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a>
+          <a href="index.html#gallery" class="nav__link" data-en="Gallery" data-hi="गैलरी">Gallery</a>
+          <a href="index.html#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button type="button" class="nav__icon" id="nav-search-btn" aria-label="Search" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__theme" aria-label="Toggle theme">
+            <svg class="nav__theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6" stroke-linecap="round" />
+            </svg>
+            <svg class="nav__theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
+            <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
+          </button>
+          <a href="index.html#login" class="nav__login" data-en="Login" data-hi="लॉगिन">Login</a>
+          <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__search" id="nav-search" role="search">
+        <div class="nav__search-inner">
+          <svg class="nav__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.8-3.8" stroke-linecap="round" />
+          </svg>
+          <input
+            class="nav__search-input"
+            id="nav-search-input"
+            type="search"
+            placeholder="Search The Buxar…"
+            aria-label="Search"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="button" class="nav__search-close" id="nav-search-close" aria-label="Close search">✕</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="nw-page">
+      <!-- 01 · Current Buxar hero -->
+      <section class="nw-hero" aria-label="Current Buxar">
+        <span class="nw-hero__photo" data-nw="heroPhoto" aria-hidden="true"></span>
+        <div class="nw-hero__bg" aria-hidden="true"></div>
+        <div class="nw-hero__vignette" aria-hidden="true"></div>
+        <div class="nw-shell nw-hero__inner">
+          <p class="nw-hero__label" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</p>
+          <h1 class="nw-hero__title" data-en="Buxar, Today" data-hi="बक्सर, आज">Buxar, Today</h1>
+          <p class="nw-hero__sub" data-en="Discover the people, events, celebrations, stories and developments shaping Buxar right now." data-hi="बक्सर को आज आकार देने वाले लोगों, कार्यक्रमों, त्योहारों, कहानियों और विकास को जानें।">Discover the people, events, celebrations, stories and developments shaping Buxar right now.</p>
+          <div class="nw-hero__cta">
+            <a class="btn btn--gold" href="#nw-featured" data-en="Explore Latest" data-hi="ताज़ा देखें">Explore Latest</a>
+            <a class="btn btn--ghost-light" href="#nw-durga" data-en="View Events" data-hi="कार्यक्रम देखें">View Events</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · Featured story -->
+      <section class="nw-section" id="nw-featured">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Featured Story" data-hi="मुख्य कहानी">Featured Story</p>
+          </header>
+          <div data-nw="featured"></div>
+        </div>
+      </section>
+
+      <!-- 03 · Durga Ji / Durga Puja — major cultural feature -->
+      <section class="nw-section nw-fest" id="nw-durga">
+        <div class="nw-shell">
+          <div data-nw="durgaHero"></div>
+        </div>
+      </section>
+
+      <!-- 04 · Durga Puja events -->
+      <section class="nw-section nw-fest" style="padding-top:0">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Durga Puja Events" data-hi="दुर्गा पूजा कार्यक्रम">Durga Puja Events</p>
+            <h2 class="nw-title" data-en="Celebrations Across the District" data-hi="जिले भर में उत्सव">Celebrations Across the District</h2>
+            <p class="nw-sub" data-en="Durga Puja events and celebrations will be updated here." data-hi="दुर्गा पूजा के कार्यक्रम और उत्सव यहाँ अपडेट होंगे।">Durga Puja events and celebrations will be updated here.</p>
+          </header>
+          <div data-nw="durgaEvents"></div>
+        </div>
+      </section>
+
+      <!-- 05 · Durga Puja gallery -->
+      <section class="nw-section nw-fest" style="padding-top:0">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Durga Puja Gallery" data-hi="दुर्गा पूजा गैलरी">Durga Puja Gallery</p>
+            <h2 class="nw-title" data-en="Moments of Devotion & Celebration" data-hi="भक्ति और उत्सव के पल">Moments of Devotion &amp; Celebration</h2>
+            <p class="nw-sub" data-en="A visual glimpse of the festive season. Images are editorial and may not depict a specific Buxar event." data-hi="त्योहारी मौसम की एक दृश्य झलक। तस्वीरें संपादकीय हैं और किसी विशिष्ट बक्सर कार्यक्रम को नहीं दर्शा सकतीं।">A visual glimpse of the festive season. Images are editorial and may not depict a specific Buxar event.</p>
+          </header>
+          <div data-nw="durgaGallery"></div>
+        </div>
+      </section>
+
+      <!-- 06 · More than a festival -->
+      <section class="nw-section nw-fest" style="padding-top:0">
+        <div class="nw-shell">
+          <div class="nw-story">
+            <figure class="nw-story__media reveal">
+              <img src="assets/news-diyas.jpg" alt="Evening diyas" loading="lazy" decoding="async" />
+            </figure>
+            <div class="nw-story__body reveal">
+              <p class="nw-label" data-en="More Than a Festival" data-hi="एक त्योहार से बढ़कर">More Than a Festival</p>
+              <h2 class="nw-title" data-en="Faith, Community & Tradition" data-hi="भक्ति, समुदाय और परंपरा">Faith, Community &amp; Tradition</h2>
+              <p class="nw-sub" data-en="Behind the celebrations are faith, community, tradition, art and music — the threads that bind a district together." data-hi="उत्सवों के पीछे भक्ति, समुदाय, परंपरा, कला और संगीत है — वे धागे जो एक जिले को बाँधते हैं।">Behind the celebrations are faith, community, tradition, art and music — the threads that bind a district together.</p>
+              <a class="btn btn--gold" href="news/article.html?slug=demo-story-buxar" data-en="Read Story →" data-hi="कहानी पढ़ें →">Read Story →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 · Festivals & culture -->
+      <section class="nw-section">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Festivals & Culture" data-hi="त्योहार एवं संस्कृति">Festivals &amp; Culture</p>
+            <h2 class="nw-title" data-en="The Cultural Calendar" data-hi="सांस्कृतिक कैलेंडर">The Cultural Calendar</h2>
+            <p class="nw-sub" data-en="Content categories for the cultural calendar. Specific events appear only when verified." data-hi="सांस्कृतिक कैलेंडर की सामग्री श्रेणियाँ। विशिष्ट कार्यक्रम केवल सत्यापित होने पर दिखते हैं।">Content categories for the cultural calendar. Specific events appear only when verified.</p>
+          </header>
+          <div data-nw="festivals"></div>
+        </div>
+      </section>
+
+      <!-- 08 · Upcoming events -->
+      <section class="nw-section nw-section--tight">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Upcoming Events" data-hi="आगामी कार्यक्रम">Upcoming Events</p>
+            <h2 class="nw-title" data-en="What's On in Buxar" data-hi="बक्सर में क्या हो रहा है">What's On in Buxar</h2>
+            <p class="nw-sub" data-en="Events will be updated here as they are confirmed." data-hi="कार्यक्रम पुष्ट होने पर यहाँ अपडेट होंगे।">Events will be updated here as they are confirmed.</p>
+          </header>
+          <div data-nw="upcoming"></div>
+        </div>
+      </section>
+
+      <!-- 09 · Latest news -->
+      <section class="nw-section nw-section--tight">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Latest from Buxar" data-hi="बक्सर से ताज़ा">Latest from Buxar</p>
+            <h2 class="nw-title" data-en="Stories & Updates" data-hi="कहानियाँ और अपडेट">Stories &amp; Updates</h2>
+            <p class="nw-sub" data-en="Latest stories from Buxar will appear here." data-hi="बक्सर की ताज़ा कहानियाँ यहाँ दिखेंगी।">Latest stories from Buxar will appear here.</p>
+          </header>
+          <div data-nw="newsFilters"></div>
+          <div data-nw="latest"></div>
+        </div>
+      </section>
+
+      <!-- 10 · City life -->
+      <section class="nw-section nw-section--tight">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Life in Buxar" data-hi="बक्सर में जीवन">Life in Buxar</p>
+            <h2 class="nw-title" data-en="The City, Every Day" data-hi="शहर, हर दिन">The City, Every Day</h2>
+            <p class="nw-sub" data-en="Evergreen editorial topics about the city — its markets, ghats, food, culture and people." data-hi="शहर के लिए सादा संपादकीय विषय — इसके बाज़ार, घाट, भोजन, संस्कृति और लोग।">Evergreen editorial topics about the city — its markets, ghats, food, culture and people.</p>
+          </header>
+          <div data-nw="cityLife"></div>
+        </div>
+      </section>
+
+      <!-- 11 · Photography -->
+      <section class="nw-section nw-section--tight">
+        <div class="nw-shell">
+          <header class="nw-head reveal">
+            <p class="nw-label" data-en="Buxar, As It Happens" data-hi="बक्सर, जैसा हो रहा है">Buxar, As It Happens</p>
+            <h2 class="nw-title" data-en="Through Photographs" data-hi="तस्वीरों के माध्यम से">Through Photographs</h2>
+            <p class="nw-sub" data-en="Streets, ghats, markets, festivals and local life — a portrait of the district in photographs." data-hi="सड़कें, घाट, बाज़ार, त्योहार और स्थानीय जीवन — तस्वीरों में जिले की तस्वीर।">Streets, ghats, markets, festivals and local life — a portrait of the district in photographs.</p>
+          </header>
+          <div data-nw="photos"></div>
+        </div>
+      </section>
+
+      <!-- 12 · CTA -->
+      <section class="nw-section">
+        <div class="nw-shell">
+          <div class="nw-cta-band reveal">
+            <div class="nw-cta-band__inner">
+              <p class="nw-label" data-en="Stay Connected" data-hi="जुड़े रहें">Stay Connected</p>
+              <h2 class="nw-title" data-en="Buxar, Happening Now" data-hi="बक्सर, अभी हो रहा है">Buxar, Happening Now</h2>
+              <p class="nw-sub" data-en="Follow the latest stories, events and celebrations from across Buxar." data-hi="बक्सर भर की ताज़ा कहानियों, कार्यक्रमों और उत्सवों को फॉलो करें।">Follow the latest stories, events and celebrations from across Buxar.</p>
+              <div class="nw-cta" style="justify-content:center">
+                <a class="btn btn--gold" href="explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a>
+                <a class="btn btn--cream" href="tourism.html" data-en="Plan a Visit" data-hi="यात्रा करें">Plan a Visit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="shell footer__grid">
+        <div class="footer__brand reveal">
+          <a href="index.html" class="footer__wordmark">
+            <span class="footer__wordmark-the" data-en="The " data-hi="द ">The </span>
+            <span class="footer__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
+          </a>
+          <p class="footer__tag" data-en="A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar." data-hi="बिहार के बक्सर की विरासत, संस्कृति, पर्यटन, व्यापार और वाणिज्य का प्रीमियम डिजिटल गंतव्य।">A premium digital destination for the heritage, culture, tourism, business and commerce of Buxar, Bihar.</p>
+          <address class="footer__contact">
+            <span data-en="Buxar, Bihar · India" data-hi="बक्सर, बिहार · भारत">Buxar, Bihar · India</span>
+            <a href="mailto:hello@thebuxar.com">hello@thebuxar.com</a>
+          </address>
+        </div>
+
+        <nav class="footer__col reveal" aria-label="Footer">
+          <h4 class="footer__title" data-en="Explore" data-hi="खोजें">Explore</h4>
+          <ul class="footer__list">
+            <li><a href="explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a></li>
+            <li><a href="history.html" data-en="History" data-hi="इतिहास">History</a></li>
+            <li><a href="tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
+            <li><a href="marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+            <li><a href="trade.html" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
+            <li><a href="news.html" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col reveal" aria-label="Footer links">
+          <h4 class="footer__title" data-en="Visit" data-hi="देखें">Visit</h4>
+          <ul class="footer__list">
+            <li><a href="index.html#gallery" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
+            <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
+            <li><a href="index.html#contact" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+            <li><a href="index.html#login" data-en="Sign In" data-hi="लॉग इन">Sign In</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__news reveal">
+          <h4 class="footer__title" data-en="Stay in Touch" data-hi="जुड़े रहें">Stay in Touch</h4>
+          <p class="footer__news-text" data-en="Get Buxar stories, heritage and events in your inbox." data-hi="बक्सर की कहानियाँ, विरासत और आयोजन अपने इनबॉक्स में पाएँ।">Get Buxar stories, heritage and events in your inbox.</p>
+          <form class="footer__form" id="footer-form" novalidate>
+            <input id="footer-email" type="email" required autocomplete="email" placeholder="Your email" data-ph="Your email|आपका ईमेल" aria-label="Email address" />
+            <button type="submit" class="footer__btn" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
+          </form>
+          <p class="footer__form-status" id="footer-status" role="status" aria-live="polite"></p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4l6.6 8.7L4.3 20h2.4l5.2-6 4.8 6H21l-7-9.2L20.8 4h-2.4l-4.9 5.7L8.9 4H4Z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.2 9.6l4.4 2.4-4.4 2.4Z" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="shell footer__bottom-inner">
+          <span class="footer__copy">© 2026 TheBuxar.com</span>
+          <span class="footer__credit" data-en="Crafted with pride in Buxar, Bihar." data-hi="बक्सर, बिहार में गर्व के साथ निर्मित।">Crafted with pride in Buxar, Bihar.</span>
+          <nav class="footer__legal" aria-label="Legal">
+            <a href="#" data-en="Privacy" data-hi="गोपनीयता">Privacy</a>
+            <a href="#" data-en="Terms" data-hi="शर्तें">Terms</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button type="button" class="back-top" id="back-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="back-top__ring"></span>
+    </button>
+
+    <script>
+      window.TheBuxarConfig = { path: './' }
+    </script>
+    <script src="./js/loader.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/sections.js" defer></script>
+    <script src="./js/news-data.js" defer></script>
+    <script src="./js/news.js" defer></script>
+  </body>
+</html>
