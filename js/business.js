@@ -123,10 +123,6 @@
     return '<span class="bz-mono" aria-hidden="true">' + esc(B.monogram(biz)) + '</span>'
   }
 
-  function demoChip (biz) {
-    return biz.demo === true ? '<span class="bz-chip bz-chip--demo">' + esc(t('demoBadge')) + '</span>' : ''
-  }
-
   /* Verified badge — driven only by the record's own flag. */
   function verifiedChip (biz) {
     return B.isVerified(biz)
@@ -191,7 +187,7 @@
           '<h3 class="bz-card__name"><a href="' + esc(B.profileUrl(biz)) + '">' + esc(B.get(biz.name)) + '</a></h3>' +
           '<p class="bz-card__loc">' + icon('pin') + '<span>' + esc(areaName(biz.area)) + '</span></p>' +
           (biz.description ? '<p class="bz-card__desc">' + esc(B.get(biz.description)) + '</p>' : '') +
-          '<div class="bz-card__meta">' + rating(biz) + statusChip(biz) + verifiedChip(biz) + demoChip(biz) + '</div>' +
+          '<div class="bz-card__meta">' + rating(biz) + statusChip(biz) + verifiedChip(biz) + '</div>' +
           '<div class="bz-card__foot">' +
             '<a class="bz-card__cta" href="' + esc(B.profileUrl(biz)) + '">' + esc(t('viewDetails')) + '<span class="bz-card__arrow">' + icon('arrow') + '</span></a>' +
             '<div class="bz-card__acts">' + contactActions(biz) + '</div>' +
@@ -217,7 +213,7 @@
           '<h3 class="bz-row__name"><a href="' + esc(B.profileUrl(biz)) + '">' + esc(B.get(biz.name)) + '</a></h3>' +
           '<p class="bz-row__loc">' + icon('pin') + '<span>' + esc(areaName(biz.area)) + '</span></p>' +
           (biz.description ? '<p class="bz-row__desc">' + esc(B.get(biz.description)) + '</p>' : '') +
-          '<div class="bz-row__meta">' + rating(biz) + statusChip(biz) + verifiedChip(biz) + demoChip(biz) + '</div>' +
+          '<div class="bz-row__meta">' + rating(biz) + statusChip(biz) + verifiedChip(biz) + '</div>' +
           '<div class="bz-row__foot">' +
             '<div class="bz-row__acts">' + acts.join('') + '</div>' +
             '<a class="bz-card__cta" href="' + esc(B.profileUrl(biz)) + '">' + esc(t('viewDetails')) + '<span class="bz-card__arrow">' + icon('arrow') + '</span></a>' +
@@ -725,7 +721,11 @@
     if (biz.whatsapp) rows.push([t('whatsapp'), biz.whatsapp, 'https://wa.me/' + String(biz.whatsapp).replace(/\D/g, ''), 'chat'])
     if (biz.email) rows.push([t('email'), biz.email, 'mailto:' + biz.email, 'mail'])
     if (biz.website) rows.push([t('website'), biz.website, biz.website, 'globe'])
-    biz.socialLinks.forEach(function (s) { rows.push([s.label || s.name, s.url, s.url, 'globe']) })
+    biz.socialLinks = Array.isArray(biz.socialLinks) ? biz.socialLinks : []
+    biz.socialLinks.forEach(function (s) {
+      if (!s || !s.url) return
+      rows.push([s.label || s.name || t('website'), s.url, s.url, 'globe'])
+    })
     return rows
   }
 
@@ -795,7 +795,7 @@
           '<p class="bz-hero__loc">' + icon('pin') +
             '<a href="' + esc(B.areaUrl(biz.area)) + '">' + esc(areaName(biz.area)) + '</a>' +
             '<span class="bz-dot">\u00b7</span><span>Buxar, Bihar</span></p>' +
-          '<div class="bz-hero__meta">' + rating(biz) + statusChip(biz) + verifiedChip(biz) + demoChip(biz) + '</div>' +
+          '<div class="bz-hero__meta">' + rating(biz) + statusChip(biz) + verifiedChip(biz) + '</div>' +
           '<div class="bz-hero__acts">' + contactActions(biz) + '</div>' +
         '</div>' +
       '</section>'
@@ -804,7 +804,7 @@
     var about = biz.description
       ? '<p class="bz-about">' + esc(B.get(biz.description)) + '</p>'
       : '<p class="bz-about bz-about--none">' + esc(t('pending')) + '</p>'
-    if (biz.demo) about += '<p class="bz-callout">' + icon('check') + '<span>' + esc(t('demoProfileNote')) + '</span></p>'
+    about += '<p class="bz-callout">' + icon('check') + '<span>' + esc(t('profileNote')) + '</span></p>'
 
     /* --- Services --- */
     var svc = serviceLabels(biz)

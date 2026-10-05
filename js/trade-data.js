@@ -14,9 +14,8 @@
 /*   No production figure, growth rate, market size or ranking is    */
 /*   invented anywhere in this file.                                 */
 /*                                                                     */
-/*   Replace placeholder copy with verified editorial content by      */
-/*   editing the values below — every section updates with no code   */
-/*   change.                                                          */
+/*   Edit the values below to update content — every section        */
+/*   updates with no code change.                                    */
 /*                                                                     */
 /* Language: bilingual via T.get() at render time. Static shells keep */
 /* their data-en/data-hi markup handled by main.js.                 */
@@ -83,10 +82,7 @@
       en: "Buxar's economy rests on a long tradition of local commerce. Agriculture and food businesses anchor daily life, while retail, transport and small enterprises keep the district's markets moving. A growing digital presence is opening new routes for local producers and sellers to reach customers.",
       hi: 'बक्सर की अर्थव्यवस्था स्थानीय वाणिज्य की लंबी परंपरा पर टिकी है। कृषि और खाद्य व्यवसाय दैनिन जीवन को संभालते हैं, जबकि खुदरा, परिवहन और छोटे उद्यम जिले के बाज़ारों को चलाते हैं। बढ़ती डिजिटल उपस्थिति स्थानीय उत्पादकों और विक्रेताओं के लिए नए रास्ते खोल रही है।'
     },
-    economyNote: {
-      en: 'This overview describes broad themes only. Specific figures are added once verified by editorial sources.',
-      hi: 'यह अवलोकन केवल व्यापक विषयों का वर्णन करता है। विशिष्ट आंकड़े संपादकीय स्रोतों द्वारा सत्यापित होने पर जोड़े जाते हैं।'
-    },
+
 
     agriLabel: { en: 'Agriculture & Local Commerce', hi: 'कृषि एवं स्थानीय वाणिज्य' },
     agriTitle: { en: 'From Local Production to Local Markets', hi: 'स्थानीय उत्पादन से स्थानीय बाज़ारों तक' },
@@ -99,8 +95,8 @@
     ecosystemLabel: { en: 'Buxar Business Ecosystem', hi: 'बक्सर व्यापार पारिस्थितिकी तंत्र' },
     ecosystemTitle: { en: 'A District of Enterprises', hi: 'उद्यमों का जिला' },
     ecosystemSub: {
-      en: 'Every category below connects to the Business Directory. Listings appear as local businesses are added and verified.',
-      hi: 'नीचे दी गई हर श्रेणी व्यापार निर्देशिका से जुड़ी है। स्थानीय व्यवसाय जुड़ने और सत्यापित होने पर सूचियाँ दिखती हैं।'
+      en: 'Every category below connects to the Business Directory, where local enterprises are listed and discovered.',
+      hi: 'नीचे दी गई हर श्रेणी व्यापार निर्देशिका से जुड़ी है, जहाँ स्थानीय उद्यम सूचीबद्ध और खोजे जाते हैं।'
     },
     exploreBusinesses: { en: 'Explore Businesses →', hi: 'व्यवसाय देखें →' },
 
@@ -128,8 +124,8 @@
     oppLabel: { en: 'Opportunities in Buxar', hi: 'बक्सर में अवसर' },
     oppTitle: { en: 'Possibilities Across the District', hi: 'जिले भर में संभावनाएँ' },
     oppSub: {
-      en: 'These themes communicate where local enterprise can grow. They describe possibilities, not financial returns.',
-      hi: 'ये विषय बताते हैं कि स्थानीय उद्यम कहाँ बढ़ सकता है। ये संभावनाओं का वर्णन करते हैं, वित्तीय रिटर्न का नहीं।'
+      en: 'These themes highlight where local enterprise is growing and where new opportunities are emerging across the district.',
+      hi: 'ये विषय बताते हैं कि स्थानीय उद्यम कहाँ बढ़ रहा है और जिले भर में नए अवसर कहाँ उभर रहे हैं।'
     },
 
     ctaLabel: { en: 'Join the Growth', hi: 'विकास से जुड़ें' },
@@ -180,7 +176,7 @@
     {
       slug: 'brahampur',
       name: { en: 'Brahampur', hi: 'ब्रहमपुर' },
-      image: 'assets/explore/brahampur/hero.webp',
+      image: 'assets/tourism/historical/naulakha-mandir.webp',
       blurb: { en: 'A block with local shops and agricultural commerce.', hi: 'स्थानीय दुकानों और कृषि वाणिज्य वाला प्रखंड।' }
     },
     {
@@ -228,7 +224,7 @@
   T.images = {
     hero: 'assets/images/marketplace/hero/marketplace-hero-local-commerce.jpg',
     economy: 'assets/images/marketplace/categories/marketplace-agricultural-products.jpg',
-    agriculture: 'assets/images/marketplace/categories/marketplace-fresh-local.jpg',
+    agriculture: 'assets/images/marketplace/locations/marketplace-location-bihar-countryside.jpg',
     story: 'assets/images/marketplace/stories/marketplace-stories-craft.jpg'
   }
 

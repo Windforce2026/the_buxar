@@ -129,7 +129,7 @@
           <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
             <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
           </button>
-          <a href="index.html#login" class="nav__login" data-en="Login" data-hi="लॉगिन">Login</a>
+          
           <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -217,16 +217,16 @@
                   <label class="ct-field__label" for="ct-message" data-en="Message" data-hi="संदेश">Message *</label>
                   <textarea class="ct-field__textarea" id="ct-message" name="message" required rows="6" placeholder="Tell us more…" data-ph="Tell us more…|हमें और बताएँ…" aria-label="Message"></textarea>
                 </div>
-                <p class="ct-form__note" data-en="This form is visual only. Messages are not sent or stored — connect through the channels shown alongside." data-hi="यह फ़ॉर्म केवल दृश्य है। संदेश नहीं भेजे या संग्रहीत होते हैं — साथ दिखाए गए माध्यमों के माध्यम से जुड़ें।">This form is visual only. Messages are not sent or stored — connect through the channels shown alongside.</p>
+                <p class="ct-form__note" data-en="Send opens WhatsApp with your message ready to edit and send. Nothing is stored on this page." data-hi="भेजने पर व्हाट्सऐप खुलता है और आपका संदेश संपादन के लिए तैयार रहता है। इस पृष्ठ पर कुछ भी संग्रहीत नहीं होता।">Send opens WhatsApp with your message ready to edit and send. Nothing is stored on this page.</p>
                 <div>
-                  <button type="submit" class="btn btn--gold" data-en="Send Message" data-hi="संदेश भेजें">Send Message</button>
+                  <button type="submit" class="btn btn--gold" data-en="Send on WhatsApp" data-hi="व्हाट्सऐप पर भेजें">Send on WhatsApp</button>
                 </div>
                 <p class="ct-form__status" id="ct-form-status" role="status" aria-live="polite"></p>
               </form>
             </div>
 
             <!-- Info -->
-            <div class="ct-info">
+            <div class="ct-info" id="ct-info">
               <div class="ct-info-card reveal">
                 <div class="ct-info-card__head">
                   <span class="ct-info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
@@ -273,7 +273,7 @@
                   <h3 class="ct-info-card__title" data-en="Response Time" data-hi="प्रतिक्रिया समय">Response Time</h3>
                 </div>
                 <div class="ct-info-card__body">
-                  <p data-en="Editorial and partnership enquiries are reviewed carefully. Please allow a few working days for a considered reply." data-hi="संपादकीय और साझेदारी प्रस्तावों को ध्यान से देखा जाता है। कृपया विचारपूर्ण उत्तर के लिए कुछ कार्य दिवसों की अनुमति दें।">Editorial and partnership enquiries are reviewed carefully. Please allow a few working days for a considered reply.</p>
+                  <p data-en="Every message reaches us on WhatsApp and by email. Editorial and partnership enquiries are read carefully, so please allow a few working days for a considered reply." data-hi="हर संदेश व्हाट्सऐप और ईमेल दोनों हम तक पहुँचता है। संपादकीय और साझेदारी प्रस्तावों पर ध्यान से पढ़ा जाता है, इसलिए विचारपूर्ण उत्तर के लिए कृपया कुछ कार्य दिवसों की प्रतीक्षा करें।">Every message reaches us on WhatsApp and by email. Editorial and partnership enquiries are read carefully, so please allow a few working days for a considered reply.</p>
                 </div>
               </div>
             </div>
@@ -387,7 +387,7 @@
             <li><a href="marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
             <li><a href="trade.html" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
             <li><a href="news.html" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a></li>
-          </ul>
+        </ul>
         </nav>
 
         <nav class="footer__col reveal" aria-label="Footer links">
@@ -396,8 +396,10 @@
             <li><a href="index.html#gallery" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
             <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
             <li><a href="contact.html" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
-            <li><a href="index.html#login" data-en="Sign In" data-hi="लॉग इन">Sign In</a></li>
-          </ul>
+            
+          
+            <li><a href="./credits.html" data-en="Image Credits" data-hi="चित्र श्रेय">Image Credits</a></li>
+        </ul>
         </nav>
 
         <div class="footer__news reveal">
@@ -408,12 +410,6 @@
             <button type="submit" class="footer__btn" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
           </form>
           <p class="footer__form-status" id="footer-status" role="status" aria-live="polite"></p>
-          <div class="footer__social">
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4l6.6 8.7L4.3 20h2.4l5.2-6 4.8 6H21l-7-9.2L20.8 4h-2.4l-4.9 5.7L8.9 4H4Z"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.2 9.6l4.4 2.4-4.4 2.4Z" fill="currentColor" stroke="none"/></svg></a>
-          </div>
         </div>
       </div>
 
@@ -421,10 +417,7 @@
         <div class="shell footer__bottom-inner">
           <span class="footer__copy">© 2026 TheBuxar.com</span>
           <span class="footer__credit" data-en="Crafted with pride in Buxar, Bihar." data-hi="बक्सर, बिहार में गर्व के साथ निर्मित।">Crafted with pride in Buxar, Bihar.</span>
-          <nav class="footer__legal" aria-label="Legal">
-            <a href="#" data-en="Privacy" data-hi="गोपनीयता">Privacy</a>
-            <a href="#" data-en="Terms" data-hi="शर्तें">Terms</a>
-          </nav>
+          
         </div>
       </div>
     </footer>

@@ -44,6 +44,20 @@
     update()
   }
 
+  /* Map pins: each one jumps to the story it labels. */
+  function initMapPins() {
+    const pins = Array.from(document.querySelectorAll('.hist-mapbox__pin[data-hist-goto]'))
+    if (!pins.length) return
+    pins.forEach((pin) => {
+      pin.addEventListener('click', () => {
+        const target = document.getElementById(pin.dataset.histGoto)
+        pins.forEach((p) => p.classList.remove('is-active'))
+        pin.classList.add('is-active')
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+    })
+  }
+
   /* Chausa "Read Full Story" toggle (animated through grid-template-rows). */
   function readMore() {
     const btn = document.getElementById('hist-read-btn')
@@ -172,6 +186,7 @@
   }
 
   function boot() {
+  initMapPins()
     navActive()
     timelineDraw()
     readMore()

@@ -438,6 +438,21 @@
   transition: transform 0.4s var(--nw-ease), box-shadow 0.4s ease;
 }
 
+/* Festival tiles are <button> now, not <a>, so they can filter the list
+   instead of navigating nowhere. Match the card look exactly. */
+.nw-card--btn {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+}
+
+.nw-card--btn:focus-visible {
+  outline: 2px solid var(--nw-gold, #d4af37);
+  outline-offset: 3px;
+}
+
 .nw-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--nw-shadow);

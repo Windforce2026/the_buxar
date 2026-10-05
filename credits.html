@@ -6,53 +6,26 @@
     <meta name="theme-color" content="#081C33" />
     <meta
       name="description"
-      content="Meet local sellers from across Buxar district — their products, categories, contact details and store policies, exactly as each seller supplied them."
+      content="Image credits for TheBuxar.com — the source and licence of every photograph, engraving and museum plate used across the site."
     />
-    <title>Seller | Buxar Marketplace | TheBuxar.com</title>
-    <link rel="canonical" href="https://www.thebuxar.com/marketplace/seller.html" />
+    <title>Image Credits | TheBuxar.com — Buxar, Bihar</title>
+    <link rel="canonical" href="https://www.thebuxar.com/credits.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="TheBuxar.com" />
-    <meta property="og:title" content="Seller | Buxar Marketplace | TheBuxar.com" />
-    <meta property="og:description" content="Meet local sellers from across Buxar district — their products, categories, contact details and store policies, exactly as each seller supplied them." />
-    <meta property="og:url" content="https://www.thebuxar.com/marketplace/seller.html" />
-    <meta property="og:image" content="https://www.thebuxar.com/assets/hero-buxar-night.jpg" />
+    <meta property="og:title" content="Image Credits | TheBuxar.com" />
+    <meta property="og:description" content="The source and licence of every photograph, engraving and museum plate used across TheBuxar.com." />
+    <meta property="og:url" content="https://www.thebuxar.com/credits.html" />
+    <meta property="og:image" content="https://www.thebuxar.com/assets/hero-buxar-sunset.jpg" />
     <script type="application/ld+json">
       {
-  "@type": "WebPage",
-  "name": "Seller — Buxar Marketplace",
-  "description": "Meet local sellers from across Buxar district — their products, categories, contact details and store policies, exactly as each seller supplied them.",
-  "url": "https://www.thebuxar.com/marketplace/seller.html",
-  "image": "https://www.thebuxar.com/assets/hero-buxar-night.jpg",
-  "@context": "https://schema.org"
-}
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Image Credits | TheBuxar.com",
+        "description": "The source and licence of every photograph, engraving and museum plate used across TheBuxar.com.",
+        "url": "https://www.thebuxar.com/credits.html",
+        "isPartOf": { "@type": "WebSite", "name": "TheBuxar.com", "url": "https://www.thebuxar.com/" }
+      }
     </script>
-    <script type="application/ld+json">
-      {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.thebuxar.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Buxar Marketplace",
-      "item": "https://www.thebuxar.com/marketplace.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Sellers",
-      "item": "https://www.thebuxar.com/marketplace.html#mk-sellers"
-    }
-  ]
-}
-    </script>
-
     <script>
       // Apply saved theme + language before paint to avoid a flash.
       try {
@@ -62,54 +35,31 @@
         if (lang === 'hi') document.documentElement.setAttribute('data-lang', 'hi')
       } catch (e) {}
     </script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500;600&family=Poppins:wght@200;300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/loader.css" />
-    <link rel="stylesheet" href="../css/sections.css" />
-    <link rel="stylesheet" href="../css/market.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
+    <link rel="stylesheet" href="./css/sections.css" />
+    <link rel="stylesheet" href="./css/credits.css" />
     <noscript>
       <style>
         #loader { display: none !important; }
         .reveal { opacity: 1 !important; transform: none !important; }
+        #cr-list:empty::after { content: 'Image credits load with JavaScript.'; display: block; padding: 24px 0; font-family: "Jost", sans-serif; color: #55606e; }
       </style>
     </noscript>
   </head>
-  <body class="marketplace-page">
-
-<!-- Bihar map loader overlay -->
-    <div id="loader" class="loader" aria-hidden="true">
-      <div class="loader__bg" aria-hidden="true">
-        <video class="loader__bg-video" id="loader-bg-video" muted loop playsinline preload="none" tabindex="-1">
-          <source src="../assets/hero-buxar-motion.mp4" type="video/mp4" />
-        </video>
-        <div class="loader__bg-scrim"></div>
-      </div>
-      <canvas id="loader-particles" class="loader__particles" aria-hidden="true"></canvas>
-      <div class="loader__card">
-        <div class="loader__map" id="loader-map"></div>
-        <h2 class="loader__title">
-          <span class="loader__title-the" data-en="The " data-hi="द ">The </span>
-          <span class="loader__title-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
-        </h2>
-        <div class="loader__rule"><span></span></div>
-        <p class="loader__tag sans" data-en="Explore the District" data-hi="जिले को खोजें">Explore the District</p>
-      </div>
-    </div>
+  <body class="cr-page">
 
     <div class="progress" id="progress" aria-hidden="true"><span></span></div>
 
-<!-- Luxury navigation -->
     <header class="nav" id="nav">
       <div class="nav__inner">
-        <a href="../index.html" class="nav__brand" aria-label="TheBuxar — home">
+        <a href="index.html" class="nav__brand" aria-label="TheBuxar — home">
           <span class="nav__wordmark">
             <span class="nav__wordmark-the" data-en="The " data-hi="द ">The </span>
             <span class="nav__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
@@ -119,16 +69,15 @@
         </a>
 
         <nav class="nav__menu" aria-label="Primary">
-          <a href="../index.html" class="nav__link" data-en="Home" data-hi="होम">Home</a>
-          <a href="../history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
-          <a href="../tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
-          <a href="../explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
-          <a href="../business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
-          <a href="../marketplace.html" class="nav__link is-active" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
-          <a href="../index.html#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
-          <a href="../index.html#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
-          <a href="../index.html#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
-          
+          <a href="index.html" class="nav__link" data-en="Home" data-hi="होम">Home</a>
+          <a href="history.html" class="nav__link" data-en="History" data-hi="इतिहास">History</a>
+          <a href="tourism.html" class="nav__link" data-en="Tourism" data-hi="पर्यटन">Tourism</a>
+          <a href="explore.html" class="nav__link" data-en="Explore" data-hi="खोजें">Explore</a>
+          <a href="business.html" class="nav__link" data-en="Business" data-hi="व्यापार">Business</a>
+          <a href="marketplace.html" class="nav__link" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a>
+          <a href="trade.html" class="nav__link" data-en="Trade" data-hi="व्यापार">Trade</a>
+          <a href="news.html" class="nav__link" data-en="News" data-hi="समाचार">News</a>
+          <a href="contact.html" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
         </nav>
 
         <div class="nav__actions">
@@ -177,31 +126,22 @@
       </div>
     </header>
 
+    <main id="main" class="cr-page">
+      <section class="cr-hero" aria-label="Image credits">
+        <div class="cr-shell cr-hero__inner">
+          <p class="cr-label" data-en="Attribution" data-hi="श्रेय">Attribution</p>
+          <h1 class="cr-hero__title" data-en="Image Credits" data-hi="चित्र श्रेय">Image Credits</h1>
+          <p class="cr-hero__sub" data-en="Every photograph, engraving and museum plate used across TheBuxar.com, with its source and licence." data-hi="TheBuxar.com में प्रयुक्त प्रत्येक तस्वीर, नक़्क़ाशी और संग्रहालय पट्टी, उसके स्रोत और लाइसेंस के साथ।">Every photograph, engraving and museum plate used across TheBuxar.com, with its source and licence.</p>
+        </div>
+      </section>
 
-    <main id="main">
-      <!-- As on the product page: the H1 is the seller name and is written
-           by js/market.js, with a static fallback for crawlers and for a
-           browser with JavaScript disabled. -->
-      <div id="mk-seller">
-        <noscript>
-          <section class="mk-section">
-            <div class="mk-shell">
-              <h1 class="mk-sec__title serif">Seller</h1>
-              <p class="mk-hint" style="text-align:left">
-                Seller stores are rendered with JavaScript. Browse the marketplace to see
-                every seller currently listed.
-              </p>
-              <a class="btn btn--ink" href="list.html">Browse sellers</a>
-            </div>
-          </section>
-        </noscript>
-      </div>
+      <div class="cr-shell" id="cr-list"></div>
     </main>
 
     <footer class="footer" id="footer">
       <div class="shell footer__grid">
         <div class="footer__brand reveal">
-          <a href="../index.html" class="footer__wordmark">
+          <a href="index.html" class="footer__wordmark">
             <span class="footer__wordmark-the" data-en="The " data-hi="द ">The </span>
             <span class="footer__wordmark-bux" data-en="Buxar" data-hi="बक्सर">Buxar</span>
           </a>
@@ -209,31 +149,31 @@
           <address class="footer__contact">
             <span data-en="Buxar, Bihar · India" data-hi="बक्सर, बिहार · भारत">Buxar, Bihar · India</span>
             <a href="mailto:hello@thebuxar.com">hello@thebuxar.com</a>
+            <a href="tel:+919818048920">+91 98180 48920</a>
           </address>
         </div>
 
         <nav class="footer__col reveal" aria-label="Footer">
           <h4 class="footer__title" data-en="Explore" data-hi="खोजें">Explore</h4>
           <ul class="footer__list">
-            <li><a href="../explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a></li>
-            <li><a href="../history.html" data-en="History" data-hi="इतिहास">History</a></li>
-            <li><a href="../tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
-            <li><a href="../marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
-            <li><a href="../index.html#trade" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
-            <li><a href="../index.html#news" data-en="News" data-hi="समाचार">News</a></li>
-          </ul>
+            <li><a href="explore.html" data-en="Explore Buxar" data-hi="बक्सर खोजें">Explore Buxar</a></li>
+            <li><a href="history.html" data-en="History" data-hi="इतिहास">History</a></li>
+            <li><a href="tourism.html" data-en="Tourism" data-hi="पर्यटन">Tourism</a></li>
+            <li><a href="marketplace.html" data-en="Marketplace" data-hi="बाज़ार">Marketplace</a></li>
+            <li><a href="trade.html" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
+            <li><a href="news.html" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a></li>
+            <li><a href="contact.html" data-en="Contact" data-hi="संपर्क">Contact</a></li>
+        </ul>
         </nav>
 
         <nav class="footer__col reveal" aria-label="Footer links">
           <h4 class="footer__title" data-en="Visit" data-hi="देखें">Visit</h4>
           <ul class="footer__list">
-            <li><a href="../index.html#explore" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
-            <li><a href="../tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
-            <li><a href="../index.html#contact" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
-            
-          
-            <li><a href="../credits.html" data-en="Image Credits" data-hi="चित्र श्रेय">Image Credits</a></li>
-          </ul>
+            <li><a href="index.html#gallery" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
+            <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
+            <li><a href="contact.html" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+            <li><a href="credits.html" data-en="Image Credits" data-hi="चित्र श्रेय">Image Credits</a></li>
+        </ul>
         </nav>
 
         <div class="footer__news reveal">
@@ -256,22 +196,6 @@
       </div>
     </footer>
 
-    <!-- Back to top -->
-    <button type="button" class="back-top" id="back-top" aria-label="Back to top">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="back-top__ring"></span>
-    </button>
-
-    <script>
-      window.TheBuxarConfig = { path: '../' }
-    </script>
-    <script src="../js/loader.js" defer></script>
-    <script src="../js/main.js" defer></script>
-    <script src="../js/sections.js" defer></script>
-    <script src="../js/market-image-credits.js" defer></script>
-    <script src="../js/market-data.js" defer></script>
-    <script src="../js/market.js" defer></script>
-  
     <!-- Floating WhatsApp -->
     <a class="wa-float" href="https://wa.me/919818048920" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
@@ -279,5 +203,18 @@
       <span class="wa-float__ring"></span>
     </a>
 
+    <button type="button" class="back-top" id="back-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="back-top__ring"></span>
+    </button>
+
+    <script>
+      window.TheBuxarConfig = { path: './' }
+    </script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/sections.js" defer></script>
+    <script src="./js/market-image-credits.js" defer></script>
+    <script src="./js/heritage-image-credits.js" defer></script>
+    <script src="./js/credits.js" defer></script>
   </body>
 </html>

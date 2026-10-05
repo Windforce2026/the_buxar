@@ -33,11 +33,30 @@
     host.innerHTML = '<img src="' + esc(src) + '" alt="" fetchpriority="high" decoding="async" />'
   }
 
-  /* Contact form. Visual only — validates and reports locally. */
+  /* Contact form. Compiles the enquiry into a WhatsApp message and hands
+     the visitor to WhatsApp, where they can edit before sending. Nothing
+     is transmitted from this page and nothing is stored. */
   function initForm () {
     var form = doc.getElementById('ct-form')
     var status = doc.getElementById('ct-form-status')
     if (!form || !status) return
+
+    var TOPIC_LABEL = {
+      general: ['General enquiry', 'सामान्य पूछताछ'],
+      feedback: ['Feedback', 'प्रतिक्रिया'],
+      editorial: ['Editorial contribution', 'संपादकीय योगदान'],
+      business: ['Business or seller', 'व्यवसाय या विक्रेता'],
+      advertising: ['Advertising', 'विज्ञापन'],
+      partnership: ['Partnership', 'साझेदारी'],
+      press: ['Press / Media', 'प्रेस / मीडिया'],
+      correction: ['Correction request', 'शुद्धि अनुरोध']
+    }
+
+    function topicLabel (value) {
+      var pair = TOPIC_LABEL[value]
+      if (!pair) return value
+      return doc.documentElement.getAttribute('data-lang') === 'hi' ? pair[1] : pair[0]
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault()
@@ -59,11 +78,34 @@
         return
       }
 
+      var lines = hi
+        ? [
+            '*नया संदेश — TheBuxar.com*',
+            '',
+            '*विषय:* ' + subject.value.trim(),
+            '*श्रेणी:* ' + topicLabel(topic.value),
+            '*नाम:* ' + name.value.trim(),
+            '*ईमेल:* ' + email.value.trim(),
+            '',
+            message.value.trim()
+          ]
+        : [
+            '*New enquiry — TheBuxar.com*',
+            '',
+            '*Subject:* ' + subject.value.trim(),
+            '*Topic:* ' + topicLabel(topic.value),
+            '*Name:* ' + name.value.trim(),
+            '*Email:* ' + email.value.trim(),
+            '',
+            message.value.trim()
+          ]
+
+      var url = C.contact.whatsapp + '?text=' + encodeURIComponent(lines.join('\n'))
       status.textContent = hi
-        ? 'धन्यवाद! आपका संदेश तैयार है। हम जल्द ही ' + C.contact.email + ' या व्हाट्सऐप (' + C.contact.phone + ') पर जवाब देंगे।'
-        : 'Thank you! Your message is ready. We will respond shortly at ' + C.contact.email + ' or WhatsApp (' + C.contact.phone + ').'
+        ? 'व्हाट्सऐप खुल रहा है — संदेश भेजने से पहले उसमें संपादन कर सकते हैं।'
+        : 'Opening WhatsApp — you can edit the message before you send it.'
       status.className = 'ct-form__status is-ok'
-      form.reset()
+      window.open(url, '_blank', 'noopener')
     })
   }
 

@@ -109,12 +109,7 @@
     '</p>'
   }
 
-  function demoChip (rec) {
-    return rec.demo === true ? '<span class="mk-chip mk-chip--demo">' + esc(t('demoBadge')) + '</span>' : ''
-  }
-
-  /* Verified badges are driven purely by the record's own flag, so an
-     unverified placeholder can never imply an authenticity claim. */
+  /* Verified badges are driven purely by the record's own flag. */
   function verifiedChip (rec) {
     return M.isVerified(rec)
       ? '<span class="mk-chip mk-chip--verified">' + icon('check') + esc(t('verifiedSeller')) + '</span>'
@@ -177,7 +172,7 @@
           '<p class="mk-card__seller">' + esc(sellerName(p)) + '</p>' +
           (area ? '<p class="mk-card__loc">' + icon('pin') + '<span>' + esc(area) + '</span></p>' : '') +
           priceBlock(p, 'mk-card__price') +
-          '<div class="mk-card__meta">' + demoChip(p) + verifiedChip(p) + stars(p) + '</div>' +
+          '<div class="mk-card__meta">' + verifiedChip(p) + stars(p) + '</div>' +
           '<div class="mk-card__foot">' +
             '<a class="mk-card__cta" href="' + esc(url) + '">' + esc(t('viewProduct')) + '</a>' +
             '<button type="button" class="mk-card__cart" data-mk-add="' + esc(p.slug) + '">' +
@@ -205,7 +200,7 @@
           '<p class="mk-card__loc">' + icon('pin') + '<span>' + esc(areaName(s.areaSlug)) + '</span></p>' +
           (s.description ? '<p class="mk-seller__desc">' + esc(M.get(s.description)) + '</p>' : '') +
           '<div class="mk-card__meta">' +
-            demoChip(s) + verifiedChip(s) +
+            verifiedChip(s) +
             '<span class="mk-chip">' + esc(countLabel(n)) + '</span>' +
           '</div>' +
         '</div>' +
@@ -260,7 +255,7 @@
       '<span class="mk-empty__mark" aria-hidden="true">' + icon(mark || 'search') + '</span>' +
       '<h3 class="mk-empty__title">' + esc(title) + '</h3>' +
       '<p class="mk-empty__sub">' + esc(sub) + '</p>' +
-      (action || '') +
+      (action ? '<div class="mk-empty__acts">' + action + '</div>' : '') +
     '</div>'
   }
 
@@ -336,20 +331,20 @@
       /* The caption is only shown on the full category grid. On the
          homepage strip (data-limit set) it would clutter the rail, and the
          full provenance is one click away in the Image credits panel. */
-      var credit = (c.image && !(lim > 0)) ? M.creditFor(c.image) : null
+      /* Attribution is not printed on the card. It lives in the image credits
+         register (js/market-image-credits.js), rendered once on /credits.html. */
+      var n = M.countIn(c.slug)
       return '<a class="mk-catgrid__item reveal' + (c.image ? ' mk-catgrid__item--photo' : '') +
         '" href="' + esc(M.categoryUrl(c.slug)) + '">' +
         art +
         '<span class="mk-catgrid__body">' +
           '<span class="mk-catgrid__name">' + esc(M.get(c.name)) + '</span>' +
           '<span class="mk-catgrid__blurb">' + esc(M.get(c.blurb)) + '</span>' +
-          '<span class="mk-card__cat">' + M.countIn(c.slug) + ' · ' + esc(t('products')) + '</span>' +
+          (n > 0 ? '<span class="mk-card__cat">' + n + ' · ' + esc(t('products')) + '</span>' : '') +
         '</span>' +
-        (credit ? '<span class="mk-catgrid__credit">' + esc(credit.creditAs) + '</span>' : '') +
         '<span class="mk-catgrid__arrow" aria-hidden="true">' + icon('arrow') + '</span>' +
       '</a>'
-    }).join('') + '</div>' +
-    (all.length < M.categories.length ? '<p class="mk-hint">' + esc(t('moreCatsNote')) + '</p>' : '')
+    }).join('') + '</div>'
   }
 
   /* Local sellers, human-first. */
@@ -448,25 +443,15 @@
     host.innerHTML = '<img src="' + esc(src) + '" alt="" fetchpriority="high" decoding="async" />'
   }
 
-  /* Discreet image provenance panel. Every external photograph is listed
-     with its source and licence, and the panel states in plain words that
-     none of them depicts a product for sale. */
+  /* Attribution is not printed inline on commerce pages. The whole register
+     is rendered once, on /credits.html, and linked from the footer. */
   MOUNT.imageCredits = function (host) {
     var list = M.creditList()
     if (!list.length) { host.innerHTML = ''; return }
     host.innerHTML = '<section class="mk-section mk-section--tight">' +
-      '<details class="mk-credits reveal">' +
-        '<summary class="mk-credits__summary">' + icon('info') + '<span>' + esc(t('imageCredits')) + '</span></summary>' +
-        '<p class="mk-credits__note">' + esc(t('imageCreditsNote')) + '</p>' +
-        '<ul class="mk-credits__list">' + list.map(function (c) {
-          var meta = [c.source, c.photographer, c.licence].filter(Boolean).join(' · ')
-          return '<li class="mk-credits__item">' +
-            '<span class="mk-credits__caption">' + esc(c.creditAs || c.depicts || c.key) + '</span>' +
-            '<span class="mk-credits__meta">' + esc(meta) + '</span>' +
-            (c.sourceUrl ? ' <a href="' + esc(c.sourceUrl) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(c.source || 'source') + '</a>' : '') +
-          '</li>'
-        }).join('') + '</ul>' +
-      '</details></section>'
+      '<a class="mk-credits-link reveal" href="' + esc(M.creditsUrl()) + '">' +
+        icon('info') + '<span>' + esc(t('imageCredits')) + '</span>' +
+      '</a></section>'
   }
 
   /* Seller onboarding call to action. Deep navy panel with gold typography
@@ -619,11 +604,12 @@
       var val = kind === 'sub' ? it.cat + '/' + it.sub.slug : it.slug
       var label = kind === 'sub' ? M.get(it.sub.name) : M.get(it.name)
       var on = state[kind].indexOf(kind === 'sub' ? val : it.slug) > -1
+      var n = countFor(kind, val)
       return '<label class="mk-check">' +
         '<input type="checkbox" name="' + name + '" value="' + esc(val) + '"' + (on ? ' checked' : '') + ' />' +
         '<span class="mk-check__box" aria-hidden="true">' + icon('check') + '</span>' +
         '<span class="mk-check__label">' + esc(label) + '</span>' +
-        '<span class="mk-check__n">' + countFor(kind, val) + '</span>' +
+        (n > 0 ? '<span class="mk-check__n">' + n + '</span>' : '') +
       '</label>'
     }).join('')
     return '<fieldset class="mk-group" data-group="' + id + '"><legend class="mk-group__legend">' + esc(legend) + '</legend>' + boxes + '</fieldset>'
@@ -849,9 +835,11 @@
 
     if (titleEl) titleEl.textContent = resultTitle()
     if (countEl) {
+      /* No zero-counts: an empty catalogue states itself in the empty state
+         rather than advertising "0 products" in the toolbar. */
       countEl.textContent = list.length
         ? t('showing') + ' ' + Math.min(state.shown, list.length) + ' ' + t('of') + ' ' + list.length + ' ' + t('products')
-        : '0 ' + t('products')
+        : ''
     }
 
     /* No matches is its own designed state with a way out, never a blank
@@ -860,8 +848,20 @@
       gridEl.innerHTML = ''
       gridEl.hidden = true
       if (emptyHost) {
-        emptyHost.innerHTML = emptyState('search', t('noProducts'), t('noProductsSub'),
-          '<button type="button" class="btn btn--ink" data-mk-clear>' + esc(t('clearFilters')) + '</button>')
+        /* A search with no hits gets a search-flavoured state; an empty
+           catalogue gets the maker invitation. */
+        var searching = !!(state.q || state.cat.length || state.sub.length ||
+          state.seller.length || state.loc.length ||
+          state.priceMin || state.priceMax || state.avail || state.rating)
+        var acts = searching
+          ? '<button type="button" class="btn btn--ink" data-mk-clear>' + esc(t('clearFilters')) + '</button>'
+          : '<a class="btn btn--ink" href="' + esc(M.sellUrl()) + '">' + esc(t('listYourProduct')) + '</a>' +
+            '<a class="btn btn--ghost" href="' + esc(M.path) + 'contact.html">' + esc(t('talkToUs')) + '</a>'
+        emptyHost.innerHTML = emptyState(
+          searching ? 'search' : 'box',
+          t(searching ? 'noResultsTitle' : 'noProducts'),
+          t(searching ? 'noResultsSub' : 'noProductsSub'),
+          acts)
       }
       if (more) more.hidden = true
       return
@@ -1158,7 +1158,7 @@
         '<div class="mk-card__meta">' +
           '<span class="mk-chip">' + esc(cat) + '</span>' +
           (prod.subcategory ? '<span class="mk-chip">' + esc(M.get(prod.subcategory.name)) + '</span>' : '') +
-          demoChip(prod) + verifiedChip(prod) +
+          verifiedChip(prod) +
         '</div>' +
         '<h1 class="mk-buy__name serif">' + esc(name) + '</h1>' +
         (seller ? '<p class="mk-card__seller">' + esc(t('seller')) + ': <a href="' + esc(M.sellerUrl(seller)) + '">' + esc(M.get(seller.name)) + '</a>' +
@@ -1254,7 +1254,7 @@
           '<h3 class="mk-seller__name">' + esc(M.get(seller.name)) + '</h3>' +
           '<p class="mk-card__loc">' + icon('pin') + '<span>' + esc(areaName(seller.areaSlug)) + '</span></p>' +
           (seller.description ? '<p class="mk-seller__desc">' + esc(M.get(seller.description)) + '</p>' : '') +
-          '<div class="mk-card__meta">' + demoChip(seller) + verifiedChip(seller) + '</div>' +
+          '<div class="mk-card__meta">' + verifiedChip(seller) + '</div>' +
         '</div>' +
         '<div class="mk-buy__acts">' +
           '<a class="mk-card__cta" href="' + esc(M.sellerUrl(seller)) + '">' + esc(t('viewStore')) + '</a>' +
@@ -1477,7 +1477,7 @@
               '<h1 class="mk-seller-hero__name serif">' + esc(name) + '</h1>' +
               '<p class="mk-seller-hero__meta">' + icon('pin') + '<span>' + esc(areaName(s.areaSlug)) + '</span>' +
                 '<span class="mk-chip">' + esc(countLabel(prods.length)) + '</span>' +
-                demoChip(s) + verifiedChip(s) +
+                verifiedChip(s) +
               '</p>' +
             '</div>' +
           '</div>' +
@@ -1562,7 +1562,7 @@
         '<p class="mk-cart__meta">' + esc(sellerName(p)) + ' · ' + esc(catName(p.category)) + '</p>' +
         '<p class="mk-cart__meta">' + esc(t('qty')) + ' ' + line.qty + ' × ' +
           (unit === null ? esc(t('pricePending')) : esc(M.formatPrice(unit))) + '</p>' +
-        '<div class="mk-card__meta">' + demoChip(p) + verifiedChip(p) + '</div>' +
+        '<div class="mk-card__meta">' + verifiedChip(p) + '</div>' +
         '<div class="mk-cart__acts">' +
           (mode === 'cart'
             ? '<button type="button" class="mk-linkbtn" data-mk-dec="' + esc(p.slug) + '" aria-label="-">' + icon('minus') + '</button>' +

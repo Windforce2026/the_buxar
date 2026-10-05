@@ -526,6 +526,68 @@ html[data-theme='light'] .bz-star {
   background: rgba(127, 214, 164, 0.1);
 }
 
+.bz-join {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 34px;
+  padding: clamp(26px, 4vw, 44px);
+  border-radius: clamp(16px, 1.6vw, 24px);
+  background:
+    linear-gradient(140deg, rgba(212, 175, 55, 0.14), rgba(212, 175, 55, 0.04) 46%, transparent 72%),
+    rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.34);
+  color: #fff;
+}
+
+.bz-join::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(620px 380px at 92% 118%, rgba(255, 215, 106, 0.22), transparent 70%);
+}
+
+.bz-join__body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+  max-width: 62ch;
+}
+
+.bz-join__title {
+  margin: 0;
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(22px, 2.8vw, 32px);
+  line-height: 1.15;
+  color: #fff;
+}
+
+.bz-join__sub {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.bz-join__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.bz-join__acts .btn--ghost-light {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.bz-join__acts .btn--ghost-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
 .bz-chip--demo {
   color: var(--bz-ink-2);
   border-color: var(--bz-line-soft);

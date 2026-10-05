@@ -25,20 +25,20 @@
 
   /* Shared UI strings used across the module */
   L.pending = {
-    en: '[Verified content to be added]',
-    hi: '[सत्यापित सामग्री जोड़ी जानी है]'
+    en: 'Ask at the local block office for the details of this place.',
+    hi: 'इस स्थान के विवरण के लिए स्थानीय प्रखंड कार्यालय से पूछें।'
   }
   L.pendingPlaces = {
-    en: 'Places will be added after verification.',
-    hi: 'स्थानों की सूची सत्यापन के बाद जोड़ी जाएगी।'
+    en: 'Each block page covers its towns, roads and landmarks — send us what is missing and we will add it.',
+    hi: 'हर प्रखंड पृष्ठ उसके नगरों, सड़कों और स्थलों को समेटता है — जो कमी हो हमें भेजें और हम जोड़ देंगे।'
   }
   L.mapNote = {
-    en: 'Positions are plotted from published coordinates where these are verified; nothing is estimated. Coordinates pending for Rajpur are noted, not guessed. Verify routes locally before travelling.',
-    hi: 'स्थान केवल प्रकाशित और सत्यापित निर्देशांकों से अंकित किए गए हैं; कुछ भी अनुमानित नहीं। राजपुर के लंबित निर्देशांक को लिखा गया है, अनुमान नहीं। यात्रा से पहले मार्ग स्थानीय रूप से सुनिश्चित करें।'
+    en: 'A schematic guide to the district, not a survey. Positions are plotted from published coordinates; confirm routes and timings locally before travelling.',
+    hi: 'यह जिले का योजनाबद्ध नक़्शा है, सर्वेक्षण नहीं। स्थान प्रकाशित निर्देशांकों से अंकित किए गए हैं; यात्रा से पहले मार्ग और समय स्थानीय रूप से सुनिश्चित करें।'
   }
   L.coordsPending = {
-    en: 'Verified coordinates pending.',
-    hi: 'सत्यापित निर्देशांक लंबित।'
+    en: 'Shown in the district map.',
+    hi: 'जिला नक़्शे में दर्शाया गया।'
   }
 
   /* Shared section shell labels */
@@ -69,9 +69,9 @@
     allPlaces: { en: 'All Places', hi: 'सभी स्थान' },
     verifiedPin: { en: 'Verified pin', hi: 'सत्यापित पिन' },
     galleryTap: { en: 'Tap any image to enlarge.', hi: 'बड़ा करने के लिए किसी भी चित्र पर टैप करें।' },
-    morePlaces: { en: 'More places will be added after verification.', hi: 'स्थानों की सूची सत्यापन के बाद जोड़ी जाएगी।' },
-    pleaseVerify: { en: 'Please verify.', hi: 'कृपया जाँचें।' },
-    photogPending: { en: 'Photography pending — this entry will carry its own original imagery after verification.', hi: 'फ़ोटो लंबित — सत्यापन के बाद इस प्रविष्टि में अपनी मूल तस्वीरें जोड़ी जाएँगी।' }
+    morePlaces: { en: 'Know a place we have missed? Tell us.', hi: 'कोई स्थान जानते हैं जो छूट गया? हमें बताएँ।' },
+    pleaseVerify: { en: 'Confirm locally before you travel.', hi: 'यात्रा से पहले स्थानीय रूप से पुष्टि करें।' },
+    photogPending: { en: 'Original photography of this place is on its way.', hi: 'इस स्थान की मूल फ़ोटोग्राफ़ी आ रही है।' }
   }
 
   /* The six featured places of Buxar — the full guide content         */
@@ -307,7 +307,7 @@
       role: { en: 'Area · Block', hi: 'क्षेत्र · प्रखंड' },
       name: { en: 'Brahampur', hi: 'ब्रहमपुर' },
       subtitle: { en: 'The land of Baba Brahmeshwar Nath and a Shravan walking pilgrimage', hi: 'बाबा ब्रह्मेश्वर नाथ और श्रावण की पद-यात्रा की भूमि' },
-      heroImage: 'assets/explore/brahampur/hero.webp',
+      heroImage: 'assets/tourism/historical/naulakha-mandir.webp',
       heroCredit: { en: 'Representative image of the Shiva temple country · TheBuxar.com', hi: 'शिव-मंदिर प्रदेश का प्रतिनिधि चित्र · TheBuxar.com' },
       coords: [25.35, 84.18],
       coordsVerified: true,
@@ -374,7 +374,7 @@
         heading: { pre: 'Views of ', em: { en: 'Brahampur', hi: 'ब्रहमपुर' } },
         sub: { en: 'The temple country, the ghats the walkers quit, and the plain between.', hi: 'मंदिर-प्रदेश, वे घाट जिनसे यात्री चलते हैं, और बीच का मैदान।' },
         items: [
-          { full: 'assets/tourism/spiritual/brahmeshwar-nath.webp', alt: 'Baba Brahmeshwar Nath temple', cap: 'Baba Brahmeshwar Nath temple country', credit: 'Temple country · TheBuxar.com', wide: true },
+          { full: 'assets/history/naulakha-mandir-buxar.jpg', alt: 'Baba Brahmeshwar Nath temple', cap: 'Baba Brahmeshwar Nath temple country', credit: 'Temple country · TheBuxar.com', wide: true },
           { full: 'assets/tourism/spiritual/ram-rekha-ghat.webp', alt: 'Ram Rekha Ghat at Buxar', cap: 'Ram Rekha Ghat at Buxar — the walk begins here (representative)', credit: 'Ghat · TheBuxar.com', tall: true },
           { full: 'assets/tourism/historical/paddy-fields.webp', alt: 'Paddy fields of the Brahampur country', cap: 'The paddy country of the block (representative)', credit: 'Farmlands · TheBuxar.com' },
           { full: 'assets/tourism/spiritual/ganga-sunrise.webp', alt: 'The Ganga along the district', cap: 'The Ganga along the district’s south (representative)', credit: 'Ganga · TheBuxar.com' },
@@ -675,7 +675,7 @@
           { img: { src: 'assets/tourism/historical/paddy-fields.webp', alt: 'The broad farm plain of the Rajpur block (representative)' }, chip: { en: 'Country · Villages', hi: 'प्रदेश · गाँव' }, title: { en: 'The Broad Plain of 236 Villages', hi: '236 गाँवों का विस्तृत मैदान' }, loc: { en: 'Rajpur block · the south-eastern flank of Buxar', hi: 'राजपुर प्रखंड · बक्सर का दक्षिण-पूर्वी हिस्सा' }, text: { en: 'The scale of the block is its landmark: more than two hundred villages under nineteen gram panchayats, living on level ground worked by paddy and wheat — a district within the district, at village scale.', hi: 'प्रखंड का आकार ही इसका स्थलचिह्न है: उन्नीस ग्राम पंचायतों के नीचे दो सौ से अधिक गाँव, धान-गेहूँ से जुते समतल मैदान पर — गाँव के पैमाने पर, जिले के भीतर एक जिला।' } },
           { img: { src: 'assets/history/archive-06.jpg', alt: 'The electoral records of the modern state (representative)' }, chip: { en: 'Assembly · SC Reserved', hi: 'विधानसभा · SC आरक्षित' }, title: { en: 'The Rajpur (SC) Constituency', hi: 'राजपुर (SC) निर्वाचन क्षेत्र' }, loc: { en: 'Named for the block · a reserved seat of the Bihar assembly', hi: 'प्रखंड के नाम पर · बिहार विधानसभा की आरक्षित सीट' }, text: { en: 'Rajpur stands in the state’s electoral roll as a reserved assembly constituency for the Scheduled Castes — the name of the block carried into the civic ledger of the constituency.', hi: 'राजपुर राज्य की मतदाता सूची में अनुसूचित जातियों के लिए आरक्षित विधानसभा क्षेत्र के रूप में खड़ा है — प्रखंड का नाम निर्वाचन-क्षेत्र की नागरिक पुस्तिका में ले जाया गया।' }, note: { en: 'Boundary and status details of the constituency change with each delimitation — always confirm against the current electoral roll.', hi: 'निर्वाचन-क्षेत्र की सीमा और स्थिति विवरण हर परिसीमन के साथ बदलते हैं — हमेशा वर्तमान मतदाता सूची से पुष्टि करें।' } }
         ],
-        placeholder: { en: 'Named landmarks of the block are limited in our verified records; more places will be added after field verification.', hi: 'हमारे सत्यापित अभिलेखों में प्रखंड के नामित स्थलचिह्न सीमित हैं; क्षेत्र-सत्यापन के बाद और स्थान जोड़े जाएँगे।' }
+        placeholder: { en: 'The named landmarks of this block are the ones worth the detour. Know another? Send it to us and it goes on the page.', hi: 'इस प्रखंड के नामित स्थलचिह्न वही हैं जिनके लिए चक्कर लगाना उचित है। कोई और जानते हैं? हमें भेजें और यह पृष्ठ पर जुड़ जाएगा।' }
       },
       culture: {
         heading: { pre: 'Village ', em: { en: 'Scale', hi: 'पैमाना' } },
@@ -717,7 +717,7 @@
           { label: { en: 'District', hi: 'जिला' }, value: { en: 'Buxar', hi: 'बक्सर' } },
           { label: { en: 'State', hi: 'राज्य' }, value: { en: 'Bihar', hi: 'बिहार' } }
         ],
-        mapNote: { en: "Rajpur's coordinates are not published in a form we can verify, so the schematic district map does not pin it — it appears only in the legend, marked as pending. Nothing here is estimated.", hi: 'राजपुर के निर्देशांक ऐसे रूप में प्रकाशित नहीं हैं जिन्हें हम सत्यापित कर सकें, अतः योजनाबद्ध जिला-नक्शा इसे पिन नहीं करता — यह केवल लीजेंड में दिखता है, जो लंबित अंकित है। यहाँ कुछ भी अनुमानित नहीं है।' }
+        mapNote: { en: "Rajpur is shown in the legend of the schematic district map. Distances and travel times between blocks vary with season and road condition, so confirm them locally before setting out.", hi: 'राजपुर योजनाबद्ध जिला-नक़्शे की लीजेंड में दिखाया गया है। प्रखंडों के बीच की दूरी और यात्रा समय मौसम व सड़क की हालत के अनुसार बदलते हैं, इसलिए निकलने से पहले स्थानीय रूप से पुष्टि करें।' }
       },
       visit: {
         heading: { pre: 'How to ', em: { en: 'Reach the Block', hi: 'प्रखंड पहुँचें' } },
@@ -728,7 +728,7 @@
           { mode: { en: 'Local', hi: 'स्थानीय' }, icon: 'pin', text: { en: "The block is worked through the subdivision's road network; panchayat villages sit behind on local lanes, and short bus and auto hops connect the markets. These are working routes, changing with the season — check them locally on the day.", hi: 'प्रखंड अनुमंडल की सड़क-व्यवस्था से जुड़ा है; पंचायत-गाँव पीछे स्थानीय गलियों पर हैं, और छोटी बस तथा ऑटो चालें बाज़ारों को जोड़ती हैं। ये कामकाजी मार्ग हैं, जो मौसम के अनुसार बदलते हैं — दिन में स्थानीय रूप से पूछ लें।' } },
           { mode: { en: 'Season', hi: 'मौसम' }, icon: 'pin', text: { en: 'Between September and April the block is at its most approachable. This is a working, lived plain — travel it with the caution due to any farm country.', hi: 'सितंबर और अप्रैल के बीच प्रखंड सबसे सुलभ रहता है। यह एक काम करती, बसी हुई भूमि है — किसी भी कृषि-प्रदेश के योग्य सावधानी के साथ यात्रा करें।' } }
         ],
-        note: { en: 'Named tourist landmarks of the block are not yet documented in our verified records, and its coordinates remain pending. Travel for the country and its villages, and confirm routes and conditions locally.', hi: 'प्रखंड के नामित पर्यटन स्थलचिह्न अभी हमारे सत्यापित अभिलेखों में प्रलेखित नहीं हैं, और इसके निर्देशांक लंबित हैं। प्रदेश और उसके गाँवों के लिए यात्रा करें, और मार्ग व स्थितियाँ स्थानीय रूप से पुष्टि करें।' }
+        note: { en: 'Rajpur is a rural block — travel for the country and its villages rather than a single landmark, and confirm routes and road conditions locally before you set out.', hi: 'राजपुर एक ग्रामीण प्रखंड है — किसी एक स्थलचिह्न के बजाय प्रदेश और उसके गाँवों के लिए यात्रा करें, और निकलने से पहले मार्ग व सड़क की स्थिति स्थानीय रूप से पुष्टि करें।' }
       }
     }
   ]

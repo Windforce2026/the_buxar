@@ -273,8 +273,18 @@
   border-radius: 999px;
   border: 1px solid transparent;
   cursor: pointer;
+  /* These are real <a> elements now, so strip the browser's link styling. */
+  text-decoration: none;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease,
     background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+.hero__btn:focus-visible {
+  outline: 2px solid #ffd76a;
+  outline-offset: 3px;
 }
 
 .hero__btn--gold {

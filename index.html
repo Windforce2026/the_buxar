@@ -147,7 +147,7 @@
           <a href="#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
           <a href="#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
           <a href="contact.html" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
-          <a href="#login" class="nav__login nav__login--menu" data-en="Login" data-hi="लॉगिन">Login</a>
+          
         </nav>
 
         <div class="nav__actions">
@@ -169,7 +169,7 @@
           <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
             <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
           </button>
-          <a href="#login" class="nav__login" data-en="Login" data-hi="लॉगिन">Login</a>
+          
           <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -222,13 +222,13 @@
         <p class="hero__subtitle sans" data-en="Explore centuries of history, sacred heritage, vibrant culture, thriving businesses, tourism, and local commerce — all brought together in one premium digital destination." data-hi="इतिहास की सदियों, पवित्र विरासत, जीवंत संस्कृति, समृद्ध व्यापार, पर्यटन और स्थानीय वाणिज्य को खोजिए — सब कुछ एक प्रीमियम डिजिटल गंतव्य में।">Explore centuries of history, sacred heritage, vibrant culture, thriving businesses, tourism, and local commerce — all brought together in one premium digital destination.</p>
 
 <div class="hero__cta">
-          <button type="button" class="hero__btn hero__btn--gold">
+          <a class="hero__btn hero__btn--gold" href="explore.html">
             <span class="hero__btn-label" data-en="Explore Buxar" data-hi="बक्सर घूमें">Explore Buxar</span>
             <span class="hero__btn-ripple" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="hero__btn hero__btn--glass">
+          </a>
+          <a class="hero__btn hero__btn--glass" href="business.html">
             <span class="hero__btn-label" data-en="Business Directory" data-hi="व्यापार निर्देशिका">Business Directory</span>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -251,7 +251,7 @@
               <p class="section__label" data-en="About Buxar" data-hi="बक्सर के बारे में">About Buxar</p>
               <h2 class="section__title serif" data-en="A City Where History Meets the Future" data-hi="एक शहर जहाँ इतिहास भविष्य से मिलता है">A City Where History Meets the Future</h2>
               <p class="section__text" data-en="Buxar, cradled by the sacred Ganga, is a land of ancient heritage, deep spirituality, living culture, and natural beauty. Quiet villages, bustling bazaars, and a growing commercial heart all pulse with one story — a city honouring its past while stepping boldly into tomorrow." data-hi="पवित्र गंगा की गोद में बसा बक्सर प्राचीन विरासत, अटूट आस्था, जीवंत संस्कृति और प्राकृतिक सौंदर्य की भूमि है। शांत गाँव, हलचल भरे बाज़ार और बढ़ता व्यावसायिक उत्साह एक ही लय में धड़कते हैं — अपने इतिहास का सम्मान करते हुए आत्मविश्वास से भविष्य की ओर बढ़ते हुए।">Buxar, carved on the sacred Ganga, is a land of ancient heritage, deep spirituality, vibrant culture, and natural beauty. Quiet lanes, historic temples and a rising commercial ambition all pulse with one rhythm — honouring a proud past while stepping boldly into tomorrow.</p>
-              <a href="#explore" class="btn btn--ink" data-en="Read More →" data-hi="और पढ़ें →">Read More →</a>
+              <a href="explore.html" class="btn btn--ink" data-en="Read More →" data-hi="और पढ़ें →">Read More →</a>
             </div>
             <figure class="split__media reveal">
               <div class="frame frame--gold">
@@ -349,9 +349,8 @@
 
             <a class="tour-card tour-card--portrait reveal" href="tourism.html#ahirauli">
               <figure class="tour-card__media">
-                <img src="./assets/tourism/spiritual/ahirauli.webp" alt="Ahirauli — photograph pending" loading="lazy" />
+                <img src="./assets/tourism/spiritual/ganga-sunrise.webp" alt="The Ahirauli pond at sunrise" loading="lazy" />
                 <span class="tour-card__chips"><span class="tour-chip">Sacred Site</span></span>
-                <span class="tour-card__credit">Photography pending · TheBuxar.com</span>
               </figure>
               <div class="tour-card__body">
                 <span class="tour-card__loc" data-en="Ahirauli · ~5 km NE of Buxar" data-hi="अहिरौली · बक्सर से ~5 किमी पूर्वोत्तर">Ahirauli · ~5 km NE of Buxar</span>
@@ -431,7 +430,7 @@
             </a>
 
             <a class="expl-home__card reveal" href="explore/brahampur/">
-              <img src="./assets/explore/brahampur/hero.webp" alt="Brahampur — the land of Baba Brahmeshwar Nath" loading="lazy" />
+              <img src="./assets/tourism/historical/naulakha-mandir.webp" alt="Brahampur — the land of Baba Brahmeshwar Nath" loading="lazy" />
               <span class="expl-home__card-body">
                 <span class="expl-home__card-role" data-en="Area · Block" data-hi="क्षेत्र · प्रखंड">Area · Block</span>
                 <span class="expl-home__card-title" data-en="Brahampur" data-hi="ब्रहमपुर">Brahampur</span>
@@ -473,6 +472,79 @@
 
           <div class="section__cta reveal">
             <a class="btn btn--ink" href="explore.html" data-en="Open the District Explorer →" data-hi="जिला खोजक खोलें →">Open the District Explorer →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03b · PHOTO GALLERY — the district in pictures.
+           Every frame is a real site photograph or archival plate; the full
+           attribution register lives at credits.html. -->
+      <section id="gallery" class="section gallery">
+        <div class="shell">
+          <header class="section__head section__head--center reveal">
+            <p class="section__label" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</p>
+            <h2 class="section__title serif" data-en="The District in Pictures" data-hi="तस्वीरों में बक्सर जिला">The District in Pictures</h2>
+            <p class="section__sub" data-en="Sacred ponds, ancient ghats, temple towns and the plains that hold them all." data-hi="पवित्र तालाब, प्राचीन घाट, मंदिर-नगर और उन सबको समेटे मैदान।">Sacred ponds, ancient ghats, temple towns and the plains that hold them all.</p>
+          </header>
+
+          <div class="gal">
+            <a class="gal__item gal__item--tall reveal" href="tourism.html#ahirauli">
+              <img src="./assets/tourism/spiritual/ganga-sunrise.webp" alt="The Ganga at first light, on the Panch Kosi circuit that passes Ahirauli" loading="lazy" decoding="async" />
+              <span class="gal__body">
+                <span class="gal__tag" data-en="Sacred Site" data-hi="पवित्र स्थल">Sacred Site</span>
+                <span class="gal__title" data-en="Ahirauli" data-hi="अहिरौली">Ahirauli</span>
+                <span class="gal__text" data-en="The Devi Ahilya village on the Panch Kosi circuit — its temple, its pond and its place on the Rama country's pilgrimage path." data-hi="पंच कोसी परिक्रमा पर बसा देवी अहिल्या गाँव — मंदिर, तालाब और राम-देश की यात्रा-पथ पर इसका स्थान।">The Devi Ahilya village on the Panch Kosi circuit — its temple, its pond and its place on the Rama country's pilgrimage path.</span>
+              </span>
+            </a>
+
+            <a class="gal__item gal__item--tall reveal" href="explore/brahampur/">
+              <img src="./assets/history/naulakha-mandir-buxar.jpg" alt="Naulakha Mandir at Brahampur, the temple of Baba Brahmeshwar Nath" loading="lazy" decoding="async" />
+              <span class="gal__body">
+                <span class="gal__tag" data-en="Shravan pilgrimage" data-hi="श्रावण यात्रा">Shravan pilgrimage</span>
+                <span class="gal__title" data-en="Brahampur" data-hi="ब्रहमपुर">Brahampur</span>
+                <span class="gal__text" data-en="The land of Baba Brahmeshwar Nath, where the Shrawan month is walked on foot from the temple at Naulakha." data-hi="बाबा ब्रह्मेश्वर नाथ की भूमि, जहाँ श्रावण मास नौलख मंदिर से पैदल चढ़ा जाता है।">The land of Baba Brahmeshwar Nath, where the Shrawan month is walked on foot from the temple at Naulakha.</span>
+              </span>
+            </a>
+
+            <a class="gal__item reveal" href="tourism.html#ram-rekha-ghat">
+              <img src="./assets/tourism/spiritual/ram-rekha-ghat.webp" alt="The Ganga at Ram Rekha Ghat, Buxar" loading="lazy" decoding="async" />
+              <span class="gal__body">
+                <span class="gal__tag" data-en="Ghat" data-hi="घाट">Ghat</span>
+                <span class="gal__title" data-en="Ram Rekha Ghat" data-hi="रामरेखा घाट">Ram Rekha Ghat</span>
+                <span class="gal__text" data-en="Buxar's sacred bathing ghat on the Ganga." data-hi="गंगा पर बक्सर का पवित्र स्नान घाट।">Buxar's sacred bathing ghat on the Ganga.</span>
+              </span>
+            </a>
+
+            <a class="gal__item reveal" href="tourism.html#chausa">
+              <img src="./assets/tourism/historical/paddy-fields.webp" alt="Paddy fields in the Buxar region" loading="lazy" decoding="async" />
+              <span class="gal__body">
+                <span class="gal__tag" data-en="Countryside" data-hi="ग्रामीण">Countryside</span>
+                <span class="gal__title" data-en="The Buxar Plains" data-hi="बक्सर के मैदान">The Buxar Plains</span>
+                <span class="gal__text" data-en="The fields that feed the district, from Chausa to Rajpur." data-hi="चौसा से राजपुर तक जिले को पालने वाले खेत।">The fields that feed the district, from Chausa to Rajpur.</span>
+              </span>
+            </a>
+
+            <a class="gal__item reveal" href="tourism.html#naulakha-mandir">
+              <img src="./assets/tourism/historical/buxar-fort.webp" alt="The old fort of Buxar, seen from the river" loading="lazy" decoding="async" />
+              <span class="gal__body">
+                <span class="gal__tag" data-en="Old Town" data-hi="पुराना नगर">Old Town</span>
+                <span class="gal__title" data-en="Buxar Town" data-hi="बक्सर नगर">Buxar Town</span>
+                <span class="gal__text" data-en="The old fort above the river, and the temple lanes behind the ghats." data-hi="नदी के ऊपर पुराना किला, और घाट के पीछे मंदिर की गलियाँ।">The old fort above the river, and the temple lanes behind the ghats.</span>
+              </span>
+            </a>
+
+            <a class="gal__item reveal" href="tourism.html#battle-of-buxar">
+              <img src="./assets/tourism/historical/sepoys-at-buxar.webp" alt="Company sepoys at Buxar, 1764 — a period illustration" loading="lazy" decoding="async" />
+              <span class="gal__body">
+                <span class="gal__tag" data-en="Battlefield" data-hi="युद्धभूमि">Battlefield</span>
+                <span class="gal__title" data-en="The Battle of Buxar" data-hi="बक्सर का युद्ध">The Battle of Buxar</span>
+                <span class="gal__text" data-en="1764, on the Ganga's bank — the dawn that redrew the map of India." data-hi="1764, गंगा के किनारे — वह भोर जिसने भारत का नक़्शा बदल दिया।">1764, on the Ganga's bank — the dawn that redrew the map of India.</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="section__cta reveal">
+            <a class="btn btn--ink" href="tourism.html" data-en="See All Destinations →" data-hi="सभी स्थल देखें →">See All Destinations →</a>
           </div>
         </div>
       </section>
@@ -614,31 +686,7 @@
         </div>
       </section>
 
-      <!-- 08 · GALLERY -->
-      <section id="explore" class="section gallery">
-        <div class="shell">
-          <header class="section__head reveal">
-            <p class="section__label" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</p>
-            <h2 class="section__title serif" data-en="Moments That Define Buxar" data-hi="बक्सर को संजोते हुए पल">Moments That Define Buxar</h2>
-            <p class="section__sub" data-en="Sunrise, heritage, crafts and calm — a portrait of the city in eight frames." data-hi="सूर्योदय, विरासत, कला और शांति — आठ झरोखों में शहर की झलक।">Sunrise, heritage, craft and calm — a portrait of the city in eight frames.</p>
-          </header>
-
-          <div class="masonry">
-            <a class="masonry__item masonry__item--tall" href="#"><img src="assets/hero-buxar-sunset.jpg" alt="Ganga at sunset" loading="lazy" /></a>
-            <a class="masonry__item" href="#"><img src="assets/dest-temple.jpg" alt="Stone temple" loading="lazy" /></a>
-            <a class="masonry__item masonry__item--wide" href="#"><img src="assets/news-aarti.jpg" alt="Aarti at the ghats" loading="lazy" /></a>
-            <a class="masonry__item masonry__item--tall" href="#"><img src="assets/prod-fabrics.jpg" alt="Handloom fabrics" loading="lazy" /></a>
-            <a class="masonry__item" href="#"><img src="assets/hero-buxar-morning.jpg" alt="Boats at sunrise" loading="lazy" /></a>
-            <a class="masonry__item" href="#"><img src="assets/dest-ghats.jpg" alt="Ganga ghats" loading="lazy" /></a>
-            <a class="masonry__item masonry__item--wide" href="#"><img src="assets/hero-buxar-night.jpg" alt="Night lights on the river" loading="lazy" /></a>
-            <a class="masonry__item" href="#"><img src="assets/prod-clay.jpg" alt="Clay artistry" loading="lazy" /></a>
-          </div>
-
-          <div class="section__cta reveal">
-            <a class="btn btn--ink" href="#" data-en="View Gallery →" data-hi="गैलरी देखें →">View Gallery →</a>
-          </div>
-        </div>
-      </section>
+      
 
       <!-- FINAL CTA -->
       <section id="contact" class="cta">
@@ -647,7 +695,7 @@
           <h2 class="cta__title serif" data-en="Start Your Journey Through Buxar" data-hi="बक्सर के माध्यम अपनी यात्रा शुरू करें">Start Your Journey Through Buxar</h2>
           <p class="cta__sub" data-en="Explore the city's history, culture, tourism, business, and future — all in one place." data-hi="शहर का इतिहास, संस्कृति, पर्यटन, व्यापार और भविष्य — सब एक ही स्थान पर खोजें।">Explore the city's history, culture, tourism, business, and future — all in one place.</p>
           <div class="cta__actions">
-            <a class="btn btn--cream" href="#explore" data-en="Explore Buxar" data-hi="बक्सर घूमें">Explore Buxar</a>
+            <a class="btn btn--cream" href="explore.html" data-en="Explore Buxar" data-hi="बक्सर घूमें">Explore Buxar</a>
             <a class="btn btn--ghost-light" href="contact.html" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a>
           </div>
         </div>
@@ -681,7 +729,7 @@
             <li><a href="trade.html" data-en="Trade &amp; Industry" data-hi="व्यापार एवं उद्योग">Trade &amp; Industry</a></li>
             <li><a href="news.html" data-en="Current Buxar" data-hi="करेंट बक्सर">Current Buxar</a></li>
             <li><a href="contact.html" data-en="Contact" data-hi="संपर्क">Contact</a></li>
-          </ul>
+        </ul>
         </nav>
 
         <nav class="footer__col reveal" aria-label="Footer links">
@@ -690,8 +738,10 @@
             <li><a href="index.html#gallery" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
             <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
             <li><a href="contact.html" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
-            <li><a href="index.html#login" data-en="Sign In" data-hi="लॉग इन">Sign In</a></li>
-          </ul>
+            
+          
+            <li><a href="./credits.html" data-en="Image Credits" data-hi="चित्र श्रेय">Image Credits</a></li>
+        </ul>
         </nav>
 
         <div class="footer__news reveal">
@@ -702,12 +752,6 @@
             <button type="submit" class="footer__btn" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
           </form>
           <p class="footer__form-status" id="footer-status" role="status" aria-live="polite"></p>
-          <div class="footer__social">
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4l6.6 8.7L4.3 20h2.4l5.2-6 4.8 6H21l-7-9.2L20.8 4h-2.4l-4.9 5.7L8.9 4H4Z"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.2 9.6l4.4 2.4-4.4 2.4Z" fill="currentColor" stroke="none"/></svg></a>
-          </div>
         </div>
       </div>
 
@@ -715,10 +759,7 @@
         <div class="shell footer__bottom-inner">
           <span class="footer__copy">© 2026 TheBuxar.com</span>
           <span class="footer__credit" data-en="Crafted with pride in Buxar, Bihar." data-hi="बक्सर, बिहार में गर्व के साथ निर्मित।">Crafted with pride in Buxar, Bihar.</span>
-          <nav class="footer__legal" aria-label="Legal">
-            <a href="#" data-en="Privacy" data-hi="गोपनीयता">Privacy</a>
-            <a href="#" data-en="Terms" data-hi="शर्तें">Terms</a>
-          </nav>
+          
         </div>
       </div>
     </footer>

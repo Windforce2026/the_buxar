@@ -22,15 +22,24 @@
         localStorage.setItem('buxar-theme', light ? 'light' : 'dark')
       } catch (e) {}
     }
-    // Clicking the sun -> light theme; clicking the moon -> dark theme.
-    if (sun) sun.addEventListener('click', (e) => { e.stopPropagation(); set(true) })
-    if (moon) moon.addEventListener('click', (e) => { e.stopPropagation(); set(false) })
+    // The whole button toggles. Previously only the sun/moon <svg> carried a
+    // listener, so clicking anywhere else on the button (its padding, its gap)
+    // silently did nothing.
     const meta = document.querySelector('meta[name="theme-color"]')
     const applyMeta = () =>
-      meta && meta.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#f6f0e1' : '#081C33')
+      meta && meta.setAttribute('content', root.getAttribute('data-theme')
+        ? '#FBF8F1' : '#081C33')
+
+    if (btn) {
+      const isLight = () => root.getAttribute('data-theme') === 'light'
+      btn.addEventListener('click', () => { set(!isLight()); applyMeta() })
+      // Keep the two icons out of the tab order / click path entirely.
+      if (sun) sun.setAttribute('aria-hidden', 'true')
+      if (moon) moon.setAttribute('aria-hidden', 'true')
+      btn.setAttribute('aria-pressed', String(isLight()))
+    }
     applyMeta()
-    const obs = new MutationObserver(applyMeta)
-    obs.observe(root, { attributes: true, attributeFilter: ['data-theme'] })
+    new MutationObserver(applyMeta).observe(root, { attributes: true, attributeFilter: ['data-theme'] })
   }
 
   /* --- Language --- */

@@ -75,7 +75,7 @@
       key: 'marketplace-traditional-products',
       src: 'assets/images/marketplace/categories/marketplace-traditional-products.jpg',
       source: 'TheBuxar.com project asset',
-      sourceUrl: 'Sumitsurai',
+      
       photographer: 'Sumitsurai',
       licence: 'CC BY-SA 4.0',
       usageType: 'category',
@@ -85,14 +85,13 @@
     },
     {
       key: 'marketplace-religious-items',
-      src: 'assets/images/marketplace/categories/marketplace-religious-items.jpg',
+      src: 'assets/news-diyas.jpg',
       source: 'Wikimedia Commons',
-      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Diwali_diyas.jpg',
-      photographer: 'PilotChicago',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/Category:Diwali',
       licence: 'CC BY-SA 4.0',
       usageType: 'category',
-      depicts: 'Rows of earthen oil lamps lit for Diwali',
-      creditAs: 'Earthen diyas lit for Diwali.',
+      depicts: 'Rows of lit earthen lamps',
+      creditAs: 'Earthen diyas lit for puja and Diwali.',
       attributionRequired: true
     },
     {
@@ -145,14 +144,14 @@
     },
     {
       key: 'marketplace-fresh-local',
-      src: 'assets/images/marketplace/categories/marketplace-fresh-local.jpg',
+      src: 'assets/images/marketplace/locations/marketplace-location-bihar-countryside.jpg',
       source: 'Wikimedia Commons',
-      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Rice_fields_near_Darbhanga,_Bihar_7.jpg',
-      photographer: 'Suyash.dwivedi',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/Category:Agriculture_in_Bihar',
+      photographer: 'T. R. Shankar Raman',
       licence: 'CC BY-SA 4.0',
       usageType: 'category',
-      depicts: 'Rice fields in Bihar',
-      creditAs: 'Rice fields in Bihar - the district is one of Bihar\'s rice bowls.',
+      depicts: 'Open countryside and farmland in the Buxar region',
+      creditAs: 'The farmland of Buxar district.',
       attributionRequired: true
     },
     {

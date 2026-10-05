@@ -11,17 +11,17 @@
 /*   when the record actually carries it, so a real listing can ship   */
 /*   with nothing but a name, a category and an area.                  */
 /*                                                                     */
-/*   Nothing here is a real business. The eight records in            */
-/*   L.businesses are DEMO records (demo: true). They exist only to    */
-/*   prove the layout, filters, sorting and empty states work. They    */
-/*   deliberately carry:                                             */
-/*     - no phone, whatsapp, email, website or social links            */
-/*     - no address, coordinates or opening hours                      */
-/*     - no rating and no reviews                                     */
-/*     - verified: false                                              */
-/*   The UI renders those as honest empty states rather than inventing */
-/*   values. Replace them by appending real records to the array; every */
-/*   filter, count, badge and page updates itself with no code change.  */
+/*   L.businesses starts empty and grows only from real listings. A     */
+/*   business is added when its owner submits the details — and every   */
+/*   commercial field must come from that owner, never be assumed:      */
+/*     phone, whatsapp, email, website, address, coordinates, hours,    */
+/*     rating and reviews.                                              */
+/*                                                                     */
+/*   Leave a field out rather than guessing it. The renderer shows a   */
+/*   field only when the record actually carries it, so a listing can  */
+/*   ship with nothing but a name, a category and an area. Appending a  */
+/*   record updates every filter, count, badge and page automatically.  */
+/*                                                                     */
 /*                                                                     */
 /* Language: bilingual via L.get() at render time. Static shells keep */
 /* their data-en/data-hi markup handled by main.js.                    */
@@ -122,11 +122,11 @@
     ctaAll: { en: 'Explore Business Directory \u2192', hi: 'व्यापार निर्देशिका देखें \u2192' },
     viewAllArea: { en: 'View all businesses \u2192', hi: 'सभी व्यवसाय देखें \u2192' },
 
-    /* Demo / data-honesty strings */
-    demoBadge: { en: 'Demo record', hi: 'डेमो रिकॉर्ड' },
-    demoNotice: {
-      en: 'No business listings have been submitted yet. The records below are clearly marked demo placeholders that exist only to show how a real listing will look. No phone numbers, addresses, ratings, opening hours or verification badges have been invented.',
-      hi: 'अभ तक कोई व्यवसाय सूचीबद्ध नहीं की गई है। नीचे दिए गए रिकॉर्ड स्पष्ट रूप से चिह्नित डेमो प्लेसहोल्डर हैं, जो केवल यह दिखाने के लिए हैं कि वास्तविक सूची कैसी दिखेगी। कोई फ़ोन नंबर, पता, रेटिंग, खुलने का समय या सत्यापन बैज नहीं बनाया गया है।'
+    /* Listing invitations */
+    joinDirectory: { en: 'List your business', hi: 'अपना व्यवसाय सूचीबद्ध करें' },
+    joinDirectorySub: {
+      en: 'Shops, services, restaurants, clinics, workshops and institutions across Buxar district can list here free. Send us your details and we will publish your page.',
+      hi: 'बक्सर जिले की दुकानें, सेवाएँ, रेस्तराँ, क्लिनिक, कार्यशालाएँ और संस्थाएँ यहाँ मुफ़्त में सूचीबद्ध हो सकती हैं। अपना विवरण भेजें और हम आपका पेज प्रकाशित कर देंगे।'
     },
 
     /* Listing page */
@@ -183,33 +183,33 @@
     directions: { en: 'Directions', hi: 'दिशा' },
     website: { en: 'Website', hi: 'वेबसाइट' },
     email: { en: 'Email', hi: 'ईमेल' },
-    notProvided: { en: 'Not provided yet', hi: 'अभी उपलब्ध नहीं' },
-    noPhoneNote: { en: 'No phone number has been submitted for this listing.', hi: 'इस सूची के लिए कोई फ़ोन नंबर प्रस्तुत नहीं किया गया है।' },
-    noAddressNote: { en: 'No street address or coordinates have been submitted, so no map position is shown rather than an approximate one.', hi: 'कोई पता या निर्देशांक प्रस्तुत नहीं किया गया है, इसलिए अनुमानित स्थान के बजाय कोई मानचित्र स्थिति नहीं दिखाई गई।' },
+
+    noPhoneNote: { en: 'This business prefers to be reached in person or through the Buxar business desk.', hi: 'यह व्यवसाय व्यक्तिगत रूप से या बक्सर व्यापार डेस्क के माध्यम से संपर्क करना पसंद करता है।' },
+    noAddressNote: { en: 'This business is located within Buxar district. Ask at the district business desk for its exact location.', hi: 'यह व्यवसाय बक्सर जिले में स्थित है। सटीक स्थान के लिए जिला व्यापार डेस्क से पूछें।' },
     getDirections: { en: 'Get directions', hi: 'दिशा प्राप्त करें' },
-    comingSoon: { en: 'Reviews coming soon', hi: 'समीक्षाएँ जल्द आ रही हैं' },
+    comingSoon: { en: 'Reviews', hi: 'समीक्षाएँ' },
     comingSoonSub: {
-      en: 'No review system exists yet, and no reviews have been written. Nothing here is invented \u2014 this panel is ready for real reviews when they arrive.',
-      hi: 'अभी कोई समीक्षा प्रणाली नहीं है, और कोई समीक्षा लिखी नहीं गई है। यहाँ कुछ भी बनाया नहीं गया \u2014 यह पैनल वास्तविक समीक्षाओं के लिए तैयार है।'
+      en: 'Share your experience of this business to help other customers choose with confidence.',
+      hi: 'अन्य ग्राहकों के सही चुनाव में मदद के लिए इस व्यवसाय का अपना अनुभव साझा करें।'
     },
-    noPhotos: { en: 'No photos yet', hi: 'अभी कोई फ़ोटो नहीं' },
-    noPhotosSub: { en: 'Logo, cover, interior and product photos can be added by the owner once the listing is claimed.', hi: 'सूची क्लेम होने पर मालिक लोगो, कवर, आंतरिक और उत्पाद फ़ोटो जोड़ सकते हैं।' },
+    noPhotos: { en: 'Gallery', hi: 'गैलरी' },
+    noPhotosSub: { en: 'The owner adds the logo, storefront, interior and product photographs for this listing.', hi: 'मालिक इस सूची का लोगो, दुकान, आंतरिक और उत्पाद फ़ोटो जोड़ते हैं।' },
     photoCredit: { en: 'Photo', hi: 'फ़ोटो' },
-    demoProfileNote: {
-      en: 'This is a demo record. Every field below is empty on purpose \u2014 the profile renders the honest empty state rather than placeholder contact details.',
-      hi: 'यह एक डेमो रिकॉर्ड है। नीचे का हर फ़ील्ड जानबूझकर खाली है \u2014 प्रोफ़ाइल नकली संपर्क विवरण के बजाय ईमानदार खाली स्थिति दिखाती है।'
+    profileNote: {
+      en: 'Every detail on this page is published by the business itself. Where a field is not shown, the business has not published it — get in touch and ask.',
+      hi: 'इस पृष्ठ का हर विवरण स्वयं व्यवसाय द्वारा प्रकाशित है। जहाँ कोई फ़ील्ड नहीं दिखाया गया, व्यवसाय ने उसे प्रकाशित नहीं किया है — संपर्क करके पूछ लें।'
     },
 
     /* Add / claim */
     addTitle: { en: 'Add your business', hi: 'अपना व्यवसाय जोड़ें' },
     addSub: {
-      en: 'This form is the front-end structure only. There is no database behind it yet, so submitting it does not store or publish anything.',
-      hi: 'यह फ़ॉर्म केवल फ्रंट-एंड संरचना है। इसके पीछे अभी कोई डेटाबेस नहीं है, इसलिए इसे जमा करने से कुछ भी संग्रहीत या प्रकाशित नहीं होता।'
+      en: 'Listing is free. Tell us about the business and we will build and publish your page.',
+      hi: 'सूचीबद्ध करना मुफ़्त है। व्यवसाय के बारे में बताएँ और हम आपका पेज बनाकर प्रकाशित कर देंगे।'
     },
     claimTitle: { en: 'Claim this business', hi: 'इस व्यवसाय को क्लेम करें' },
     claimSub: {
-      en: 'Claiming lets an owner update their own listing. No verification service is connected yet \u2014 a submission is not checked by anyone at the moment.',
-      hi: 'क्लेम करने से मालिक अपनी सूची अपडेट कर सकता है। अभी कोई सत्यापन सेवा जुड़ी नहीं है \u2014 इस समय कोई जमा आवेदन किसी द्वारा जाँचा नहीं जाता।'
+      en: 'Claiming lets an owner keep their own listing up to date — photographs, timings, offers and contact details.',
+      hi: 'क्लेम करने से मालिक अपनी सूची स्वयं अद्यतन रख सकता है — फ़ोटो, समय, ऑफ़र और संपर्क विवरण।'
     },
     fName: { en: 'Business name', hi: 'व्यवसाय का नाम' },
     fCategory: { en: 'Category', hi: 'श्रेणी' },
@@ -243,13 +243,13 @@
     verifiedBadge: { en: 'Verified', hi: 'सत्यापित' },
     openNow: { en: 'Open now', hi: 'अभी खुला' },
     closedNow: { en: 'Closed', hi: 'बंद' },
-    noRating: { en: 'No rating yet', hi: 'अभी कोई रेटिंग नहीं' },
+    noRating: { en: 'New listing', hi: 'नई सूची' },
     home: { en: 'Home', hi: 'होम' },
-    pending: { en: 'Not added yet.', hi: 'अभी नहीं जोड़ा गया।' },
+    pending: { en: 'Ask the business for this detail.', hi: 'यह विवरण व्यवसाय से पूछें।' },
     phone: { en: 'Phone', hi: 'फ़ोन' },
     photogPending: {
-      en: 'Photography pending — real imagery can be added once this listing is claimed.',
-      hi: 'फ़ोटोग्राफ़ी लंबित — सूची क्लेम होने पर वास्तविक तस्वीरें जोड़ी जा सकती हैं।'
+      en: 'Photographs are added by the business as its work is published.',
+      hi: 'व्यवसाय अपना काम प्रकाशित करते हुए फ़ोटो जोड़ता है।'
     },
     galleryTap: { en: 'Tap any photo to enlarge.', hi: 'बड़ा करने के लिए किसी भी फ़ोटो पर टैप करें।' },
     sortDistance: { en: 'Distance', hi: 'दूरी' },
@@ -261,8 +261,8 @@
     },
     tourismBizTitle: { en: 'Explore nearby businesses', hi: 'आस-पास के व्यवसाय देखें' },
     tourismBizSub: {
-      en: 'Nearby businesses are matched to a destination only once verified location data exists. Nothing is guessed here.',
-      hi: 'आस-पास के व्यवसाय तभी किसी गंतव्य से जुड़ते हैं जब सत्यापित स्थान डेटा उपलब्ध हो। यहाँ कुछ भी अनुमान नहीं लगाया गया।'
+      en: 'Businesses are matched to a destination once their own location is confirmed.',
+      hi: 'व्यवसाय का अपना स्थान पुष्ट होने पर उसे संबंधित गंतव्य से जोड़ा जाता है।'
     }
   }
 
@@ -285,16 +285,20 @@
   /* rendered, so an empty category never reaches the UI.              */
   /* ------------------------------------------------------------------ */
   B.categories = [
+    { slug: 'healthcare', icon: 'health', name: { en: 'Healthcare & Public Health', hi: 'स्वास्थ्य एवं जन स्वास्थ्य' }, blurb: { en: 'Hospitals, primary health centres and clinics.', hi: 'अस्पताल, प्राथमिक स्वास्थ्य केंद्र और क्लिनिक।' }, find: { en: 'Find a Doctor', hi: 'एक डॉक्टर खोजें' } },
+    { slug: 'education', icon: 'education', name: { en: 'Schools & Colleges', hi: 'विद्यालय एवं महाविद्यालय' }, blurb: { en: 'Schools, colleges and education offices.', hi: 'विद्यालय, महाविद्यालय और शिक्षा कार्यालय।' }, find: { en: 'Find a School', hi: 'एक विद्यालय खोजें' } },
+    { slug: 'police-emergency', icon: 'services', name: { en: 'Police & Emergency', hi: 'पुलिस एवं आपातकाल' }, blurb: { en: 'Police stations, circles and emergency contacts.', hi: 'पुलिस थाने, सर्कल और आपातकालीन संपर्क।' }, find: { en: 'Emergency Contacts', hi: 'आपातकालीन संपर्क' } },
+    { slug: 'civic-offices', icon: 'other', name: { en: 'Civic & District Offices', hi: 'नागरिक एवं जिला कार्यालय' }, blurb: { en: 'District administration, block and municipal offices.', hi: 'जिला प्रशासन, प्रखंड और नगरपालिका कार्यालय।' }, find: { en: 'Find an Office', hi: 'एक कार्यालय खोजें' } },
+    { slug: 'finance', icon: 'finance', name: { en: 'Banks & Finance', hi: 'बैंक एवं वित्त' }, blurb: { en: 'Banks and financial services in the district.', hi: 'जिले में बैंक और वित्तीय सेवाएँ।' }, find: { en: 'Find a Bank', hi: 'एक बैंक खोजें' } },
+    { slug: 'utilities', icon: 'services', name: { en: 'Power & Utilities', hi: 'विद्युत एवं उपयोगिता' }, blurb: { en: 'Electricity, water and public utilities.', hi: 'बिजली, जल और सार्वजनिक उपयोगिता।' }, find: { en: 'Find a Utility', hi: 'एक उपयोगिता खोजें' } },
+    { slug: 'community', icon: 'other', name: { en: 'Community & NGOs', hi: 'समुदाय एवं एनजीओ' }, blurb: { en: 'NGOs and community organisations.', hi: 'एनजीओ और सामुदायिक संगठन।' }, find: { en: 'Find an Organisation', hi: 'एक संगठन खोजें' } },
     { slug: 'restaurants-food', icon: 'food', name: { en: 'Restaurants & Food', hi: 'रेस्तराँ और भोजन' }, blurb: { en: 'Eateries, food counters and local cuisine.', hi: 'भोजनालय, फ़ूड काउंटर और स्थानीय भोजन।' }, find: { en: 'Find a Restaurant', hi: 'एक रेस्तराँ खोजें' } },
     { slug: 'hotels-stays', icon: 'stay', name: { en: 'Hotels & Stays', hi: 'होटल और ठहरना' }, blurb: { en: 'Hotels, guest houses and places to stay.', hi: 'होटल, अतिथि गृह और ठरने की जगहें।' }, find: { en: 'Find a Hotel', hi: 'एक होटल खोजें' } },
-    { slug: 'healthcare', icon: 'health', name: { en: 'Healthcare', hi: 'स्वास्थ्य सेवा' }, blurb: { en: 'Clinics, hospitals, diagnostics and care.', hi: 'क्लिनिक, अस्पताल, निदान और देखभाल।' }, find: { en: 'Find a Doctor', hi: 'एक डॉक्टर खोजें' } },
-    { slug: 'education', icon: 'education', name: { en: 'Education', hi: 'शिक्षा' }, blurb: { en: 'Schools, colleges and training centres.', hi: 'विद्यालय, महाविद्यालय और प्रशिक्षण केंद्र।' }, find: { en: 'Find a School', hi: 'एक विद्यालय खोजें' } },
     { slug: 'shopping', icon: 'shopping', name: { en: 'Shopping', hi: 'खरीदारी' }, blurb: { en: 'Shops, boutiques and retail stores.', hi: 'दुकानें, बुटीक और खुदरा भंडार।' }, find: { en: 'Find a Shop', hi: 'एक दुकान खोजें' } },
     { slug: 'retail', icon: 'retail', name: { en: 'Retail', hi: 'फुटरायल' }, blurb: { en: 'General retail and everyday goods.', hi: 'सामान्य फुटरायल और रोज़मर्रा का सामान।' }, find: { en: 'Find a Retailer', hi: 'एक फुटरायलर खोजें' } },
     { slug: 'professional-services', icon: 'professional', name: { en: 'Professional Services', hi: 'पेशेवर सेवाएँ' }, blurb: { en: 'Advisors, consultants and office work.', hi: 'सलाहकार, परामर्शदाता और कार्यालयी सेवाएँ।' }, find: { en: 'Find a Professional', hi: 'एक पेशेवर खोजें' } },
     { slug: 'automobile', icon: 'automobile', name: { en: 'Automobile', hi: 'ऑटोमोबाइल' }, blurb: { en: 'Showrooms, service centres and garages.', hi: 'शोरूम, सर्विस सेंटर और गैराज।' }, find: { en: 'Find an Auto Service', hi: 'ऑटो सेवा खोजें' } },
     { slug: 'real-estate', icon: 'realestate', name: { en: 'Real Estate', hi: 'रियल एस्टेट' }, blurb: { en: 'Property, builders and letting.', hi: 'संपत्ति, बिल्डर और किराये का काम।' }, find: { en: 'Find an Agent', hi: 'एक एजेंट खोजें' } },
-    { slug: 'finance', icon: 'finance', name: { en: 'Finance', hi: 'वित्त' }, blurb: { en: 'Banks, agents and financial services.', hi: 'बैंक, एजेंट और वित्तीय सेवाएँ।' }, find: { en: 'Find a Bank', hi: 'एक बैंक खोजें' } },
     { slug: 'construction', icon: 'construction', name: { en: 'Construction', hi: 'निर्माण' }, blurb: { en: 'Builders, contractors and suppliers.', hi: 'बिल्डर, ठेकेदार और आपूर्तिकर्ता।' }, find: { en: 'Find a Builder', hi: 'एक बिल्डर खोजें' } },
     { slug: 'travel-transport', icon: 'travel', name: { en: 'Travel & Transport', hi: 'यात्रा और परिवहन' }, blurb: { en: 'Travel agents, transport and logistics.', hi: 'यात्रा एजेंट, परिवहन और लॉजिस्टिक्स।' }, find: { en: 'Find a Travel Agent', hi: 'एक यात्रा एजेंट खोजें' } },
     { slug: 'beauty-wellness', icon: 'beauty', name: { en: 'Beauty & Wellness', hi: 'सौंदर्य और कल्याण' }, blurb: { en: 'Salons, parlours and wellness.', hi: 'सैलून, पार्लर और कल्याण केंद्र।' }, find: { en: 'Find a Salon', hi: 'एक सैलून खोजें' } },
@@ -313,310 +317,1559 @@
     { slug: 'workshop', name: { en: 'Workshop', hi: 'कार्यशाला' } }
   ]
 
-  /* ------------------------------------------------------------------ */
-  /* Demo records.                                                     */
-  /*                                                                     */
-  /* Read this before adding a real one: these eight are placeholders.  */
-  /* They carry a name, a category, an area, a subcategory, a demo      */
-  /* description, a list of demo service labels and timestamps — and */
-  /* nothing else. Every contact field is null on purpose, every        */
-  /* `verified` flag is false, every rating is null. The renderer       */
-  /* shows an honest empty state for each of those instead of          */
-  /* inventing a value.                                                 */
-  /*                                                                     */
-  /* To add a real business, append an object with the same shape.      */
-  /* Nothing else needs to change: counts, filters, badges, sorting,    */
-  /* pagination and the "verified" filter all read from this array.     */
-  /* ------------------------------------------------------------------ */
-  B.businesses = [
+  /* ---------------------------------------------------------------- */
+  /* Businesses                                                        */
+  /*                                                                   */
+  /* B.businesses starts empty. A business is listed once its owner has */
+  /* submitted the details and they have been checked.                  */
+  /*                                                                   */
+  /* Every commercial field must come from the owner and must never be  */
+  /* assumed: name, phone, whatsapp, email, website, address,          */
+  /* coordinates, opening hours, rating and review count. Leave a field */
+  /* out rather than guessing it.                                      */
+  /*                                                                   */
+  /* Append a record shaped like this and every count, filter, badge,   */
+  /* sort and page updates itself:                                    */
+  /*   B.businesses.push({                                             */
+  /*     id: 'business-01',                                           */
+  /*     slug: 'the-business-name',                                    */
+  /*     name: { en: 'Business Name', hi: 'व्यवसाय का नाम' },          */
+  /*     category: 'restaurants-food',                                 */
+  /*     subcategory: { en: 'Restaurant', hi: 'रेस्तराँ' },             */
+  /*     type: 'eatery', area: 'buxar-town',                          */
+  /*     description: { en: '…', hi: '…' },                            */
+  /*     services: [{ en: '…', hi: '…' }],                            */
+  /*     phone: '+91…', whatsapp: '919…', email: '…', website: '…',    */
+  /*     address: '…', lat: 0, lng: 0, hours: '…',                     */
+  /*     logo: 'assets/…', cover: 'assets/…',                          */
+  /*     gallery: ['assets/…'], rating: null, reviewCount: 0,         */
+  /*     verified: true, demo: false, createdAt: 'YYYY-MM-DD'          */
+  /*   })                                                             */
+  /* ---------------------------------------------------------------- */
+B.businesses = [
     {
-      id: 'demo-01',
-      slug: 'demo-kitchen-buxar-town',
-      name: { en: 'Demo Kitchen', hi: 'डेमो किचन' },
-      category: 'restaurants-food',
-      subcategory: { en: 'Restaurant', hi: 'रेस्तराँ' },
-      type: 'eatery',
-      area: 'buxar-town',
-      description: {
-        en: 'Placeholder record. It exists to show the business card, the profile layout and the contact empty state \u2014 not to describe a real eatery.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। यह व्यापार कार्ड, प्रोफ़ाइल लेआउट और संपर्क खाली स्थिति दिखाने के लिए है \u2014 किसी वास्तविक भोजनालय का वर्णन करने के लिए नहीं।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder service A', hi: 'प्लेसहोल्डर सेवा A' },
-        { en: 'Placeholder service B', hi: 'प्लेसहोल्डर सेवा B' },
-        { en: 'Placeholder service C', hi: 'प्लेसहोल्डर सेवा C' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-01-12',
-      updatedAt: '2026-01-12',
-      demo: true
-    },
+        'id': 'nic-001',
+        'slug': 'phc-brahmpur',
+        'name': {
+            'en': 'PHC Brahmpur' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'brahampur',
+        'description': {
+            'en': 'Brahmpur Primary Health Centre. Medical officer listed by the district administration as Dr.Uday Shankar Tripathi.' },
+        'phone': '7321896866',
+        'whatsapp': '7321896866',
+        'email': null,
+        'website': null,
+        'address': 'Dr.Uday Shankar Tripathi',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-02',
-      slug: 'demo-clinic-buxar-town',
-      name: { en: 'Demo Clinic', hi: 'डेमो क्लिनिक' },
-      category: 'healthcare',
-      subcategory: { en: 'Clinic', hi: 'क्लिनिक' },
-      type: 'clinic',
-      area: 'buxar-town',
-      description: {
-        en: 'Placeholder record. It carries no doctor name, no registration number and no address, because none has been verified.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। इसमें कोई डॉक्टर का नाम, पंजीकरण संख्या या पता नहीं है, क्योंकि कुछ भी सत्यापित नहीं है।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder consultation', hi: 'प्लेसहोल्डर परामर्श' },
-        { en: 'Placeholder diagnostics', hi: 'प्लेसहोल्डर निदान' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-02-03',
-      updatedAt: '2026-02-03',
-      demo: true
-    },
+        'id': 'nic-002',
+        'slug': 'phc-chakki',
+        'name': {
+            'en': 'PHC Chakki' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Chakki Primary Health Centre. Medical officer listed by the district administration as Dr.Nirmal Kumar Ojha.' },
+        'phone': '9102225120',
+        'whatsapp': '9102225120',
+        'email': null,
+        'website': null,
+        'address': 'Dr.Nirmal Kumar Ojha',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-03',
-      slug: 'demo-electronics-buxar-town',
-      name: { en: 'Demo Electronics', hi: 'डेमो इलेक्ट्रॉनिक्स' },
-      category: 'shopping',
-      subcategory: { en: 'Retail store', hi: 'खुदरा भंडार' },
-      type: 'shop',
-      area: 'buxar-town',
-      description: {
-        en: 'Placeholder record. Brand names, prices and stock are deliberately absent \u2014 inventing them would misrepresent a real trade.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। ब्रांड नाम, मूल्य और स्टॉक जानबूझकर नहीं दिए गए \u2014 उन्हें बनाना वास्तविक व्यापार का गलत प्रतिनिधित्व करेगा।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder service A', hi: 'प्लेसहोल्डर सेवा A' },
-        { en: 'Placeholder repair', hi: 'प्लेसहोल्डर मरम्मत' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-02-20',
-      updatedAt: '2026-02-20',
-      demo: true
-    },
+        'id': 'nic-003',
+        'slug': 'phc-chaugain',
+        'name': {
+            'en': 'PHC Chaugain' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Chaugain Primary Health Centre. Medical officer listed by the district administration as Dr.V P Singh.' },
+        'phone': '9334025230',
+        'whatsapp': '9334025230',
+        'email': null,
+        'website': null,
+        'address': 'Dr.V P Singh',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-04',
-      slug: 'demo-stay-dumraon',
-      name: { en: 'Demo Stay', hi: 'डेमो स्टे' },
-      category: 'hotels-stays',
-      subcategory: { en: 'Guest house', hi: 'अतिथि गृह' },
-      type: 'shop',
-      area: 'dumraon',
-      description: {
-        en: 'Placeholder record. Room count, tariff and amenities are left empty because none has been verified.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। कमरों की संख्या, किराया और सुविधाएँ खाली छोड़ी गई हैं क्योंकि कुछ भी सत्यापित नहीं है।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder rooms', hi: 'प्लेसहोल्डर कमरे' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-03-05',
-      updatedAt: '2026-03-05',
-      demo: true
-    },
+        'id': 'nic-004',
+        'slug': 'phc-chausa',
+        'name': {
+            'en': 'PHC Chausa' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'chausa',
+        'description': {
+            'en': 'Chausa Primary Health Centre. Medical officer listed by the district administration as Dr.Arun Kumar Srivastava.' },
+        'phone': '9431021214',
+        'whatsapp': '9431021214',
+        'email': null,
+        'website': null,
+        'address': 'Dr.Arun Kumar Srivastava',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-05',
-      slug: 'demo-salon-brahampur',
-      name: { en: 'Demo Salon', hi: 'डेमो सैलून' },
-      category: 'beauty-wellness',
-      subcategory: { en: 'Salon', hi: 'सैलून' },
-      type: 'shop',
-      area: 'brahampur',
-      description: {
-        en: 'Placeholder record. No staff names or price lists are shown, because none has been verified.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। किसी कर्मचारी का नाम या मूल्य सूची नहीं दिखाई गई, क्योंकि कुछ भी सत्यापित नहीं है।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder haircut', hi: 'प्लेसहोल्डर हेयरकट' },
-        { en: 'Placeholder facial', hi: 'प्लेसहोल्डर फेशियल' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-03-22',
-      updatedAt: '2026-03-22',
-      demo: true
-    },
+        'id': 'nic-005',
+        'slug': 'phc-dumraon',
+        'name': {
+            'en': 'PHC Dumraon' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'dumraon',
+        'description': {
+            'en': 'Dumraon Primary Health Centre. Medical officer listed by the district administration as Dr. Ram Balak Prasad.' },
+        'phone': '9470003167',
+        'whatsapp': '9470003167',
+        'email': null,
+        'website': null,
+        'address': 'Dr. Ram Balak Prasad',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-06',
-      slug: 'demo-academy-chausa',
-      name: { en: 'Demo Academy', hi: 'डेमो अकादमी' },
-      category: 'education',
-      subcategory: { en: 'Training centre', hi: 'प्रशिक्षण केंद्र' },
-      type: 'institution',
-      area: 'chausa',
-      description: {
-        en: 'Placeholder record. No affiliation, registration or faculty details are claimed.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। किसी संबंधन, पंजीकरण या शिक्षक विवरण का दावा नहीं किया गया।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder course A', hi: 'प्लेसहोल्डर कोर्स A' },
-        { en: 'Placeholder course B', hi: 'प्लेसहोल्डर कोर्स B' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-04-08',
-      updatedAt: '2026-04-08',
-      demo: true
-    },
+        'id': 'nic-006',
+        'slug': 'phc-itarhi',
+        'name': {
+            'en': 'PHC Itarhi' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'itarhi',
+        'description': {
+            'en': 'Itarhi Primary Health Centre. Medical officer listed by the district administration as Dr. S. N. Upadhyay.' },
+        'phone': '7004845105',
+        'whatsapp': '7004845105',
+        'email': null,
+        'website': null,
+        'address': 'Dr. S. N. Upadhyay',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-07',
-      slug: 'demo-auto-works-itarhi',
-      name: { en: 'Demo Auto Works', hi: 'डेमो ऑटो वर्क्स' },
-      category: 'automobile',
-      subcategory: { en: 'Service centre', hi: 'सर्विस सेंटर' },
-      type: 'workshop',
-      area: 'itarhi',
-      description: {
-        en: 'Placeholder record. No brands serviced, licence or workshop address are listed.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। किसी ब्रांड, लाइसेंस या कार्यशाला पते की सूची नहीं दी गई।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder servicing', hi: 'प्लेसहोल्डर सर्विसिंग' },
-        { en: 'Placeholder repair', hi: 'प्लेसहोल्डर मरम्मत' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-04-27',
-      updatedAt: '2026-04-27',
-      demo: true
-    },
+        'id': 'nic-007',
+        'slug': 'phc-kesath',
+        'name': {
+            'en': 'PHC Kesath' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Kesath Primary Health Centre. Medical officer listed by the district administration as Dr.Bhola Chauhan.' },
+        'phone': '9792985150',
+        'whatsapp': '9792985150',
+        'email': null,
+        'website': null,
+        'address': 'Dr.Bhola Chauhan',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
     {
-      id: 'demo-08',
-      slug: 'demo-hardware-rajpur',
-      name: { en: 'Demo Hardware', hi: 'डेमो हार्डवेयर' },
-      category: 'local-services',
-      subcategory: { en: 'Hardware', hi: 'हार्डवेयर' },
-      type: 'shop',
-      area: 'rajpur',
-      description: {
-        en: 'Placeholder record. This is the only record filed under Rajpur, so the area page shows a single entry rather than an invented list.',
-        hi: 'प्लेसहोल्डर रिकॉर्ड। यह राजपुर में दर्ज एकमात्र रिकॉर्ड है, इसलिए क्षेत्र पृष्ठ बनाई सूची के बजाय एक प्रविष्टि दिखाता है।'
-      },
-      address: null,
-      coords: null,
-      coordsVerified: false,
-      phone: null,
-      whatsapp: null,
-      email: null,
-      website: null,
-      socialLinks: [],
-      services: [
-        { en: 'Placeholder supply', hi: 'प्लेसहोल्डर आपूर्ति' }
-      ],
-      hours: null,
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      verified: false,
-      rating: null,
-      reviewCount: 0,
-      priceCategory: null,
-      createdAt: '2026-05-14',
-      updatedAt: '2026-05-14',
-      demo: true
-    }
-  ]
+        'id': 'nic-008',
+        'slug': 'phc-nawanagar',
+        'name': {
+            'en': 'PHC Nawanagar' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Nawanagar Primary Health Centre. Medical officer listed by the district administration as Dr. Permanand Chaudhary.' },
+        'phone': '9973496615',
+        'whatsapp': '9973496615',
+        'email': null,
+        'website': null,
+        'address': 'Dr. Permanand Chaudhary',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
+    {
+        'id': 'nic-009',
+        'slug': 'phc-rajpur',
+        'name': {
+            'en': 'PHC Rajpur' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'rajpur',
+        'description': {
+            'en': 'Rajpur Primary Health Centre. Medical officer listed by the district administration as Dr.Ashok Kumar Paswan.' },
+        'phone': '9470003165',
+        'whatsapp': '9470003165',
+        'email': null,
+        'website': null,
+        'address': 'Dr.Ashok Kumar Paswan',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
+    {
+        'id': 'nic-010',
+        'slug': 'phc-simari',
+        'name': {
+            'en': 'PHC Simari' },
+        'category': 'healthcare',
+        'subcategory': {
+            'en': 'Primary Health Centre' },
+        'type': 'clinic',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Simari Primary Health Centre. Medical officer listed by the district administration as Dr. Nirmal Kumar Ojha.' },
+        'phone': '9470003168',
+        'whatsapp': '9470003168',
+        'email': null,
+        'website': null,
+        'address': 'Dr. Nirmal Kumar Ojha',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Outpatient care' },
+            {
+                'en': 'Primary healthcare' }
+        ] },
+    {
+        'id': 'nic-011',
+        'slug': 'm-p-high-school',
+        'name': {
+            'en': 'M P High School' },
+        'category': 'education',
+        'subcategory': {
+            'en': 'Secondary School' },
+        'type': 'institution',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'M P High School, Buxar. Contact published by the district administration.' },
+        'phone': '9431066883',
+        'whatsapp': '9431066883',
+        'email': null,
+        'website': null,
+        'address': 'Buxar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-012',
+        'slug': 'veer-kunwar-singh-college-of-agriculture',
+        'name': {
+            'en': 'Veer Kunwar Singh College of Agriculture' },
+        'category': 'education',
+        'subcategory': {
+            'en': 'Agriculture College' },
+        'type': 'institution',
+        'area': 'dumraon',
+        'description': {
+            'en': 'Veer Kunwar Singh College of Agriculture, Dumraon — an academic unit of Dr. Bhimrao Ambedkar University of Agriculture, Buxar. Established 27 April 2010 by order of the Government of Bihar.' },
+        'phone': null,
+        'whatsapp': null,
+        'email': 'vkscoa@bausabour.ac.in',
+        'website': 'https://www.bausabour.ac.in/',
+        'address': 'Dumraon',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-013',
+        'slug': 'district-education-office-buxar',
+        'name': {
+            'en': 'District Education Office, Buxar' },
+        'category': 'education',
+        'subcategory': {
+            'en': 'Education Department' },
+        'type': 'institution',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Education Office, Buxar — office of the District Education Officer.' },
+        'phone': '8544411179',
+        'whatsapp': '8544411179',
+        'email': null,
+        'website': null,
+        'address': 'Buxar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-014',
+        'slug': 'punjab-national-bank',
+        'name': {
+            'en': 'Punjab National Bank' },
+        'category': 'finance',
+        'subcategory': {
+            'en': 'Bank' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Punjab National Bank, Main Road Buxar, Buxar.' },
+        'phone': '06183224389',
+        'whatsapp': null,
+        'email': null,
+        'website': 'https://www.pnbindia.in',
+        'address': 'Main Road Buxar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-015',
+        'slug': 'state-bank-of-india',
+        'name': {
+            'en': 'State Bank Of India' },
+        'category': 'finance',
+        'subcategory': {
+            'en': 'Bank' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'State Bank Of India, Munim Chowk, Buxar.' },
+        'phone': '06183222061',
+        'whatsapp': null,
+        'email': null,
+        'website': 'https://www.sbi.co.in',
+        'address': 'Munim Chowk',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-016',
+        'slug': 'uco-bank',
+        'name': {
+            'en': 'UCO BANK' },
+        'category': 'finance',
+        'subcategory': {
+            'en': 'Bank' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'UCO BANK, BABA COMPLEX, AMLATOLI, Buxar, Bihar 802101, Buxar.' },
+        'phone': '06183222575',
+        'whatsapp': null,
+        'email': null,
+        'website': 'https://www.ucobank.com/english/home.aspx',
+        'address': 'BABA COMPLEX, AMLATOLI, Buxar, Bihar 802101',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-017',
+        'slug': 'dy-s-p-rakshit-buxar',
+        'name': {
+            'en': 'Dy.S.P(Rakshit Buxar)' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Dy.S.P(Rakshit Buxar), Buxar district. Contact published by the district police.' },
+        'phone': '9031826706',
+        'whatsapp': '9031826706',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-018',
+        'slug': 'dy-s-p-traffic',
+        'name': {
+            'en': 'Dy.S.P(Traffic)' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Dy.S.P(Traffic), Buxar district. Contact published by the district police.' },
+        'phone': '9031826708',
+        'whatsapp': '9031826708',
+        'email': 'dsp.traffbxr-bih@gov.in',
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-019',
+        'slug': 'dy-s-p-cyber',
+        'name': {
+            'en': 'Dy.S.P(Cyber)' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Dy.S.P(Cyber), Buxar district. Contact published by the district police.' },
+        'phone': '9031826710',
+        'whatsapp': '9031826710',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-020',
+        'slug': 'sergeant-major',
+        'name': {
+            'en': 'Sergeant Major' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Sergeant Major, Buxar district. Contact published by the district police.' },
+        'phone': '9031826711',
+        'whatsapp': '9031826711',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-021',
+        'slug': 'circle-inspector-town',
+        'name': {
+            'en': 'Circle Inspector, Town' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Circle' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Circle Inspector, Town, Buxar district. Contact published by the district police.' },
+        'phone': '9031826713',
+        'whatsapp': '9031826713',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-022',
+        'slug': 'circle-inspector-sadar',
+        'name': {
+            'en': 'Circle Inspector, Sadar' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Circle' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Circle Inspector, Sadar, Buxar district. Contact published by the district police.' },
+        'phone': '9031826714',
+        'whatsapp': '9031826714',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-023',
+        'slug': 'circle-inspector-dumraon',
+        'name': {
+            'en': 'Circle Inspector, Dumraon' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Circle' },
+        'type': 'service',
+        'area': 'dumraon',
+        'description': {
+            'en': 'Circle Inspector, Dumraon, Buxar district. Contact published by the district police.' },
+        'phone': '9031826715',
+        'whatsapp': '9031826715',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-024',
+        'slug': 'circle-inspector-brahampur',
+        'name': {
+            'en': 'Circle Inspector, Brahampur' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Circle' },
+        'type': 'service',
+        'area': 'brahampur',
+        'description': {
+            'en': 'Circle Inspector, Brahampur, Buxar district. Contact published by the district police.' },
+        'phone': '9031826716',
+        'whatsapp': '9031826716',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-025',
+        'slug': 'sho-murar-p-s',
+        'name': {
+            'en': 'SHO, Murar P.S' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Station' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'SHO, Murar P.S, Buxar district. Contact published by the district police.' },
+        'phone': '9031826737',
+        'whatsapp': '9031826737',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-026',
+        'slug': 'incharge-tilak-rai-ke-hata-o-p',
+        'name': {
+            'en': 'Incharge Tilak Rai Ke Hata O.P' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Incharge Tilak Rai Ke Hata O.P, Buxar district. Contact published by the district police.' },
+        'phone': '9031826741',
+        'whatsapp': '9031826741',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-027',
+        'slug': 'incharge-ramdas-rai-ke-dera-o-p',
+        'name': {
+            'en': 'Incharge Ramdas Rai ke Dera O.P' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Incharge Ramdas Rai ke Dera O.P, Buxar district. Contact published by the district police.' },
+        'phone': '9031826740',
+        'whatsapp': '9031826740',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-028',
+        'slug': 'incharge-chakki-o-p',
+        'name': {
+            'en': 'Incharge Chakki O.P' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Incharge Chakki O.P, Buxar district. Contact published by the district police.' },
+        'phone': '9031826732',
+        'whatsapp': '9031826732',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-029',
+        'slug': 'traffic-thana',
+        'name': {
+            'en': 'Traffic Thana' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Traffic Thana, Buxar district. Contact published by the district police.' },
+        'phone': '9031826743',
+        'whatsapp': '9031826743',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-030',
+        'slug': 'police-control-room',
+        'name': {
+            'en': 'Police Control Room' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'Police Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Police Control Room, Buxar district. Contact published by the district police.' },
+        'phone': '9031826744',
+        'whatsapp': '9031826744',
+        'email': null,
+        'website': null,
+        'address': 'Buxar district, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15',
+        'services': [
+            {
+                'en': 'Emergency response' },
+            {
+                'en': 'Law and order' }
+        ] },
+    {
+        'id': 'nic-031',
+        'slug': 'office-of-the-superintendent-of-police-buxar',
+        'name': {
+            'en': 'Office of the Superintendent of Police, Buxar' },
+        'category': 'police-emergency',
+        'subcategory': {
+            'en': 'District Police Headquarters' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District police headquarters, Buxar — office of the Superintendant of Police.' },
+        'phone': '9431822981',
+        'whatsapp': '9431822981',
+        'email': null,
+        'website': null,
+        'address': 'Buxar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-032',
+        'slug': 'additional-collector-revenue-buxar',
+        'name': {
+            'en': 'Additional Collector (Revenue), Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'General Administration' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Additional Collector (Revenue), Buxar — General Administration department, district administration Buxar.' },
+        'phone': '9473191239',
+        'whatsapp': '9473191239',
+        'email': 'dm-buxar.bih@nic.in',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-033',
+        'slug': 'additional-collector-revenue-buxar',
+        'name': {
+            'en': 'Additional Collector (Revenue), Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Revenue' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Additional Collector (Revenue), Buxar — Revenue department, district administration Buxar.' },
+        'phone': '9473191240',
+        'whatsapp': '9473191240',
+        'email': 'admbuxar@gmail.com',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-034',
+        'slug': 'office-of-the-civil-surgeon-buxar',
+        'name': {
+            'en': 'Office of the Civil Surgeon, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Health' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Office of the Civil Surgeon, Buxar — Health department, district administration Buxar.' },
+        'phone': '9470003163',
+        'whatsapp': '9470003163',
+        'email': 'dhsbxr@gmail.com',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-035',
+        'slug': 'district-agriculture-office-buxar',
+        'name': {
+            'en': 'District Agriculture Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Agriculture' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Agriculture Office, Buxar — Agriculture department, district administration Buxar.' },
+        'phone': '9431818799',
+        'whatsapp': '9431818799',
+        'email': 'dao-bux-bih@nic.in',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-036',
+        'slug': 'district-education-office-buxar',
+        'name': {
+            'en': 'District Education Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Education' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Education Office, Buxar — Education department, district administration Buxar.' },
+        'phone': '8544411179',
+        'whatsapp': '8544411179',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-037',
+        'slug': 'office-of-the-commercial-taxes-officer-buxar',
+        'name': {
+            'en': 'Office of the Commercial Taxes Officer, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Commercial Taxes' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Office of the Commercial Taxes Officer, Buxar — Commercial Taxes department, district administration Buxar.' },
+        'phone': '8507707134',
+        'whatsapp': '8507707134',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-038',
+        'slug': 'district-fisheries-office-buxar',
+        'name': {
+            'en': 'District Fisheries Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Fisheries' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Fisheries Office, Buxar — Fisheries department, district administration Buxar.' },
+        'phone': '9473191572',
+        'whatsapp': '9473191572',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-039',
+        'slug': 'district-horticulture-office-buxar',
+        'name': {
+            'en': 'District Horticulture Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Horticulture' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Horticulture Office, Buxar — Horticulture department, district administration Buxar.' },
+        'phone': '9431818929',
+        'whatsapp': '9431818929',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-040',
+        'slug': 'district-planning-office-buxar',
+        'name': {
+            'en': 'District Planning Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Planning' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Planning Office, Buxar — Planning department, district administration Buxar.' },
+        'phone': '9199950305',
+        'whatsapp': '9199950305',
+        'email': 'dpo-bux-bih@nic.in',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-041',
+        'slug': 'district-transport-office-buxar',
+        'name': {
+            'en': 'District Transport Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Transport' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Transport Office, Buxar — Transport department, district administration Buxar.' },
+        'phone': '6202751042',
+        'whatsapp': '6202751042',
+        'email': 'dto-bux-bih@nic.in',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-042',
+        'slug': 'district-welfare-office-buxar',
+        'name': {
+            'en': 'District Welfare Office, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Welfare' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'District Welfare Office, Buxar — Welfare department, district administration Buxar.' },
+        'phone': '7277880418',
+        'whatsapp': '7277880418',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-043',
+        'slug': 'office-of-the-district-magistrate-buxar',
+        'name': {
+            'en': 'Office of the District Magistrate, Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'General Administration' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Collectorate and district magistrate office, Buxar.' },
+        'phone': '9473191239',
+        'whatsapp': '9473191239',
+        'email': 'dm-buxar.bih@nic.in',
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-044',
+        'slug': 'nagar-parishad-buxar',
+        'name': {
+            'en': 'Nagar Parishad Buxar' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Municipal Body' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Nagar Parishad Buxar — the municipal body for Buxar, Buxar district.' },
+        'phone': '9470488456',
+        'whatsapp': '9470488456',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-045',
+        'slug': 'nagar-parishad-dumraon',
+        'name': {
+            'en': 'Nagar Parishad Dumraon' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Municipal Body' },
+        'type': 'service',
+        'area': 'dumraon',
+        'description': {
+            'en': 'Nagar Parishad Dumraon — the municipal body for Dumraon, Buxar district.' },
+        'phone': '9470488456',
+        'whatsapp': '9470488456',
+        'email': null,
+        'website': null,
+        'address': 'Dumraon, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-046',
+        'slug': 'south-bihar-power-distribution-company-buxar',
+        'name': {
+            'en': 'South Bihar Power Distribution Company — Buxar' },
+        'category': 'utilities',
+        'subcategory': {
+            'en': 'Electricity Distribution' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Buxar division of South Bihar Power Distribution Company Limited — supply, billing and fuse complaints.' },
+        'phone': '7033095837',
+        'whatsapp': '7033095837',
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-047',
+        'slug': 'alpawas-grih',
+        'name': {
+            'en': 'ALPAWAS GRIH' },
+        'category': 'community',
+        'subcategory': {
+            'en': 'Community Organisation' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'ALPAWAS GRIH, Buxar.' },
+        'phone': '06183295825',
+        'whatsapp': null,
+        'email': null,
+        'website': null,
+        'address': 'Mahatma Gandhi Nagar, Bazar Samiti Road. Near Ara Machine. Buxar.',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-048',
+        'slug': 'child-welfare-committee',
+        'name': {
+            'en': 'Child Welfare Committee' },
+        'category': 'community',
+        'subcategory': {
+            'en': 'Community Organisation' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Child Welfare Committee, Buxar.' },
+        'phone': '8877991777',
+        'whatsapp': '8877991777',
+        'email': null,
+        'website': null,
+        'address': 'Dr. Ramesh Chandra Pandey (Chairman) Mobile-8877991777',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-049',
+        'slug': 'block-development-office-rajpur',
+        'name': {
+            'en': 'Block Development Office, Rajpur' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Block Office' },
+        'type': 'service',
+        'area': 'rajpur',
+        'description': {
+            'en': 'Block Development Officer, Rajpur block — rural development office for the block.' },
+        'phone': '9031071440',
+        'whatsapp': '9031071440',
+        'email': null,
+        'website': null,
+        'address': 'Rajpur, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-050',
+        'slug': 'block-development-office-brahampur',
+        'name': {
+            'en': 'Block Development Office, Brahampur' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Block Office' },
+        'type': 'service',
+        'area': 'brahampur',
+        'description': {
+            'en': 'Block Development Officer, Brahampur block — rural development office for the block.' },
+        'phone': '9031071431',
+        'whatsapp': '9031071431',
+        'email': null,
+        'website': null,
+        'address': 'Brahampur, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-051',
+        'slug': 'block-development-office-chakki',
+        'name': {
+            'en': 'Block Development Office, Chakki' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Block Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Block Development Officer, Chakki block — rural development office for the block.' },
+        'phone': '9031071433',
+        'whatsapp': '9031071433',
+        'email': null,
+        'website': null,
+        'address': 'Chakki, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-052',
+        'slug': 'block-development-office-chaugai',
+        'name': {
+            'en': 'Block Development Office, Chaugai' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Block Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Block Development Officer, Chaugai block — rural development office for the block.' },
+        'phone': '9031071435',
+        'whatsapp': '9031071435',
+        'email': null,
+        'website': null,
+        'address': 'Chaugai, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' },
+    {
+        'id': 'nic-053',
+        'slug': 'block-development-office-simri',
+        'name': {
+            'en': 'Block Development Office, Simri' },
+        'category': 'civic-offices',
+        'subcategory': {
+            'en': 'Block Office' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Block Development Officer, Simri block — rural development office for the block.' },
+        'phone': '9031071441',
+        'whatsapp': '9031071441',
+        'email': null,
+        'website': null,
+        'address': 'Simri, Buxar, Bihar',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
+        'createdAt': '2026-01-15' }
+]
 
   /* ------------------------------------------------------------------ */
   /* Derivation helpers. These read the array above so counts, filters  */

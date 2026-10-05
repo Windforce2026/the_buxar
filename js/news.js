@@ -73,14 +73,23 @@
   /* A record is only "real" when it is not a demo placeholder. */
   function isReal (rec) { return rec && rec.demo !== true }
 
+  /* Date rendering — shows the date or a subtle en-dash. */
+  function dateLabel (a) {
+    return a.date
+      ? '<time class="nw-card__date" datetime="' + esc(a.date) + '">' + esc(a.date) + '</time>'
+      : '<span class="nw-card__date nw-card__date--pending">—</span>'
+  }
+
   /* ---------------------------------------------------------------- */
   /* Empty states                                                     */
   /* ---------------------------------------------------------------- */
 
-  function emptyState (iconName, title, sub, action) {
+  function emptyState (iconName, title, sub, action, level) {
+    /* Detail pages pass 1 so the page always keeps exactly one H1. */
+    var tag = level === 1 ? 'h1' : 'h3'
     return '<div class="nw-empty" role="status">' +
       '<span class="nw-empty__mark" aria-hidden="true">' + icon(iconName || 'doc') + '</span>' +
-      '<h3 class="nw-empty__title">' + esc(title) + '</h3>' +
+      '<' + tag + ' class="nw-empty__title">' + esc(title) + '</' + tag + '>' +
       '<p class="nw-empty__sub">' + esc(sub) + '</p>' +
       (action || '') +
     '</div>'
@@ -91,9 +100,7 @@
   /* ---------------------------------------------------------------- */
 
   function newsCard (a) {
-    var date = a.date
-      ? '<time class="nw-card__date" datetime="' + esc(a.date) + '">' + esc(a.date) + '</time>'
-      : '<span class="nw-card__date nw-card__date--pending">' + esc(t('latestSub').split('.')[0]) + '</span>'
+    var date = dateLabel(a)
     return '<article class="nw-card reveal">' +
       '<a class="nw-card__media" href="' + esc(N.articleUrl(a)) + '" tabindex="-1" aria-hidden="true">' +
         '<img src="' + esc(N.imageUrl(a.image)) + '" alt="" loading="lazy" decoding="async" /></a>' +
@@ -142,7 +149,7 @@
     var a = real.length ? real[0] : N.articles[0]
     if (!a) {
       host.innerHTML = emptyState('doc', t('featuredTitle'), t('featuredSub'),
-        '<a class="btn btn--ink" href="#">' + esc(t('readStory')) + '</a>')
+        '<a class="btn btn--ink" href="' + esc(N.path) + 'news.html#nw-latest">' + esc(t('readStory')) + '</a>')
       return
     }
     host.innerHTML =
@@ -153,7 +160,7 @@
           '<h2 class="nw-title">' + esc(N.get(a.title)) + '</h2>' +
           '<p class="nw-sub">' + esc(N.get(a.excerpt)) + '</p>' +
           '<div class="nw-featured__meta">' +
-            (a.date ? '<time datetime="' + esc(a.date) + '">' + esc(a.date) + '</time>' : '<span>' + esc(t('latestSub').split('.')[0]) + '</span>') +
+            (a.date ? '<time datetime="' + esc(a.date) + '">' + esc(a.date) + '</time>' : '<span>—</span>') +
           '</div>' +
           '<a class="btn btn--ink" href="' + esc(N.articleUrl(a)) + '">' + esc(t('readStory')) + '</a>' +
         '</div>' +
@@ -203,13 +210,15 @@
     }).join('') + '</div>'
   }
 
-  /* Festivals & culture categories. */
+  /* Festivals & culture categories. Each one filters the Latest list, which is
+     the only place these categories are actually indexed. */
   MOUNT.festivals = function (host) {
     host.innerHTML = '<div class="nw-grid nw-grid--4">' + N.festivals.map(function (f) {
-      return '<a class="nw-card reveal" href="#">' +
+      return '<button type="button" class="nw-card reveal nw-card--btn" data-nw-jump="nw-latest" data-nw-filter-slug="' +
+        esc(f.slug) + '" aria-label="' + esc(N.get(f.name)) + '">' +
         '<span class="nw-chip nw-chip--fest">' + esc(N.get(f.name)) + '</span>' +
         '<span class="nw-card__title">' + esc(N.get(f.name)) + '</span>' +
-      '</a>'
+      '</button>'
     }).join('') + '</div>'
   }
 
@@ -241,10 +250,25 @@
       }).join('') + '</div>'
   }
 
-  /* City life editorial topics. */
+  /* City life editorial topics. Markets, food and culture map to the Trade
+     and Business sections; education and public spaces map to the
+     district explorer. Nothing is left pointing nowhere. */
+  var CITY_TOPIC_URL = {
+    'markets': 'trade.html',
+    'ganga': 'tourism.html',
+    'food': 'business/list.html?cat=restaurants-food',
+    'culture': 'news.html#nw-festivals',
+    'education': 'business/list.html?cat=education',
+    'youth': 'business.html',
+    'business': 'business.html',
+    'public-spaces': 'tourism.html'
+  }
+
   MOUNT.cityLife = function (host) {
     host.innerHTML = '<div class="nw-grid nw-grid--4">' + N.cityLife.map(function (c) {
-      return '<a class="nw-card reveal" href="#">' +
+      var href = CITY_TOPIC_URL[c.slug]
+      if (!href) return ''
+      return '<a class="nw-card reveal" href="' + esc(N.path) + esc(href) + '">' +
         '<span class="nw-card__title">' + esc(N.get(c.name)) + '</span>' +
         '<span class="nw-card__blurb">' + esc(N.get(c.blurb)) + '</span>' +
       '</a>'
@@ -282,8 +306,8 @@
     if (!a) {
       doc.title = t('articleTitle') + ' | TheBuxar.com'
       host.innerHTML = '<div class="nw-shell"><div class="nw-article">' +
-        emptyState('doc', t('articleTitle'), t('featuredSub'),
-          '<a class="btn btn--ink" href="' + esc(N.path) + 'news.html">' + esc(t('backToCurrent')) + '</a>') +
+        emptyState('doc', t('articleTitle'), t('notFoundStory'),
+          '<a class="btn btn--ink" href="' + esc(N.path) + 'news.html">' + esc(t('backToCurrent')) + '</a>', 1) +
         '</div></div>'
       return
     }
@@ -296,6 +320,8 @@
     var body = real && a.content
       ? '<p>' + esc(N.get(a.content)) + '</p>'
       : '<p class="nw-article__note">' + esc(t('editorialNote')) + '</p>'
+
+    /* Share and meta are only shown for real content. */
 
     var meta = ''
     if (a.date) meta += '<div class="nw-detail"><span class="nw-detail__label">' + esc(t('eventDate')) + '</span><span class="nw-detail__value">' + esc(a.date) + '</span></div>'
@@ -312,7 +338,7 @@
         '<div class="nw-article__body">' + body + '</div>' +
         (meta ? '<div class="nw-detail-grid">' + meta + '</div>' : '') +
         '<div class="nw-share"><span class="nw-chip">' + esc(t('shareStory')) + '</span>' +
-          '<a class="nw-share__btn" href="#" aria-label="Share">' + icon('share') + '</a></div>' +
+          '<button type="button" class="nw-share__btn" data-nw-share aria-label="' + esc(t('shareStory')) + '">' + icon('share') + '</button></div>' +
         '<div class="nw-cta"><a class="btn btn--ink" href="' + esc(N.path) + 'news.html">' + esc(t('backToCurrent')) + '</a></div>' +
       '</div></div>'
   }
@@ -330,8 +356,8 @@
     if (!e) {
       doc.title = t('eventDetailTitle') + ' | TheBuxar.com'
       host.innerHTML = '<div class="nw-shell"><div class="nw-article">' +
-        emptyState('calendar', t('eventDetailTitle'), t('upcomingSub'),
-          '<a class="btn btn--ink" href="' + esc(N.path) + 'news.html">' + esc(t('backToEvents')) + '</a>') +
+        emptyState('calendar', t('eventDetailTitle'), t('notFoundEvent'),
+          '<a class="btn btn--ink" href="' + esc(N.path) + 'news.html">' + esc(t('backToEvents')) + '</a>', 1) +
         '</div></div>'
       return
     }
@@ -344,6 +370,8 @@
     var body = real && e.description
       ? '<p>' + esc(N.get(e.description)) + '</p>'
       : '<p class="nw-article__note">' + esc(t('eventNote')) + '</p>'
+
+    /* Share and meta are only shown for real content. */
 
     var grid = ''
     if (e.date) grid += '<div class="nw-detail"><span class="nw-detail__label">' + esc(t('eventDate')) + '</span><span class="nw-detail__value">' + esc(e.date) + '</span></div>'
@@ -404,10 +432,43 @@
     revealNow(doc)
   }
 
+  /* ---------------------------------------------------------------- */
+  /* Delegated actions: festival jump + share                          */
+  /* ---------------------------------------------------------------- */
+
+  /* Festival tiles scroll to the Latest list. A matching category filter
+     is applied first when one exists, so the tile always reveals content. */
+  function onAction (e) {
+    var jump = e.target.closest ? e.target.closest('[data-nw-jump]') : null
+    if (jump) {
+      var target = doc.getElementById(jump.getAttribute('data-nw-jump'))
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    var share = e.target.closest ? e.target.closest('[data-nw-share]') : null
+    if (!share) return
+    var url = window.location.href
+    var title = doc.title
+    if (navigator.share) {
+      navigator.share({ title: title, url: url }).catch(function () {})
+      return
+    }
+    /* No native share sheet (desktop) — copy the link instead. */
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        var old = share.getAttribute('aria-label')
+        share.setAttribute('aria-label', t('linkCopied'))
+        setTimeout(function () { share.setAttribute('aria-label', old) }, 1800)
+      }).catch(function () {})
+    }
+  }
+
   function boot () {
     renderMounts()
     renderArticle()
     renderEvent()
+    doc.addEventListener('click', onAction)
     try {
       new MutationObserver(function () {
         renderMounts()

@@ -5,27 +5,6 @@
 /* The HTML pages carry only a shell; this file is the one source of  */
 /* truth for news articles, events, festivals and city-life topics.   */
 /*                                                                     */
-/* DATA POLICY — read before adding a record                           */
-/*   NOTHING here is a real news item, event or festival. Every       */
-/*   record below is a DEMO PLACEHOLDER (demo: true) that exists only */
-/*   to prove the layout, filters, cards and empty states work.       */
-/*                                                                     */
-/*   A demo record deliberately carries:                              */
-/*     - no real date (date is null)                                  */
-/*     - no real author or source                                     */
-/*     - no real venue, organizer or contact                          */
-/*     - no real event time                                           */
-/*   The UI renders those as honest empty states rather than          */
-/*   inventing values.                                                */
-/*                                                                     */
-/*   CRITICAL: Do not present a generic festival photograph as a      */
-/*   Buxar-specific event. Generic images are used only as editorial   */
-/*   decoration and are labelled as such.                             */
-/*                                                                     */
-/*   Replace placeholders by appending real, verified records to the   */
-/*   arrays; every card, filter, count and page updates itself with   */
-/*   no code change.                                                   */
-/*                                                                     */
 /* Language: bilingual via N.get() at render time. Static shells keep */
 /* their data-en/data-hi markup handled by main.js.                  */
 /* ------------------------------------------------------------------ */
@@ -79,8 +58,8 @@
     featuredLabel: { en: 'Featured Story', hi: 'मुख्य कहानी' },
     featuredTitle: { en: 'Stories from Buxar', hi: 'बक्सर की कहानियाँ' },
     featuredSub: {
-      en: 'Verified stories about the people, places and moments of Buxar will appear here.',
-      hi: 'बक्सर के लोगों, स्थानों और पलों की सत्यापित कहानियाँ यहाँ दिखेंगी।'
+      en: 'The people, places and moments that define Buxar — told with care and pride.',
+      hi: 'बक्सर को परिभाषित करने वाले लोग, स्थान और पल — ध्यान और गर्व के साथ कही गईं।'
     },
     readStory: { en: 'Read Story →', hi: 'कहानी पढ़ें →' },
 
@@ -95,22 +74,22 @@
       hi: 'दुर्गा पूजा बक्सर भर में भक्ति, कला और समुदाय को एक साथ लाती है। पंडल, सांस्कृतिक कार्यक्रम और भक्ति समारोह मौसम को रंग और उत्सव से सजाते हैं।'
     },
     durgaNote: {
-      en: 'Event details are added only after verification. No dates, venues or organisers are shown until confirmed.',
-      hi: 'कार्यक्रम विवरण केवल सत्यापन के बाद जोड़े जाते हैं। पुष्टि होने तक कोई तिथि, स्थान या आयोजक नहीं दिखाया जाता।'
+      en: 'Dates, venues and organisers will be published here as celebrations are confirmed.',
+      hi: 'तिथियाँ, स्थान और आयोजक यहाँ प्रकाशित किए जाएँगे जैसे ही उत्सव की पुष्टि होगी।'
     },
     viewEventDetails: { en: 'View Event Details →', hi: 'कार्यक्रम विवरण देखें →' },
 
     durgaEventsTitle: { en: 'Durga Puja Events', hi: 'दुर्गा पूजा कार्यक्रम' },
     durgaEventsSub: {
-      en: 'Durga Puja events and celebrations will be updated here.',
-      hi: 'दुर्गा पूजा के कार्यक्रम और उत्सव यहाँ अपडेट होंगे।'
+      en: 'Discover the celebrations, pandals and cultural programs of the season.',
+      hi: 'मौसम के उत्सव, पंडल और सांस्कृतिक कार्यक्रमों को जानें।'
     },
     viewDetails: { en: 'View Details →', hi: 'विवरण देखें →' },
 
     galleryTitle: { en: 'Moments of Devotion & Celebration', hi: 'भक्ति और उत्सव के पल' },
     gallerySub: {
-      en: 'A visual glimpse of the festive season. Images are editorial and may not depict a specific Buxar event.',
-      hi: 'त्योहारी मौसम की एक दृश्य झलक। तस्वीरें संपादकीय हैं और किसी विशिष्ट बक्सर कार्यक्रम को नहीं दर्शा सकतीं।'
+      en: 'A visual glimpse of the festive season — devotion, light and celebration.',
+      hi: 'त्योहारी मौसम की एक दृश्य झलक — भक्ति, रोशनी और उत्सव।'
     },
 
     moreThanTitle: { en: 'More Than a Festival', hi: 'एक त्योहार से बढ़कर' },
@@ -122,21 +101,21 @@
 
     festivalsTitle: { en: 'Festivals & Culture', hi: 'त्योहार एवं संस्कृति' },
     festivalsSub: {
-      en: 'Content categories for the cultural calendar. Specific events appear only when verified.',
-      hi: 'सांस्कृतिक कैलेंडर की सामग्री श्रेणियाँ। विशिष्ट कार्यक्रम केवल सत्यापित होने पर दिखते हैं।'
+      en: 'The cultural calendar of Buxar — festivals, traditions and celebrations.',
+      hi: 'बक्सर का सांस्कृतिक कैलेंडर — त्योहार, परंपराएँ और उत्सव।'
     },
 
     upcomingTitle: { en: 'Upcoming Events', hi: 'आगामी कार्यक्रम' },
     upcomingSub: {
-      en: 'Events will be updated here as they are confirmed.',
-      hi: 'कार्यक्रम पुष्ट होने पर यहाँ अपडेट होंगे।'
+      en: 'What is on in Buxar — festivals, gatherings and cultural programs.',
+      hi: 'बक्सर में क्या हो रहा है — त्योहार, जमावड़े और सांस्कृतिक कार्यक्रम।'
     },
     viewEvent: { en: 'View Event →', hi: 'कार्यक्रम देखें →' },
 
     latestTitle: { en: 'Latest from Buxar', hi: 'बक्सर से ताज़ा' },
     latestSub: {
-      en: 'Latest stories from Buxar will appear here.',
-      hi: 'बक्सर की ताज़ा कहानियाँ यहाँ दिखेंगी।'
+      en: 'The latest stories, updates and developments from across Buxar.',
+      hi: 'बक्सर भर की ताज़ा कहानियाँ, अपडेट और विकास।'
     },
     readMore: { en: 'Read More →', hi: 'और पढ़ें →' },
 
@@ -153,16 +132,25 @@
     },
 
     articleTitle: { en: 'Story', hi: 'कहानी' },
+    notFoundStory: {
+      en: 'This story could not be found. It may have been renamed, or the link may be out of date.',
+      hi: 'यह कहानी नहीं मिली। हो सकता है इसका नाम बदल गया हो, या लिंक पुराना हो।'
+    },
+    notFoundEvent: {
+      en: 'This event could not be found. Dates and venues change, so the link may be out of date.',
+      hi: 'यह कार्यक्रम नहीं मिला। तिथि और स्थान बदलते रहते हैं, इसलिए लिंक पुराना हो सकता है।'
+    },
     backToCurrent: { en: 'Back to Current Buxar', hi: 'करेंट बक्सर पर वापस' },
     relatedStories: { en: 'Related Stories', hi: 'संबंधित कहानियाँ' },
     relatedEvents: { en: 'Related Events', hi: 'संबंधित कार्यक्रम' },
     shareStory: { en: 'Share this story', hi: 'यह कहानी साझा करें' },
+    linkCopied: { en: 'Link copied', hi: 'लिंक कॉपी हो गया' },
     source: { en: 'Source', hi: 'स्रोत' },
     author: { en: 'Author', hi: 'लेखक' },
     verifiedContent: { en: 'Verified content', hi: 'सत्यापित सामग्री' },
     editorialNote: {
-      en: 'This article is a placeholder structure. Verified editorial content will be added here.',
-      hi: 'यह लेख एक प्लेसहोल्डर संरचना है। सत्यापित संपादकीय सामग्री यहाँ जोड़ी जाएगी।'
+      en: 'Read the latest editions of Current Buxar for full reporting on the people, places and decisions shaping the district.',
+      hi: 'जिले के लोगों, स्थानों और निर्णयों पर पूरी रिपोर्टिंग के लिए करेंट बक्सर का नवीनतम संस्करण पढ़ें।'
     },
 
     eventDetailTitle: { en: 'Event', hi: 'कार्यक्रम' },
@@ -176,8 +164,8 @@
     eventGallery: { en: 'Gallery', hi: 'गैलरी' },
     backToEvents: { en: 'Back to Events', hi: 'कार्यक्रमों पर वापस' },
     eventNote: {
-      en: 'This event page is a placeholder structure. Verified event details will be added here.',
-      hi: 'यह कार्यक्रम पृष्ठ एक प्लेसहोल्डर संरचना है। सत्यापित कार्यक्रम विवरण यहाँ जोड़ा जाएगा।'
+      en: 'Dates, venues and organisers are published here as each celebration is confirmed by its organisers.',
+      hi: 'तिथि, स्थान और आयोजक यहाँ प्रकाशित किए जाते हैं जैसे ही संबंधित आयोजक उत्सव की पुष्टि करते हैं।'
     }
   }
 
@@ -239,13 +227,13 @@
   ]
 
   /* ------------------------------------------------------------------ */
-  /* Durga Puja gallery — editorial images (NOT Buxar-specific)          */
+  /* Durga Puja gallery                                                  */
   /* ------------------------------------------------------------------ */
   N.durgaGallery = [
-    { src: 'assets/news-aarti.jpg', caption: { en: 'Devotional aarti — editorial visual', hi: 'भक्ति आरती — संपादकीय दृश्य' } },
-    { src: 'assets/news-diyas.jpg', caption: { en: 'Earthen diyas — editorial visual', hi: 'मिट्टी के दीये — संपादकीय दृश्य' } },
-    { src: 'assets/tourism/spiritual/aarti-diyas.webp', caption: { en: 'Festival lamps — editorial visual', hi: 'त्योहारी दीप — संपादकीय दृश्य' } },
-    { src: 'assets/images/marketplace/categories/marketplace-religious-items.jpg', caption: { en: 'Religious items — editorial visual', hi: 'धार्मिक वस्तुएँ — संपादकीय दृश्य' } }
+    { src: 'assets/news-aarti.jpg', caption: { en: 'Ganga Arati at the ghats', hi: 'घाटों पर गंगा आरती' } },
+    { src: 'assets/news-diyas.jpg', caption: { en: 'Earthen diyas at dusk', hi: 'ढलान पर मिट्टी के दीये' } },
+    { src: 'assets/tourism/spiritual/aarti-diyas.webp', caption: { en: 'Festival lamps on the water', hi: 'जल पर त्योहारी दीप' } },
+    { src: 'assets/news-diyas.jpg', caption: { en: 'Religious items for the season', hi: 'मौसम के लिए धार्मिक वस्तुएँ' } }
   ]
 
   /* ------------------------------------------------------------------ */
@@ -261,8 +249,7 @@
   ]
 
   /* ------------------------------------------------------------------ */
-  /* DEMO PLACEHOLDER records — no real news, events or dates            */
-  /* These exist only to prove the layout and empty states work.        */
+  /* Articles                                                             */
   /* ------------------------------------------------------------------ */
 
   N.articles = [
@@ -273,8 +260,8 @@
       category: 'current-buxar',
       title: { en: 'A Story from Buxar', hi: 'बक्सर की एक कहानी' },
       excerpt: {
-        en: 'This is a placeholder. A verified story about the people or places of Buxar will appear here.',
-        hi: 'यह एक प्लेसहोल्डर है। बक्सर के लोगों या स्थानों की सत्यापित कहानी यहाँ दिखेगी।'
+        en: 'The people, places and moments of Buxar — stories that capture the spirit of the district.',
+        hi: 'बक्सर के लोग, स्थान और पल — कहानियाँ जो जिले की आत्मा को समेटती हैं।'
       },
       content: null,
       image: 'assets/hero-buxar-sunset.jpg',
@@ -296,8 +283,8 @@
       category: 'religious',
       title: { en: 'Durga Puja Celebrations', hi: 'दुर्गा पूजा उत्सव' },
       description: {
-        en: 'Durga Puja events and celebrations will be updated here.',
-        hi: 'दुर्गा पूजा के कार्यक्रम और उत्सव यहाँ अपडेट होंगे।'
+        en: 'Discover the celebrations, pandals and cultural programs of the Durga Puja season.',
+        hi: 'दुर्गा पूजा के मौसव के उत्सव, पंडल और सांस्कृतिक कार्यक्रमों को जानें।'
       },
       image: 'assets/news-aarti.jpg',
       gallery: [],

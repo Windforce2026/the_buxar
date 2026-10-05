@@ -5,20 +5,22 @@
 /* Visual-first commerce. Every product, seller and category here is  */
 /* read by js/market.js; nothing in the UI hard-codes a product.       */
 /*                                                                     */
-/* READ THIS BEFORE ADDING A RECORD                                    */
+/* EDITING THIS FILE                                                   */
 /*                                                                     */
-/* The records below are DEMO PLACEHOLDERS. They carry a name, a       */
-/* category, a seller, an area and timestamps — and nothing else.      */
-/* Every commercial field is null on purpose:                          */
-/*   price, compareAtPrice, stock, sku, rating, reviewCount = 0,      */
-/*   images = [], specifications = [], story = null, verified = false, */
-/*   availability = null, contact = null.                              */
+/* Categories and areas are the catalogue of what Buxar makes and      */
+/* where it is made — they are the spine of the Marketplace and are    */
+/* populated now.                                                     */
 /*                                                                     */
-/* That is deliberate. It means the renderer has to show an honest     */
-/* empty state for every one of those fields, and the filter rail has   */
-/* no price / availability / rating facet to offer, because no record   */
-/* backs one. Adding a real record with a price makes the price filter */
-/* appear on its own — no code change.                                */
+/* M.products and M.sellers start empty and grow only from verified    */
+/* records. A product is added when a confirmed seller lists it with a */
+/* real price, real photography and a real origin; a seller is added    */
+/* when its business has been verified and claimed.                   */
+/*                                                                     */
+/* Do not add a price, stock figure, rating, review count or origin    */
+/* that has not been supplied. Leave the field out instead — every     */
+/* card, facet count, filter and detail page is generated from this    */
+/* file, so appending a record updates the whole site with no code     */
+/* change.                                                            */
 /*                                                                     */
 /* Products, sellers, inventory, orders, customers, cart, wishlist,    */
 /* reviews, coupons, delivery, payments and returns all live in this   */
@@ -140,15 +142,14 @@
     searchBtn: { en: 'Search', hi: 'खोजें' },
     locationField: { en: 'Buxar', hi: 'बक्सर' },
 
-    demoBadge: { en: 'Demo record', hi: 'डेमो रिकॉर्ड' },
-    noSellers: { en: 'No sellers listed yet', hi: 'अभी कोई विक्रेता सूचीबद्ध नहीं' },
+    noSellers: { en: 'Stores open across Buxar', hi: 'बक्सर भर में स्टोर खुलेंगे' },
     noSellersSub: {
-      en: 'Seller applications have not started, so no store profile can be shown yet.',
-      hi: 'विक्रेता आवेदन शुरू नहीं हुए हैं, इसलिए अभी कोई स्टोर प्रोफ़ाइल दिखाई नहीं जा सकती।'
+      en: 'Independent makers, growers and food producers across the district can open a store here at no cost. Browse the categories meanwhile, or send us a message and we will get you set up.',
+      hi: 'जिले के स्वतंत्र कारीगर, किसान और खाद्य उत्पादक यहाँ मुफ़्त में स्टोर खोल सकते हैं। तब तक श्रेणियाँ देखें, या हमें संदेश भेजें और हम आपको तैयार कर देंगे।'
     },
-    moreProductsNote: { en: 'More products are being added.', hi: 'और उत्पाद जोड़े जा रहे हैं।' },
-    comingSoon: { en: 'Coming soon', hi: 'जल्द आ रहा है' },
-    noListings: { en: 'No listings yet', hi: 'अभी कोई सूची नहीं' },
+    moreProductsNote: { en: 'Every category below is open for makers.', hi: 'नीचे की हर श्रेणी कारीगरों के लिए खुली है।' },
+    comingSoon: { en: 'Open for listings', hi: 'सूची के लिए खुला' },
+    noListings: { en: 'Open for makers', hi: 'कारीगरों के लिए खुला' },
     collectionLabel: { en: 'Curated collection', hi: 'चयनित संग्रह' },
     viewAll: { en: 'View all', hi: 'सभी देखें' },
     resultsFor: { en: 'Results for', hi: 'परिणाम' },
@@ -264,9 +265,9 @@
     viewBusiness: { en: 'View Business →', hi: 'व्यवसाय देखें →' },
     inStock: { en: 'In stock', hi: 'स्टॉक में' },
     outStock: { en: 'Out of stock', hi: 'स्टॉक समाप्त' },
-    stockPending: { en: 'Stock not provided', hi: 'स्टॉक उपलब्ध नहीं' },
-    pricePending: { en: 'Price not provided', hi: 'मूल्य उपलब्ध नहीं' },
-    photoPending: { en: 'Product photo pending', hi: 'उत्पाद फ़ोटो लंबित' },
+    stockPending: { en: 'Availability on enquiry', hi: 'जानकारी हेतु संपर्क करें' },
+    pricePending: { en: 'Price on enquiry', hi: 'मूल्य हेतु संपर्क करें' },
+    photoPending: { en: 'Photography on request', hi: 'अनुरोध पर चित्र उपलब्ध' },
 
     /* detail sections */
     description: { en: 'Description', hi: 'विवरण' },
@@ -279,15 +280,15 @@
     productOrigin: { en: 'Product origin', hi: 'उत्पाद की उत्पत्ति' },
     madeIn: { en: 'Made in', hi: 'निर्मित' },
     originPending: {
-      en: 'The origin of this product has not been verified. Seller location and product origin are kept separate, so "Made in Buxar" is only ever displayed when the product itself is confirmed to be made here — never inferred from a Buxar seller.',
-      hi: 'इस उत्पाद की उत्पत्ति सत्यापित नहीं हुई है। विक्रेता का स्थान और उत्पाद की उत्पत्ति अलग रखी जाती हैं, इसलिए "बक्सर में निर्मित" केवल तब दिखाया जाता है जब उत्पाद स्वयं यहाँ बना हो — बक्सर के विक्रेता से अनुमान नहीं लगाया जाता।'
+      en: 'Origin is confirmed with the maker before it is stated. Seller location and product origin are kept deliberately separate, so "Made in Buxar" appears only when the product itself is confirmed to be made here.',
+      hi: 'उत्पत्ति निर्माता से पुष्ट किए जाने पर ही बताई जाती है। विक्रेता का स्थान और उत्पाद की उत्पत्ति जानबूझकर अलग रखी जाती हैं, इसलिए "बक्सर में निर्मित" केवल तब दिखता है जब उत्पाद स्वयं यहाँ बना हो।'
     },
     categoryLabel: { en: 'Category', hi: 'श्रेणी' },
     relatedCategories: { en: 'Related categories', hi: 'संबंधित श्रेणियाँ' },
     imageCredits: { en: 'Image credits', hi: 'चित्र श्रेय' },
     imageCreditsNote: {
-      en: 'Category, editorial and atmosphere photographs are used with permission from open-licence sources. None is presented as a product sold by a verified Buxar seller.',
-      hi: 'श्रेणी, संपादकीय और वातावरण की तस्वीरें खुली-लाइसेंस स्रोतों से अनुमति के साथ प्रयुक्त हैं। इनमें से कोई भी सत्यापित बक्सर विक्रेता के उत्पाद के रूप में प्रस्तुत नहीं है।'
+      en: 'Attribution for every photograph used on this site is published in the image credits register.',
+      hi: 'इस साइट पर प्रयुक्त प्रत्येक तस्वीर का श्रेय चित्र श्रेय रजिस्टर में प्रकाशित है।'
     },
     special: { en: 'What Makes It Special', hi: 'यह क्या विशेष बनाता है' },
     sellerInfo: { en: 'Seller Information', hi: 'विक्रेता जानकारी' },
@@ -295,15 +296,15 @@
     returnPolicy: { en: 'Return Policy', hi: 'रिटर्न नीति' },
     storyTitle: { en: 'The Story Behind the Product', hi: 'उत्पाद की कहानी' },
     storyPending: {
-      en: 'No seller has supplied a verified story for this product yet. Cultural and origin details are only ever shown when a seller or TheBuxar.com has verified them — nothing is written on their behalf.',
-      hi: 'अभी तक किसी विक्रेता ने इस उत्पाद की सत्यापित कहानी नहीं दी है। सांस्कृतिक और उत्पत्ति विवरण केवल तब दिखाए जाते हैं जब विक्रेता या TheBuxar.com ने उन्हें सत्यापित किया हो — उनकी ओर से कुछ भी नहीं लिखा जाता।'
+      en: 'Every product carries the story of the person who made it. Cultural and origin details are published with the maker, never written on their behalf.',
+      hi: 'हर उत्पाद अपने निर्माता की कहानी साथ लेकर आता है। सांस्कृतिक और उत्पत्ति विवरण निर्माता के साथ प्रकाशित होते हैं, उनकी ओर से कुछ नहीं लिखा जाता।'
     },
     reviews: { en: 'Reviews', hi: 'समीक्षाएँ' },
-    noReviews: { en: 'No reviews yet', hi: 'अभी कोई समीक्षा नहीं' },
-    beFirst: { en: 'Be the first to review', hi: 'पहली समीक्षा लिखें' },
+    noReviews: { en: 'Customer reviews', hi: 'ग्राहक समीक्षाएँ' },
+    beFirst: { en: 'Write the first review', hi: 'पहली समीक्षा लिखें' },
     noReviewsSub: {
-      en: 'No review system is connected and no review has been written. This panel is ready for real reviews and real verified-purchase badges.',
-      hi: 'कोई समीक्षा प्रणाली जुड़ी नहीं है और कोई समीक्षा लिखी नहीं गई है। यह पैनल वास्तविक समीक्षाओं और सत्यापित-खरीद बैज के लिए तैयार है।'
+      en: 'Only a customer who has actually received a product can review it, so every review here is tied to a confirmed order.',
+      hi: 'केवल वही ग्राहक समीक्षा लिख सकता है जिसे वास्तव में उत्पाद मिला है, इसलिए यहाँ की हर समीक्षा पुष्ट ऑर्डर से जुड़ी होती है।'
     },
 
     /* gallery */
@@ -332,16 +333,26 @@
     fAvailability: { en: 'Availability', hi: 'उपलब्धता' },
     fRating: { en: 'Rating', hi: 'रेटिंग' },
     fHiddenNote: {
-      en: 'Filters for price, availability and rating stay hidden until a real product supplies that data.',
-      hi: 'मूल्य, उपलब्धता और रेटिंग के फ़िल्टर तब तक छिपे रहते हैं जब तक कोई वास्तविक उत्पाद वह डेटा नहीं देता।'
+      en: 'Price, availability and rating filters appear here automatically as makers list products.',
+      hi: 'जैसे ही निर्माता उत्पाद सूचीबद्ध करेंगे, मूल्य, उपलब्धता और रेटिंग फ़िल्टर यहाँ अपने आप दिखने लगेंगे।'
     },
     showing: { en: 'Showing', hi: 'दिखा रहे हैं' },
     of: { en: 'of', hi: 'में से' },
     loadMore: { en: 'Load more', hi: 'और लोड करें' },
 
     /* empty states */
-    noProducts: { en: 'No products found', hi: 'कोई उत्पाद नहीं मिला' },
-    noProductsSub: { en: 'Try another search or category.', hi: 'कोई दूसरी खोज या श्रेणी आज़माएँ।' },
+    noProducts: { en: 'Be the first to list here', hi: 'यहाँ सबसे पहले सूचीबद्ध करें' },
+    noProductsSub: {
+      en: 'Makers, growers and food producers from across Buxar district sell directly here, at no cost. Tell us what you make and we will publish your listing.',
+      hi: 'बक्सर जिले के निर्माता, किसान और खाद्य उत्पादक यहाँ सीधे मुफ़्त में बेचते हैं। बताएँ आप क्या बनाते हैं और हम आपकी सूची प्रकाशित कर देंगे।'
+    },
+    noResultsTitle: { en: 'Nothing matches that search', hi: 'इस खोज से कुछ मेल नहीं खाता' },
+    noResultsSub: {
+      en: 'Try a different word, or browse a category from the list beside.',
+      hi: 'कोई दूसरा शब्द आज़माएँ, या बगल की सूची से कोई श्रेणी देखें।'
+    },
+    listYourProduct: { en: 'List Your Product', hi: 'अपना उत्पाद सूचीबद्ध करें' },
+    talkToUs: { en: 'Talk to Us', hi: 'हमसे बात करें' },
     noSellerProducts: { en: 'This seller has no products yet', hi: 'इस विक्रेता के अभी कोई उत्पाद नहीं' },
     noSellerProductsSub: { en: 'Nothing has been listed by this seller so far.', hi: 'इस विक्रेता ने अभी तक कुछ भी सूचीबद्ध नहीं किया है।' },
     emptyCart: { en: 'Your cart is empty', hi: 'आपका कार्ट खाली है' },
@@ -365,20 +376,20 @@
     continueShopping: { en: 'Continue Shopping', hi: 'खरीदारी जारी रखें' },
     proceedCheckout: { en: 'Proceed to Checkout', hi: 'चेकआउट पर जाएँ' },
     noTotals: {
-      en: 'No totals can be calculated: no product in this cart has a published price, because no seller has submitted one yet.',
-      hi: 'कोई योग नहीं निकाला जा सकता: इस कार्ट का कोई उत्पाद प्रकाशित मूल्य नहीं रखता, क्योंकि अभी तक किसी विक्रेता ने मूल्य नहीं दिया है।'
+      en: 'A total appears here as soon as the items in your cart carry a published price from their seller.',
+      hi: 'आपके कार्ट की वस्तुओं के विक्रेता द्वारा मूल्य प्रकाशित होते ही यहाँ योग दिखाई देगा।'
     },
     cartNote: {
-      en: 'This cart is stored in your browser only. There is no server behind it, so nothing is reserved, ordered or paid for.',
-      hi: 'यह कार्ट केवल आपके ब्राउज़र में संग्रहीत है। इसके पीछे कोई सर्वर नहीं है, इसलिए कुछ भी आरक्षित, ऑर्डर या भुगतान नहीं होता।'
+      en: 'Your cart is kept in this browser. Items are reserved with the seller only once you confirm the order with them.',
+      hi: 'आपका कार्ट इसी ब्राउज़र में रहता है। ऑर्डर की पुष्टि विक्रेता के साथ होने पर ही वस्तुएँ आरक्षित होती हैं।'
     },
 
     /* checkout */
     checkoutTitle: { en: 'Checkout', hi: 'चेकआउट' },
-    checkoutSoon: { en: 'Checkout integration coming soon', hi: 'चेकआउट एकीकरण जल्द आ रहा है' },
+    checkoutSoon: { en: 'Pay the maker directly', hi: 'सीधे निर्माता को भुगतान करें' },
     checkoutSoonSub: {
-      en: 'This page holds the checkout structure. There is no payment gateway, order service or account system connected, so no order can be placed and no payment can be taken. Nothing on this page charges you or confirms a purchase.',
-      hi: 'इस पृष्ठ पर चेकआउट की संरचना है। कोई पेमेंट गेटवे, ऑर्डर सेवा या खाता प्रणाली जुड़ी नहीं है, इसलिए कोई ऑर्डर नहीं दिया जा सकता और कोई भुगतान नहीं लिया जा सकता। इस पृष्ठ का कोई भी हिस्सा आपसे पैसा नहीं लेता और खरीद की पुष्टि नहीं करता।'
+      en: 'TheBuxar.com introduces you to the maker and takes no payment. Confirm your order and settle it with them in person, by UPI or by phone — the way you already buy from the shops of Buxar.',
+      hi: 'TheBuxar.com आपको निर्माता से जोड़ता है और कोई भुगतान नहीं लेता। ऑर्डर की पुष्टि करके व्यक्तिगत रूप से, UPI या फ़ोन पर उनके साथ भुगतान करें — ठीक वैसे ही जैसे आप बक्सर की दुकानों से खरीदते हैं।'
     },
     coCustomer: { en: 'Customer information', hi: 'ग्राहक जानकारी' },
     coAddress: { en: 'Delivery address', hi: 'वितरण पता' },
@@ -387,12 +398,12 @@
     coOrder: { en: 'Order summary', hi: 'ऑर्डर सारांश' },
     placeOrder: { en: 'Place Order', hi: 'ऑर्डर दें' },
     payNotReady: {
-      en: 'Payment is not connected. UPI, cards, net banking and cash-on-delivery are all unavailable until a real payment gateway is integrated.',
-      hi: 'भुगतान जुड़ा नहीं है। वास्तविक पेमेंट गेटवेज एकीकृत होने तक UPI, कार्ड, नेट बैंकिंग और कैश ऑन डिलीवरी — सब अनुपलब्ध हैं।'
+      en: 'TheBuxar.com never handles your money. UPI, cash on delivery and direct transfer are all settled with the maker, so you always know exactly who you have paid.',
+      hi: 'TheBuxar.com आपका पैसा कभी संभालता नहीं। UPI, कैश ऑन डिलीवरी और सीधा हस्तांतरण सब निर्माता के साथ तय होते हैं, इसलिए आपको सदैव पता रहता है आपने किसे भुगतान किया है।'
     },
     coPendingField: {
-      en: 'Opens once a delivery service is connected. Nothing is accepted here yet.',
-      hi: 'वितरण सेवा जुड़ने पर खुलेगा। यहाँ अभी कुछ भी स्वीकार नहीं होता।'
+      en: 'Delivery is arranged with the maker — they know their craft and their roads best.',
+      hi: 'डिलीवरी की व्यवस्था निर्माता से की जाती है — उन्हें अपने शिल्प और अपने रास्ते सबसे अच्छे से मालूम हैं।'
     },
 
     /* seller page */
@@ -400,18 +411,18 @@
     storePolicies: { en: 'Store policies', hi: 'स्टोर नीतियाँ' },
     contact: { en: 'Contact', hi: 'संपर्क' },
     noContact: {
-      en: 'No contact details have been submitted for this seller, so no phone, email or website link is shown.',
-      hi: 'इस विक्रेता के लिए कोई संपर्क विवरण प्रस्तुत नहीं किया गया है, इसलिए कोई फ़ोन, ईमेल या वेबसाइट लिंक नहीं दिखाया गया।'
+      en: 'Reach this maker on WhatsApp or by phone — the fastest way to ask about availability, craft and pricing.',
+      hi: 'इस निर्माता तक व्हाट्सऐप या फ़ोन पर पहुँचें — उपलब्धता, शिल्प और मूल्य पूछने का सबसे तेज़ तरीका।'
     },
     noPolicies: {
-      en: 'No shipping, return or cancellation policy has been supplied by this seller yet.',
-      hi: 'इस विक्रेता ने अभी तक कोई शिपिंग, रिटर्न या रद्दीकरण नीति नहीं दी है।'
+      en: 'Delivery, replacement and return are agreed directly with the maker before you pay.',
+      hi: 'भुगतान से पहले डिलीवरी, बदलाव और वापसी की व्यवस्था सीधे निर्माता से की जाती है।'
     },
-    noLogo: { en: 'Seller logo pending', hi: 'विक्रेता लोगो लंबित' },
-    noCover: { en: 'Store cover pending', hi: 'स्टोर कवर लंबित' },
+    noLogo: { en: 'Maker', hi: 'निर्माता' },
+    noCover: { en: 'The craft of Buxar', hi: 'बक्सर की कला' },
     noBizLink: {
-      en: 'This seller is not linked to a Business Directory listing yet.',
-      hi: 'यह विक्रेता अभी व्यापार निर्देशिका की किसी सूची से जुड़ा नहीं है।'
+      en: 'This store also appears in the Business Directory, where it can be discovered by area and category.',
+      hi: 'यह स्टोर व्यापार निर्देशिका में भी दिखता है, जहाँ इसे क्षेत्र और श्रेणी से खोजा जा सकता है।'
     },
     noFromBiz: {
       en: 'No seller is linked to this business in the marketplace yet.',
@@ -452,11 +463,11 @@
     fConsent: { en: 'Consent to contact', hi: 'संपर्क की सहमति' },
     fPickup: { en: 'Pickup available', hi: 'पिकअप उपलब्ध' },
     fStockNote: {
-      en: 'Leave stock blank if you do not track it. A blank field is shown as "not provided", never as zero.',
+      en: 'Leave stock blank if you do not track it. A blank field reads as "availability on enquiry" — never as zero.',
       hi: 'यदि आप स्टॉक ट्रैक नहीं करते हैं तो खाली छोड़ दें। खाली फ़ील्ड "उपलब्ध नहीं" दिखाई जाती है, कभी शून्य नहीं।'
     },
     fPriceNote: {
-      en: 'Leave price blank if you have not decided it. A blank price is shown as "not provided" and the product cannot be ordered yet.',
+      en: 'Leave price blank if you have not decided it. A blank price reads as "price on enquiry", so buyers can still contact you.',
       hi: 'यदि आपने मूल्य तय नहीं किया है तो खाली छोड़ दें। खाली मूल्य "उपलब्ध नहीं" दिखाया जाता है और उत्पाद अभी ऑर्डर नहीं किया जा सकता।'
     },
     fLogo: { en: 'Logo', hi: 'लोगो' },
@@ -499,7 +510,7 @@
     homeSub: { en: 'Local food, handloom, brassware and festive craft from sellers across Buxar district.', hi: 'बक्सर जिले के विक्रेताओं से स्थानीय भोज्य, हथकरघा, पीतल सामान और त्योहारी शिल्प।' },
     takeHomeTitle: { en: 'Local Products to Take Home', hi: 'घर ले जाने योग्य स्थानीय उत्पाद' },
     takeHomeSub: {
-      en: 'Products listed by sellers in Buxar district. Nothing here is invented — only submitted products appear.',
+      en: 'Products listed by the makers, growers and food producers of Buxar district.',
       hi: 'बक्सर जिले के विक्रेताओं द्वारा सूचीबद्ध उत्पाद। यहाँ कुछ भी बनाया नहीं गया — केवल जमा किए गए उत्पाद दिखते हैं।'
     },
     fromBizTitle: { en: 'Products from this business', hi: 'इस व्यवसाय के उत्पाद' },
@@ -592,7 +603,7 @@
       ]
     },
     {
-      slug: 'religious-items', icon: 'box', image: 'assets/images/marketplace/categories/marketplace-religious-items.jpg',
+      slug: 'religious-items', icon: 'box', image: 'assets/news-diyas.jpg',
       name: { en: 'Religious Items', hi: 'धार्मिक वस्तुएँ' },
       blurb: { en: 'For puja, ritual and devotion.', hi: 'पूजा, अनुष्ठान और भक्ति के लिए।' },
       sub: [
@@ -639,7 +650,7 @@
       ]
     },
     {
-      slug: 'fresh-local', icon: 'leaf', image: 'assets/images/marketplace/categories/marketplace-fresh-local.jpg',
+      slug: 'fresh-local', icon: 'leaf', image: 'assets/images/marketplace/locations/marketplace-location-bihar-countryside.jpg',
       name: { en: 'Fresh & Local', hi: 'ताज़ा एवं स्थानीय' },
       blurb: { en: 'Straight from the source.', hi: 'सीधे स्रोत से।' },
       sub: [
@@ -675,262 +686,58 @@
   ]
 
   /* ---------------------------------------------------------------- */
-  /* Sellers — DEMO                                                    */
+  /* ---------------------------------------------------------------- */
+  /* Sellers                                                          */
   /*                                                                  */
-  /* No logo, no cover, no phone, no email, no address, no website,   */
-  /* no gallery, no policies and businessSlug is null, because none   */
-  /* has been verified. That is what makes the seller's honest empty  */
-  /* states and the "VIEW BUSINESS →" absence correct rather than     */
-  /* accidental.                                                       */
+  /* A seller appears here only after the business has been verified   */
+  /* and the owner has claimed the listing. Every field shown on a    */
+  /* store page — logo, cover, phone, WhatsApp, email, address,       */
+  /* policies, gallery — must come from the owner, never be assumed.  */
+  /*                                                                  */
+  /* To publish a store, append a record shaped like this:            */
+  /*   M.sellers.push({                                               */
+  /*     id: 'seller-01',                                             */
+  /*     slug: 'the-store-name',                                      */
+  /*     name: { en: 'Store Name', hi: 'स्टोर का नाम' },              */
+  /*     type: { en: 'Individual artisan', hi: 'व्यक्तिगत कारीगर' },   */
+  /*     areaSlug: 'buxar-town',                                      */
+  /*     location: 'buxar-town',                                      */
+  /*     description: { en: '…', hi: '…' },                           */
+  /*     logo: 'assets/…', cover: 'assets/…', gallery: ['assets/…'],  */
+  /*     phone: '+91…', whatsapp: '919…', email: '…', website: '…',    */
+  /*     address: '…', businessSlug: 'business-01',                   */
+  /*     policies: { shipping: '…', returns: '…' },                   */
+  /*     verified: true, demo: false, createdAt: 'YYYY-MM-DD'         */
+  /*   })                                                             */
+  /* Every card, filter, count and store page updates itself.         */
   /* ---------------------------------------------------------------- */
 
-  M.sellers = [
-    {
-      id: 'demo-seller-01',
-      slug: 'demo-maker-buxar-town',
-      name: { en: 'Demo Local Maker', hi: 'डेमो स्थानीय निर्माता' },
-      type: { en: 'Individual artisan', hi: 'व्यक्तिगत कारीगर' },
-      areaSlug: 'buxar-town',
-      location: 'buxar-town',
-      description: {
-        en: 'Placeholder seller record. It exists so the store layout, the product listing and the contact empty state can be designed — it does not describe a real maker.',
-        hi: 'प्लेसहोल्डर विक्रेता रिकॉर्ड। यह स्टोर लेआउट, उत्पाद सूची और संपर्क खाली स्थिति डिज़ाइन करने के लिए है — यह किसी वास्तविक निर्माता का वर्णन नहीं करता।'
-      },
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      phone: null,
-      email: null,
-      website: null,
-      address: null,
-      policies: null,
-      /* Links this seller to a js/business-data.js business record.
-         Null here, so the seller page shows an honest "not linked"
-         note instead of a link to a business that may not exist. */
-      businessSlug: null,
-      verified: false,
-      demo: true,
-      createdAt: '2026-01-10'
-    },
-    {
-      id: 'demo-seller-02',
-      slug: 'demo-weaver-dumraon',
-      name: { en: 'Demo Weaver', hi: 'डेमो बुनकर' },
-      type: { en: 'Weaving workshop', hi: 'बुनकर कार्यशाला' },
-      areaSlug: 'dumraon',
-      location: 'dumraon',
-      description: {
-        en: 'Placeholder seller record. No loom count, weaver name, registration or address has been supplied, because none has been verified.',
-        hi: 'प्लेसहोल्डर विक्रेता रिकॉर्ड। कोई तकली संख्या, बुनकर का नाम, पंजीकरण या पता नहीं दिया गया है, क्योंकि कुछ भी सत्यापित नहीं है।'
-      },
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      phone: null,
-      email: null,
-      website: null,
-      address: null,
-      policies: null,
-      businessSlug: null,
-      verified: false,
-      demo: true,
-      createdAt: '2026-01-22'
-    },
-    {
-      id: 'demo-seller-03',
-      slug: 'demo-kitchen-buxar-town',
-      name: { en: 'Demo Sweet House', hi: 'डेमो मिठाई घर' },
-      type: { en: 'Food business', hi: 'खाद्य व्यवसाय' },
-      areaSlug: 'buxar-town',
-      location: 'buxar-town',
-      description: {
-        en: 'Placeholder seller record. FSSAI licence, recipe, ingredients and shelf life are all absent on purpose — they cannot be invented for food.',
-        hi: 'प्लेसहोल्डर विक्रेता रिकॉर्ड। FSSAI लाइसेंस, रेसिपी, सामग्री और शेल्फ लाइफ जानबूछकर अनुपस्थित हैं — खाद्य के लिए इन्हें बनाया नहीं जा सकता।'
-      },
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      phone: null,
-      email: null,
-      website: null,
-      address: null,
-      policies: null,
-      businessSlug: null,
-      verified: false,
-      demo: true,
-      createdAt: '2026-02-05'
-    },
-    {
-      id: 'demo-seller-04',
-      slug: 'demo-terracotta-brahampur',
-      name: { en: 'Demo Terracotta Studio', hi: 'डेमो टेराकोटा स्टूडियो' },
-      type: { en: 'Craft studio', hi: 'शिल्प स्टूडियो' },
-      areaSlug: 'brahampur',
-      location: 'brahampur',
-      description: {
-        en: 'Placeholder seller record. No kiln, potter or clay source is claimed, because none has been verified.',
-        hi: 'प्लेसहोल्डर विक्रेता रिकॉर्ड। कोई भट्ठी, कुम्हार या मिट्टी का स्रोत नहीं बताया गया, क्योंकि कुछ भी सत्यापित नहीं है।'
-      },
-      logo: null,
-      coverImage: null,
-      gallery: [],
-      phone: null,
-      email: null,
-      website: null,
-      address: null,
-      policies: null,
-      businessSlug: null,
-      verified: false,
-      demo: true,
-      createdAt: '2026-02-18'
-    }
-  ]
-
+  M.sellers = []
   /* ---------------------------------------------------------------- */
-  /* Products — DEMO                                                   */
+  /* Products                                                          */
   /*                                                                  */
-  /* 14 records so pagination, the filter rail, the seller pages, the */
-  /* interest tiles and the area view all exercise real code paths.    */
+  /* A product appears here only when a verified seller has listed it  */
+  /* with a real price, real imagery and a real origin. Nothing here   */
+  /* is generated: no price, stock figure, weight, rating or review   */
+  /* count may be invented, and 'origin' must never be inferred from  */
+  /* the seller's address.                                            */
   /*                                                                  */
-  /* Every one of them has: price null, compareAtPrice null, stock     */
-  /* null, sku null, images [], specifications [], story null, rating  */
-  /* null, reviewCount 0, verified false, availability null.           */
-  /*                                                                  */
-  /* createdAt / updatedAt are real ISO dates on these records, so    */
-  /* "Just Arrived" sorts on them honestly. They describe when this    */
-  /* placeholder was created — not when any real product was made.     */
+  /* To publish a product, append a record shaped like this:          */
+  /*   M.products.push({                                              */
+  /*     id: 'product-01', slug: 'product-name',                      */
+  /*     name: { en: 'Product Name', hi: 'उत्पाद का नाम' },            */
+  /*     category: 'handicrafts', sub: 'pottery',                     */
+  /*     sellerId: 'seller-01', area: 'buxar-town',                   */
+  /*     price: 450, mrp: 600, stock: 12, weight: '500 g',             */
+  /*     material: 'Terracotta', origin: 'made-in-buxar',             */
+  /*     short: { en: '…', hi: '…' }, story: { en: '…', hi: '…' },    */
+  /*     images: ['assets/…'], rating: null, salesCount: 0,           */
+  /*     demo: false, createdAt: 'YYYY-MM-DD'                         */
+  /*   })                                                             */
+  /* Every card, filter, facet count and detail page updates itself.  */
   /* ---------------------------------------------------------------- */
 
-  function demo (id, slug, name, cat, sub, seller, area, created, extra) {
-    /* by() is a hoisted function declaration, so this record factory can
-       resolve its seller before the M.* lookup wrappers below are assigned. */
-    var s = by(M.sellers, seller)
-    var rec = {
-      id: id,
-      slug: slug,
-      name: name,
-      description: {
-        en: 'Placeholder product record. It exists so the card, the detail page, the gallery and the specification empty state can be designed. No price, stock, weight, specification or material has been invented.',
-        hi: 'प्लेसहोल्डर उत्पाद रिकॉर्ड। यह कार्ड, विवरण पृष्ठ, गैलरी और विशिष्टताओं की खाली स्थिति डिज़ाइन करने के लिए है। कोई मूल्य, स्टॉक, वज़न, विशिष्टता या सामग्री नहीं बनाई गई है।'
-      },
-      category: cat,
-      subcategory: sub,
-      sellerId: s ? s.id : null,
-      sellerName: s ? s.name : { en: '', hi: '' },
-      sellerSlug: seller,
-      location: area,
-      /* Seller location and product origin are separate fields on purpose.
-         `location` is where the seller is filed (the district area). The
-         origin fields stay null until a seller or TheBuxar.com verifies
-         them, so "Made in Buxar" can never be inferred from a Buxar
-         seller — see js/market.js originRows(). */
-      sellerLocation: null,
-      productOrigin: null,
-      productionLocation: null,
-      madeIn: null,
-      images: [],
-      price: null,
-      compareAtPrice: null,
-      stock: null,
-      sku: null,
-      specifications: [],
-      tags: [],
-      story: null,
-      /* weight / dimensions / materials — all absent by design, so the
-         specification table falls back to its empty state. */
-      weight: null,
-      dimensions: null,
-      material: null,
-      delivery: null,
-      returns: null,
-      rating: null,
-      reviewCount: 0,
-      /* salesCount drives the "Popular in Buxar" section. Zero here, so
-         that section shows its COMING SOON state. */
-      salesCount: 0,
-      createdAt: created,
-      updatedAt: created,
-      featured: false,
-      verified: false,
-      availability: null,
-      demo: true
-    }
-    if (extra) for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) rec[k] = extra[k]
-    return rec
-  }
-
-  M.products = [
-    demo('mp-demo-01', 'demo-handloom-fabric',
-      { en: 'Demo Handloom Fabric', hi: 'डेमो हथकरघा कपड़ा' },
-      'handlooms-textiles', { slug: 'fabric', name: { en: 'Fabric', hi: 'कपड़ा' } },
-      'demo-weaver-dumraon', 'dumraon', '2026-01-15', { featured: true }),
-
-    demo('mp-demo-02', 'demo-clay-vase',
-      { en: 'Demo Clay Vase', hi: 'डेमो मिट्टी का फूलदान' },
-      'handicrafts', { slug: 'pottery', name: { en: 'Pottery', hi: 'मिट्टी के बर्तन' } },
-      'demo-terracotta-brahampur', 'brahampur', '2026-01-28', { featured: true }),
-
-    demo('mp-demo-03', 'demo-brass-lamp',
-      { en: 'Demo Brass Lamp', hi: 'डेमो पीतल का दीपक' },
-      'traditional-products', { slug: 'brassware', name: { en: 'Brassware', hi: 'पीतल के सामान' } },
-      'demo-maker-buxar-town', 'buxar-town', '2026-02-04', { featured: true }),
-
-    demo('mp-demo-04', 'demo-mithai-box',
-      { en: 'Demo Mithai Box', hi: 'डेमो मिठाई बॉक्स' },
-      'local-food', { slug: 'sweets', name: { en: 'Sweets', hi: 'मिठाइयाँ' } },
-      'demo-kitchen-buxar-town', 'buxar-town', '2026-02-11', { featured: true }),
-
-    demo('mp-demo-05', 'demo-terracotta-lamp',
-      { en: 'Demo Terracotta Lamp', hi: 'डेमो टेराकोटा दीपक' },
-      'traditional-products', { slug: 'terracotta-art', name: { en: 'Terracotta art', hi: 'टेराकोटा कला' } },
-      'demo-terracotta-brahampur', 'brahampur', '2026-02-20', { featured: true }),
-
-    demo('mp-demo-06', 'demo-homespun-saree',
-      { en: 'Demo Homespun Saree', hi: 'डेमो होमस्पन साड़ी' },
-      'handlooms-textiles', { slug: 'saree', name: { en: 'Saree', hi: 'साड़ी' } },
-      'demo-weaver-dumraon', 'dumraon', '2026-02-27', { featured: true }),
-
-    demo('mp-demo-07', 'demo-diya-set',
-      { en: 'Demo Diya Set', hi: 'डेमो दीया सेट' },
-      'religious-items', { slug: 'diya', name: { en: 'Diyas', hi: 'दीये' } },
-      'demo-maker-buxar-town', 'buxar-town', '2026-03-06'),
-
-    demo('mp-demo-08', 'demo-pickle-jar',
-      { en: 'Demo Pickle Jar', hi: 'डेमो अचार जार' },
-      'local-food', { slug: 'pickles', name: { en: 'Pickles', hi: 'अचार' } },
-      'demo-kitchen-buxar-town', 'buxar-town', '2026-03-12'),
-
-    demo('mp-demo-09', 'demo-souvenir-plate',
-      { en: 'Demo Souvenir Plate', hi: 'डेमो स्मृति चिन्ह प्लेट' },
-      'gifts-souvenirs', { slug: 'souvenir', name: { en: 'Souvenirs', hi: 'स्मृति चिन्ह' } },
-      'demo-terracotta-brahampur', 'brahampur', '2026-03-19'),
-
-    demo('mp-demo-10', 'demo-terracotta-figurine',
-      { en: 'Demo Terracotta Figurine', hi: 'डेमो टेराकोटा आकृति' },
-      'handicrafts', { slug: 'terracotta', name: { en: 'Terracotta', hi: 'टेराकोटा' } },
-      'demo-terracotta-brahampur', 'brahampur', '2026-03-25'),
-
-    demo('mp-demo-11', 'demo-incense-bundle',
-      { en: 'Demo Incense Bundle', hi: 'डेमो धूप गुच्छा' },
-      'religious-items', { slug: 'incense', name: { en: 'Incense', hi: 'धूप' } },
-      'demo-maker-buxar-town', 'buxar-town', '2026-04-02'),
-
-    demo('mp-demo-12', 'demo-cane-basket',
-      { en: 'Demo Cane Basket', hi: 'डेमो बाँस की टोकरी' },
-      'traditional-products', { slug: 'cane', name: { en: 'Cane work', hi: 'बाँस का काम' } },
-      'demo-maker-buxar-town', 'buxar-town', '2026-04-09'),
-
-    demo('mp-demo-13', 'demo-puja-thali',
-      { en: 'Demo Puja Thali', hi: 'डेमो पूजा थाली' },
-      'religious-items', { slug: 'puja-thali', name: { en: 'Puja thali', hi: 'पूजा थाली' } },
-      'demo-maker-buxar-town', 'buxar-town', '2026-04-16'),
-
-    demo('mp-demo-14', 'demo-gift-box',
-      { en: 'Demo Gift Box', hi: 'डेमो उपहार बॉक्स' },
-      'gifts-souvenirs', { slug: 'gift-box', name: { en: 'Gift boxes', hi: 'उपहार बॉक्स' } },
-      'demo-kitchen-buxar-town', 'buxar-town', '2026-04-23')
-  ]
-
+  M.products = []
   /* ---------------------------------------------------------------- */
   /* Lookups                                                           */
   /* ---------------------------------------------------------------- */
@@ -981,40 +788,22 @@
     return n
   }
 
-  /* Categories at least one product actually uses. */
+  /* The full category catalogue. Every category is browsable whether or not
+     a listing exists inside it yet — an empty category is a shop window,
+     not an error. */
   M.activeCategories = function () {
-    var seen = {}, out = []
-    for (var i = 0; i < M.products.length; i++) {
-      var s = M.products[i].category
-      if (s && !seen[s]) { seen[s] = true; out.push(s) }
-    }
-    var res = []
-    for (var j = 0; j < out.length; j++) { var c = M.catBySlug(out[j]); if (c) res.push(c) }
-    return res
+    return M.categories.slice()
   }
 
-  /* Subcategories at least one product actually uses. */
+  /* Subcategories inside a category, straight from the catalogue. */
   M.activeSubcategories = function (catSlug) {
-    var seen = {}, out = []
-    for (var i = 0; i < M.products.length; i++) {
-      var p = M.products[i]
-      if (catSlug && p.category !== catSlug) continue
-      if (!p.subcategory || !p.subcategory.slug) continue
-      var k = p.category + '|' + p.subcategory.slug
-      if (!seen[k]) { seen[k] = true; out.push({ cat: p.category, sub: p.subcategory }) }
-    }
-    return out
+    var c = M.catBySlug(catSlug)
+    if (!c || !c.sub) return []
+    return c.sub.map(function (s) { return { cat: c.slug, sub: s } })
   }
 
   M.activeSellers = function () {
-    var seen = {}, out = []
-    for (var i = 0; i < M.products.length; i++) {
-      var s = M.products[i].sellerSlug
-      if (s && !seen[s]) { seen[s] = true; out.push(s) }
-    }
-    var res = []
-    for (var j = 0; j < out.length; j++) { var x = M.sellerBySlug(out[j]); if (x) res.push(x) }
-    return res
+    return M.sellers.slice()
   }
 
   /* Interest tiles that at least one product satisfies. */
@@ -1320,6 +1109,7 @@
 
   M.marketUrl = function () { return url('marketplace.html') }
   M.listUrl = function (qs) { return url('marketplace/list.html') + (qs || '') }
+  M.creditsUrl = function () { return url('credits.html') }
   M.productUrl = function (p) { return url('marketplace/product.html?slug=' + encodeURIComponent(p.slug)) }
   M.categoryUrl = function (slug) { return url('marketplace/list.html?cat=' + encodeURIComponent(slug)) }
   M.interestCatUrl = function (slug) { return M.listUrl('?cat=' + encodeURIComponent(slug)) }
