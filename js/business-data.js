@@ -800,6 +800,7 @@ B.businesses = [
     {
         'id': 'nic-016',
         'slug': 'uco-bank',
+        'mono': 'UCO',
         'name': {
             'en': 'UCO BANK' },
         'category': 'finance',
@@ -1664,6 +1665,7 @@ B.businesses = [
     {
         'id': 'nic-046',
         'slug': 'south-bihar-power-distribution-company-buxar',
+        'mono': 'SBPDC',
         'name': {
             'en': 'South Bihar Power Distribution Company — Buxar' },
         'category': 'utilities',
@@ -1970,6 +1972,13 @@ B.businesses = [
   var MONO_SKIP = { of: 1, the: 1, and: 1, for: 1, at: 1, in: 1, on: 1, a: 1, an: 1, to: 1, de: 1, da: 1, ke: 1 }
 
   B.monogram = function (biz) {
+    /* An explicit `mono` on the record always wins. Some bodies are known
+       by a longer initialism than a 3-letter acronym can express — the
+       power distributor is SBPDC, not SBP — so those set it directly. */
+    if (typeof biz.mono === 'string' && biz.mono.trim()) {
+      return biz.mono.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 6)
+    }
+
     var name = B.get(biz.name) || ''
     var words = String(name)
       .replace(/[(),.\/\-\u2013\u2014:]/g, ' ')
@@ -1981,14 +1990,11 @@ B.businesses = [
     var significant = words.filter(function (w) { return !MONO_SKIP[w.toLowerCase()] })
     var source = (significant.length ? significant : words).slice(0, 3)
 
-    /* If the name already opens with an initialism — "UCO BANK",
-       "SBI Branch" — that initialism IS the mark, so keep it intact
-       rather than reducing it to a single letter. */
-    var rawFirst = String(name).trim().split(/\s+/)[0] || ''
-    var isInitialism = /^[A-Z][A-Z.]{1,4}\.?$/.test(rawFirst) && rawFirst.length >= 2
-    if (isInitialism) {
-      return rawFirst.replace(/[^A-Z]/g, '').slice(0, 4)
-    }
+    /* No automatic initialism handling here. "UCO BANK" and "PHC Brahmpur"
+       both open with a capitalised abbreviation, but only the first is the
+       organisation's actual mark — reducing the second would throw away the
+       place name and make all ten health centres identical. Records that
+       need a longer or non-derivable mark set `mono` explicitly instead. */
 
     if (source.length >= 2) {
       return source.map(function (w) { return w[0] }).join('').toUpperCase()
