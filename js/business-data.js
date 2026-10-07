@@ -1953,16 +1953,68 @@ B.businesses = [
     return B.businesses.some(function (b) { return b.gallery && b.gallery.length })
   }
 
-  /* Two-letter monogram used in place of a logo. Never a substitute for
-     real photography — it is a typographic placeholder, deliberately
-     plain, so an unbranded record cannot look like a real brand. */
+  /* ------------------------------------------------------------------ */
+  /* Logo / monogram                                                    */
+  /* ------------------------------------------------------------------ */
+  /* A record shows its real logo when `biz.logo` points at an image.    */
+  /* Everything else falls back to a typographic acronym built from the  */
+  /* first letter of each significant word — "State Bank of India"      */
+  /* becomes SBI, "Punjab National Bank" becomes PNB, "District         */
+  /* Agriculture Office" becomes DAO.                                   */
+  /*                                                                     */
+  /* The acronym comes only from the name, so it can never assert a mark */
+  /* the organisation does not actually use.                            */
+  /* ------------------------------------------------------------------ */
+
+  /* Words that carry no identity in an acronym. */
+  var MONO_SKIP = { of: 1, the: 1, and: 1, for: 1, at: 1, in: 1, on: 1, a: 1, an: 1, to: 1, de: 1, da: 1, ke: 1 }
+
   B.monogram = function (biz) {
-    var name = B.get(biz.name) || '?'
-    var parts = name.trim().split(/\s+/).filter(function (w) { return /[a-z]/i.test(w) })
-    var mono = parts.length > 1
-      ? (parts[0][0] + parts[parts.length - 1][0])
-      : name.replace(/[^a-z]/gi, '').slice(0, 2)
-    return (mono || '?').toUpperCase()
+    var name = B.get(biz.name) || ''
+    var words = String(name)
+      .replace(/[(),.\/\-\u2013\u2014:]/g, ' ')
+      .split(/\s+/)
+      .map(function (w) { return w.replace(/[^A-Za-z]/g, '') })
+      .filter(Boolean)
+    if (!words.length) return '?'
+
+    var significant = words.filter(function (w) { return !MONO_SKIP[w.toLowerCase()] })
+    var source = (significant.length ? significant : words).slice(0, 3)
+
+    /* If the name already opens with an initialism — "UCO BANK",
+       "SBI Branch" — that initialism IS the mark, so keep it intact
+       rather than reducing it to a single letter. */
+    var rawFirst = String(name).trim().split(/\s+/)[0] || ''
+    var isInitialism = /^[A-Z][A-Z.]{1,4}\.?$/.test(rawFirst) && rawFirst.length >= 2
+    if (isInitialism) {
+      return rawFirst.replace(/[^A-Z]/g, '').slice(0, 4)
+    }
+
+    if (source.length >= 2) {
+      return source.map(function (w) { return w[0] }).join('').toUpperCase()
+    }
+    return words.join('').slice(0, 3).toUpperCase() || '?'
+  }
+
+  /* True when the record carries a real logo image. */
+  B.hasLogo = function (biz) {
+    return typeof biz.logo === 'string' && biz.logo.length > 3
+  }
+
+  B.logoUrl = function (biz) {
+    return B.hasLogo(biz) ? url(biz.logo) : ''
+  }
+
+  /* A stable per-record hue so neighbouring tiles are not clones. Derived
+     from the slug, so it is identical on every page load. */
+  B.monogramTone = function (biz) {
+    var s = String(biz.slug || (biz.name && biz.name.en) || '')
+    var h = 0
+    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360
+    /* Mapped into a narrow navy→steel-blue band. A full 0–360 range would
+       produce olive and rust tiles that fight the navy/gold identity, so
+       the variation is kept deliberately subtle. */
+    return 196 + (h % 40)
   }
 
   /* Distinct verification badge value — always false until a backend

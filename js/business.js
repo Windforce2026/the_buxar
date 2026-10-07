@@ -117,10 +117,21 @@
   /* Small shared pieces                                                */
   /* ------------------------------------------------------------------ */
 
-  /* Monogram tile. A typographic placeholder for a logo — never a stock
-     photo, so an unbranded record cannot be mistaken for a real brand. */
+  /* Logo tile. Shows the organisation's real logo when the record carries
+     one; otherwise an acronym built from its own name. Never a stock photo
+     and never an invented mark. */
   function monogram (biz) {
-    return '<span class="bz-mono" aria-hidden="true">' + esc(B.monogram(biz)) + '</span>'
+    if (B.hasLogo(biz)) {
+      return '<span class="bz-mono bz-mono--logo" aria-hidden="true">' +
+        '<img src="' + esc(B.logoUrl(biz)) + '" alt="" loading="lazy" decoding="async" />' +
+      '</span>'
+    }
+    var letters = B.monogram(biz)
+    var tone = B.monogramTone(biz)
+    return '<span class="bz-mono" aria-hidden="true" ' +
+      'style="--bz-tone:' + tone + '" data-len="' + letters.length + '">' +
+      esc(letters) +
+    '</span>'
   }
 
   /* Verified badge — driven only by the record's own flag. */
