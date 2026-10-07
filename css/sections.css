@@ -1464,6 +1464,29 @@ html {
   color: rgba(248, 246, 242, 0.66);
 }
 
+/* Agency credit — "Designed & developed by Windforce Digital".
+   The studio name is set in the serif face and kept in gold so it reads
+   as a deliberate sign-off rather than more footer filler. */
+.footer__credit--agency {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer__credit--agency .footer__credit-label {
+  color: rgba(248, 246, 242, 0.5);
+}
+
+.footer__credit--agency strong {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
 .footer__legal {
   display: flex;
   gap: 20px;
