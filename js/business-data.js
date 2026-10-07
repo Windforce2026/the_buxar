@@ -680,6 +680,7 @@ B.businesses = [
     {
         'id': 'nic-011',
         'slug': 'm-p-high-school',
+        'mono': 'MPHS',
         'name': {
             'en': 'M P High School' },
         'category': 'education',
@@ -706,6 +707,7 @@ B.businesses = [
     {
         'id': 'nic-012',
         'slug': 'veer-kunwar-singh-college-of-agriculture',
+        'mono': 'VKSCA',
         'name': {
             'en': 'Veer Kunwar Singh College of Agriculture' },
         'category': 'education',
@@ -1309,32 +1311,6 @@ B.businesses = [
         'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
         'createdAt': '2026-01-15' },
     {
-        'id': 'nic-032',
-        'slug': 'additional-collector-revenue-buxar',
-        'name': {
-            'en': 'Additional Collector (Revenue), Buxar' },
-        'category': 'civic-offices',
-        'subcategory': {
-            'en': 'General Administration' },
-        'type': 'service',
-        'area': 'buxar-town',
-        'description': {
-            'en': 'Additional Collector (Revenue), Buxar — General Administration department, district administration Buxar.' },
-        'phone': '9473191239',
-        'whatsapp': '9473191239',
-        'email': 'dm-buxar.bih@nic.in',
-        'website': null,
-        'address': 'Buxar, Bihar',
-        'logo': null,
-        'cover': null,
-        'gallery': [],
-        'rating': null,
-        'reviewCount': 0,
-        'verified': true,
-        'demo': false,
-        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
-        'createdAt': '2026-01-15' },
-    {
         'id': 'nic-033',
         'slug': 'additional-collector-revenue-buxar',
         'name': {
@@ -1401,32 +1377,6 @@ B.businesses = [
         'phone': '9431818799',
         'whatsapp': '9431818799',
         'email': 'dao-bux-bih@nic.in',
-        'website': null,
-        'address': 'Buxar, Bihar',
-        'logo': null,
-        'cover': null,
-        'gallery': [],
-        'rating': null,
-        'reviewCount': 0,
-        'verified': true,
-        'demo': false,
-        'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
-        'createdAt': '2026-01-15' },
-    {
-        'id': 'nic-036',
-        'slug': 'district-education-office-buxar',
-        'name': {
-            'en': 'District Education Office, Buxar' },
-        'category': 'civic-offices',
-        'subcategory': {
-            'en': 'Education' },
-        'type': 'service',
-        'area': 'buxar-town',
-        'description': {
-            'en': 'District Education Office, Buxar — Education department, district administration Buxar.' },
-        'phone': '8544411179',
-        'whatsapp': '8544411179',
-        'email': null,
         'website': null,
         'address': 'Buxar, Bihar',
         'logo': null,
