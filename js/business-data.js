@@ -1955,6 +1955,34 @@ B.businesses = [
     return B.businesses.some(function (b) { return b.gallery && b.gallery.length })
   }
 
+  /* Take `n` records spread evenly across every category, newest first inside
+     each category. Used by the homepage preview so no single field can take
+     over the whole grid. */
+  B.spread = function (list, n) {
+    var buckets = {}
+    var order = []
+    list.slice().sort(function (a, b) {
+      return String(b.createdAt || '').localeCompare(String(a.createdAt || ''))
+    }).forEach(function (b) {
+      var c = b.category || 'other'
+      if (!buckets[c]) { buckets[c] = []; order.push(c) }
+      buckets[c].push(b)
+    })
+
+    var out = []
+    var round = 0
+    while (out.length < n) {
+      var added = false
+      for (var i = 0; i < order.length && out.length < n; i++) {
+        var b = buckets[order[i]][round]
+        if (b) { out.push(b); added = true }
+      }
+      if (!added) break
+      round++
+    }
+    return out
+  }
+
   /* ------------------------------------------------------------------ */
   /* Logo / monogram                                                    */
   /* ------------------------------------------------------------------ */

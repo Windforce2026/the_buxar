@@ -47,6 +47,46 @@
   function t (key) { return T.get(T.ui[key]) }
   function icon (name) { return T.icons[name] || T.icons.commerce }
 
+  /* Words that carry no identity in an acronym. */
+  var MONO_SKIP = { of: 1, the: 1, and: 1, for: 1, at: 1, in: 1, on: 1, a: 1, an: 1, to: 1 }
+
+  /* Acronym from the sector's own name: "Professional Services" -> PS,
+     "Food & Hospitality" -> FH, "Retail" -> R. Never a guessed mark. */
+  function monoOf (name, override) {
+    /* An explicit `mono` on the record always wins. Two single-word sectors
+       would otherwise land on the same letter, so those set their own. */
+    if (typeof override === 'string' && override.trim()) {
+      return override.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 5)
+    }
+    var words = String(name || '')
+      .replace(/[(),.\/\-–—:&]/g, ' ')
+      .split(/\s+/)
+      .map(function (w) { return w.replace(/[^A-Za-z]/g, '') })
+      .filter(Boolean)
+    if (!words.length) return '?'
+
+    var significant = words.filter(function (w) { return !MONO_SKIP[w.toLowerCase()] })
+    var source = (significant.length ? significant : words)
+
+    /* A one-word sector takes a single letter. Squeezing two letters out of
+       it would collide with real two-word sectors — "Retail" would become
+       RE and clash with "Real Estate". */
+    if (source.length === 1) return source[0][0].toUpperCase()
+    if (source.length >= 2) {
+      return source.slice(0, 2).map(function (w) { return w[0] }).join('').toUpperCase()
+    }
+    return words.join('').slice(0, 2).toUpperCase() || '?'
+  }
+
+  /* Stable per-sector hue in a narrow navy→steel band, matching the
+     business monogram tiles so both modules share one visual language. */
+  function toneOf (slug) {
+    var s = String(slug || '')
+    var h = 0
+    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360
+    return 196 + (h % 40)
+  }
+
   /* ---------------------------------------------------------------- */
   /* Mounts                                                           */
   /* ---------------------------------------------------------------- */
@@ -63,8 +103,16 @@
   /* Business ecosystem categories. */
   MOUNT.ecosystem = function (host) {
     host.innerHTML = '<div class="td-ecosystem">' + T.categories.map(function (c) {
-      return '<a class="td-ecosystem__item reveal" href="' + esc(T.businessUrl()) + '">' +
-        '<span class="td-ecosystem__icon">' + icon(c.icon) + '</span>' +
+      /* Same treatment as the business cards: the acronym IS the mark, set
+         in gold serif on a tinted navy plate. An earlier version layered the
+         letters behind a line icon as a watermark, which read as clutter and
+         let long marks spill past the plate edge. */
+      var mono = monoOf(T.get(c.name), c.mono)
+      return '<a class="td-ecosystem__item reveal" href="' + esc(T.businessUrl()) + '"' +
+        ' style="--td-tone:' + toneOf(c.slug) + '">' +
+        '<span class="td-ecosystem__tile">' +
+          '<span class="td-ecosystem__mono" data-len="' + mono.length + '" aria-hidden="true">' + esc(mono) + '</span>' +
+        '</span>' +
         '<span class="td-ecosystem__name">' + esc(T.get(c.name)) + '</span>' +
         '<span class="td-ecosystem__blurb">' + esc(T.get(c.blurb)) + '</span>' +
       '</a>'

@@ -308,14 +308,70 @@
   box-shadow: var(--td-shadow);
 }
 
-.td-ecosystem__icon {
+/* Sector mark — identical treatment to the business monogram tiles: the
+   acronym in gold serif on a tinted navy plate, sized to stay well inside. */
+.td-ecosystem__tile {
+  position: relative;
   display: grid;
   place-items: center;
-  width: clamp(44px, 5vw, 52px);
-  height: clamp(44px, 5vw, 52px);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 20%, rgba(255, 215, 106, 0.26), rgba(212, 175, 55, 0.16));
+  width: clamp(52px, 6vw, 62px);
+  height: clamp(52px, 6vw, 62px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 215, 106, 0.2);
+  text-decoration: none;
+  background:
+    radial-gradient(85% 90% at 30% 8%, hsl(var(--td-tone, 210) 46% 46% / 0.3), transparent 66%),
+    linear-gradient(150deg,
+      hsl(var(--td-tone, 210) 52% 11%),
+      hsl(calc(var(--td-tone, 210) + 10) 44% 21%));
+}
+
+.td-ecosystem__mono {
+  font-family: var(--td-serif);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 215, 106, 0.72);
+  line-height: 1;
+  padding: 0 10px;
+  max-width: 100%;
+}
+
+/* Longer marks shrink so they always sit inside the plate. Sizes are
+   measured against a 62px plate: 4 characters need ~15px to clear the
+   padding, 5 need ~12px. */
+.td-ecosystem__mono[data-len='5'] {
+  font-size: clamp(12px, 1.3vw, 13px);
+  letter-spacing: 0.02em;
+  padding: 0 5px;
+}
+
+.td-ecosystem__mono[data-len='4'] {
+  font-size: clamp(14px, 1.6vw, 15px);
+  letter-spacing: 0.03em;
+  padding: 0 6px;
+}
+
+.td-ecosystem__mono[data-len='3'] {
+  font-size: clamp(20px, 2.4vw, 25px);
+}
+
+.td-ecosystem__mono[data-len='2'] {
+  font-size: clamp(23px, 2.8vw, 30px);
+}
+
+.td-ecosystem__mono[data-len='1'] {
+  font-size: clamp(28px, 3.4vw, 37px);
+}
+
+.td-ecosystem__icon {
+  position: relative;
+  z-index: 1;
   color: var(--td-gold);
+}
+
+.td-ecosystem__item:hover .td-ecosystem__tile {
+  border-color: rgba(255, 215, 106, 0.42);
 }
 
 .td-ecosystem__icon svg {

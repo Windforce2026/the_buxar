@@ -277,9 +277,11 @@
   /* Featured businesses on the landing page. */
   MOUNT.featured = function (host) {
     var n = parseInt(host.getAttribute('data-limit'), 10) || 6
-    var list = B.businesses.slice().sort(function (a, b) {
-      return String(b.createdAt || '').localeCompare(String(a.createdAt || ''))
-    }).slice(0, n)
+    /* Every field gets representation on the homepage preview. A plain
+       newest-first slice shows six entries from whichever category happens
+       to sit first in the file — the preview became all health centres and
+       banks, power and civic offices never appeared. Round-robin instead. */
+    var list = B.spread(B.businesses, n)
     host.innerHTML = list.map(card).join('')
   }
 

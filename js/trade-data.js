@@ -148,11 +148,11 @@
     { slug: 'education', icon: 'education', name: { en: 'Education', hi: 'शिक्षा' }, blurb: { en: 'Schools, colleges and coaching centres.', hi: 'विद्यालय, महाविद्यालय और कोचिंग केंद्र।' } },
     { slug: 'professional-services', icon: 'professional', name: { en: 'Professional Services', hi: 'पेशेवर सेवाएँ' }, blurb: { en: 'Legal, accounting and consultancy work.', hi: 'कानूनी, लेखा और परामर्श कार्य।' } },
     { slug: 'construction', icon: 'construction', name: { en: 'Construction', hi: 'निर्माण' }, blurb: { en: 'Building, contractors and materials.', hi: 'निर्माण, ठेकेदार और सामग्री।' } },
-    { slug: 'automobile', icon: 'automobile', name: { en: 'Automobile', hi: 'मोटर वाहन' }, blurb: { en: 'Vehicle sales, service and repair.', hi: 'वाहन बिक्री, सर्विस और मरम्मत।' } },
+    { slug: 'automobile', icon: 'automobile', mono: 'AUTO', name: { en: 'Automobile', hi: 'मोटर वाहन' }, blurb: { en: 'Vehicle sales, service and repair.', hi: 'वाहन बिक्री, सर्विस और मरम्मत।' } },
     { slug: 'transport', icon: 'transport', name: { en: 'Transport', hi: 'परिवहन' }, blurb: { en: 'Goods and passenger movement.', hi: 'माल और यात्री परिवहन।' } },
     { slug: 'finance', icon: 'finance', name: { en: 'Finance', hi: 'वित्त' }, blurb: { en: 'Banking, insurance and money services.', hi: 'बैंकिंग, बीमा और धन सेवाएँ।' } },
     { slug: 'real-estate', icon: 'realestate', name: { en: 'Real Estate', hi: 'रियल एस्टेट' }, blurb: { en: 'Property, land and housing.', hi: 'संपत्ति, भूमि और आवास।' } },
-    { slug: 'agriculture', icon: 'agriculture', name: { en: 'Agriculture', hi: 'कृषि' }, blurb: { en: 'Farms, produce and agro-services.', hi: 'खेत, उपज और कृषि सेवाएँ।' } },
+    { slug: 'agriculture', icon: 'agriculture', mono: 'AGRI', name: { en: 'Agriculture', hi: 'कृषि' }, blurb: { en: 'Farms, produce and agro-services.', hi: 'खेत, उपज और कृषि सेवाएँ।' } },
     { slug: 'manufacturing', icon: 'manufacturing', name: { en: 'Manufacturing', hi: 'विनिर्माण' }, blurb: { en: 'Small industries and workshops.', hi: 'छोटे उद्योग और कार्यशालाएँ।' } }
   ]
 
