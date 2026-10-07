@@ -350,6 +350,7 @@ B.businesses = [
     {
         'id': 'nic-001',
         'slug': 'phc-brahmpur',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Brahmpur' },
         'category': 'healthcare',
@@ -382,6 +383,7 @@ B.businesses = [
     {
         'id': 'nic-002',
         'slug': 'phc-chakki',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Chakki' },
         'category': 'healthcare',
@@ -414,6 +416,7 @@ B.businesses = [
     {
         'id': 'nic-003',
         'slug': 'phc-chaugain',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Chaugain' },
         'category': 'healthcare',
@@ -446,6 +449,7 @@ B.businesses = [
     {
         'id': 'nic-004',
         'slug': 'phc-chausa',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Chausa' },
         'category': 'healthcare',
@@ -478,6 +482,7 @@ B.businesses = [
     {
         'id': 'nic-005',
         'slug': 'phc-dumraon',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Dumraon' },
         'category': 'healthcare',
@@ -510,6 +515,7 @@ B.businesses = [
     {
         'id': 'nic-006',
         'slug': 'phc-itarhi',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Itarhi' },
         'category': 'healthcare',
@@ -542,6 +548,7 @@ B.businesses = [
     {
         'id': 'nic-007',
         'slug': 'phc-kesath',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Kesath' },
         'category': 'healthcare',
@@ -574,6 +581,7 @@ B.businesses = [
     {
         'id': 'nic-008',
         'slug': 'phc-nawanagar',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Nawanagar' },
         'category': 'healthcare',
@@ -606,6 +614,7 @@ B.businesses = [
     {
         'id': 'nic-009',
         'slug': 'phc-rajpur',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Rajpur' },
         'category': 'healthcare',
@@ -638,6 +647,7 @@ B.businesses = [
     {
         'id': 'nic-010',
         'slug': 'phc-simari',
+        'mono': 'PHC',
         'name': {
             'en': 'PHC Simari' },
         'category': 'healthcare',
