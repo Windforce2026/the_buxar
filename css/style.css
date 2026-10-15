@@ -257,8 +257,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(14px, 1.6vw, 26px);
+  gap: clamp(11px, 1.35vw, 20px);
   min-width: 0;
+}
+
+/* The wordmark and the actions must never be overrun by the menu. The
+   menu is the only item allowed to give way, and it now hands over to
+   the drawer before it has to. */
+.nav__brand,
+.nav__actions {
+  flex: 0 0 auto;
 }
 
 .nav__link {
@@ -701,8 +709,13 @@ html[data-theme='light'] .nav__theme-moon {
   background: var(--gold-warm);
 }
 
-/* --- Mobile: hamburger drawer (≤ 900px) --- */
-@media (max-width: 900px) {
+/* --- Hamburger drawer ---
+   Ten primary links need roughly 790px of menu. Alongside the wordmark
+   and the actions (region, search, theme, language) that only leaves
+   comfortable room above 1400px. Below that the desktop bar squeezed
+   the links until they overlapped the wordmark and each other, so the
+   drawer takes over much earlier than a nine-item menu needed. */
+@media (max-width: 1400px) {
   /* backdrop-filter on .nav makes it the containing block for the
      fixed drawer, pinning it to the 68px bar instead of the viewport.
      Drop it on mobile so .nav__menu is positioned against the viewport. */
