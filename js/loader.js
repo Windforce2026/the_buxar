@@ -94,8 +94,10 @@
     }, 350)
   }
 
-  /* Place the pulses + "BUXAR" label on Buxar's centroid. */
+  /* Place the pulses + "BUXAR" label on Buxar's centroid. Pages without a
+     map — the listing verticals, for one — simply have nothing to place. */
   function placeBuxar() {
+    if (!mapEl) return
     const origin = document.getElementById('br-pulse-origin')
     const rect = mapEl.getBoundingClientRect()
     let bx = NaN

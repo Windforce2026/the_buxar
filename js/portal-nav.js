@@ -41,13 +41,13 @@
     { key: 'news', label: { en: 'News', hi: 'समाचार' }, href: 'news.html', live: true },
     { key: 'business', label: { en: 'Business', hi: 'व्यापार' }, href: 'business.html', live: true },
     { key: 'shop', label: { en: 'Shop', hi: 'दुकान' }, href: 'marketplace.html', live: true },
-    { key: 'food', label: { en: 'Food', hi: 'भोजन' }, href: 'food.html', live: false },
+    { key: 'food', label: { en: 'Food', hi: 'भोजन' }, href: 'food.html', live: true },
     { key: 'tourism', label: { en: 'Tourism', hi: 'पर्यटन' }, href: 'tourism.html', live: true },
     { key: 'events', label: { en: 'Events', hi: 'आयोजन' }, href: 'news.html#nw-festivals', live: true },
-    { key: 'services', label: { en: 'Services', hi: 'सेवाएँ' }, href: 'services.html', live: false },
-    { key: 'jobs', label: { en: 'Jobs', hi: 'रोज़गार' }, href: 'jobs.html', live: false },
-    { key: 'property', label: { en: 'Property', hi: 'संपत्ति' }, href: 'property.html', live: false },
-    { key: 'classifieds', label: { en: 'Classifieds', hi: 'विज्ञापन' }, href: 'classifieds.html', live: false }
+    { key: 'services', label: { en: 'Services', hi: 'सेवाएँ' }, href: 'services.html', live: true },
+    { key: 'jobs', label: { en: 'Jobs', hi: 'रोज़गार' }, href: 'jobs.html', live: true },
+    { key: 'property', label: { en: 'Property', hi: 'संपत्ति' }, href: 'property.html', live: true },
+    { key: 'classifieds', label: { en: 'Classifieds', hi: 'विज्ञापन' }, href: 'classifieds.html', live: true }
   ]
 
   /* Home and Contact sit outside the ten so they stay on every page. */
