@@ -257,7 +257,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(11px, 1.35vw, 20px);
+  gap: clamp(10px, 1.2vw, 17px);
   min-width: 0;
 }
 

@@ -1,0 +1,708 @@
+/* ================================================================== */
+/* Accounts, tiers and admin                                          */
+/* ================================================================== */
+
+.au-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(46px, 6.5vw, 88px) 0 clamp(38px, 5vw, 62px);
+  background: linear-gradient(155deg, #061526 0%, #0a2038 55%, #071a2e 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.au-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(720px 320px at 76% 0%, rgba(212, 175, 55, 0.1), transparent 68%);
+  pointer-events: none;
+}
+
+.au-hero__inner {
+  position: relative;
+  max-width: 780px;
+}
+
+.au-hero__label {
+  margin: 0 0 10px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.au-hero__title {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 4.4vw, 46px);
+  font-weight: 500;
+  line-height: 1.12;
+  color: #f8f6f2;
+}
+
+.au-hero__sub {
+  margin: 0;
+  max-width: 62ch;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(248, 246, 242, 0.64);
+}
+
+.au-hero__tier {
+  display: inline-block;
+  margin: 20px 0 0;
+  padding: 7px 18px;
+  border: 1px solid rgba(248, 246, 242, 0.2);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.75);
+}
+
+.au-hero__tier.is-premium {
+  border-color: rgba(212, 175, 55, 0.6);
+  background: rgba(212, 175, 55, 0.14);
+  color: var(--gold-warm);
+}
+
+.au-hero__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.au-warn {
+  margin: 22px 0 0;
+  padding: 13px 16px;
+  border-left: 2px solid rgba(212, 175, 55, 0.6);
+  background: rgba(212, 175, 55, 0.06);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: rgba(248, 246, 242, 0.62);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tier comparison                                                    */
+/* ------------------------------------------------------------------ */
+.au-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  max-width: 880px;
+}
+
+.au-tier {
+  position: relative;
+  padding: 28px 26px;
+  border: 1px solid rgba(248, 246, 242, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.au-tier--featured {
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.au-tier__flag {
+  position: absolute;
+  top: -10px;
+  left: 26px;
+  margin: 0;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--gold);
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0a1626;
+}
+
+.au-tier__name {
+  margin: 0 0 4px;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 500;
+  color: #f8f6f2;
+}
+
+.au-tier__tag {
+  margin: 0 0 18px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(248, 246, 242, 0.5);
+}
+
+.au-tier__price {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold-warm);
+}
+
+.au-tier__period {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  color: rgba(248, 246, 242, 0.42);
+}
+
+.au-tier__blurb {
+  margin: 0 0 18px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(248, 246, 242, 0.62);
+}
+
+.au-tier__list {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.au-tier__list li {
+  position: relative;
+  padding: 7px 0 7px 24px;
+  border-bottom: 1px solid rgba(248, 246, 242, 0.06);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(248, 246, 242, 0.82);
+}
+
+.au-tier__list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 15px;
+  width: 8px;
+  height: 4px;
+  border-left: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: rotate(-45deg);
+}
+
+.au-tier__limits {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.4);
+}
+
+/* ------------------------------------------------------------------ */
+/* Account page                                                       */
+/* ------------------------------------------------------------------ */
+.au-page {
+  padding: clamp(40px, 6vw, 70px) 0;
+  background: #08192c;
+}
+
+.au-page + .au-page {
+  padding-top: 0;
+}
+
+.au-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.au-card {
+  border: 1px solid rgba(248, 246, 242, 0.11);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.028);
+  overflow: hidden;
+}
+
+.au-card__inner {
+  padding: clamp(24px, 3.4vw, 34px);
+}
+
+.au-card__title {
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  color: #f8f6f2;
+}
+
+.au-card__sub {
+  margin: 0 0 22px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(248, 246, 242, 0.55);
+}
+
+.au-card__confirm {
+  margin: 0 0 18px;
+  padding: 12px 15px;
+  border-left: 2px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  background: rgba(212, 175, 55, 0.08);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--gold-warm);
+}
+
+.au-card__tier {  display: inline-block;
+  margin: 0 0 20px;
+  padding: 5px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+}
+
+.au-card__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.au-form__field {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.au-form__field > span {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.5);
+}
+
+.au-form__field input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(248, 246, 242, 0.16);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  color: #f8f6f2;
+  font-family: var(--sans);
+  font-size: 14.5px;
+}
+
+.au-form__field input:focus {
+  outline: none;
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+.au-form__hint {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: rgba(248, 246, 242, 0.38);
+}
+
+.au-form__status {
+  margin: 14px 0 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--gold-warm);
+}
+
+.au-form__status:empty {
+  margin: 0;
+}
+
+/* --- tier picker --- */
+.au-form__tierpick {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.au-form__tierpick legend {
+  margin-bottom: 10px;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.5);
+}
+
+.au-pick {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 9px;
+  padding: 13px 15px;
+  border: 1px solid rgba(248, 246, 242, 0.13);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.au-pick.is-on {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.09);
+}
+
+.au-pick input {
+  accent-color: var(--gold);
+  flex: 0 0 auto;
+}
+
+.au-pick__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  min-width: 0;
+}
+
+.au-pick__name {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: #f8f6f2;
+}
+
+.au-pick__price {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+}
+
+.au-pick__tag {
+  flex: 1 1 100%;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(248, 246, 242, 0.45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Panels + stats (account dashboard and admin)                       */
+/* ------------------------------------------------------------------ */
+.au-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.au-panel {
+  border: 1px solid rgba(248, 246, 242, 0.11);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  overflow: hidden;
+}
+
+.au-panel--wide {
+  grid-column: 1 / -1;
+}
+
+.au-panel__title {
+  margin: 0;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(248, 246, 242, 0.09);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.6);
+}
+
+.au-panel__body {
+  padding: 20px 22px 22px;
+}
+
+.au-panel__empty {
+  margin: 0 0 16px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(248, 246, 242, 0.52);
+}
+
+.au-panel__note {
+  margin: 16px 0 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(248, 246, 242, 0.42);
+}
+
+.au-panel__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.au-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: rgba(248, 246, 242, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.au-stat {
+  padding: 20px 16px;
+  background: #08192c;
+}
+
+.au-stat__n {
+  display: block;
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold-warm);
+}
+
+.au-stat__l {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.5);
+}
+
+.au-stat__note {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(248, 246, 242, 0.33);
+}
+
+.au-perm {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.au-perm li {
+  position: relative;
+  padding: 8px 0 8px 24px;
+  border-bottom: 1px solid rgba(248, 246, 242, 0.06);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.au-perm li:last-child {
+  border-bottom: 0;
+}
+
+.au-perm__on::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 16px;
+  width: 8px;
+  height: 4px;
+  border-left: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: rotate(-45deg);
+}
+
+.au-perm__on {
+  color: rgba(248, 246, 242, 0.84);
+}
+
+.au-perm__more {
+  margin-top: 10px;
+  padding-left: 0 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.4) !important;
+}
+
+.au-perm__add {
+  color: rgba(248, 246, 242, 0.45);
+}
+
+.au-perm__add::before {
+  content: '+';
+  position: absolute;
+  left: 4px;
+  top: 7px;
+  color: var(--gold);
+}
+
+.au-lists {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.au-lists li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(248, 246, 242, 0.07);
+}
+
+.au-lists a {
+  font-family: var(--sans);
+  font-size: 14px;
+  text-decoration: none;
+  color: rgba(248, 246, 242, 0.9);
+}
+
+.au-lists a:hover {
+  color: var(--gold-warm);
+}
+
+.au-queue {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.au-queue li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(248, 246, 242, 0.07);
+}
+
+.au-queue__kind {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.16);
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+}
+
+.au-queue__title {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: rgba(248, 246, 242, 0.9);
+}
+
+.au-queue__meta {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: rgba(248, 246, 242, 0.45);
+}
+
+/* --- header account button --- */
+.nav__acct {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid rgba(248, 246, 242, 0.18);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: rgba(248, 246, 242, 0.82);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.nav__acct:hover,
+.nav__acct.is-on {
+  border-color: rgba(212, 175, 55, 0.55);
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold-warm);
+}
+
+.nav__acct svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.nav__acct-badge {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0a1626;
+}
+
+.au-empty {
+  padding: 40px 0;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: rgba(248, 246, 242, 0.55);
+}
+
+/* Ten nav links plus the wordmark already use the bar's width, so the
+   account button keeps only its icon. A paid account is shown by a filled
+   gold dot instead of a word badge — the same signal for about 60px less,
+   and it cannot push the bar into clipping at any width. The reader's
+   name and tier are one click away on the account page. */
+.nav__acct-name,
+.nav__acct-badge {
+  display: none;
+}
+
+.nav__acct.is-premium svg {
+  fill: var(--gold);
+  stroke: var(--gold);
+}
+
+.nav__acct.is-premium {
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+@media (max-width: 640px) {
+  .au-tiers,
+  .au-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .au-pick {
+    transition: none;
+  }
+}
