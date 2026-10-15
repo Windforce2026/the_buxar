@@ -284,27 +284,8 @@
   /* carry. Only categories that at least one record actually uses are  */
   /* rendered, so an empty category never reaches the UI.              */
   /* ------------------------------------------------------------------ */
-  B.categories = [
-    { slug: 'healthcare', icon: 'health', name: { en: 'Healthcare & Public Health', hi: 'स्वास्थ्य एवं जन स्वास्थ्य' }, blurb: { en: 'Hospitals, primary health centres and clinics.', hi: 'अस्पताल, प्राथमिक स्वास्थ्य केंद्र और क्लिनिक।' }, find: { en: 'Find a Doctor', hi: 'एक डॉक्टर खोजें' } },
-    { slug: 'education', icon: 'education', name: { en: 'Schools & Colleges', hi: 'विद्यालय एवं महाविद्यालय' }, blurb: { en: 'Schools, colleges and education offices.', hi: 'विद्यालय, महाविद्यालय और शिक्षा कार्यालय।' }, find: { en: 'Find a School', hi: 'एक विद्यालय खोजें' } },
-    { slug: 'police-emergency', icon: 'services', name: { en: 'Police & Emergency', hi: 'पुलिस एवं आपातकाल' }, blurb: { en: 'Police stations, circles and emergency contacts.', hi: 'पुलिस थाने, सर्कल और आपातकालीन संपर्क।' }, find: { en: 'Emergency Contacts', hi: 'आपातकालीन संपर्क' } },
-    { slug: 'civic-offices', icon: 'other', name: { en: 'Civic & District Offices', hi: 'नागरिक एवं जिला कार्यालय' }, blurb: { en: 'District administration, block and municipal offices.', hi: 'जिला प्रशासन, प्रखंड और नगरपालिका कार्यालय।' }, find: { en: 'Find an Office', hi: 'एक कार्यालय खोजें' } },
-    { slug: 'finance', icon: 'finance', name: { en: 'Banks & Finance', hi: 'बैंक एवं वित्त' }, blurb: { en: 'Banks and financial services in the district.', hi: 'जिले में बैंक और वित्तीय सेवाएँ।' }, find: { en: 'Find a Bank', hi: 'एक बैंक खोजें' } },
-    { slug: 'utilities', icon: 'services', name: { en: 'Power & Utilities', hi: 'विद्युत एवं उपयोगिता' }, blurb: { en: 'Electricity, water and public utilities.', hi: 'बिजली, जल और सार्वजनिक उपयोगिता।' }, find: { en: 'Find a Utility', hi: 'एक उपयोगिता खोजें' } },
-    { slug: 'community', icon: 'other', name: { en: 'Community & NGOs', hi: 'समुदाय एवं एनजीओ' }, blurb: { en: 'NGOs and community organisations.', hi: 'एनजीओ और सामुदायिक संगठन।' }, find: { en: 'Find an Organisation', hi: 'एक संगठन खोजें' } },
-    { slug: 'restaurants-food', icon: 'food', name: { en: 'Restaurants & Food', hi: 'रेस्तराँ और भोजन' }, blurb: { en: 'Eateries, food counters and local cuisine.', hi: 'भोजनालय, फ़ूड काउंटर और स्थानीय भोजन।' }, find: { en: 'Find a Restaurant', hi: 'एक रेस्तराँ खोजें' } },
-    { slug: 'hotels-stays', icon: 'stay', name: { en: 'Hotels & Stays', hi: 'होटल और ठहरना' }, blurb: { en: 'Hotels, guest houses and places to stay.', hi: 'होटल, अतिथि गृह और ठरने की जगहें।' }, find: { en: 'Find a Hotel', hi: 'एक होटल खोजें' } },
-    { slug: 'shopping', icon: 'shopping', name: { en: 'Shopping', hi: 'खरीदारी' }, blurb: { en: 'Shops, boutiques and retail stores.', hi: 'दुकानें, बुटीक और खुदरा भंडार।' }, find: { en: 'Find a Shop', hi: 'एक दुकान खोजें' } },
-    { slug: 'retail', icon: 'retail', name: { en: 'Retail', hi: 'फुटरायल' }, blurb: { en: 'General retail and everyday goods.', hi: 'सामान्य फुटरायल और रोज़मर्रा का सामान।' }, find: { en: 'Find a Retailer', hi: 'एक फुटरायलर खोजें' } },
-    { slug: 'professional-services', icon: 'professional', name: { en: 'Professional Services', hi: 'पेशेवर सेवाएँ' }, blurb: { en: 'Advisors, consultants and office work.', hi: 'सलाहकार, परामर्शदाता और कार्यालयी सेवाएँ।' }, find: { en: 'Find a Professional', hi: 'एक पेशेवर खोजें' } },
-    { slug: 'automobile', icon: 'automobile', name: { en: 'Automobile', hi: 'ऑटोमोबाइल' }, blurb: { en: 'Showrooms, service centres and garages.', hi: 'शोरूम, सर्विस सेंटर और गैराज।' }, find: { en: 'Find an Auto Service', hi: 'ऑटो सेवा खोजें' } },
-    { slug: 'real-estate', icon: 'realestate', name: { en: 'Real Estate', hi: 'रियल एस्टेट' }, blurb: { en: 'Property, builders and letting.', hi: 'संपत्ति, बिल्डर और किराये का काम।' }, find: { en: 'Find an Agent', hi: 'एक एजेंट खोजें' } },
-    { slug: 'construction', icon: 'construction', name: { en: 'Construction', hi: 'निर्माण' }, blurb: { en: 'Builders, contractors and suppliers.', hi: 'बिल्डर, ठेकेदार और आपूर्तिकर्ता।' }, find: { en: 'Find a Builder', hi: 'एक बिल्डर खोजें' } },
-    { slug: 'travel-transport', icon: 'travel', name: { en: 'Travel & Transport', hi: 'यात्रा और परिवहन' }, blurb: { en: 'Travel agents, transport and logistics.', hi: 'यात्रा एजेंट, परिवहन और लॉजिस्टिक्स।' }, find: { en: 'Find a Travel Agent', hi: 'एक यात्रा एजेंट खोजें' } },
-    { slug: 'beauty-wellness', icon: 'beauty', name: { en: 'Beauty & Wellness', hi: 'सौंदर्य और कल्याण' }, blurb: { en: 'Salons, parlours and wellness.', hi: 'सैलून, पार्लर और कल्याण केंद्र।' }, find: { en: 'Find a Salon', hi: 'एक सैलून खोजें' } },
-    { slug: 'local-services', icon: 'services', name: { en: 'Local Services', hi: 'स्थानीय सेवाएँ' }, blurb: { en: 'Repairs, plumbing, electrical and daily help.', hi: 'मरम्मत, प्लंबिंग, बिजली और दैनिक सहायता।' }, find: { en: 'Find a Service', hi: 'एक सेवा खोजें' } },
-    { slug: 'other', icon: 'other', name: { en: 'Other', hi: 'अन्य' }, blurb: { en: 'Everything that does not fit elsewhere.', hi: 'जो किसी अन्य श्रेणी में नहीं आता।' }, find: { en: 'Browse other listings', hi: 'अन्य सूचियाँ देखें' } }
-  ]
+  /* Categories now live in js/business-taxonomy.js — seven groups with
+     sub-categories, loaded after this file. */
 
   /* Business type — a lighter facet than category. Only the types the
      records actually use are offered in the filters. */
@@ -353,7 +334,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Brahmpur' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -386,7 +367,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Chakki' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -419,7 +400,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Chaugain' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -452,7 +433,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Chausa' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -485,7 +466,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Dumraon' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -518,7 +499,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Itarhi' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -551,7 +532,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Kesath' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -584,7 +565,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Nawanagar' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -617,7 +598,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Rajpur' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -650,7 +631,7 @@ B.businesses = [
         'mono': 'PHC',
         'name': {
             'en': 'PHC Simari' },
-        'category': 'healthcare',
+        'category': 'public-health',
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
@@ -762,7 +743,7 @@ B.businesses = [
         'slug': 'punjab-national-bank',
         'name': {
             'en': 'Punjab National Bank' },
-        'category': 'finance',
+        'category': 'banks',
         'subcategory': {
             'en': 'Bank' },
         'type': 'service',
@@ -788,7 +769,7 @@ B.businesses = [
         'slug': 'state-bank-of-india',
         'name': {
             'en': 'State Bank Of India' },
-        'category': 'finance',
+        'category': 'banks',
         'subcategory': {
             'en': 'Bank' },
         'type': 'service',
@@ -815,7 +796,7 @@ B.businesses = [
         'mono': 'UCO',
         'name': {
             'en': 'UCO BANK' },
-        'category': 'finance',
+        'category': 'banks',
         'subcategory': {
             'en': 'Bank' },
         'type': 'service',
@@ -841,7 +822,7 @@ B.businesses = [
         'slug': 'dy-s-p-rakshit-buxar',
         'name': {
             'en': 'Dy.S.P(Rakshit Buxar)' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -873,7 +854,7 @@ B.businesses = [
         'slug': 'dy-s-p-traffic',
         'name': {
             'en': 'Dy.S.P(Traffic)' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -905,7 +886,7 @@ B.businesses = [
         'slug': 'dy-s-p-cyber',
         'name': {
             'en': 'Dy.S.P(Cyber)' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -937,7 +918,7 @@ B.businesses = [
         'slug': 'sergeant-major',
         'name': {
             'en': 'Sergeant Major' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -969,7 +950,7 @@ B.businesses = [
         'slug': 'circle-inspector-town',
         'name': {
             'en': 'Circle Inspector, Town' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Circle' },
         'type': 'service',
@@ -1001,7 +982,7 @@ B.businesses = [
         'slug': 'circle-inspector-sadar',
         'name': {
             'en': 'Circle Inspector, Sadar' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Circle' },
         'type': 'service',
@@ -1033,7 +1014,7 @@ B.businesses = [
         'slug': 'circle-inspector-dumraon',
         'name': {
             'en': 'Circle Inspector, Dumraon' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Circle' },
         'type': 'service',
@@ -1065,7 +1046,7 @@ B.businesses = [
         'slug': 'circle-inspector-brahampur',
         'name': {
             'en': 'Circle Inspector, Brahampur' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Circle' },
         'type': 'service',
@@ -1097,7 +1078,7 @@ B.businesses = [
         'slug': 'sho-murar-p-s',
         'name': {
             'en': 'SHO, Murar P.S' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Station' },
         'type': 'service',
@@ -1129,7 +1110,7 @@ B.businesses = [
         'slug': 'incharge-tilak-rai-ke-hata-o-p',
         'name': {
             'en': 'Incharge Tilak Rai Ke Hata O.P' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -1161,7 +1142,7 @@ B.businesses = [
         'slug': 'incharge-ramdas-rai-ke-dera-o-p',
         'name': {
             'en': 'Incharge Ramdas Rai ke Dera O.P' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -1193,7 +1174,7 @@ B.businesses = [
         'slug': 'incharge-chakki-o-p',
         'name': {
             'en': 'Incharge Chakki O.P' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -1225,7 +1206,7 @@ B.businesses = [
         'slug': 'traffic-thana',
         'name': {
             'en': 'Traffic Thana' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -1257,7 +1238,7 @@ B.businesses = [
         'slug': 'police-control-room',
         'name': {
             'en': 'Police Control Room' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
@@ -1289,7 +1270,7 @@ B.businesses = [
         'slug': 'office-of-the-superintendent-of-police-buxar',
         'name': {
             'en': 'Office of the Superintendent of Police, Buxar' },
-        'category': 'police-emergency',
+        'category': 'police',
         'subcategory': {
             'en': 'District Police Headquarters' },
         'type': 'service',
@@ -1654,7 +1635,7 @@ B.businesses = [
         'slug': 'alpawas-grih',
         'name': {
             'en': 'ALPAWAS GRIH' },
-        'category': 'community',
+        'category': 'community-orgs',
         'subcategory': {
             'en': 'Community Organisation' },
         'type': 'service',
@@ -1680,7 +1661,7 @@ B.businesses = [
         'slug': 'child-welfare-committee',
         'name': {
             'en': 'Child Welfare Committee' },
-        'category': 'community',
+        'category': 'community-orgs',
         'subcategory': {
             'en': 'Community Organisation' },
         'type': 'service',
