@@ -864,3 +864,191 @@ html[data-theme='light'] .nav__theme-moon {
     margin: 0 4px;
   }
 }
+
+/* ================================================================== */
+/* Portal navigation — ten-item menu, region switcher                */
+/* ================================================================== */
+
+/* Ten items need a tighter scale than the old nine did. */
+.nav__menu .nav__link {
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  padding: 6px 0;
+}
+
+/* A section that is modelled but not built yet. It stays clickable and
+   explains itself instead of silently doing nothing. */
+.nav__link.is-soon {
+  color: rgba(248, 246, 242, 0.58);
+  cursor: pointer;
+}
+
+.nav__link.is-soon::after {
+  background: rgba(248, 246, 242, 0.22);
+}
+
+.nav__soon-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-left: 5px;
+  vertical-align: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.nav__link.is-soon:hover {
+  color: var(--gold-warm);
+}
+
+.nav__link.is-soon:hover .nav__soon-dot {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ */
+/* Region switcher                                                    */
+/* ------------------------------------------------------------------ */
+.nav__region {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.07);
+  color: var(--gold-warm);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.nav__region:hover,
+.nav__region.is-open {
+  border-color: rgba(212, 175, 55, 0.62);
+  background: rgba(212, 175, 55, 0.14);
+}
+
+.nav__region svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.nav__region-name {
+  font-weight: 600;
+}
+
+.nav__region-lvl {
+  color: rgba(248, 246, 242, 0.45);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.regionpanel {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: grid;
+  place-items: start center;
+  padding: 92px 20px 20px;
+  background: rgba(4, 12, 24, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.regionpanel[hidden] {
+  display: none;
+}
+
+.regionpanel__inner {
+  width: min(760px, 100%);
+  max-height: 78vh;
+  overflow-y: auto;
+  padding: clamp(22px, 3.4vw, 34px);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  background: linear-gradient(160deg, #0a2038, #061526);
+  box-shadow: 0 40px 110px -40px rgba(0, 0, 0, 0.9);
+}
+
+.regionpanel__head {
+  margin: 0 0 18px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.regionpanel__group {
+  margin-bottom: 18px;
+}
+
+.regionpanel__label {
+  margin: 0 0 8px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 242, 0.42);
+}
+
+.regionpanel__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.regionpanel__item {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 246, 242, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(248, 246, 242, 0.86);
+  font-family: var(--sans);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.regionpanel__item:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.regionpanel__item.is-active {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.18);
+  color: var(--gold-warm);
+}
+
+.regionpanel__note {
+  margin: 6px 0 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(248, 246, 242, 0.5);
+}
+
+@media (max-width: 1080px) {
+  .nav__region-lvl {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav__region-name {
+    display: none;
+  }
+
+  .nav__region {
+    padding: 7px 10px;
+  }
+}

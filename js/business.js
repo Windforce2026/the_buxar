@@ -61,6 +61,17 @@
   function icon (name) { return B.icons[name] || B.icons.other }
 
   function catName (slug) { var c = B.catBySlug(slug); return c ? B.get(c.name) : '' }
+
+  /* The eyebrow on a card: category, then sub-category only when it adds
+     something. Re-filing records into the grouped taxonomy made the two
+     names collide ("Primary Health Centre · Primary Health Centre"), so
+     the second is dropped whenever it repeats the first. */
+  function catLabel (biz) {
+    var a = catName(biz.category)
+    var b = biz.subcategory ? B.get(biz.subcategory) : ''
+    if (!b || b.toLowerCase() === a.toLowerCase()) return a
+    return a + ' · ' + b
+  }
   function areaName (slug) { var a = B.areaBySlug(slug); return a ? B.get(a.name) : '' }
   function typeName (slug) { var x = B.typeBySlug(slug); return x ? B.get(x.name) : '' }
 
@@ -220,7 +231,7 @@
       '<article class="bz-row reveal">' +
         '<a class="bz-row__media" href="' + esc(B.profileUrl(biz)) + '" tabindex="-1" aria-hidden="true">' + media + '</a>' +
         '<div class="bz-row__body">' +
-          '<p class="bz-row__cat">' + esc(catName(biz.category)) + (biz.subcategory ? ' <span class="bz-dot">\u00b7</span> ' + esc(B.get(biz.subcategory)) : '') + '</p>' +
+          '<p class="bz-row__cat">' + esc(catLabel(biz)) + '</p>' +
           '<h3 class="bz-row__name"><a href="' + esc(B.profileUrl(biz)) + '">' + esc(B.get(biz.name)) + '</a></h3>' +
           '<p class="bz-row__loc">' + icon('pin') + '<span>' + esc(areaName(biz.area)) + '</span></p>' +
           (biz.description ? '<p class="bz-row__desc">' + esc(B.get(biz.description)) + '</p>' : '') +
@@ -803,7 +814,7 @@
         '<div class="shell bz-hero__inner">' +
           logo +
           '<p class="bz-hero__cat">' + esc(catName(biz.category)) +
-            (biz.subcategory ? ' <span class="bz-dot">\u00b7</span> ' + esc(B.get(biz.subcategory)) : '') + '</p>' +
+            esc(catLabel(biz)) + '</p>' +
           '<h1 class="bz-hero__name">' + esc(name) + '</h1>' +
           '<p class="bz-hero__loc">' + icon('pin') +
             '<a href="' + esc(B.areaUrl(biz.area)) + '">' + esc(areaName(biz.area)) + '</a>' +

@@ -25,6 +25,12 @@
      window.TheBuxarConfig.path ('./' at root) and sets this. */
   N.path = ''
 
+  /* A record is real unless it is explicitly flagged as a demo. This is
+     the single rule that decides what a reader may see as published
+     content — news.js and the homepage live panel both defer to it, so
+     a placeholder can never leak into the homepage. */
+  N.isReal = function (rec) { return !!rec && rec.demo !== true }
+
   function url (p) { return N.path + p }
 
   /* ------------------------------------------------------------------ */
