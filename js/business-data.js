@@ -1811,7 +1811,78 @@ B.businesses = [
         'verified': true,
         'demo': false,
         'source': 'Government of Bihar — District Administration Buxar (buxar.nic.in)',
-        'createdAt': '2026-01-15' }
+        'createdAt': '2026-01-15' },
+
+    /* ------------------------------------------------------------------ */
+    /* Submitted listing — not from the district administration.          */
+    /*                                                                   */
+    /* Every fact below is taken from the organisation's own website:     */
+    /* gramsevasansthan.org, About Us and the site footer. The registered  */
+    /* year, trust act, founder, address, phone, email, website, social   */
+    /* links and the two lists of work are quoted, not summarised from    */
+    /* memory. The area is Buxar block: Mahdah is a census village in     */
+    /* Buxar CD Block (village code 248313), 8 km from the district       */
+    /* headquarters.                                                       */
+    /*                                                                   */
+    /* `verified` is false on purpose. Verified means the district        */
+    /* administration published it; this one came in from the client, and  */
+    /* nothing on the site should imply otherwise until it is confirmed.  */
+    /* ------------------------------------------------------------------ */
+    {
+        'id': 'ngo-001',
+        'slug': 'ramadhar-smarak-gram-seva-sansthan',
+        'mono': 'RSGSS',
+        'name': {
+            'en': 'Ramadhar Smarak Gram Seva Sansthan' },
+        'category': 'community-orgs',
+        'subcategory': {
+            'en': 'NGO' },
+        'type': 'service',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Non-profit organisation registered in 1982 under the Public Charitable Trust Act, with its registered office in Buxar. Founded by advocate and social worker Shri Shreeram Tiwari, it works on the social and economic causes of rural communities - financial inclusion, livelihood, education, health and Medicare, water, sanitation, agriculture and village entrepreneurship.' },
+        'services': [
+            {
+                'en': 'Skill development and training' },
+            {
+                'en': 'Entrepreneurship development' },
+            {
+                'en': 'Village entrepreneurship' },
+            {
+                'en': 'Business counselling' },
+            {
+                'en': 'Awareness programmes' },
+            {
+                'en': 'Water management' },
+            {
+                'en': 'Sanitation' },
+            {
+                'en': 'Women empowerment' },
+            {
+                'en': 'Education' },
+            {
+                'en': 'Health and Medicare' },
+            {
+                'en': 'Agriculture' } ],
+        'phone': '9818048920',
+        'whatsapp': '9818048920',
+        'email': 'info@gramsevasansthan.org',
+        'website': 'https://gramsevasansthan.org/',
+        'socialLinks': [
+            { 'label': 'Facebook', 'url': 'https://www.facebook.com/gramsevasansthan.org/' },
+            { 'label': 'LinkedIn', 'url': 'https://www.linkedin.com/in/ramadhar-smarak-gram-seva-sansthan-b9655976/' },
+            { 'label': 'Instagram', 'url': 'https://www.instagram.com/gram_seva_sansthan/' },
+            { 'label': 'Twitter', 'url': 'https://twitter.com/gra_seva' } ],
+        'address': 'Village Orri, Post Mahdah, District Buxar, Bihar 802103',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': false,
+        'demo': false,
+        'source': 'gramsevasansthan.org — organisation\u2019s own website',
+        'createdAt': '2026-10-17' }
 ]
 
   /* ------------------------------------------------------------------ */

@@ -813,8 +813,7 @@
         '<div class="bz-cover">' + cover + '</div>' +
         '<div class="shell bz-hero__inner">' +
           logo +
-          '<p class="bz-hero__cat">' + esc(catName(biz.category)) +
-            esc(catLabel(biz)) + '</p>' +
+          '<p class="bz-hero__cat">' + esc(catLabel(biz)) + '</p>' +
           '<h1 class="bz-hero__name">' + esc(name) + '</h1>' +
           '<p class="bz-hero__loc">' + icon('pin') +
             '<a href="' + esc(B.areaUrl(biz.area)) + '">' + esc(areaName(biz.area)) + '</a>' +
