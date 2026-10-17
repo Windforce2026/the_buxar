@@ -176,6 +176,28 @@
   color: rgba(8, 28, 51, 0.32);
 }
 
+/* A logo is not licensed imagery, so the licence column reads as
+   ownership for these entries. */
+.cr-row__own {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(154, 112, 20, 0.34);
+  background: rgba(212, 175, 55, 0.14);
+  font-family: var(--cr-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a6410;
+}
+
+.cr-note--logo {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(8, 28, 51, 0.1);
+}
+
 .cr-empty {
   margin: 0;
   font-family: var(--cr-sans);

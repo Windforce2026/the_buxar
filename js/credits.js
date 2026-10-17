@@ -4,6 +4,7 @@
 /* Renders the two provenance registers on /credits.html:              */
 /*   window.TheBuxarMarketCredits  (js/market-image-credits.js)        */
 /*   window.TheBuxarHeritageCredits (js/heritage-image-credits.js)     */
+/*   window.TheBuxarBusinessLogoCredits (js/business-logo-credits.js)   */
 /*                                                                     */
 /* Nothing here invents provenance. If an entry is missing a source    */
 /* or a licence, it is left blank rather than guessed.                 */
@@ -32,6 +33,15 @@
     usage: { en: 'Used for', hi: 'उपयोग' },
     photographer: { en: 'Photographer', hi: 'छायाकार' },
     openSource: { en: 'View original source', hi: 'मूल स्रोत देखें' },
+    logoTitle: { en: 'Business Logos', hi: 'व्यापारिक लोगो' },
+    logoSub: {
+      en: 'Emblems supplied by the organisations themselves for their own directory listing.',
+      hi: 'संबंधित संगठनों द्वारा अपनी निर्देशिका सूची के लिए उपलब्ध कराए गए प्रतीक चिह्न।'
+    },
+    logoNote: {
+      en: 'A logo here is not licensed imagery — it is the mark of a real organisation, reproduced because that organisation asked to be listed. It must not be reused as decoration elsewhere.',
+      hi: 'यहाँ का लोगो लाइसेंस प्राप्त चित्र नहीं है — यह किसी वास्तविक संगठन का प्रतीक चिह्न है, जिसे उसी संगठन के सूचीबद्ध होने की अनुरोध के कारण यहाँ दिया गया है। इसे कहीं और सजावट के रूप में पुनः उपयोग नहीं किया जाना चाहिए।'
+    },
     note: {
       en: 'Several images here illustrate a subject rather than depict Buxar itself — a period engraving of a battle, a museum object from the Buxar mound, or a district-region study. Each entry states what it actually shows.',
       hi: 'यहाँ कुछ तस्वीरें किसी विषय को समझाने के लिए हैं, बक्सर को नहीं — युद्ध की पुरानी नक़्क़ाशी, बक्सर की मोहर से मिला संग्रहालय वस्तु, या जिला-क्षेत्र का अध्ययन। हर प्रविष्टि में स्पष्ट रूप से लिखा है कि वह वास्तव में क्या दिखाती है।'
@@ -60,7 +70,8 @@
     category: { en: 'category', hi: 'श्रेणी' },
     location: { en: 'area', hi: 'क्षेत्र' },
     seller: { en: 'storefront', hi: 'स्टोर' },
-    product: { en: 'product', hi: 'उत्पाद' }
+    product: { en: 'product', hi: 'उत्पाद' },
+    'listing-logo': { en: 'listing logo', hi: 'सूची लोगो' }
   }
 
   function usage (key) {
@@ -81,7 +92,10 @@
       (c.sourceUrl ? ' ' + link(c.sourceUrl) : '') + '</div>'
 
     cells += '<div class="cr-row__cell cr-row__cell--licence">' +
-      (c.licence ? esc(c.licence) : '<span class="cr-row__na">—</span>') + '</div>'
+      (c.licence ? esc(c.licence) :
+        c.ownership === 'organisation-supplied'
+          ? '<span class="cr-row__own">' + esc(hi() ? 'संगठन द्वारा स्वामित्व' : 'Owned by the organisation') + '</span>'
+          : '<span class="cr-row__na">—</span>') + '</div>'
 
     return '<div class="cr-row">' + cells + '</div>'
   }
@@ -103,6 +117,7 @@
 
     var market = window.TheBuxarMarketCredits || []
     var heritage = window.TheBuxarHeritageCredits || []
+    var logos = window.TheBuxarBusinessLogoCredits || []
 
     host.innerHTML =
       '<section class="cr-section">' +
@@ -114,6 +129,12 @@
         '<h2 class="cr-h">' + esc(t('heritageTitle')) + '</h2>' +
         '<p class="cr-sub">' + esc(t('heritageSub')) + '</p>' +
         table(heritage) +
+      '</section>' +
+      '<section class="cr-section">' +
+        '<h2 class="cr-h">' + esc(t('logoTitle')) + '</h2>' +
+        '<p class="cr-sub">' + esc(t('logoSub')) + '</p>' +
+        table(logos) +
+        '<p class="cr-note cr-note--logo">' + esc(t('logoNote')) + '</p>' +
       '</section>' +
       '<p class="cr-note">' + esc(t('note')) + '</p>'
   }

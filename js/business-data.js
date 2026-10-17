@@ -1834,6 +1834,12 @@ B.businesses = [
         'mono': 'RSGSS',
         'name': {
             'en': 'Ramadhar Smarak Gram Seva Sansthan' },
+        /* The organisation's own emblem, supplied by them: the circular
+           tricolour mark reading GRAM SEVA SANSTHAN / RAMADHAR SMARAK /
+           ग्राम सेवा संस्थान. Used instead of the RSGSS monogram, which
+           stays in `mono` as the fallback if the image is ever removed.
+           Source and licence: js/business-logo-credits.js */
+        'logo': 'assets/business/rsgss/logo.jpg',
         'category': 'community-orgs',
         'subcategory': {
             'en': 'NGO' },
@@ -1874,7 +1880,6 @@ B.businesses = [
             { 'label': 'Instagram', 'url': 'https://www.instagram.com/gram_seva_sansthan/' },
             { 'label': 'Twitter', 'url': 'https://twitter.com/gra_seva' } ],
         'address': 'Village Orri, Post Mahdah, District Buxar, Bihar 802103',
-        'logo': null,
         'cover': null,
         'gallery': [],
         'rating': null,
