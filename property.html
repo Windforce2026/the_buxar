@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#081C33" />
+    <link rel="icon" href="./assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="./assets/brand/favicon-16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png" />
     <meta
       name="description"
       content="Houses, flats, plots, shops and agricultural land for sale or rent in Buxar district. Every property is posted by its owner - none are created to fill the page."
@@ -44,7 +47,7 @@
       "@id": "https://www.thebuxar.com/#org",
       "name": "TheBuxar.com",
       "url": "https://www.thebuxar.com/",
-      "logo": "https://www.thebuxar.com/assets/brand/logo.png",
+      "logo": "https://www.thebuxar.com/assets/brand/logo-512.png",
       "areaServed": {
         "@type": "State",
         "name": "Bihar",
@@ -60,50 +63,7 @@
   ]
 }
 </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://www.thebuxar.com/property.html#webpage",
-      "url": "https://www.thebuxar.com/property.html",
-      "name": "Property in Buxar | TheBuxar.com",
-      "description": "Houses, flats, plots, shops and agricultural land for sale or rent in Buxar district. Every property is posted by its owner - none are created to fill the page.",
-      "inLanguage": ["en", "hi"],
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://www.thebuxar.com/#website"
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thebuxar.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Property in Buxar" }
-        ]
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://www.thebuxar.com/#org",
-      "name": "TheBuxar.com",
-      "url": "https://www.thebuxar.com/",
-      "logo": "https://www.thebuxar.com/assets/brand/logo.png",
-      "areaServed": {
-        "@type": "State",
-        "name": "Bihar",
-        "containsPlace": { "@type": "City", "name": "Buxar" }
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-9818048920",
-        "contactType": "customer service",
-        "availableLanguage": ["en", "hi"]
-      }
-    }
-  ]
-}
-</script>
+
     <script>
       // Apply saved theme + language before paint to avoid a flash.
       try {
@@ -136,8 +96,7 @@
   <link rel="stylesheet" href="./css/account.css" />
   <link rel="stylesheet" href="./css/mobile.css" />
 </head>
-  <body class="ls-page-body" data-vertical="PR">
-<body class="bz-page business-page">
+  <body class="ls-page-body bz-page business-page" data-vertical="PR">
 
 <!-- Bihar map loader overlay -->
     <div id="loader" class="loader" aria-hidden="true">
@@ -183,7 +142,7 @@
           <a href="index.html#trade" class="nav__link" data-en="Trade" data-hi="वाणिज्य">Trade</a>
           <a href="index.html#news" class="nav__link" data-en="News" data-hi="समाचार">News</a>
           <a href="index.html#contact" class="nav__link" data-en="Contact" data-hi="संपर्क">Contact</a>
-          
+
         </nav>
 
         <div class="nav__actions">
@@ -205,7 +164,7 @@
           <button type="button" class="nav__lang" aria-label="Switch language" data-lang-toggle>
             <span class="nav__lang-en">EN</span><span class="nav__lang-sep">|</span><span class="nav__lang-hi">हिंदी</span>
           </button>
-          
+
           <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -237,7 +196,7 @@
       <!-- 01 · Hero + search -->
       <section class="ls-hero" aria-label="Property">
         <div class="shell">
-          <div data-listing="hero"></div>
+          <div data-listing="hero"><div class="ls-hero__inner"><h1 class="ls-hero__title" data-en="Property in Buxar" data-hi="बक्सर में संपत्ति">Property in Buxar</h1></div></div>
         </div>
       </section>
 
@@ -309,7 +268,7 @@
             <li><a href="index.html#explore" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
             <li><a href="tourism.html" data-en="Destinations" data-hi="पर्यटन स्थल">Destinations</a></li>
             <li><a href="index.html#contact" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
-            
+
           
             <li><a href="./credits.html" data-en="Image Credits" data-hi="चित्र श्रेय">Image Credits</a></li>
         </ul>
@@ -330,7 +289,7 @@
         <div class="shell footer__bottom-inner">
           <span class="footer__copy">© 2026 TheBuxar.com</span>
           <span class="footer__credit footer__credit--agency"><span class="footer__credit-label" data-en="Designed &amp; developed by" data-hi="डिज़ाइन एवं विकास द्वारा">Designed &amp; developed by</span> <strong>Windforce&nbsp;Digital</strong></span>
-          
+
         </div>
       </div>
     </footer>
@@ -344,7 +303,7 @@
     <script>
       window.TheBuxarConfig = { path: './' }
     </script>
-    
+
     <script>
       window.TheBuxarConfig = { path: './' }
     </script>

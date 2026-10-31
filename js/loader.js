@@ -82,6 +82,12 @@
   function bgVideo() {
     const video = document.getElementById('loader-bg-video')
     if (!video || reduceMotion) return
+    /* The backdrop is 4 MB of decoration. Skip it on phones, on Save-Data
+       and on slow connections — the loader reveal does not depend on it. */
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection
+    const smallScreen = window.matchMedia('(max-width: 900px)').matches
+    const slow = conn && (conn.saveData || /(^|-)2g$|(^|-)3g$/.test(conn.effectiveType || ''))
+    if (smallScreen || slow) return
     video.addEventListener(
       'playing',
       () => loader.classList.add('is-video'),

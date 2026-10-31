@@ -633,7 +633,7 @@
       role: { en: 'Area · Block', hi: 'क्षेत्र · प्रखंड' },
       name: { en: 'Rajpur', hi: 'राजपुर' },
       subtitle: { en: 'The wide rural flank of the district’s south-east', hi: 'जिले के दक्षिण-पूर्व की विस्तृत ग्रामीण भूमि' },
-      heroImage: 'assets/explore/rajpur/hero.jpg',
+      heroImage: 'assets/explore/rajpur/hero.webp',
       heroCredit: { en: 'Paddy fields near Buxar · TheBuxar.com', hi: 'बक्सर के पास धान के खेत · TheBuxar.com' },
       coords: null,
       coordsVerified: false,

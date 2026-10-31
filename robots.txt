@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Private or transactional pages
+Disallow: /admin.html
+Disallow: /account.html
+Disallow: /login.html
+Disallow: /search.html
+Disallow: /marketplace/cart.html
+Disallow: /marketplace/cart/
+Disallow: /marketplace/checkout.html
+Disallow: /marketplace/checkout/
+Disallow: /marketplace/wishlist.html
+Disallow: /marketplace/wishlist/
+Disallow: /business/claim.html
+Disallow: /business/add.html
+
+Sitemap: https://www.thebuxar.com/sitemap.xml

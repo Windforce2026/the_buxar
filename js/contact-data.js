@@ -1,8 +1,8 @@
 /* ------------------------------------------------------------------ */
 /* TheBuxar.com — Contact page data (pure vanilla, no deps)          */
 /*                                                                     */
-/* Only verified contact details live here. The phone field is        */
-/* deliberately null until a real number is published.                */
+/* Only verified contact details live here. The phone and WhatsApp number
+   are the site's published line; leave a field null if that changes. */
 /* ------------------------------------------------------------------ */
 (function () {
   'use strict'

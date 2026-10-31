@@ -186,7 +186,7 @@
         en: 'The wide rural flank of the district’s south-east.',
         hi: 'जिले के दक्षिण-पूर्व की विस्तृत ग्रामीण भूमि।'
       },
-      image: 'assets/explore/rajpur/hero.jpg',
+      image: 'assets/explore/rajpur/hero.webp',
       lat: 25.4333,
       lng: 84.8833
     },

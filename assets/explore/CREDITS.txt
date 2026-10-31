@@ -31,9 +31,9 @@ itarhi/hero.webp
     with assets/history/paddy-fields-buxar.jpg and
     assets/tourism/historical/paddy-fields.webp).
 
-rajpur/hero.jpg
+rajpur/hero.webp
     "Landscape of Paddy Fields near Buxar Town, Bihar" — Ajay Pratap,
-    CC BY-SA. Reused from assets/hero-buxar-paddy.jpg.
+    CC BY-SA. Reused from the site's Buxar paddy-fields photograph.
 
 Attribution statement: Wikimedia Commons / individual authors as listed.
 All images are used in accordance with their licenses (Public Domain or

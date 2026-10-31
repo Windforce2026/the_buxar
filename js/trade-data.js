@@ -194,7 +194,7 @@
     {
       slug: 'rajpur',
       name: { en: 'Rajpur', hi: 'राजपुर' },
-      image: 'assets/explore/rajpur/hero.jpg',
+      image: 'assets/explore/rajpur/hero.webp',
       blurb: { en: 'A local trade point for nearby rural communities.', hi: 'आसपास के ग्रामीण समुदायों के लिए स्थानीय व्यापार केंद्र।' }
     }
   ]
