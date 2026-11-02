@@ -365,6 +365,143 @@
 }
 
 /* ------------------------------------------------------------------ */
+/* Hero search                                                        */
+/*                                                                    */
+/* The client's homepage opens with one box that searches the whole   */
+/* portal, plus a location. On a phone the field takes its own row and */
+/* the location and button share the second, so nothing is clipped.    */
+/* ------------------------------------------------------------------ */
+.hero-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: stretch;
+  gap: 8px;
+  width: min(100%, 780px);
+  margin: 0 auto 40px;
+  padding: 8px;
+  border: 1px solid rgba(255, 215, 106, 0.3);
+  border-radius: 999px;
+  background: rgba(6, 18, 34, 0.58);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 22px 60px rgba(2, 8, 18, 0.45), 0 0 0 1px rgba(255, 215, 106, 0.08) inset;
+}
+
+.hero-search__field {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding-left: 16px;
+}
+
+.hero-search__icon {
+  display: flex;
+  flex: 0 0 auto;
+  margin-right: 10px;
+  color: rgba(248, 246, 242, 0.55);
+}
+
+.hero-search__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 14px 0;
+  border: 0;
+  background: transparent;
+  color: #f8f6f2;
+  font-family: var(--sans);
+  font-size: 15px;
+}
+
+.hero-search__input:focus {
+  outline: none;
+}
+
+.hero-search__input::placeholder {
+  color: rgba(248, 246, 242, 0.48);
+}
+
+.hero-search__loc {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding-left: 14px;
+  border-left: 1px solid rgba(248, 246, 242, 0.16);
+}
+
+/* The label stays for screen readers; the select itself is the control. */
+.hero-search__loc-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero-search__select {
+  appearance: none;
+  -webkit-appearance: none;
+  max-width: 172px;
+  padding: 14px 26px 14px 0;
+  border: 0;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f3e6c4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right center / 13px;
+  color: #f3e6c4;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.hero-search__select:focus-visible {
+  outline: 2px solid rgba(255, 215, 106, 0.8);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.hero-search__select option {
+  color: #0a1626;
+  background: #f8f6f2;
+}
+
+.hero-search__btn {
+  padding: 0 30px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold-warm), var(--gold));
+  color: #081c33;
+  font-family: 'Manrope', var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.hero-search__btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
+}
+
+.hero-search__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ */
 /* Scroll indicator                                                   */
 /* ------------------------------------------------------------------ */
 .hero__scroll {
@@ -445,7 +582,8 @@
 .hero.is-revealed .hero__subtitle {
   animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
-.hero.is-revealed .hero__cta {
+.hero.is-revealed .hero__cta,
+.hero.is-revealed .hero-search {
   animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
@@ -486,7 +624,8 @@
   }
   .hero.is-revealed .hero__label,
   .hero.is-revealed .hero__subtitle,
-  .hero.is-revealed .hero__cta {
+  .hero.is-revealed .hero__cta,
+  .hero.is-revealed .hero-search {
     animation-duration: 0.01s;
   }
 }
@@ -554,5 +693,53 @@
 
   .hero__scroll {
     display: none;
+  }
+}
+
+/* --- Search on tablets and phones --- */
+@media (max-width: 700px) {
+  .hero-search {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 24px;
+  }
+
+  .hero-search__field {
+    grid-column: 1 / -1;
+    padding: 2px 10px 0;
+  }
+
+  .hero-search__input {
+    padding: 12px 0;
+    font-size: 14.5px;
+  }
+
+  .hero-search__loc {
+    padding-left: 10px;
+    border-left: 0;
+  }
+
+  .hero-search__select {
+    max-width: 100%;
+    padding: 13px 24px 13px 4px;
+    font-size: 12.5px;
+  }
+
+  .hero-search__btn {
+    padding: 0 22px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-search__select {
+    max-width: 138px;
+    font-size: 12px;
+  }
+
+  .hero-search__btn {
+    padding: 0 16px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
   }
 }

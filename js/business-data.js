@@ -112,7 +112,7 @@
     featuredTitle: { en: 'Discover Local Businesses', hi: 'स्थानीय व्यवसाय खोजें' },
     byCategory: { en: 'Explore by Category', hi: 'श्रेणी से खोजें' },
     byLocation: { en: 'Explore by Location', hi: 'स्थान से खोजें' },
-    byLocationSub: { en: 'Every business is filed under one of the district\u2019s six areas.', hi: 'हर व्यवसाय जिले के छह क्षेत्रों में से किसी एक के अंतर्गत दर्ज है।' },
+    byLocationSub: { en: 'Every business is filed under the area where it operates.', hi: 'हर व्यवसाय उसी क्षेत्र के अंतर्गत दर्ज है जहाँ वह संचालित होता है।' },
     lookingFor: { en: 'What are you looking for?', hi: 'आप क्या खोज रहे हैं?' },
     lookingForSub: { en: 'Jump straight to the kind of business you need.', hi: 'सीधे अपनी ज़रूरत के व्यवसाय पर पहुँचें।' },
     ownerTitle: { en: 'Own a business in Buxar?', hi: 'बक्सर में व्यवसाय हैं?' },
@@ -267,7 +267,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Areas — the six Explore Buxar places. Slugs match js/explore-data.js */
+  /* Areas used by directory records. */
   /* so the two modules stay in sync.                                  */
   /* ------------------------------------------------------------------ */
   B.areas = [
@@ -276,7 +276,12 @@
     { slug: 'brahampur', url: 'explore/brahampur/', name: { en: 'Brahampur', hi: 'ब्रहमपुर' } },
     { slug: 'chausa', url: 'explore/chausa/', name: { en: 'Chausa', hi: 'चौसा' } },
     { slug: 'itarhi', url: 'explore/itarhi/', name: { en: 'Itarhi', hi: 'इतरही' } },
-    { slug: 'rajpur', url: 'explore/rajpur/', name: { en: 'Rajpur', hi: 'राजपुर' } }
+    { slug: 'rajpur', url: 'explore/rajpur/', name: { en: 'Rajpur', hi: 'राजपुर' } },
+    { slug: 'chakki', name: { en: 'Chakki', hi: 'चक्की' } },
+    { slug: 'chaugain', name: { en: 'Chaugain', hi: 'चौगाईन' } },
+    { slug: 'simri', name: { en: 'Simri', hi: 'सिमरी' } },
+    { slug: 'nawanagar', name: { en: 'Nawanagar', hi: 'नवानगर' } },
+    { slug: 'kesath', name: { en: 'Kesath', hi: 'केसठ' } }
   ]
 
   /* ------------------------------------------------------------------ */
@@ -371,7 +376,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
-        'area': 'buxar-town',
+        'area': 'chakki',
         'description': {
             'en': 'Chakki Primary Health Centre. Medical officer listed by the district administration as Dr.Nirmal Kumar Ojha.' },
         'phone': '9102225120',
@@ -404,7 +409,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
-        'area': 'buxar-town',
+        'area': 'chaugain',
         'description': {
             'en': 'Chaugain Primary Health Centre. Medical officer listed by the district administration as Dr.V P Singh.' },
         'phone': '9334025230',
@@ -536,7 +541,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
-        'area': 'buxar-town',
+        'area': 'kesath',
         'description': {
             'en': 'Kesath Primary Health Centre. Medical officer listed by the district administration as Dr.Bhola Chauhan.' },
         'phone': '9792985150',
@@ -569,7 +574,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
-        'area': 'buxar-town',
+        'area': 'nawanagar',
         'description': {
             'en': 'Nawanagar Primary Health Centre. Medical officer listed by the district administration as Dr. Permanand Chaudhary.' },
         'phone': '9973496615',
@@ -635,7 +640,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Primary Health Centre' },
         'type': 'clinic',
-        'area': 'buxar-town',
+        'area': 'simri',
         'description': {
             'en': 'Simari Primary Health Centre. Medical officer listed by the district administration as Dr. Nirmal Kumar Ojha.' },
         'phone': '9470003168',
@@ -1178,7 +1183,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Police Office' },
         'type': 'service',
-        'area': 'buxar-town',
+        'area': 'chakki',
         'description': {
             'en': 'Incharge Chakki O.P, Buxar district. Contact published by the district police.' },
         'phone': '9031826732',
@@ -1743,7 +1748,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Block Office' },
         'type': 'service',
-        'area': 'buxar-town',
+        'area': 'chakki',
         'description': {
             'en': 'Block Development Officer, Chakki block — rural development office for the block.' },
         'phone': '9031071433',
@@ -1769,7 +1774,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Block Office' },
         'type': 'service',
-        'area': 'buxar-town',
+        'area': 'chaugain',
         'description': {
             'en': 'Block Development Officer, Chaugai block — rural development office for the block.' },
         'phone': '9031071435',
@@ -1795,7 +1800,7 @@ B.businesses = [
         'subcategory': {
             'en': 'Block Office' },
         'type': 'service',
-        'area': 'buxar-town',
+        'area': 'simri',
         'description': {
             'en': 'Block Development Officer, Simri block — rural development office for the block.' },
         'phone': '9031071441',
@@ -1887,7 +1892,117 @@ B.businesses = [
         'verified': false,
         'demo': false,
         'source': 'gramsevasansthan.org — organisation\u2019s own website',
-        'createdAt': '2026-10-17' }
+        'createdAt': '2026-10-17' },
+    {
+        'id': 'museum-001',
+        'slug': 'sitaram-upadhyaya-memorial-museum',
+        'mono': 'SUM',
+        'name': {
+            'en': 'Sitaram Upadhyaya Memorial Museum',
+            'hi': 'सीताराम उपाध्याय स्मृति संग्रहालय' },
+        'category': 'museums',
+        'subcategory': {
+            'en': 'Archaeological Museum',
+            'hi': 'पुरातत्व संग्रहालय' },
+        'type': 'institution',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Government museum under the Department of Art, Culture and Youth, Government of Bihar, beside the Buxar Fort at Ramrekha Ghat. The collection holds terracotta figurines, manuscripts and artefacts from the Maurya and Shunga periods found in excavations at the fort. Closed on Mondays; open Tuesday to Sunday, 10:30 am to 4:00 pm.',
+            'hi': 'बिहार सरकार के कला, संस्कृति एवं युवा विभाग के अंतर्गत, बक्सर किले के समीप रामरेखा घाट पर राजकीय संग्रहालय। संग्रह में किले की खुदाई से प्राप्त मौर्य एवं शुंग काल की टेराकोटा मूर्तियाँ, पुरालेख और अन्य अवशेष रखे हैं। सोमवारी अवकाश; मंगलवार से रविवार सुबह 10:30 से दोपहर 4:00 बजे तक खुलता है।' },
+        'phone': null,
+        'whatsapp': null,
+        'email': null,
+        'website': null,
+        'address': 'Ramrekha Ghat, Buxar, Bihar 802101',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Government of Bihar — Bihar Foundation (Dept. of Art, Culture & Youth); Google Maps listing',
+        'createdAt': '2026-11-01',
+        'coords': [25.5741594, 83.9711603],
+        'coordsVerified': true,
+        'hours': [
+            ['Tue–Sun', '10:30 am – 4:00 pm'],
+            ['Monday', 'Closed']
+        ],
+                'services': []
+    },
+    {
+        'id': 'rail-001',
+        'slug': 'buxar-railway-station',
+        'mono': 'BXR',
+        'name': {
+            'en': 'Buxar Railway Station',
+            'hi': 'बक्सर रेलवे स्टेशन' },
+        'category': 'railway-stations',
+        'subcategory': {
+            'en': 'Station code BXR',
+            'hi': 'स्टेशन कोड BXR' },
+        'type': 'institution',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'East Central Railway (Danapur division) station on the Howrah\u2013Delhi main line, opened in 1862. Three platforms with direct trains to Delhi, Kolkata, Patna, Mumbai, Gujarat, Chennai, Secunderabad and Guwahati. Open round the clock; located on Station Road in Civil Lines, Buxar.',
+            'hi': 'हावड़ा\u2013दिल्ली मुख्य रेलमार्ग पर स्थित, पूर्व मध्य रेलवे (दानापुर मंडल) का स्टेशन, जिसकी स्थापना 1862 में हुई। तीन प्लेटफ़ॉर्म और दिल्ली, कोलकाता, पटना, मुंबई, गुजरात, चेन्नई, सिकंदराबाद तथा गुवाहाटी के लिए सीधी ट्रेनें। चौबीस घंटे खुला; स्थान: सिविल लाइंस, स्टेशन रोड, बक्सर।' },
+        'phone': null,
+        'whatsapp': null,
+        'email': null,
+        'website': null,
+        'address': 'Station Road, Buxar, Bihar 802101',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Google Maps listing (aggregated via promallu.com); Wikipedia; India Rail Info; RailOpedia',
+        'createdAt': '2026-11-02',
+        'coords': [25.560897, 83.981299],
+        'coordsVerified': true,
+        'hours': [
+            ['All days', 'Open 24 hours']
+        ],
+        'services': []
+    },
+    {
+        'id': 'fort-001',
+        'slug': 'buxar-fort',
+        'mono': 'BF',
+        'name': {
+            'en': 'Buxar Fort',
+            'hi': 'बक्सर किला' },
+        'category': 'heritage-sites',
+        'subcategory': {
+            'en': 'Historic fort',
+            'hi': 'ऐतिहासिक किला' },
+        'type': 'institution',
+        'area': 'buxar-town',
+        'description': {
+            'en': 'Historic fort on the bank of the Ganga in Buxar town, attributed to King Rudra Deo and dated 1054 AD. The Battle of Buxar was fought near it in 1764, a decisive turning point in Indian history. Ramrekha Ghat and the Sitaram Upadhyaya Memorial Museum lie nearby.',
+            'hi': 'गंगा के किनारे बक्सर में बना ऐतिहासिक किला, जिसका निर्माण राजा रुद्र देव द्वारा 1054 ई. में कराया गया माना जाता है। 1764 में बक्सर की प्रसिद्ध लड़ाई इसी के पास लड़ी गई थी — भारतीय इतिहास का एक निर्णायक मोड़। समीप में रामरेखा घाट और सीताराम उपाध्याय स्मृति संग्रहालय है।' },
+        'phone': null,
+        'whatsapp': null,
+        'email': null,
+        'website': null,
+        'address': 'Buxar, Bihar 802101',
+        'logo': null,
+        'cover': null,
+        'gallery': [],
+        'rating': null,
+        'reviewCount': 0,
+        'verified': true,
+        'demo': false,
+        'source': 'Department of Tourism, Government of Bihar (tourism.bihar.gov.in); Wikipedia; Google Maps listing (aggregated via promallu.com)',
+        'createdAt': '2026-11-02',
+        'coords': [25.56049, 83.98054],
+        'coordsVerified': true,
+        'hours': null,
+        'services': []
+    }
 ]
 
   /* ------------------------------------------------------------------ */

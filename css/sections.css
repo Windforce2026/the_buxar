@@ -1464,6 +1464,29 @@ html {
   color: rgba(248, 246, 242, 0.66);
 }
 
+/* Bottom-row site links — About, Advertise, Contact, Policies. */
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px 18px;
+}
+
+.footer__legal a {
+  color: rgba(248, 246, 242, 0.58);
+  text-decoration: none;
+  /* Padding gives the small legal links a proper tap target. */
+  padding: 10px 6px;
+  transition: color 0.2s ease;
+}
+
+.footer__legal a:hover,
+.footer__legal a:focus-visible {
+  color: var(--gold-warm);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Agency credit — "Designed & developed by Windforce Digital".
    The studio name is set in the serif face and kept in gold so it reads
    as a deliberate sign-off rather than more footer filler. */
@@ -1495,10 +1518,17 @@ html {
 .footer__legal a {
   color: rgba(248, 246, 242, 0.5);
   text-decoration: none;
+  padding: 10px 6px;
   transition: color 0.3s ease;
 }
 .footer__legal a:hover {
   color: var(--gold-warm);
+}
+
+/* Footer contact email — inline mailto link inside <address>. */
+.footer__contact a {
+  display: inline-block;
+  padding: 10px 0;
 }
 
 .footer .reveal {
@@ -1702,5 +1732,85 @@ html {
 
   .gal__item:hover img {
     transform: scale(1.02);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 10b · Services & Opportunities — entry cards to live sections      */
+/* ------------------------------------------------------------------ */
+.ops-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.ops-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(8, 28, 51, 0.1);
+  box-shadow: 0 18px 44px -34px rgba(8, 28, 51, 0.4);
+  color: var(--ink-navy);
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.ops-card:hover,
+.ops-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 26px 54px -30px rgba(8, 28, 51, 0.5);
+}
+
+.ops-card__label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.95);
+}
+
+.ops-card__title {
+  font-size: clamp(20px, 2.4vw, 24px);
+  line-height: 1.15;
+}
+
+.ops-card__sub {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(8, 28, 51, 0.62);
+}
+
+.ops-card__cta {
+  margin-top: auto;
+  padding-top: 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(8, 28, 51, 0.72);
+}
+
+@media (max-width: 1000px) {
+  .ops-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .ops-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ops-card {
+    transition: none !important;
   }
 }

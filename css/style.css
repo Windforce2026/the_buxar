@@ -257,7 +257,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(10px, 1.2vw, 17px);
+  gap: clamp(8px, 0.8vw, 14px);
   min-width: 0;
 }
 
@@ -274,7 +274,7 @@ body {
   text-decoration: none;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--text);
   padding: 6px 1px;
@@ -506,7 +506,8 @@ html[data-theme='light'] .nav__theme-moon {
   flex: 0 0 auto;
   background: none;
   border: none;
-  padding: 4px 6px;
+  padding: 11px 12px;
+  margin: -11px -12px;
   font-size: 16px;
   line-height: 1;
   color: var(--text-muted);
@@ -709,8 +710,24 @@ html[data-theme='light'] .nav__theme-moon {
   background: var(--gold-warm);
 }
 
+/* --- Wide desktop bar ---
+   The client's twelve-item menu (Home through City Guide) needs a little
+   more room than the original ten at 1400px and above. The spacing
+   tightens only on the desktop bar, so the drawer and phone typography
+   are untouched. */
+@media (min-width: 1401px) {
+  .nav__menu {
+    gap: 11px;
+  }
+
+  .nav__link {
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+  }
+}
+
 /* --- Hamburger drawer ---
-   Ten primary links need roughly 790px of menu. Alongside the wordmark
+   Twelve primary links need roughly 900px of menu. Alongside the wordmark
    and the actions (region, search, theme, language) that only leaves
    comfortable room above 1400px. Below that the desktop bar squeezed
    the links until they overlapped the wordmark and each other, so the

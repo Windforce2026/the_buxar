@@ -357,6 +357,28 @@
     return trail.indexOf(ancestor) !== -1
   }
 
+  /* Directory and listing records use the six Explore area slugs, where
+     the district town is `buxar-town`; the region registry calls the
+     same place `buxar-city`. Treat the two as one area so a location
+     filter never misses the town's own records. */
+  var AREA_ALIAS = {
+    'buxar-town': 'buxar-city',
+    'buxar-city': 'buxar-city'
+  }
+
+  R.canonicalArea = function (slug) {
+    return AREA_ALIAS[slug] || slug || ''
+  }
+
+  /* True when a record with `area` belongs to the chosen `loc`, or when
+     no location has been chosen at all. A record with no area cannot be
+     claimed for a place, so it is excluded once a location is set. */
+  R.matchArea = function (area, loc) {
+    if (!loc) return true
+    if (!area) return false
+    return R.canonicalArea(area) === R.canonicalArea(loc)
+  }
+
   /* Phone numbers are normalised against the region's STD code so a
      landline reads consistently whichever region is being viewed. */
   R.phone = function (num) {

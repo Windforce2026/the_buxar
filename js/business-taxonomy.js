@@ -164,7 +164,10 @@
         sub('block-offices', 'Block Office', 'प्रखंड कार्यालय', 'Block Offices', 'प्रखंड कार्यालय', 'building'),
         sub('municipal', 'Municipal Body', 'नगरपालिका', 'Municipal Bodies', 'नगरपालिकाएँ', 'building'),
         sub('utilities', 'Utility Office', 'उपयोगिता कार्यालय', 'Utility Offices', 'उपयोगिता कार्यालय', 'services'),
-        sub('community-orgs', 'Community Organisation', 'सामुदायिक संगठन', 'Community Organisations', 'सामुदायिक संगठन', 'other')
+        sub('community-orgs', 'Community Organisation', 'सामुदायिक संगठन', 'Community Organisations', 'सामुदायिक संगठन', 'other'),
+        sub('museums', 'Museum', 'संग्रहालय', 'Museums', 'संग्रहालय', 'building'),
+        sub('railway-stations', 'Railway Station', 'रेलवे स्टेशन', 'Railway Stations', 'रेलवे स्टेशन', 'travel'),
+        sub('heritage-sites', 'Heritage Site', 'विरासत स्थल', 'Heritage Sites', 'विरासत स्थल', 'building')
       ]
     }
   ]

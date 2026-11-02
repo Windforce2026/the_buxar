@@ -1,16 +1,16 @@
 /* ------------------------------------------------------------------ */
 /* TheBuxar.com — Portal navigation                                    */
 /*                                                                     */
-/* The client's primary navigation is ten items: News | Business |     */
-/* Shop | Food | Tourism | Events | Services | Jobs | Property |       */
-/* Classifieds.                                                         */
-/*                                                                     */
-/* Sections that do not exist yet are rendered with `is-soon` so they   */
-/* are visibly marked rather than being dead links. The moment the page */
-/* is built, setting `live: true` on the entry is all that is needed.   */
-/*                                                                     */
-/* This module owns:                                                  */
-/*   - the ten-item primary menu, injected into every .nav__menu        */
+/* The client's primary navigation is twelve items: Home | News | Business */
+/* | Shop | Food | Tourism | Events | Services | Jobs | Property | Deals |  */
+/* City Guide.                                                              */
+/*                                                                          */
+/* Sections that do not exist yet are rendered with `is-soon` so they      */
+/* are visibly marked rather than being dead links. The moment the page    */
+/* is built, setting `live: true` on the entry is all that is needed.      */
+/*                                                                          */
+/* This module owns:                                                       */
+/*   - the twelve-item primary menu, injected into every .nav__menu        */
 /*   - the region switcher, which makes js/regions.js visible          */
 /*   - re-rendering on language change                                 */
 /*                                                                     */
@@ -35,9 +35,10 @@
   P.path = typeof CONFIG.path === 'string' ? CONFIG.path : './'
 
   /* ------------------------------------------------------------------ */
-  /* The ten primary destinations                                         */
+  /* The twelve primary destinations (client's BUXAR.COM outline)        */
   /* ------------------------------------------------------------------ */
   P.nav = [
+    { key: 'home', label: { en: 'Home', hi: 'होम' }, href: 'index.html', live: true },
     { key: 'news', label: { en: 'News', hi: 'समाचार' }, href: 'news.html', live: true },
     { key: 'business', label: { en: 'Business', hi: 'व्यापार' }, href: 'business.html', live: true },
     { key: 'shop', label: { en: 'Shop', hi: 'दुकान' }, href: 'marketplace.html', live: true },
@@ -47,14 +48,16 @@
     { key: 'services', label: { en: 'Services', hi: 'सेवाएँ' }, href: 'services.html', live: true },
     { key: 'jobs', label: { en: 'Jobs', hi: 'रोज़गार' }, href: 'jobs.html', live: true },
     { key: 'property', label: { en: 'Property', hi: 'संपत्ति' }, href: 'property.html', live: true },
-    { key: 'classifieds', label: { en: 'Classifieds', hi: 'विज्ञापन' }, href: 'classifieds.html', live: true }
+    { key: 'deals', label: { en: 'Deals', hi: 'सौदे' }, href: 'marketplace.html?filter=offers', live: false },
+    { key: 'city-guide', label: { en: 'City Guide', hi: 'नगर गाइड' }, href: 'explore.html', live: true }
   ]
 
-  /* Home and Contact sit outside the ten so they stay on every page. */
+  /* Classifieds, History, Trade and Contact stay reachable from the
+     footer and from search; the client's top bar does not carry them. */
   P.utility = [
-    { key: 'home', label: { en: 'Home', hi: 'होम' }, href: 'index.html', live: true },
     { key: 'history', label: { en: 'History', hi: 'इतिहास' }, href: 'history.html', live: true },
     { key: 'explore', label: { en: 'Explore', hi: 'खोजें' }, href: 'explore.html', live: true },
+    { key: 'classifieds', label: { en: 'Classifieds', hi: 'विज्ञापन' }, href: 'classifieds.html', live: true },
     { key: 'trade', label: { en: 'Trade', hi: 'वाणिज्य' }, href: 'trade.html', live: true },
     { key: 'contact', label: { en: 'Contact', hi: 'संपर्क' }, href: 'contact.html', live: true }
   ]
@@ -126,7 +129,8 @@
 
   function navHtml () {
     return P.nav.map(function (n) {
-      var cls = 'nav__link' + (isActive(n.href) ? ' is-active' : '') + (n.live ? '' : ' is-soon')
+      var on = n.live && isActive(n.href)
+      var cls = 'nav__link' + (on ? ' is-active' : '') + (n.live ? '' : ' is-soon')
       return '<a href="' + esc(P.path + n.href) + '" class="' + cls + '"' +
         (n.live ? '' : ' data-soon="1"') +
         ' data-en="' + esc(P.get(n.label)) + '" data-hi="' + esc(n.label.hi) + '">' +

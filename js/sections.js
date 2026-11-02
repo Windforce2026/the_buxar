@@ -63,7 +63,7 @@
     onScroll()
   }
 
-  /* --- Footer newsletter (visual only) --- */
+  /* --- Footer newsletter (form only — no mailing service is connected) --- */
   function footerForm() {
     const form = document.getElementById('footer-form')
     const status = document.getElementById('footer-status')
@@ -73,7 +73,9 @@
       const email = form.querySelector('input')
       const hi = document.documentElement.getAttribute('data-lang') === 'hi'
       if (email && email.value && email.checkValidity()) {
-        status.textContent = hi ? 'धन्यवाद! सफलतापूर्वक सदस्यता ली गई।' : 'Thank you — you are subscribed.'
+        status.textContent = hi
+          ? 'न्यूज़लेटर अभी किसी मेलिंग सेवा से जुड़ा नहीं है, इसलिए कुछ भी सहेजा नहीं गया। तब तक hello@thebuxar.com पर लिखें।'
+          : 'The newsletter is not connected yet, so nothing was saved. Please write to hello@thebuxar.com in the meantime.'
         form.reset()
       } else {
         status.textContent = hi ? 'कृपया एक मान्य ईमेल डालें।' : 'Please enter a valid email.'

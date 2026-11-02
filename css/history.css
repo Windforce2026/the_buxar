@@ -866,7 +866,7 @@ body.history-page .hist-hero.is-revealed {
   transform: translate(-50%, -50%);
   background: none;
   border: none;
-  padding: 0;
+  padding: 7px;
   cursor: pointer;
   display: grid;
   place-items: center;

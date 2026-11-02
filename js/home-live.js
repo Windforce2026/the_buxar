@@ -209,17 +209,20 @@
       }).length
     }
 
+    /* The client's eight Explore tiles lead, in their order:
+       Business, Shop, Food, Tourism, Events, Services, Jobs, Property.
+       News, stays, offers and emergency contacts follow. */
     return [
-      { k: 'news', icon: 'news', label: t('Latest News', 'नवीनतम समाचार'), sub: t('Buxar and the district', 'बक्सर और जिला'), href: 'news.html', n: realArticles().length, live: true },
-      { k: 'shop', icon: 'shop', label: t('Shop Local', 'स्थानीय दुकान'), sub: t('Buy and sell in Buxar', 'बक्सर में खरीदें और बेचें'), href: 'marketplace.html', n: prodCount, live: true },
-      { k: 'business', icon: 'building', label: t('Find a Business', 'व्यापार खोजें'), sub: t('Shops, offices, services', 'दुकानें, कार्यालय, सेवाएँ'), href: 'business.html', n: bizCount, live: true },
-      { k: 'food', icon: 'food', label: t('Food & Restaurants', 'भोजन और रेस्तराँ'), sub: t('Eats across the town', 'शहर भर का भोजन'), href: 'food.html', n: L.itemsOf('F').length + inGroup('hospitality'), live: true },
-      { k: 'hotels', icon: 'stay', label: t('Hotels & Stay', 'होटल और ठहरना'), sub: t('Where to stay in Buxar', 'बक्सर में ठहरने की जगह'), href: 'food.html?cat=hotels', n: L.activeCategories('F').filter(function (c) { return c.slug === 'hotels' || c.slug === 'guest-house' }).length, live: true },
-      { k: 'tourism', icon: 'pin', label: t('Tourist Places', 'पर्यटन स्थल'), sub: t('Ganga, temples, forts', 'गंगा, मंदिर, किले'), href: 'tourism.html', n: (window.TheBuxarExplore ? window.TheBuxarExplore.places.length : null), live: true },
+      { k: 'business', icon: 'building', label: t('Business', 'व्यापार'), sub: t('Shops, offices, services', 'दुकानें, कार्यालय, सेवाएँ'), href: 'business.html', n: bizCount, live: true },
+      { k: 'shop', icon: 'shop', label: t('Shop', 'दुकान'), sub: t('Buy and sell in Buxar', 'बक्सर में खरीदें और बेचें'), href: 'marketplace.html', n: prodCount, live: true },
+      { k: 'food', icon: 'food', label: t('Food', 'भोजन'), sub: t('Eats across the town', 'शहर भर का भोजन'), href: 'food.html', n: L.itemsOf('F').length + inGroup('hospitality'), live: true },
+      { k: 'tourism', icon: 'pin', label: t('Tourism', 'पर्यटन'), sub: t('Ganga, temples, forts', 'गंगा, मंदिर, किले'), href: 'tourism.html', n: (window.TheBuxarExplore ? window.TheBuxarExplore.places.length : null), live: true },
       { k: 'events', icon: 'calendar', label: t('Events', 'आयोजन'), sub: t('Festivals and gatherings', 'त्योहार और सम्मेलन'), href: 'news.html#nw-festivals', n: upcomingEvents().length, live: true },
+      { k: 'services', icon: 'services', label: t('Services', 'सेवाएँ'), sub: t('Repairs, plumbing, help', 'मरम्मत, प्लंबिंग, सहायता'), href: 'services.html', n: L.itemsOf('S').length + inGroup('local-services'), live: true },
       { k: 'jobs', icon: 'briefcase', label: t('Jobs', 'रोज़गार'), sub: t('Work in and around Buxar', 'बक्सर में काम'), href: 'jobs.html', n: L.itemsOf('J').length, live: true },
       { k: 'property', icon: 'home', label: t('Property', 'संपत्ति'), sub: t('Buy, rent or sell', 'खरीदें, किराये पर या बेचें'), href: 'property.html', n: L.itemsOf('PR').length, live: true },
-      { k: 'services', icon: 'services', label: t('Local Services', 'स्थानीय सेवाएँ'), sub: t('Repairs, plumbing, help', 'मरम्मत, प्लंबिंग, सहायता'), href: 'services.html', n: L.itemsOf('S').length + inGroup('local-services'), live: true },
+      { k: 'news', icon: 'news', label: t('Latest News', 'नवीनतम समाचार'), sub: t('Buxar and the district', 'बक्सर और जिला'), href: 'news.html', n: realArticles().length, live: true },
+      { k: 'hotels', icon: 'stay', label: t('Hotels & Stay', 'होटल और ठहरना'), sub: t('Where to stay in Buxar', 'बक्सर में ठहरने की जगह'), href: 'food.html?cat=hotels', n: L.activeCategories('F').filter(function (c) { return c.slug === 'hotels' || c.slug === 'guest-house' }).length, live: true },
       { k: 'offers', icon: 'tag', label: t('Offers & Deals', 'ऑफर और सौदे'), sub: t('What is on sale', 'क्या बिक रहा है'), href: 'marketplace.html?filter=offers', n: 0, live: false },
       { k: 'emergency', icon: 'phone', label: t('Emergency Contacts', 'आपातकालीन संपर्क'), sub: t('Police, hospital, fire', 'पुलिस, अस्पताल, दमकाम'), href: 'business.html?cat=police', n: bz ? bz.businesses.filter(function (x) { return x.category === 'police' }).length : 0, live: true }
     ]
@@ -231,10 +234,10 @@
     h += '<div class="shell">'
     h += '<header class="quick__head">'
     h += '<h2 class="quick__title serif" id="quick-title">' +
-      esc(t('Quick Access', 'तुरंत पहुँच')) + '</h2>'
+      esc(t('Explore', 'खोजें')) + '</h2>'
     h += '<p class="quick__sub">' + esc(t(
-      'Everything the city needs, twelve doors in.',
-      'शहर की हर ज़रूरत, बारह दरवाज़ों में।')) + '</p>'
+      'Eight ways into Buxar — plus news, stays, offers and emergency contacts.',
+      'बक्सर में आने के आठ रास्ते — साथ में समाचार, ठहरना, सौदे और आपातकालीन संपर्क।')) + '</p>'
     h += '</header>'
     h += '<div class="quick__grid">'
     tiles.forEach(function (q) {
@@ -261,7 +264,7 @@
   function mount () {
     var host = document.getElementById('home-live')
     if (!host) return
-    host.innerHTML = happeningHtml() + quickHtml()
+    host.innerHTML = quickHtml() + happeningHtml()
 
     try {
       new MutationObserver(function () { mount() }).observe(document.documentElement, {

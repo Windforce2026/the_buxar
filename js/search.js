@@ -117,6 +117,7 @@
             title: t(b.name),
             sub: sub,
             keywords: keywords,
+            area: b.area || '',
             url: S.path() + 'business/profile.html?slug=' + encodeURIComponent(b.slug),
             meta: b.phone ? (window.TheBuxarRegions ? window.TheBuxarRegions.phone(b.phone) : b.phone) : ''
           }
@@ -166,6 +167,7 @@
               title: t(p.name),
               sub: t(p.blurb || p.about || ''),
               keywords: both(p.name) + ' ' + both(p.blurb || p.about),
+              area: p.slug || '',
               url: S.path() + 'explore.html',
               meta: 'Place'
             })
@@ -178,6 +180,7 @@
               title: t(r.name),
               sub: t(r.blurb || (R.get(R.levels[r.level]) || '')),
               keywords: both(r.name) + ' ' + both(r.blurb) + ' ' + (R.get(R.levels[r.level]) || ''),
+              area: r.live ? r.slug : '',
               url: S.path() + 'explore.html?region=' + r.slug,
               meta: R.get(R.levels[r.level]) || 'Region'
             })
@@ -220,6 +223,7 @@
         title: t(r.name),
         sub: L.catName(key, r.category),
         keywords: keywords,
+        area: r.area || '',
         url: S.path() + v.page + '?item=' + encodeURIComponent(r.slug || ''),
         meta: L.catName(key, r.category)
       }
@@ -322,19 +326,25 @@
     return 20
   }
 
-  S.query = function (raw, perGroup) {
+  /* `loc` is a region slug from the homepage or search-page picker. It
+     narrows results to records whose own area is known; records without
+     an area cannot honestly be claimed for a place, so they drop out. */
+  S.query = function (raw, perGroup, loc) {
     var q = String(raw || '').trim().toLowerCase()
-    if (q.length < 1) return { q: q, total: 0, groups: [] }
+    var where = String(loc || '').trim()
+    if (!q && !where) return { q: '', loc: '', total: 0, groups: [] }
     perGroup = perGroup || 8
 
     var groups = S.groups()
     var out = []
     var total = 0
+    var R = window.TheBuxarRegions
 
     groups.forEach(function (g) {
       var hits = []
       g.rows.forEach(function (row) {
-        var s = score(row, q)
+        if (where && !(R && R.matchArea ? R.matchArea(row.area, where) : row.area === where)) return
+        var s = q ? score(row, q) : 1
         if (s > 0) hits.push({ row: row, s: s })
       })
       if (!hits.length) return
@@ -348,7 +358,7 @@
         more: hits.length - Math.min(perGroup, hits.length)
       })
     })
-    return { q: q, total: total, groups: out }
+    return { q: q, loc: where, total: total, groups: out }
   }
 
   /* ------------------------------------------------------------------ */
@@ -376,47 +386,88 @@
   /* ------------------------------------------------------------------ */
   /* Results page                                                       */
   /* ------------------------------------------------------------------ */
+  /* The search page's location picker, built from the region registry
+     and limited to the cities and blocks a record can name. */
+  function fillLoc (select) {
+    if (!select || select.options.length > 1) return
+    var R = window.TheBuxarRegions
+    if (!R || !R.list) return
+    var html = '<option value="" data-en="All Buxar" data-hi="पूरा बक्सर">' + esc(lang() === 'hi' ? 'पूरा बक्सर' : 'All Buxar') + '</option>'
+    R.list.forEach(function (r) {
+      if (!r.live || (r.level !== 'city' && r.level !== 'block')) return
+      var name = R.get(r.name)
+      html += '<option value="' + esc(r.slug) + '" data-en="' + esc(name) + '" data-hi="' + esc(r.name.hi || name) + '">' + esc(name) + '</option>'
+    })
+    select.innerHTML = html
+  }
+
+  function locName (slug) {
+    var R = window.TheBuxarRegions
+    return R && R.name ? R.name(slug) : slug
+  }
+
   function renderResults () {
     var host = document.getElementById('sr-results')
     if (!host) return
     var q = ''
-    try { q = new URLSearchParams(window.location.search).get('q') || '' } catch (e) {}
+    var loc = ''
+    try {
+      var params = new URLSearchParams(window.location.search)
+      q = params.get('q') || ''
+      loc = params.get('loc') || ''
+    } catch (e) {}
 
     var input = document.getElementById('sr-input')
     if (input) input.value = q
 
+    var select = document.getElementById('sr-loc')
+    fillLoc(select)
+    if (select) select.value = loc
+
     var count = document.getElementById('sr-count')
     var title = document.getElementById('sr-query')
 
-    if (title) title.textContent = q
-    if (!q) {
+    if (title && q) title.textContent = q
+    if (!q && !loc) {
       if (count) count.textContent = ''
       host.innerHTML = S.suggestHtml()
       return
     }
 
-    var res = S.query(q, 10)
+    var res = S.query(q, 10, loc)
     if (count) {
-      count.textContent = lang() === 'hi'
-        ? (res.total + ' परिणाम')
-        : (res.total + (res.total === 1 ? ' result' : ' results'))
+      if (lang() === 'hi') count.textContent = res.total + ' परिणाम' + (loc ? ' · ' + locName(loc) : '')
+      else count.textContent = res.total + (res.total === 1 ? ' result' : ' results') + (loc ? ' · ' + locName(loc) : '')
     }
-    document.title = q + ' — ' + (lang() === 'hi' ? 'खोज' : 'Search') + ' | TheBuxar.com'
+    if (q) {
+      document.title = q + ' — ' + (lang() === 'hi' ? 'खोज' : 'Search') + ' | TheBuxar.com'
+    }
+
+    /* A visible, removable location chip so a reader always knows the
+       result set is scoped and how to widen it again. */
+    var clearHref = S.path() + 'search.html' + (q ? '?q=' + encodeURIComponent(q) : '')
+    var scope = loc
+      ? '<p class="sr-scope">' + esc(lang() === 'hi' ? 'स्थान: ' + locName(loc) : 'Location: ' + locName(loc)) +
+        ' <a class="sr-scope__clear" href="' + esc(clearHref) + '">' +
+        esc(lang() === 'hi' ? 'साफ़ करें' : 'clear') + '</a></p>'
+      : ''
 
     if (!res.total) {
       host.innerHTML =
         '<div class="sr-empty">' +
         '<h2 class="sr-empty__title">' + esc(lang() === 'hi'
-          ? '"' + q + '" के लिए कुछ नहीं मिला'
-          : 'Nothing found for "' + q + '"') + '</h2>' +
+          ? (loc ? locName(loc) + ' में कुछ नहीं मिला' : '"' + q + '" के लिए कुछ नहीं मिला')
+          : (loc ? 'Nothing recorded in ' + locName(loc) + (q ? ' for "' + q + '"' : '') + ' yet'
+                 : 'Nothing found for "' + q + '"')) + '</h2>' +
         '<p class="sr-empty__sub">' + esc(lang() === 'hi'
-          ? 'कुछ अलग शब्द आज़माएँ, या नीचे दिए गए पन्नों में से किसी एक पर जाएँ।'
-          : 'Try a different word, or head to one of the sections below.') + '</p>' +
+          ? 'कुछ अलग शब्द आज़माएँ, स्थान हटाएँ, या नीचे दिए गए पन्नों में से किसी एक पर जाएँ।'
+          : 'Try a different word, clear the location, or head to one of the sections below.') + '</p>' +
+        scope +
         S.suggestHtml() +
         '</div>'
       return
     }
-    host.innerHTML = res.groups.map(function (g) { return S.groupHtml(g) }).join('')
+    host.innerHTML = scope + res.groups.map(function (g) { return S.groupHtml(g) }).join('')
   }
 
   /* What to show when the reader has not typed anything, or found

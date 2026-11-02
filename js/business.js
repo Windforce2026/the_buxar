@@ -152,9 +152,11 @@
       : ''
   }
 
-  /* Open/closed only when the record actually carries hours. */
+  /* Open/closed only when the record actually carries a boolean for it.
+     A row-listed `hours` table (array of [label, value]) has no live open /
+     closed state, so no chip is shown rather than a wrong one. */
   function statusChip (biz) {
-    if (!biz.hours) return ''
+    if (!biz.hours || Array.isArray(biz.hours)) return ''
     return '<span class="bz-chip bz-chip--open">' + esc(biz.hours.open ? t('openNow') : t('closedNow')) + '</span>'
   }
 
@@ -317,7 +319,7 @@
       ? '<p class="bz-hint">' + esc(t('moreCatsNote')) + '</p>' : '')
   }
 
-  /* The six areas, mirroring the Explore Buxar structure. */
+  /* The areas used by directory records. */
   MOUNT.areas = function (host) {
     host.innerHTML = '<div class="bz-area">' + B.areas.map(function (a, i) {
       var n = B.countIn(null, a.slug)
