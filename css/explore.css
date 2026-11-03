@@ -1890,21 +1890,19 @@ html[data-theme='light'] .expl-hero__bg {
 }
 
 @media (max-width: 1080px) {
-  .expl-home__row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 720px) {
+  /* 5 guide cards pair up — the odd one always takes the full width of
+     its own closing row instead of sitting beside an empty slot. */
   .expl-home__row {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .expl-home__row .expl-home__card:last-child {
+    grid-column: span 2;
+    aspect-ratio: 16 / 10;
   }
 }
 
 @media (max-width: 480px) {
-  .expl-home__row {
-    grid-template-columns: 1fr;
-  }
   .expl-home__card {
     aspect-ratio: 16 / 10;
   }

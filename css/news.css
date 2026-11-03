@@ -642,6 +642,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 180px;
+  /* Late, small cards backfill any hole a tall/wide card leaves, so no
+     part of the mosaic sits above an empty slot at any count or width. */
+  grid-auto-flow: dense;
   gap: clamp(10px, 1.6vw, 16px);
 }
 

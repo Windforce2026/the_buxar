@@ -333,8 +333,10 @@
 }
 
 @media (max-width: 460px) {
+  /* The four stat squares stay paired on phones — each label wraps, so
+     half-width is always enough. */
   .live__stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

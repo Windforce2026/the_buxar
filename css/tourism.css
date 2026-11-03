@@ -1574,6 +1574,10 @@ body[data-category='historical'] .tour-transition__layer--historical {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 210px;
+  /* Tall and wide figures set the mosaic by hand; dense flow lets later
+     small figures backfill whatever holes their shapes leave, at every
+     width, without disturbing the figure spans. */
+  grid-auto-flow: dense;
   gap: 14px;
 }
 

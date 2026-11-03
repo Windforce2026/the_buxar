@@ -28,11 +28,8 @@
   .au-panels,
   .au-stats,
   .sr-suggest__grid,
-  .ls-grid,
   .cu-cols,
   .live__grid,
-  .quick__grid,
-  .live__stats,
   .ls-cats,
   .ls-form__row,
   .cu-form__row,
@@ -371,5 +368,99 @@
   .nav__menu .nav__link,
   .au-stats {
     transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Two-up card grids on phones                                         */
+/*                                                                     */
+/* The client wants the packed, stacked look on phones too: small      */
+/* cards that comfortably fit side by side stop stacking one per row    */
+/* and share a two-column track, so no row is left half empty. The      */
+/* card-packing script continues to work on the two-column track.       */
+/* Rich image-only feature cards (.bz-grid, .tour-home__grid,          */
+/* .hist-places__grid, .gal) stay single column by design.              */
+/* ------------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .bz-catgrid,
+  .bz-home-cats .bz-catgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .bz-catgrid__item,
+  .bz-home-cats .bz-catgrid__item--lead {
+    padding: 16px 14px 14px;
+    gap: 8px;
+  }
+
+  .bz-catgrid__item--lead {
+    grid-column: span 2;
+  }
+
+  .bz-catgrid__name {
+    font-size: 15px;
+  }
+
+  .bz-catgrid__blurb {
+    font-size: 11.5px;
+  }
+
+  .ops-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .ops-card {
+    padding: 14px 12px;
+  }
+
+  .ls-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .ls-card {
+    padding: 12px;
+  }
+
+  .mk-grid,
+  .mk-catgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* Photo category tiles stay in the pair rhythm on phones — their
+     16/10 art crops cleanly at half-width — instead of each card
+     claiming the whole row. */
+  .mk-catgrid__item--photo {
+    grid-column: span 1;
+  }
+
+  .expl-grid3,
+  .explorer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* Hero quick tiles (Business / Shop / Food / Tourism / …) stay paired
+     on phones like the reference site's department cards. */
+  .quick__tile {
+    padding: 16px 14px 14px;
+  }
+}
+
+@media (max-width: 340px) {
+  /* On the narrowest phones the two-up tiles stay, but the copy inside
+     them tightens so nothing overflows or wraps badly. */
+  .bz-catgrid__item,
+  .ops-card,
+  .ls-card {
+    padding: 12px 10px;
+  }
+
+  .bz-catgrid__name {
+    font-size: 14px;
   }
 }
